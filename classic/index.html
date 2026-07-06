@@ -6,6 +6,7 @@
   <title>OneChain — Enterprise Blockchain Infrastructure</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+  <script src="site-chrome.js" defer></script>
   <style>
     /* ===== RESET & TOKENS ===== */
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
@@ -1055,24 +1056,8 @@
   <!-- SCROLL PROGRESS BAR -->
   <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
 
-  <!-- NAV -->
-  <nav class="nav">
-    <div class="nav-inner">
-      <a href="index.html" class="nav-logo"><img src="onchain-logo.png" alt="OneChain" /></a>
-      <div class="nav-links">
-        <a href="#products">Products</a>
-        <a href="#features">Features</a>
-        <a href="#infrastructure">Infrastructure</a>
-        <a href="esgledger.html">ESGLedger</a>
-        <a href="certledger.html">CertLedger</a>
-        <a href="about.html">About</a>
-      </div>
-      <div class="nav-actions">
-        <button class="btn-ghost">Log in</button>
-        <button class="btn-primary">Get Started</button>
-      </div>
-    </div>
-  </nav>
+  <!-- NAV (shared, injected by site-chrome.js) -->
+  <div id="site-nav"></div>
 
   <!-- HERO -->
   <section class="hero">
@@ -1619,46 +1604,8 @@
     </div>
   </section>
 
-  <!-- FOOTER -->
-  <footer class="footer">
-    <div class="footer-grid">
-      <div class="footer-brand">
-        <a href="index.html" class="nav-logo"><img src="onchain-logo.png" alt="OneChain" style="height: 32px;" /></a>
-        <p>Enterprise blockchain infrastructure for trust, verification, and compliance at scale.</p>
-      </div>
-      <div class="footer-col">
-        <h4>Products</h4>
-        <a href="esgledger.html">ESGLedger</a>
-        <a href="certledger.html">CertLedger</a>
-        <a href="infrastructure.html">Infrastructure</a>
-        <a href="#">API Docs</a>
-      </div>
-      <div class="footer-col">
-        <h4>Company</h4>
-        <a href="about.html">About</a>
-        <a href="#">Careers</a>
-        <a href="#">Press</a>
-        <a href="#">Contact</a>
-      </div>
-      <div class="footer-col">
-        <h4>Resources</h4>
-        <a href="#">Blog</a>
-        <a href="#">Documentation</a>
-        <a href="#">Changelog</a>
-        <a href="#">Status</a>
-      </div>
-      <div class="footer-col">
-        <h4>Legal</h4>
-        <a href="#">Privacy Policy</a>
-        <a href="#">Terms of Service</a>
-        <a href="#">Cookie Policy</a>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <span>&copy; 2026 OneChain. All rights reserved.</span>
-      <span>Built in Hong Kong</span>
-    </div>
-  </footer>
+  <!-- FOOTER (shared, injected by site-chrome.js) -->
+  <div id="site-footer"></div>
 
   <!-- SCRIPTS -->
   <script>

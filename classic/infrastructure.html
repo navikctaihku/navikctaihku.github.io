@@ -6,6 +6,7 @@
   <title>Infrastructure — Three Layers, One Platform | OneChain</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <script src="site-chrome.js" defer></script>
   <style>
     :root {
       --oc-primary: #016282; --oc-primary-light: #0189B5; --oc-primary-glow: rgba(1,98,130,0.08);
@@ -224,21 +225,7 @@
 </head>
 <body>
 
-  <nav>
-    <div class="container">
-      <a href="index.html" class="nav-logo"><img src="onchain-logo.png" alt="ON;CHAIN" /></a>
-      <ul class="nav-links">
-        <li><a href="about.html">About</a></li>
-        <li><a href="infrastructure.html" class="active">Infrastructure</a></li>
-        <li><a href="index.html#features">AI + Services</a></li>
-        <li><a href="esgledger.html">ESGLedger</a></li>
-        <li><a href="certledger.html">CertLedger</a></li>
-        <li><a href="about.html#values">Why OneChain</a></li>
-      </ul>
-      <a href="mailto:enquiries@onechain.hk" class="nav-cta">Contact</a>
-      <button class="hamburger" aria-label="Menu">☰</button>
-    </div>
-  </nav>
+  <div id="site-nav"></div>
 
   <!-- HERO -->
   <section class="hero">
@@ -420,21 +407,7 @@
     </div>
   </section>
 
-  <!-- FOOTER -->
-  <footer>
-    <div class="container">
-      <div class="footer-grid">
-        <div class="footer-brand">
-          <div class="nav-logo"><img src="onchain-logo.png" alt="ON;CHAIN" /></div>
-          <p>Full-stack blockchain company. Hong Kong. Cyberport-incubated.</p>
-        </div>
-        <div class="footer-col"><h5>Company</h5><ul><li><a href="about.html">About</a></li><li><a href="infrastructure.html">Infrastructure</a></li><li><a href="esgledger.html">Green Tech</a></li><li><a href="mailto:enquiries@onechain.hk">Contact</a></li></ul></div>
-        <div class="footer-col"><h5>Products</h5><ul><li><a href="esgledger.html">ESGLedger</a></li><li><a href="certledger.html">CertLedger</a></li></ul></div>
-        <div class="footer-col"><h5>Resources</h5><ul><li><a href="#">API Docs</a></li><li><a href="#">Explorer</a></li><li><a href="#">FAQ</a></li></ul></div>
-      </div>
-      <div class="footer-bottom"><p>© 2026 OneChain Ltd. · Cyberport 3, Pok Fu Lam, Hong Kong</p></div>
-    </div>
-  </footer>
+  <div id="site-footer"></div>
 
   <script>
     document.querySelectorAll('.reveal').forEach(el => {
