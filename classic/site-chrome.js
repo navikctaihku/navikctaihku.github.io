@@ -89,6 +89,24 @@
   .sc-footer-tagline { font: 500 14px/1 'Inter', sans-serif; color: var(--sc-primary); }
   @media (max-width: 1023px) { .sc-footer-grid { grid-template-columns: 1fr 1fr; } }
   body > footer:not(.sc-footer) { display: none !important; }
+  /* ===== FX: spotlight hover on cards ===== */
+  .sc-spot { position: relative; }
+  .sc-spot::after { content: ''; position: absolute; inset: 0; border-radius: inherit; opacity: 0;
+    transition: opacity .35s ease; pointer-events: none; z-index: 1;
+    background: radial-gradient(260px circle at var(--sc-mx, 50%) var(--sc-my, 50%),
+      var(--sc-spot-color, rgba(1,137,181,0.13)), transparent 62%); }
+  .sc-spot:hover::after { opacity: 1; }
+  .sc-spot-dark { --sc-spot-color: rgba(0,180,216,0.16); }
+  /* FX: gradient shimmer sweep on primary headings when revealed */
+  @keyframes sc-underline { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+  /* FX: scroll progress bar */
+  .sc-progress { position: fixed; top: 0; left: 0; height: 2.5px; width: 100%; z-index: 2000;
+    transform-origin: 0 50%; transform: scaleX(0); pointer-events: none;
+    background: linear-gradient(90deg, #016282, #00B4D8, #7F77DD); }
+  @media (prefers-reduced-motion: reduce) {
+    .sc-spot::after { display: none; }
+    .sc-progress { display: none; }
+  }
   `;
 
   var icon = function (bg, glyph) {
@@ -243,6 +261,82 @@
         mobile.classList.toggle('sc-open');
         burger.textContent = mobile.classList.contains('sc-open') ? '✕' : '☰';
       });
+    }
+
+    initFX();
+  }
+
+  /* ===== FX layer: spotlight cards, count-up stats, scroll progress ===== */
+  function initFX() {
+    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    // 1) Spotlight hover — applies to common card selectors across all pages
+    var CARD_SEL = ['.pillar', '.stat', '.layer', '.app', '.vision-card', '.doing-card',
+      '.solve', '.career-card', '.value-card', '.feature-card', '.product-card',
+      '.explore-card', '.industry-card'].join(',');
+    var DARK_SEL = '.green-card';
+    if (!reduce) {
+      document.querySelectorAll(CARD_SEL).forEach(function (el) { el.classList.add('sc-spot'); });
+      document.querySelectorAll(DARK_SEL).forEach(function (el) { el.classList.add('sc-spot', 'sc-spot-dark'); });
+      document.addEventListener('mousemove', function (e) {
+        var el = e.target.closest && e.target.closest('.sc-spot');
+        if (!el) return;
+        var r = el.getBoundingClientRect();
+        el.style.setProperty('--sc-mx', (e.clientX - r.left) + 'px');
+        el.style.setProperty('--sc-my', (e.clientY - r.top) + 'px');
+      }, { passive: true });
+    }
+
+    // 2) Count-up numbers — animates digits inside .stat b when scrolled into view
+    var stats = document.querySelectorAll('.stat b');
+    if (stats.length && !reduce && 'IntersectionObserver' in window) {
+      var obs = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (!entry.isIntersecting) return;
+          obs.unobserve(entry.target);
+          countUp(entry.target);
+        });
+      }, { threshold: 0.6 });
+      stats.forEach(function (el) { obs.observe(el); });
+    }
+    function countUp(el) {
+      var text = el.textContent;
+      var m = text.match(/([0-9][0-9,]*(?:\.[0-9]+)?)/);
+      if (!m) return; // non-numeric stats like "HK" stay as-is
+      var target = parseFloat(m[1].replace(/,/g, ''));
+      var decimals = (m[1].split('.')[1] || '').length;
+      var hasComma = m[1].indexOf(',') !== -1;
+      var prefix = text.slice(0, m.index);
+      var suffix = text.slice(m.index + m[1].length);
+      var t0 = null, DUR = 1400;
+      function frame(t) {
+        if (!t0) t0 = t;
+        var p = Math.min(1, (t - t0) / DUR);
+        var eased = 1 - Math.pow(1 - p, 3);
+        var val = (target * eased).toFixed(decimals);
+        if (hasComma) val = Number(val).toLocaleString('en-US', { minimumFractionDigits: decimals });
+        el.textContent = prefix + val + suffix;
+        if (p < 1) requestAnimationFrame(frame);
+        else el.textContent = text;
+      }
+      requestAnimationFrame(frame);
+    }
+
+    // 3) Scroll progress bar (skip if the page already has one)
+    if (!document.querySelector('.scroll-progress')) {
+      var bar = document.createElement('div');
+      bar.className = 'sc-progress';
+      document.body.appendChild(bar);
+      var ticking = false;
+      window.addEventListener('scroll', function () {
+        if (ticking) return; ticking = true;
+        requestAnimationFrame(function () {
+          var h = document.documentElement;
+          var max = h.scrollHeight - h.clientHeight;
+          bar.style.transform = 'scaleX(' + (max > 0 ? h.scrollTop / max : 0) + ')';
+          ticking = false;
+        });
+      }, { passive: true });
     }
   }
 

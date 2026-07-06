@@ -24,10 +24,28 @@
     a { text-decoration: none; color: inherit; }
     .container { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
 
-    /* HERO — big statement, Vercel-security style */
+    /* HERO — big statement, Vercel-security style, with aurora + dot grid */
     .hero { padding: 168px 0 96px; text-align: center; position: relative; overflow: hidden; }
     .hero::before { content: ''; position: absolute; inset: 0; pointer-events: none;
-      background: radial-gradient(ellipse 70% 55% at 50% 0%, rgba(1,137,181,0.10), transparent 70%); }
+      background-image: radial-gradient(rgba(10,22,40,0.13) 1px, transparent 1px);
+      background-size: 26px 26px;
+      -webkit-mask-image: radial-gradient(ellipse 75% 65% at 50% 0%, #000 25%, transparent 75%);
+      mask-image: radial-gradient(ellipse 75% 65% at 50% 0%, #000 25%, transparent 75%); }
+    .hero-aurora { position: absolute; inset: 0; overflow: hidden; pointer-events: none; }
+    .hero-aurora span { position: absolute; border-radius: 50%; filter: blur(80px); opacity: .5; will-change: transform; }
+    .hero-aurora span:nth-child(1) { width: 480px; height: 480px; top: -12%; left: 8%;
+      background: radial-gradient(circle, rgba(1,137,181,0.35), transparent 70%);
+      animation: aur-1 16s ease-in-out infinite; }
+    .hero-aurora span:nth-child(2) { width: 420px; height: 420px; top: 4%; right: 6%;
+      background: radial-gradient(circle, rgba(127,119,221,0.22), transparent 70%);
+      animation: aur-2 20s ease-in-out infinite; }
+    .hero-aurora span:nth-child(3) { width: 360px; height: 360px; top: 30%; left: 40%;
+      background: radial-gradient(circle, rgba(0,180,216,0.18), transparent 70%);
+      animation: aur-3 24s ease-in-out infinite; }
+    @keyframes aur-1 { 0%,100% { transform: translate(0,0) scale(1); } 50% { transform: translate(50px,30px) scale(1.1); } }
+    @keyframes aur-2 { 0%,100% { transform: translate(0,0) scale(1); } 50% { transform: translate(-40px,25px) scale(1.06); } }
+    @keyframes aur-3 { 0%,100% { transform: translate(0,0) scale(1); } 50% { transform: translate(30px,-25px) scale(1.12); } }
+    @media (prefers-reduced-motion: reduce) { .hero-aurora span { animation: none; } }
     .hero .container { position: relative; }
     .hero h1 { font-size: clamp(44px, 7vw, 76px); font-weight: 800; letter-spacing: -0.03em; line-height: 1.05; }
     .hero h1 .dim { color: var(--muted-2); }
@@ -128,6 +146,7 @@
 
   <!-- HERO -->
   <section class="hero">
+    <div class="hero-aurora" aria-hidden="true"><span></span><span></span><span></span></div>
     <div class="container">
       <div class="eyebrow">Company</div>
       <h1>Trust that<br><span class="dim">scales with you.</span></h1>

@@ -9,7 +9,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
     <script>document.documentElement.classList.add("js-enabled");</script>
-    <script type="module" crossorigin src="/new/assets/main-DqHkRVVj.js"></script>
+    <script type="module" crossorigin src="/new/assets/main-IyCPjGc8.js"></script>
     <link rel="modulepreload" crossorigin href="/new/assets/site-nav-G5PxHnPw.js">
     <link rel="stylesheet" crossorigin href="/new/assets/site-nav-BYJijqwi.css">
   </head>
@@ -235,11 +235,60 @@
       </section>
 
       <!-- ═══════════════════════════════════════════════════════
+           SECTION 4b: How it works — 3-step pipeline
+      ═══════════════════════════════════════════════════════ -->
+      <section class="pipeline-section section--surface" id="how-it-works">
+        <div class="container">
+          <header class="pipeline-header reveal">
+            <p class="section-tag">HOW IT WORKS</p>
+            <h2 class="section-title">From data to verified proof in three steps</h2>
+            <p class="section-desc">
+              OneChain anchors enterprise data on a permissioned Hyperledger Fabric chain —
+              so partners, regulators, and end users can verify without crypto complexity.
+            </p>
+          </header>
+
+          <div class="pipeline-track" id="pipelineTrack">
+            <div class="pipeline-line" aria-hidden="true">
+              <span class="pipeline-line-fill" id="pipelineLineFill"></span>
+            </div>
+
+            <article class="pipeline-step reveal" data-step="0">
+              <div class="pipeline-icon" aria-hidden="true">
+                <svg viewBox="0 0 48 48" fill="none"><rect x="8" y="12" width="32" height="24" rx="4" stroke="currentColor" stroke-width="2"/><path d="M16 20h16M16 26h10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+              </div>
+              <span class="pipeline-num">01</span>
+              <h3>Collect &amp; sign</h3>
+              <p>Enterprise apps, IoT sensors, and RVMs submit signed data through OneChain APIs or consortium channels.</p>
+            </article>
+
+            <article class="pipeline-step reveal" data-step="1">
+              <div class="pipeline-icon" aria-hidden="true">
+                <svg viewBox="0 0 48 48" fill="none"><rect x="10" y="10" width="12" height="12" rx="2" stroke="currentColor" stroke-width="2"/><rect x="26" y="10" width="12" height="12" rx="2" stroke="currentColor" stroke-width="2"/><rect x="10" y="26" width="12" height="12" rx="2" stroke="currentColor" stroke-width="2"/><rect x="26" y="26" width="12" height="12" rx="2" stroke="currentColor" stroke-width="2"/><path d="M22 16h4M22 32h4M16 22v4M32 22v4" stroke="currentColor" stroke-width="2"/></svg>
+              </div>
+              <span class="pipeline-num">02</span>
+              <h3>Anchor on-chain</h3>
+              <p>Data is hashed and recorded on the OneChain Consortium with PoA consensus — immutable, auditable, zero gas fees.</p>
+            </article>
+
+            <article class="pipeline-step reveal" data-step="2">
+              <div class="pipeline-icon" aria-hidden="true">
+                <svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="16" stroke="currentColor" stroke-width="2"/><path d="M16 24l6 6 12-14" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </div>
+              <span class="pipeline-num">03</span>
+              <h3>Verify anywhere</h3>
+              <p>Anyone can verify credentials, credits, or records via QR scan, API call, or dashboard — no wallet required.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══════════════════════════════════════════════════════
            SECTION 5: Trust Pillar 1 — Isometric blockchain illustration
            (Anne's favourite — image 3 style)
            Categories: Green Tech, Blockchain Infrastructure, Credential, AI Application
       ═══════════════════════════════════════════════════════ -->
-      <section class="trust-section" id="trust">
+      <section class="trust-section section--tint" id="trust">
         <div class="container trust-grid">
           <div class="trust-visual" aria-hidden="true">
             <img
@@ -265,7 +314,7 @@
       <!-- ═══════════════════════════════════════════════════════
            SECTION 6: Trust Pillar 2
       ═══════════════════════════════════════════════════════ -->
-      <section class="trust-section trust-reverse">
+      <section class="trust-section trust-reverse section--surface">
         <div class="container trust-grid trust-grid-reverse">
           <div class="trust-copy">
             <h2>Trusted by enterprises & institutions</h2>
@@ -289,9 +338,62 @@
       </section>
 
       <!-- ═══════════════════════════════════════════════════════
+           SECTION 6c: Customer quotes & case studies
+      ═══════════════════════════════════════════════════════ -->
+      <section class="proof-section section--mint" id="case-studies">
+        <div class="container">
+          <header class="proof-header reveal">
+            <p class="section-tag">CUSTOMER STORIES</p>
+            <h2 class="section-title">Trusted by enterprises across Hong Kong</h2>
+          </header>
+
+          <div class="proof-grid">
+            <blockquote class="testimonial-card reveal">
+              <div class="testimonial-stars" aria-hidden="true">★★★★★</div>
+              <p class="testimonial-quote">
+                "OneChain gave us a verifiable plastic credit trail from reverse-vending machines to retirement —
+                regulators can audit every step without us exposing proprietary data."
+              </p>
+              <footer class="testimonial-author">
+                <div class="testimonial-avatar" aria-hidden="true">WS</div>
+                <div>
+                  <cite>Sustainability Lead</cite>
+                  <span>Watsons · Retail &amp; FMCG pilot</span>
+                </div>
+              </footer>
+            </blockquote>
+
+            <article class="case-study-card reveal">
+              <div class="case-study-badge">ESG</div>
+              <h3>Watsons reverse-vending pilot</h3>
+              <p>ESGLedger traces plastic credits from 40+ RVM locations across Hong Kong with geo-spatial reporting for district coverage.</p>
+              <dl class="case-study-metrics">
+                <div><dt>847K+</dt><dd>credits traced</dd></div>
+                <div><dt>40+</dt><dd>RVM sites</dd></div>
+                <div><dt>0</dt><dd>gas fees</dd></div>
+              </dl>
+              <a href="esgledger.html" class="case-study-link">Read case study →</a>
+            </article>
+
+            <article class="case-study-card reveal">
+              <div class="case-study-badge case-study-badge--gold">Education</div>
+              <h3>PolyU credential verification</h3>
+              <p>CertLedger issues tamper-proof academic credentials with instant QR verification — no wallet, no crypto, full auditability.</p>
+              <dl class="case-study-metrics">
+                <div><dt>12K+</dt><dd>credentials issued</dd></div>
+                <div><dt>&lt;2s</dt><dd>verify time</dd></div>
+                <div><dt>100%</dt><dd>on-chain audit</dd></div>
+              </dl>
+              <a href="certledger.html" class="case-study-link">Read case study →</a>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══════════════════════════════════════════════════════
            SECTION 6b: Industries grid (Terminal 3 style)
       ═══════════════════════════════════════════════════════ -->
-      <section class="industries-section" id="industries">
+      <section class="industries-section section--surface" id="industries">
         <div class="container industries-grid">
           <div class="industry-cards" id="industryCards" aria-label="Industries served by OneChain">
             <article class="industry-card" data-industry tabindex="0" role="button" aria-pressed="false">
@@ -409,21 +511,32 @@
       </section>
 
       <!-- ═══════════════════════════════════════════════════════
-           SECTION 7: Stats
+           SECTION 7: Stats band (light mode)
       ═══════════════════════════════════════════════════════ -->
-      <section class="stats-section">
-        <div class="container stats-row">
-          <div class="stat-item reveal">
-            <span class="stat-number" data-count="1000">0</span><span class="stat-suffix">+</span>
-            <span class="stat-label">TPS capacity</span>
-          </div>
-          <div class="stat-item reveal">
-            <span class="stat-number" data-count="0">0</span>
-            <span class="stat-label">gas fees</span>
-          </div>
-          <div class="stat-item reveal">
-            <span class="stat-number" data-count="3">0</span>
-            <span class="stat-label">production apps</span>
+      <section class="stats-section stats-section--band section--tint" id="stats">
+        <div class="container">
+          <p class="stats-band-label reveal">OneChain by the numbers</p>
+          <div class="stats-row stats-row--band">
+            <div class="stat-item reveal">
+              <span class="stat-number" data-count="1000">0</span><span class="stat-suffix">+</span>
+              <span class="stat-label">TPS capacity</span>
+            </div>
+            <div class="stat-item reveal">
+              <span class="stat-number" data-count="0">0</span>
+              <span class="stat-label">gas fees</span>
+            </div>
+            <div class="stat-item reveal">
+              <span class="stat-number" data-count="3">0</span>
+              <span class="stat-label">production apps</span>
+            </div>
+            <div class="stat-item reveal">
+              <span class="stat-number" data-count="12">0</span><span class="stat-suffix">+</span>
+              <span class="stat-label">ecosystem partners</span>
+            </div>
+            <div class="stat-item reveal">
+              <span class="stat-number" data-count="847">0</span><span class="stat-suffix">K+</span>
+              <span class="stat-label">credits traced</span>
+            </div>
           </div>
         </div>
       </section>
@@ -431,7 +544,7 @@
       <!-- ═══════════════════════════════════════════════════════
            SECTION 8: Built on OneChain Consortium (Product cards — image 5 style)
       ═══════════════════════════════════════════════════════ -->
-      <section class="consortium-section" id="consortium">
+      <section class="consortium-section section--mint" id="consortium">
         <div class="container">
           <header class="consortium-header reveal">
             <p class="section-tag">PRODUCTS</p>
@@ -513,9 +626,108 @@
       </section>
 
       <!-- ═══════════════════════════════════════════════════════
+           SECTION 8b: Product screenshot carousel
+      ═══════════════════════════════════════════════════════ -->
+      <section class="showcase-section section--surface" id="showcase">
+        <div class="container">
+          <header class="showcase-header reveal">
+            <p class="section-tag">IN ACTION</p>
+            <h2 class="section-title">See OneChain products in action</h2>
+            <p class="section-desc">Real dashboards powering ESG traceability, credential verification, and developer APIs.</p>
+          </header>
+
+          <div class="showcase-carousel" id="showcaseCarousel">
+            <div class="showcase-viewport">
+              <div class="showcase-track" id="showcaseTrack">
+                <figure class="showcase-slide is-active" data-slide="0">
+                  <div class="showcase-frame">
+                    <img src="screenshots/esg-dashboard.svg" alt="ESGLedger dashboard showing plastic credit lifecycle and RVM map" width="800" height="500" loading="lazy" />
+                  </div>
+                  <figcaption>
+                    <strong>ESGLedger</strong>
+                    <span>Trace plastic credits from collection to retirement with live geo-spatial intelligence.</span>
+                  </figcaption>
+                </figure>
+                <figure class="showcase-slide" data-slide="1">
+                  <div class="showcase-frame">
+                    <img src="screenshots/cert-verify.svg" alt="CertLedger certificate with QR verification and on-chain proof" width="800" height="500" loading="lazy" />
+                  </div>
+                  <figcaption>
+                    <strong>CertLedger</strong>
+                    <span>Issue tamper-proof credentials and verify instantly with QR scan — no account needed.</span>
+                  </figcaption>
+                </figure>
+                <figure class="showcase-slide" data-slide="2">
+                  <div class="showcase-frame">
+                    <img src="screenshots/api-platform.svg" alt="OneChain API Platform dashboard with endpoints and traffic analytics" width="800" height="500" loading="lazy" />
+                  </div>
+                  <figcaption>
+                    <strong>API Platform</strong>
+                    <span>Managed endpoints, API keys, and traffic analytics for developers building on OneChain.</span>
+                  </figcaption>
+                </figure>
+              </div>
+            </div>
+
+            <div class="showcase-controls">
+              <button type="button" class="showcase-btn showcase-btn--prev" id="showcasePrev" aria-label="Previous slide">
+                <svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><path d="M12 4L6 10l6 6" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg>
+              </button>
+              <div class="showcase-dots" id="showcaseDots" role="tablist" aria-label="Product slides">
+                <button type="button" class="showcase-dot is-active" data-slide="0" role="tab" aria-selected="true" aria-label="ESGLedger"></button>
+                <button type="button" class="showcase-dot" data-slide="1" role="tab" aria-selected="false" aria-label="CertLedger"></button>
+                <button type="button" class="showcase-dot" data-slide="2" role="tab" aria-selected="false" aria-label="API Platform"></button>
+              </div>
+              <button type="button" class="showcase-btn showcase-btn--next" id="showcaseNext" aria-label="Next slide">
+                <svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><path d="M8 4l6 6-6 6" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══════════════════════════════════════════════════════
+           SECTION 8c: Live credential verify demo
+      ═══════════════════════════════════════════════════════ -->
+      <section class="verify-section section--tint" id="verify-demo">
+        <div class="container verify-grid">
+          <div class="verify-copy reveal">
+            <p class="section-tag">TRY IT</p>
+            <h2 class="section-title">Verify a credential in seconds</h2>
+            <p class="section-desc">
+              Enter a sample credential ID below to see CertLedger verification in action —
+              the same flow employers and institutions use every day.
+            </p>
+            <ul class="verify-hints">
+              <li><code>POLYU-2026-001</code> — Academic certificate</li>
+              <li><code>WATSONS-RVM-042</code> — Plastic credit batch</li>
+              <li><code>OC-DEV-2026</code> — API access credential</li>
+            </ul>
+          </div>
+
+          <div class="verify-widget reveal" id="verifyWidget">
+            <div class="verify-widget-header">
+              <span class="verify-widget-dot verify-widget-dot--green"></span>
+              <span>CertLedger Verify</span>
+            </div>
+            <form class="verify-form" id="verifyForm">
+              <label for="verifyInput" class="verify-label">Credential ID</label>
+              <div class="verify-input-row">
+                <input type="text" id="verifyInput" class="verify-input" placeholder="e.g. POLYU-2026-001" autocomplete="off" spellcheck="false" />
+                <button type="submit" class="btn btn-primary verify-submit">Verify</button>
+              </div>
+            </form>
+            <div class="verify-result verify-result--idle" id="verifyResult" aria-live="polite">
+              <p class="verify-result-hint">Enter a credential ID above to verify on-chain.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══════════════════════════════════════════════════════
            SECTION 9: Partners
       ═══════════════════════════════════════════════════════ -->
-      <section class="partners-section">
+      <section class="partners-section section--surface">
         <div class="container reveal">
           <p class="section-tag">ECOSYSTEM</p>
           <h2 class="section-title">Trusted by partners building on OneChain</h2>
@@ -570,7 +782,7 @@
       <!-- ═══════════════════════════════════════════════════════
            SECTION 10: News & Insights
       ═══════════════════════════════════════════════════════ -->
-      <section class="insights-section" id="insights">
+      <section class="insights-section section--mint" id="insights">
         <div class="container">
           <div class="insights-header">
             <div class="insights-header-copy">
