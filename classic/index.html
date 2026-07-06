@@ -1049,6 +1049,31 @@
         background: linear-gradient(135deg, #eef6fa, #fff);
       }
     }
+
+    /* ===== TRUSTED BY ===== */
+    .trusted { padding: 56px 24px; border-bottom: 1px solid var(--oc-border); }
+    .trusted-inner { max-width: 1120px; margin: 0 auto; text-align: center; }
+    .trusted-label { font-size: 12px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--oc-muted-light); margin-bottom: 28px; }
+    .trusted-logos { display: flex; align-items: center; justify-content: center; gap: 12px 48px; flex-wrap: wrap; }
+    .trusted-logo { font-family: var(--font-sans); font-size: 19px; font-weight: 700; letter-spacing: -0.01em;
+      color: var(--oc-muted-light); opacity: 0.75; transition: all .25s; cursor: default; white-space: nowrap; }
+    .trusted-logo:hover { color: var(--oc-text); opacity: 1; }
+
+    /* ===== TESTIMONIALS ===== */
+    .quotes { padding: 104px 24px; background: var(--oc-bg-alt); border-top: 1px solid var(--oc-border); border-bottom: 1px solid var(--oc-border); }
+    .quotes-inner { max-width: 1120px; margin: 0 auto; }
+    .quotes-head { text-align: center; margin-bottom: 56px; }
+    .quotes-head .eyebrow { font-size: 12px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--oc-primary); margin-bottom: 12px; }
+    .quotes-head h2 { font-size: clamp(28px, 4vw, 40px); font-weight: 800; letter-spacing: -0.02em; }
+    .quotes-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .quote-card { background: #fff; border: 1px solid var(--oc-border-strong); border-radius: 16px; padding: 36px; position: relative; }
+    .quote-card .q-mark { font-size: 52px; line-height: 1; font-weight: 800; color: var(--oc-primary-brand); opacity: .35; font-family: Georgia, serif; }
+    .quote-card blockquote { font-size: 17px; line-height: 1.65; color: var(--oc-text); margin: 8px 0 24px; }
+    .quote-card .q-who { display: flex; align-items: center; gap: 12px; }
+    .quote-card .q-avatar { width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 15px; color: #fff; }
+    .quote-card .q-name { font-size: 14px; font-weight: 700; }
+    .quote-card .q-role { font-size: 12.5px; color: var(--oc-muted); }
+    @media (max-width: 860px) { .quotes-grid { grid-template-columns: 1fr; } }
   </style>
 </head>
 <body>
@@ -1116,6 +1141,21 @@
       <span class="ticker-item">Smart Contracts</span>
     </div>
   </div>
+
+  <!-- TRUSTED BY — swap these wordmarks for real partner logos when available -->
+  <section class="trusted reveal">
+    <div class="trusted-inner">
+      <div class="trusted-label">Trusted by leading organisations across Hong Kong</div>
+      <div class="trusted-logos">
+        <span class="trusted-logo">Cyberport</span>
+        <span class="trusted-logo">Watsons Water</span>
+        <span class="trusted-logo">HK Green Council</span>
+        <span class="trusted-logo">EcoPark HK</span>
+        <span class="trusted-logo">GreenTech Alliance</span>
+        <span class="trusted-logo">Circular HK</span>
+      </div>
+    </div>
+  </section>
 
   <!-- URBAN INFRASTRUCTURE — split layout + holographic city video -->
   <section class="reclaim reveal" id="reclamation">
@@ -1586,6 +1626,34 @@
   </section>
 
   <!-- CTA BANNER -->
+  <!-- TESTIMONIALS — replace with real client quotes when available -->
+  <section class="quotes reveal">
+    <div class="quotes-inner">
+      <div class="quotes-head">
+        <div class="eyebrow">What Partners Say</div>
+        <h2>Trust, in their words.</h2>
+      </div>
+      <div class="quotes-grid">
+        <div class="quote-card">
+          <div class="q-mark">“</div>
+          <blockquote>Before ESGLedger, our recycling data lived in spreadsheets nobody could audit. Now every kilogram is verifiable on-chain — our sustainability report went from a liability to a selling point.</blockquote>
+          <div class="q-who">
+            <div class="q-avatar" style="background: var(--oc-esg-green);">S</div>
+            <div><div class="q-name">Sustainability Lead</div><div class="q-role">Beverage &amp; retail partner, Hong Kong</div></div>
+          </div>
+        </div>
+        <div class="quote-card">
+          <div class="q-mark">“</div>
+          <blockquote>We used to spend weeks verifying certificates by phone and email. With CertLedger, a QR scan does it in seconds — and forged credentials simply stopped being a problem.</blockquote>
+          <div class="q-who">
+            <div class="q-avatar" style="background: var(--oc-cert-gold); color: var(--oc-dark);">R</div>
+            <div><div class="q-name">Registrar</div><div class="q-role">Professional training institution</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section class="cta-banner reveal">
     <div class="cta-inner">
       <h2>Be the first to know</h2>
