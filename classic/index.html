@@ -1092,14 +1092,143 @@
       }
     }
 
-    /* ===== TRUSTED BY ===== */
-    .trusted { padding: 56px 24px; border-bottom: 1px solid var(--oc-border); }
-    .trusted-inner { max-width: 1120px; margin: 0 auto; text-align: center; }
-    .trusted-label { font-size: 12px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--oc-muted-light); margin-bottom: 28px; }
-    .trusted-logos { display: flex; align-items: center; justify-content: center; gap: 12px 48px; flex-wrap: wrap; }
-    .trusted-logo { font-family: var(--font-sans); font-size: 19px; font-weight: 700; letter-spacing: -0.01em;
-      color: var(--oc-muted-light); opacity: 0.75; transition: all .25s; cursor: default; white-space: nowrap; }
-    .trusted-logo:hover { color: var(--oc-text); opacity: 1; }
+    /* ===== ECOSYSTEM MARQUEE ===== */
+    .ecosystem {
+      padding: 88px 0 72px;
+      border-bottom: 1px solid var(--oc-border);
+      background: #fff;
+      overflow: hidden;
+    }
+    .ecosystem-inner { max-width: 1120px; margin: 0 auto 36px; padding: 0 24px; text-align: center; }
+    .ecosystem-tag {
+      font-size: 12px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
+      color: #24a07e; margin-bottom: 14px;
+    }
+    .ecosystem-title {
+      font-size: clamp(28px, 4vw, 40px); font-weight: 800; letter-spacing: -0.02em;
+      color: var(--oc-dark); line-height: 1.15;
+    }
+    .partner-marquee {
+      width: 100%; overflow: hidden;
+      mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+      -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+    }
+    .partner-marquee-track {
+      display: flex; width: max-content;
+      animation: partner-scroll 36s linear infinite;
+    }
+    .partner-marquee:hover .partner-marquee-track { animation-play-state: paused; }
+    .partner-marquee-group {
+      display: flex; align-items: center; gap: 16px;
+      list-style: none; padding: 8px 8px; margin: 0;
+    }
+    .partner-marquee-item {
+      display: flex; align-items: center; justify-content: center;
+      min-width: 168px; height: 56px; padding: 0 20px;
+      background: #fff; border: 1px solid var(--oc-border-strong);
+      border-radius: 999px; box-shadow: 0 4px 16px rgba(10,22,40,0.04);
+    }
+    .partner-marquee-item img { height: 28px; width: auto; display: block; }
+    @keyframes partner-scroll {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    /* ===== INSIGHTS / BLOG ===== */
+    .insights {
+      padding: 104px 24px;
+      background: #F5F8FA;
+      border-top: 1px solid var(--oc-border);
+      border-bottom: 1px solid var(--oc-border);
+    }
+    .insights-inner { max-width: 1180px; margin: 0 auto; }
+    .insights-header {
+      display: flex; align-items: flex-end; justify-content: space-between;
+      gap: 24px; margin-bottom: 40px;
+    }
+    .insights-title {
+      font-size: clamp(32px, 4vw, 44px); font-weight: 800; letter-spacing: -0.02em;
+      color: var(--oc-dark); margin-bottom: 12px;
+    }
+    .insights-desc {
+      font-size: 16px; color: var(--oc-muted); max-width: 560px; line-height: 1.6;
+    }
+    .insights-view-all {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 15px; font-weight: 700; color: #146f89; white-space: nowrap;
+      transition: gap 180ms ease;
+    }
+    .insights-view-all:hover { gap: 12px; }
+    .insights-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;
+    }
+    .insight-card {
+      display: flex; flex-direction: column;
+      background: #fff; border: 1px solid var(--oc-border);
+      border-radius: 18px; overflow: hidden;
+      box-shadow: 0 8px 28px rgba(10,22,40,0.05);
+      transition: transform 220ms ease, box-shadow 220ms ease;
+    }
+    .insight-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 40px rgba(10,22,40,0.1);
+    }
+    .insight-thumb {
+      position: relative; min-height: 180px; padding: 20px;
+      display: flex; flex-direction: column; justify-content: space-between;
+      color: #fff;
+    }
+    .insight-thumb--api {
+      background: linear-gradient(145deg, #4aa7c8 0%, #1d5f8f 100%);
+    }
+    .insight-thumb--partner {
+      background: linear-gradient(145deg, #24a07e 0%, #146f89 100%);
+    }
+    .insight-thumb--cert {
+      background: linear-gradient(145deg, #1a3f78 0%, #c8920e 100%);
+    }
+    .insight-thumb-brand {
+      font-size: 11px; font-weight: 700; letter-spacing: 1.2px;
+      text-transform: uppercase; opacity: 0.9;
+    }
+    .insight-thumb-badge {
+      position: absolute; top: 18px; right: 18px;
+      font-size: 10px; font-weight: 700; letter-spacing: 1px;
+      padding: 5px 10px; border-radius: 999px;
+      background: rgba(255,255,255,0.18); color: #fff;
+    }
+    .insight-thumb-title {
+      font-size: 20px; font-weight: 800; line-height: 1.25; max-width: 280px;
+    }
+    .insight-body { padding: 22px 22px 24px; display: flex; flex-direction: column; gap: 10px; flex: 1; }
+    .insight-tag {
+      font-size: 11px; font-weight: 700; letter-spacing: 1.4px;
+      text-transform: uppercase; color: #4aa0bb;
+    }
+    .insight-card-title {
+      font-size: 18px; font-weight: 800; color: var(--oc-dark); line-height: 1.35;
+      display: flex; align-items: flex-start; gap: 8px;
+    }
+    .insight-card-title svg { flex-shrink: 0; margin-top: 4px; color: var(--oc-muted-light); }
+    .insight-excerpt {
+      font-size: 14px; color: var(--oc-muted); line-height: 1.6;
+      display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;
+    }
+    .insight-meta {
+      margin-top: auto; padding-top: 14px;
+      display: flex; align-items: center; gap: 10px;
+      font-size: 13px; color: var(--oc-muted);
+    }
+    .insight-meta-logo {
+      width: 22px; height: 22px; object-fit: contain; border-radius: 4px;
+    }
+    @media (max-width: 960px) {
+      .insights-header { flex-direction: column; align-items: flex-start; }
+      .insights-grid { grid-template-columns: 1fr; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .partner-marquee-track { animation: none; }
+    }
 
     /* ===== TESTIMONIALS ===== */
     .quotes { padding: 104px 24px; background: var(--oc-bg-alt); border-top: 1px solid var(--oc-border); border-bottom: 1px solid var(--oc-border); }
@@ -1184,17 +1313,30 @@
     </div>
   </div>
 
-  <!-- TRUSTED BY — swap these wordmarks for real partner logos when available -->
-  <section class="trusted reveal">
-    <div class="trusted-inner">
-      <div class="trusted-label">Trusted by leading organisations across Hong Kong</div>
-      <div class="trusted-logos">
-        <span class="trusted-logo">Cyberport</span>
-        <span class="trusted-logo">Watsons Water</span>
-        <span class="trusted-logo">HK Green Council</span>
-        <span class="trusted-logo">EcoPark HK</span>
-        <span class="trusted-logo">GreenTech Alliance</span>
-        <span class="trusted-logo">Circular HK</span>
+  <!-- ECOSYSTEM — continuously moving partner brands -->
+  <section class="ecosystem reveal" id="ecosystem">
+    <div class="ecosystem-inner">
+      <div class="ecosystem-tag">Ecosystem</div>
+      <h2 class="ecosystem-title">Trusted by partners building on OneChain</h2>
+    </div>
+    <div class="partner-marquee" aria-label="Partners building on OneChain">
+      <div class="partner-marquee-track">
+        <ul class="partner-marquee-group">
+          <li class="partner-marquee-item"><img src="partners/watsons.svg" alt="Watsons" width="115" height="32" loading="lazy" /></li>
+          <li class="partner-marquee-item"><img src="partners/polyu.svg" alt="PolyU" width="95" height="32" loading="lazy" /></li>
+          <li class="partner-marquee-item"><img src="partners/kibo-eco.svg" alt="Kibo Eco" width="120" height="32" loading="lazy" /></li>
+          <li class="partner-marquee-item"><img src="partners/hk-timberbank.svg" alt="HK Timberbank" width="150" height="32" loading="lazy" /></li>
+          <li class="partner-marquee-item"><img src="partners/leafiot.svg" alt="LeafIoT" width="110" height="32" loading="lazy" /></li>
+          <li class="partner-marquee-item"><img src="partners/revive-tech.svg" alt="Revive Tech Asia" width="155" height="32" loading="lazy" /></li>
+        </ul>
+        <ul class="partner-marquee-group" aria-hidden="true">
+          <li class="partner-marquee-item"><img src="partners/watsons.svg" alt="" width="115" height="32" loading="lazy" /></li>
+          <li class="partner-marquee-item"><img src="partners/polyu.svg" alt="" width="95" height="32" loading="lazy" /></li>
+          <li class="partner-marquee-item"><img src="partners/kibo-eco.svg" alt="" width="120" height="32" loading="lazy" /></li>
+          <li class="partner-marquee-item"><img src="partners/hk-timberbank.svg" alt="" width="150" height="32" loading="lazy" /></li>
+          <li class="partner-marquee-item"><img src="partners/leafiot.svg" alt="" width="110" height="32" loading="lazy" /></li>
+          <li class="partner-marquee-item"><img src="partners/revive-tech.svg" alt="" width="155" height="32" loading="lazy" /></li>
+        </ul>
       </div>
     </div>
   </section>
@@ -1747,7 +1889,82 @@
     </div>
   </section>
 
-  <!-- CTA BANNER -->
+  <!-- INSIGHTS / BLOG -->
+  <section class="insights reveal" id="insights">
+    <div class="insights-inner">
+      <div class="insights-header">
+        <div>
+          <h2 class="insights-title">OneChain Insights</h2>
+          <p class="insights-desc">Product announcements, partner news, and deep dives on enterprise blockchain, verified credentials, and ESG traceability.</p>
+        </div>
+        <a href="#insights" class="insights-view-all">
+          View all posts
+          <svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M3 11L11 3M11 3H5M11 3V9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+
+      <div class="insights-grid">
+        <a href="infrastructure.html" class="insight-card">
+          <div class="insight-thumb insight-thumb--api">
+            <span class="insight-thumb-brand">OneChain</span>
+            <p class="insight-thumb-title">API Platform launches with free developer tier</p>
+          </div>
+          <div class="insight-body">
+            <span class="insight-tag">Product</span>
+            <h3 class="insight-card-title">
+              API Platform launches with free developer tier
+              <svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M3 11L11 3M11 3H5M11 3V9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </h3>
+            <p class="insight-excerpt">OneChain opens its API Platform to developers — managed endpoints, API keys, and traffic analytics with zero gas fees. Build trusted apps on Hyperledger Fabric from day one.</p>
+            <div class="insight-meta">
+              <img src="onchain-logo.png" alt="" class="insight-meta-logo" width="24" height="24" />
+              <time datetime="2026-07-01">Jul 01 2026</time>
+            </div>
+          </div>
+        </a>
+
+        <a href="esgledger.html" class="insight-card">
+          <div class="insight-thumb insight-thumb--partner">
+            <span class="insight-thumb-brand">OneChain × Watsons</span>
+            <p class="insight-thumb-title">Watsons joins reverse-vending plastic credit pilot</p>
+          </div>
+          <div class="insight-body">
+            <span class="insight-tag">Partner News</span>
+            <h3 class="insight-card-title">
+              Watsons joins reverse-vending plastic credit pilot
+              <svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M3 11L11 3M11 3H5M11 3V9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </h3>
+            <p class="insight-excerpt">ESGLedger now traces plastic credits from Watsons reverse-vending machines across Hong Kong — every collection event anchored on-chain with geo-spatial reporting for regulators.</p>
+            <div class="insight-meta">
+              <img src="onchain-logo.png" alt="" class="insight-meta-logo" width="24" height="24" />
+              <time datetime="2026-06-18">Jun 18 2026</time>
+            </div>
+          </div>
+        </a>
+
+        <a href="certledger.html" class="insight-card">
+          <div class="insight-thumb insight-thumb--cert">
+            <span class="insight-thumb-badge">INSIGHTS</span>
+            <span class="insight-thumb-brand">OneChain</span>
+            <p class="insight-thumb-title">PolyU pilots instant QR credential verification</p>
+          </div>
+          <div class="insight-body">
+            <span class="insight-tag">Education</span>
+            <h3 class="insight-card-title">
+              PolyU pilots instant QR credential verification
+              <svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M3 11L11 3M11 3H5M11 3V9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </h3>
+            <p class="insight-excerpt">CertLedger enables PolyU to issue tamper-proof academic credentials with instant QR verification — no wallet, no crypto, and full auditability for employers and institutions.</p>
+            <div class="insight-meta">
+              <img src="onchain-logo.png" alt="" class="insight-meta-logo" width="24" height="24" />
+              <time datetime="2026-05-22">May 22 2026</time>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
   <!-- TESTIMONIALS — replace with real client quotes when available -->
   <section class="quotes reveal">
     <div class="quotes-inner">
