@@ -25,7 +25,7 @@
       --oc-muted: #64748B;
       --oc-muted-light: #94A3B8;
       --oc-esg-green: #2ECC71;
-      --oc-cert-gold: #F0B429;
+      --oc-cert-gold: #286c84;
       --oc-ai-purple: #7F77DD;
       --font-sans: 'Inter', -apple-system, sans-serif;
       --font-mono: 'JetBrains Mono', monospace;
@@ -332,7 +332,7 @@
       border-radius: 6px;
     }
     .product-card.esg .product-badge { background: rgba(46,204,113,0.1); color: var(--oc-esg-green); }
-    .product-card.cert .product-badge { background: rgba(240,180,41,0.1); color: #C8960E; }
+    .product-card.cert .product-badge { background: rgba(40,108,132,0.1); color: #286c84; }
     .product-card h3 { font-size: 28px; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 16px; line-height: 1.2; }
     .product-card > p { font-size: 15px; color: var(--oc-muted); line-height: 1.6; margin-bottom: 32px; }
     .product-features {
@@ -348,7 +348,7 @@
       font-size: 10px; font-weight: 700; color: white;
     }
     .product-card.esg .pf-check { background: var(--oc-esg-green); }
-    .product-card.cert .pf-check { background: var(--oc-cert-gold); color: var(--oc-dark); }
+    .product-card.cert .pf-check { background: var(--oc-cert-gold); color: #FFFFFF; }
 
     @media (max-width: 768px) { .product-cards { grid-template-columns: 1fr; } }
 
@@ -434,7 +434,7 @@
     .fan-cards.fanned .fan-card[data-index="2"].active { transform: rotate(8deg) translateY(-35px) scale(1.06); z-index: 10; }
     .fan-cards.fanned .fan-card[data-index="3"].active { transform: rotate(24deg) translateY(-45px) scale(1.06); z-index: 10; }
     /* Card tints — light mode versions */
-    .fan-card[data-index="0"] { transition-delay: 0s; background: linear-gradient(135deg, rgba(240,180,41,0.12), rgba(255,255,255,0.6), rgba(220,235,245,0.4)); }
+    .fan-card[data-index="0"] { transition-delay: 0s; background: linear-gradient(135deg, rgba(40,108,132,0.12), rgba(255,255,255,0.6), rgba(220,235,245,0.4)); }
     .fan-card[data-index="1"] { transition-delay: 0.06s; background: linear-gradient(135deg, rgba(1,98,130,0.12), rgba(255,255,255,0.6), rgba(220,235,245,0.4)); }
     .fan-card[data-index="2"] { transition-delay: 0.12s; background: linear-gradient(135deg, rgba(127,119,221,0.12), rgba(255,255,255,0.6), rgba(220,235,245,0.4)); }
     .fan-card[data-index="3"] { transition-delay: 0.18s; background: linear-gradient(135deg, rgba(46,204,113,0.12), rgba(255,255,255,0.6), rgba(220,235,245,0.4)); }
@@ -1325,7 +1325,7 @@
             <div class="pf"><span class="pf-check">&#10003;</span> White-label for institutions</div>
             <div class="pf"><span class="pf-check">&#10003;</span> API integration for LMS and HR systems</div>
           </div>
-          <a href="certledger.html" class="btn-primary" style="background: var(--oc-cert-gold); color: var(--oc-dark); width: fit-content;">
+          <a href="certledger.html" class="btn-primary" style="background: var(--oc-cert-gold); color: #FFFFFF; width: fit-content;">
             Start Issuing
             <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M6 3l5 5-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </a>
