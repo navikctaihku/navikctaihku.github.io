@@ -464,45 +464,87 @@
       font-size: 14px; color: rgba(255,255,255,0.9); font-weight: 500;
     }
 
-    /* ===== INFRA SECTION ===== */
-    .infra-split {
-      display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;
+    /* ===== SOLUTIONS SECTION ===== */
+    .solutions-split {
+      display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr); gap: 48px; align-items: center;
     }
-    .infra-text h2 {
-      font-size: 40px; font-weight: 800; letter-spacing: -0.02em; line-height: 1.1;
-      margin-bottom: 20px;
+    .solutions-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;
     }
-    .infra-text p { font-size: 17px; color: var(--oc-muted); line-height: 1.7; margin-bottom: 32px; }
-    .infra-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 40px; }
-    .infra-stat .stat-number {
-      font-size: 36px; font-weight: 800; letter-spacing: -0.02em;
-      color: var(--oc-primary); line-height: 1;
+    .solution-card {
+      perspective: 1200px;
+      min-height: 144px;
     }
-    .infra-stat .stat-label { font-size: 13px; color: var(--oc-muted); margin-top: 8px; }
-    .infra-visual {
-      background: var(--oc-dark); border-radius: 16px; padding: 48px;
+    .solution-card-inner {
+      position: relative; width: 100%; height: 100%;
+      min-height: 144px;
+      transform-style: preserve-3d;
+      transition: transform 520ms cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .solution-card:hover .solution-card-inner,
+    .solution-card:focus-within .solution-card-inner {
+      transform: rotateY(180deg) translateY(-2px);
+    }
+    .solution-face {
+      position: absolute; inset: 0;
+      border-radius: 16px;
+      border: 1px solid rgba(10,22,40,0.08);
+      background: #fff;
+      box-shadow: 0 8px 24px rgba(10,22,40,0.05);
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+      overflow: hidden;
+    }
+    .solution-front {
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      gap: 14px; padding: 22px 16px;
+    }
+    .solution-icon {
+      width: 42px; height: 42px; border-radius: 12px;
       display: flex; align-items: center; justify-content: center;
-      min-height: 400px; position: relative; overflow: hidden;
+      color: #5f8fa5; background: rgba(95,143,165,0.08);
     }
-    .infra-visual::before {
-      content: ''; position: absolute; inset: 0;
-      background: radial-gradient(circle at 50% 50%, rgba(1,98,130,0.12), transparent 60%);
+    .solution-icon svg { width: 24px; height: 24px; stroke: currentColor; stroke-width: 1.7; fill: none; }
+    .solution-title {
+      font-size: 16px; font-weight: 700; color: var(--oc-dark); text-align: center;
+      line-height: 1.35;
     }
-    .layer-stack { position: relative; z-index: 1; }
-    .layer {
-      width: 200px; padding: 14px 0; text-align: center;
-      font-family: var(--font-mono); font-size: 13px; font-weight: 500;
-      border-radius: 8px; margin-bottom: 8px; position: relative;
-      transition: transform 300ms ease;
+    .solution-back {
+      transform: rotateY(180deg);
+      background: linear-gradient(180deg, #1a7d98 0%, #146f89 100%);
+      color: #fff; padding: 18px 16px;
+      display: flex; flex-direction: column; justify-content: space-between;
     }
-    .layer:hover { transform: translateX(8px); }
-    .layer-app { background: rgba(127,119,221,0.2); color: #B8B2EE; border: 1px solid rgba(127,119,221,0.3); }
-    .layer-service { background: rgba(1,98,130,0.2); color: #4DC9F6; border: 1px solid rgba(1,98,130,0.3); }
-    .layer-infra { background: rgba(46,204,113,0.15); color: #6EDAA0; border: 1px solid rgba(46,204,113,0.25); }
+    .solution-back h4 {
+      font-size: 16px; font-weight: 800; line-height: 1.3; margin-bottom: 10px;
+    }
+    .solution-back p {
+      font-size: 13px; line-height: 1.55; color: rgba(255,255,255,0.9);
+    }
+    .solution-link {
+      margin-top: 14px; font-size: 13px; font-weight: 700; color: #fff;
+    }
+    .solutions-copy h2 {
+      font-size: 56px; font-weight: 800; letter-spacing: -0.03em; line-height: 1.05;
+      max-width: 520px; margin-bottom: 24px; color: var(--oc-dark);
+    }
+    .solutions-copy .accent { color: #146f89; }
+    .solutions-copy p {
+      font-size: 18px; line-height: 1.75; color: var(--oc-muted);
+      max-width: 520px;
+    }
 
+    @media (max-width: 1024px) {
+      .solutions-split { grid-template-columns: 1fr; gap: 40px; }
+      .solutions-copy h2 { max-width: none; }
+      .solutions-copy p { max-width: none; }
+    }
     @media (max-width: 768px) {
-      .infra-split { grid-template-columns: 1fr; gap: 48px; }
-      .infra-stats { grid-template-columns: repeat(3, 1fr); }
+      .solutions-grid { grid-template-columns: repeat(2, 1fr); }
+      .solutions-copy h2 { font-size: 40px; }
+    }
+    @media (max-width: 560px) {
+      .solutions-grid { grid-template-columns: 1fr; }
     }
 
     /* ===== RECENTLY SHIPPED ===== */
@@ -1359,43 +1401,123 @@
     </div>
   </section>
 
-  <!-- INFRASTRUCTURE -->
+  <!-- SOLUTIONS -->
   <section class="section" id="infrastructure">
     <div class="container">
-      <div class="infra-split">
-        <div class="infra-text reveal">
-          <h2>Three layers. <span style="color: var(--oc-muted-light);">One platform.</span></h2>
-          <p>A composable stack designed for enterprise blockchain. Deploy once, scale everywhere. Each layer works independently, or together as a unified platform.</p>
-          <a href="infrastructure.html" class="btn-outline">Explore Infrastructure</a>
-          <div class="infra-stats">
-            <div class="infra-stat">
-              <div class="stat-number" data-count data-target="3000" data-comma="true" data-suffix="+">3,000+</div>
-              <div class="stat-label">TPS throughput</div>
+      <div class="solutions-split">
+        <div class="solutions-grid reveal" aria-label="Industry solution cards">
+          <div class="solution-card">
+            <div class="solution-card-inner">
+              <div class="solution-face solution-front">
+                <div class="solution-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 10.5 12 4l8 6.5"/><path d="M6 9.5V20h12V9.5"/><path d="M10 20v-6h4v6"/></svg></div>
+                <div class="solution-title">Government</div>
+              </div>
+              <div class="solution-face solution-back">
+                <div><h4>Government</h4><p>Issue permits, licenses, and compliance certificates with tamper-proof blockchain records.</p></div>
+                <div class="solution-link">Learn more</div>
+              </div>
             </div>
-            <div class="infra-stat">
-              <div class="stat-number" data-count data-target="1" data-prefix="&lt;" data-suffix="s">&lt;1s</div>
-              <div class="stat-label">Finality time</div>
+          </div>
+          <div class="solution-card">
+            <div class="solution-card-inner">
+              <div class="solution-face solution-front">
+                <div class="solution-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3.5" y="8" width="7" height="7" rx="1.5"/><rect x="13.5" y="8" width="7" height="7" rx="1.5"/><path d="M10.5 11.5h3"/></svg></div>
+                <div class="solution-title">Education</div>
+              </div>
+              <div class="solution-face solution-back">
+                <div><h4>Education</h4><p>Anchor diplomas, transcripts, and micro-credentials for instant employer verification.</p></div>
+                <div class="solution-link">Learn more</div>
+              </div>
             </div>
-            <div class="infra-stat">
-              <div class="stat-number" data-count data-target="99.9" data-decimals="1" data-suffix="%">99.9%</div>
-              <div class="stat-label">Uptime SLA</div>
+          </div>
+          <div class="solution-card">
+            <div class="solution-card-inner">
+              <div class="solution-face solution-front">
+                <div class="solution-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 4v16"/><circle cx="12" cy="7" r="2.2"/><circle cx="12" cy="17" r="3.2"/><path d="M9.5 17h5"/></svg></div>
+                <div class="solution-title">ESG &amp; Recycling</div>
+              </div>
+              <div class="solution-face solution-back">
+                <div><h4>ESG &amp; Recycling</h4><p>Trace plastic credits from collection to retirement with ESGLedger and live geo-spatial intelligence.</p></div>
+                <div class="solution-link">Learn more</div>
+              </div>
+            </div>
+          </div>
+          <div class="solution-card">
+            <div class="solution-card-inner">
+              <div class="solution-face solution-front">
+                <div class="solution-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="6" height="6" rx="1"/><rect x="14" y="4" width="6" height="6" rx="1"/><rect x="4" y="14" width="6" height="6" rx="1"/><rect x="14" y="14" width="6" height="6" rx="1"/></svg></div>
+                <div class="solution-title">Healthcare</div>
+              </div>
+              <div class="solution-face solution-back">
+                <div><h4>Healthcare</h4><p>Secure patient credentials, professional training proofs, and medical supply attestations.</p></div>
+                <div class="solution-link">Learn more</div>
+              </div>
+            </div>
+          </div>
+          <div class="solution-card">
+            <div class="solution-card-inner">
+              <div class="solution-face solution-front">
+                <div class="solution-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 13h16"/><path d="M7 13V9l5-3 5 3v4"/><circle cx="8" cy="16.5" r="1.2"/><circle cx="16" cy="16.5" r="1.2"/></svg></div>
+                <div class="solution-title">Supply Chain</div>
+              </div>
+              <div class="solution-face solution-back">
+                <div><h4>Supply Chain</h4><p>Track product provenance, delivery milestones, and compliance events across partners.</p></div>
+                <div class="solution-link">Learn more</div>
+              </div>
+            </div>
+          </div>
+          <div class="solution-card">
+            <div class="solution-card-inner">
+              <div class="solution-face solution-front">
+                <div class="solution-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="6" r="2.5"/><circle cx="12" cy="18" r="3.5"/><path d="M12 8.5v6"/></svg></div>
+                <div class="solution-title">Green Tech</div>
+              </div>
+              <div class="solution-face solution-back">
+                <div><h4>Green Tech</h4><p>Support clean-tech verification with auditable carbon, material, and recovery records.</p></div>
+                <div class="solution-link">Learn more</div>
+              </div>
+            </div>
+          </div>
+          <div class="solution-card">
+            <div class="solution-card-inner">
+              <div class="solution-face solution-front">
+                <div class="solution-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="5" y="5" width="14" height="10" rx="2"/><path d="M9 19h6"/><path d="M12 15v4"/></svg></div>
+                <div class="solution-title">Retail &amp; FMCG</div>
+              </div>
+              <div class="solution-face solution-back">
+                <div><h4>Retail &amp; FMCG</h4><p>Prove product origin, recycling impact, and ESG claims directly to customers and regulators.</p></div>
+                <div class="solution-link">Learn more</div>
+              </div>
+            </div>
+          </div>
+          <div class="solution-card">
+            <div class="solution-card-inner">
+              <div class="solution-face solution-front">
+                <div class="solution-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 4 18 18H6L12 4Z"/><path d="M9 18v2h6v-2"/></svg></div>
+                <div class="solution-title">Forestry &amp; Timber</div>
+              </div>
+              <div class="solution-face solution-back">
+                <div><h4>Forestry &amp; Timber</h4><p>Validate chain-of-custody records and responsible sourcing across forestry ecosystems.</p></div>
+                <div class="solution-link">Learn more</div>
+              </div>
+            </div>
+          </div>
+          <div class="solution-card">
+            <div class="solution-card-inner">
+              <div class="solution-face solution-front">
+                <div class="solution-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 8h16v8H4z"/><path d="M8 12h3"/><path d="M14 12h2"/><path d="M7 5h10"/></svg></div>
+                <div class="solution-title">Developers</div>
+              </div>
+              <div class="solution-face solution-back">
+                <div><h4>Developers</h4><p>Build trusted applications on OneChain with APIs, identity services, and verified data primitives.</p></div>
+                <div class="solution-link">Learn more</div>
+              </div>
             </div>
           </div>
         </div>
-        <div class="infra-visual reveal">
-          <div class="layer-stack">
-            <div class="layer layer-app">Application Layer</div>
-            <div class="layer layer-app">ESGLedger</div>
-            <div class="layer layer-app">CertLedger</div>
-            <div style="height: 16px;"></div>
-            <div class="layer layer-service">Service Layer</div>
-            <div class="layer layer-service">Identity</div>
-            <div class="layer layer-service">Smart Contracts</div>
-            <div style="height: 16px;"></div>
-            <div class="layer layer-infra">Infrastructure</div>
-            <div class="layer layer-infra">Hyperledger Fabric</div>
-            <div class="layer layer-infra">Consensus Engine</div>
-          </div>
+        <div class="solutions-copy reveal">
+          <h2>Transform the way you <span class="accent">verify enterprise data</span></h2>
+          <p>From plastic credit traceability to academic credential verification, partners across Hong Kong and APAC build trusted applications on <strong>OneChain</strong> with zero gas fees and enterprise-ready infrastructure from day one.</p>
         </div>
       </div>
     </div>
