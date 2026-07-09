@@ -118,7 +118,7 @@
       transform: translateZ(0);
       opacity: 0;
       z-index: 1;
-      transition: opacity 0.35s ease;
+      transition: opacity 1.6s ease-in-out;
       background: #e8f4fb;
     }
     .hero-bg-video.is-active {
@@ -2458,7 +2458,8 @@
       let active = 0;
       let swapping = false;
       const START = 0.55;
-      const CROSSFADE = 0.85;
+      const CROSSFADE = 2.2;   // start dissolve well before the end
+      const FADE_MS = 1700;    // must exceed the CSS 1.6s opacity transition
 
       const prep = (v) => {
         v.muted = true;
@@ -2506,19 +2507,22 @@
         const next = vids[1 - active];
 
         seekStart(next);
-        next.classList.add('is-incoming'); // fade in ON TOP of current (current stays opaque)
         playFromStart(next).then(() => {
-          // After next is fully covering, demote current without fading both to 0
+          // Slow cinematic dissolve: next fades in ON TOP while current
+          // keeps playing fully opaque underneath — no flash, no jump cut.
           requestAnimationFrame(() => {
-            next.classList.add('is-active');
-            next.classList.remove('is-incoming');
-            cur.classList.remove('is-active');
-            active = 1 - active;
+            next.classList.add('is-incoming');
             setTimeout(() => {
-              cur.pause();
-              seekStart(cur);
-              swapping = false;
-            }, 380);
+              next.classList.add('is-active');
+              next.classList.remove('is-incoming');
+              cur.classList.remove('is-active');
+              active = 1 - active;
+              setTimeout(() => {
+                cur.pause();
+                seekStart(cur);
+                swapping = false;
+              }, 200);
+            }, FADE_MS);
           });
         }).catch(() => {
           next.classList.remove('is-incoming');
