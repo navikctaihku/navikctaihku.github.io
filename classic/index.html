@@ -104,9 +104,12 @@
       object-fit: cover;
       object-position: center center;
       display: block;
-      will-change: transform;
+      will-change: opacity, transform;
       transform: translateZ(0);
+      opacity: 0;
+      transition: opacity 0.45s linear;
     }
+    .hero-bg-video.is-active { opacity: 1; }
     .hero-blue-filter {
       position: absolute; inset: 0; z-index: 1;
       background: linear-gradient(
@@ -1284,9 +1287,18 @@
   <section class="hero">
     <div class="hero-media" aria-hidden="true">
       <video
+        class="hero-bg hero-bg-video is-active"
+        id="heroBgVideoA"
+        muted playsinline webkit-playsinline preload="auto"
+        disablepictureinpicture
+        aria-hidden="true"
+      >
+        <source src="hero-blockchain-bg.mp4?v=202607091637" type="video/mp4" />
+      </video>
+      <video
         class="hero-bg hero-bg-video"
-        id="heroBgVideo"
-        autoplay muted playsinline webkit-playsinline preload="auto"
+        id="heroBgVideoB"
+        muted playsinline webkit-playsinline preload="auto"
         disablepictureinpicture
         aria-hidden="true"
       >
@@ -2411,46 +2423,69 @@
       }
     }
 
-    // Hero background video — seamless loop + autoplay
-    const heroBgVideo = document.getElementById('heroBgVideo');
-    if (heroBgVideo) {
-      heroBgVideo.muted = true;
-      heroBgVideo.defaultMuted = true;
-      heroBgVideo.playsInline = true;
-      heroBgVideo.setAttribute('muted', '');
-      heroBgVideo.setAttribute('playsinline', '');
+    // Hero background — dual-video crossfade for seamless looping (no end stutter)
+    (function initHeroBgLoop() {
+      const a = document.getElementById('heroBgVideoA');
+      const b = document.getElementById('heroBgVideoB');
+      if (!a || !b) return;
 
-      const playHeroBg = () => {
-        heroBgVideo.muted = true;
-        return heroBgVideo.play().catch(() => {});
+      const vids = [a, b];
+      let active = 0;
+      let swapping = false;
+      const CROSSFADE = 0.55; // seconds before end to start the other video
+
+      const prep = (v) => {
+        v.muted = true;
+        v.defaultMuted = true;
+        v.playsInline = true;
+        v.setAttribute('muted', '');
+        v.setAttribute('playsinline', '');
+      };
+      vids.forEach(prep);
+
+      const play = (v) => {
+        v.muted = true;
+        return v.play().catch(() => {});
       };
 
-      // Seamless loop: seek to start just before the end to avoid browser loop stutter
-      const LOOP_LEAD = 0.12;
-      let looping = false;
-      heroBgVideo.addEventListener('timeupdate', () => {
-        const d = heroBgVideo.duration;
-        if (!d || !isFinite(d)) return;
-        if (heroBgVideo.currentTime >= d - LOOP_LEAD) {
-          if (looping) return;
-          looping = true;
-          heroBgVideo.currentTime = 0.001;
-          playHeroBg().finally(() => { looping = false; });
-        }
-      });
-      heroBgVideo.addEventListener('ended', () => {
-        heroBgVideo.currentTime = 0.001;
-        playHeroBg();
+      const swap = () => {
+        if (swapping) return;
+        swapping = true;
+        const cur = vids[active];
+        const next = vids[1 - active];
+        next.currentTime = 0.001;
+        play(next).then(() => {
+          next.classList.add('is-active');
+          cur.classList.remove('is-active');
+          active = 1 - active;
+          // Pause the outgoing video after fade completes
+          setTimeout(() => {
+            cur.pause();
+            cur.currentTime = 0.001;
+            swapping = false;
+          }, 480);
+        }).catch(() => { swapping = false; });
+      };
+
+      vids.forEach((v) => {
+        v.addEventListener('timeupdate', () => {
+          if (v !== vids[active] || swapping) return;
+          const d = v.duration;
+          if (!d || !isFinite(d)) return;
+          if (v.currentTime >= d - CROSSFADE) swap();
+        });
+        v.addEventListener('ended', () => {
+          if (v === vids[active]) swap();
+        });
       });
 
-      playHeroBg();
-      heroBgVideo.addEventListener('loadeddata', playHeroBg);
-      heroBgVideo.addEventListener('canplay', playHeroBg);
-      window.addEventListener('load', playHeroBg);
+      play(a);
+      a.addEventListener('loadeddata', () => play(a));
+      window.addEventListener('load', () => play(vids[active]));
       document.addEventListener('visibilitychange', () => {
-        if (!document.hidden) playHeroBg();
+        if (!document.hidden) play(vids[active]);
       });
-    }
+    })();
 
     // Reclaim section — force autoplay when in view
     const reclaimVid = document.getElementById('reclaimVideo');
