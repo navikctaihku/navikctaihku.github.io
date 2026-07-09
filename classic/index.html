@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>OneChain — Enterprise Blockchain Infrastructure</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
   <script src="site-chrome.js" defer></script>
   <style>
     /* ===== RESET & TOKENS ===== */
@@ -28,6 +28,7 @@
       --oc-cert-gold: #286c84;
       --oc-ai-purple: #7F77DD;
       --font-sans: 'Inter', -apple-system, sans-serif;
+      --font-display: 'Instrument Serif', Georgia, 'Times New Roman', serif;
       --font-mono: 'JetBrains Mono', monospace;
     }
     html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
@@ -150,20 +151,25 @@
       gap: 36px;
     }
     .hero-tagline {
-      font-size: clamp(30px, 4.2vw, 48px);
-      font-weight: 300;
-      letter-spacing: -0.03em;
-      line-height: 1.2;
-      color: var(--oc-dark);
+      font-family: var(--font-display);
+      font-size: clamp(34px, 4.8vw, 56px);
+      font-weight: 400;
+      letter-spacing: 0.01em;
+      line-height: 1.12;
+      color: #0d2137;
       margin: 0;
       max-width: 720px;
+      text-wrap: balance;
     }
     .hero-tagline-top {
       white-space: nowrap;
       max-width: none;
     }
     .hero-tagline-bottom {
-      font-size: clamp(26px, 3.6vw, 42px);
+      font-size: clamp(30px, 4vw, 48px);
+      font-style: italic;
+      color: #1a3a52;
+      letter-spacing: 0.02em;
     }
 
     /* Center column — logo shape */
@@ -200,9 +206,9 @@
       .hero { padding: 140px 24px 80px; }
       .hero-logo-shape { width: 180px; }
       .hero-stack { gap: 24px; }
-      .hero-tagline { font-size: clamp(24px, 7vw, 32px); }
+      .hero-tagline { font-size: clamp(26px, 7vw, 34px); }
       .hero-tagline-top { white-space: normal; }
-      .hero-tagline-bottom { font-size: clamp(22px, 6vw, 28px); }
+      .hero-tagline-bottom { font-size: clamp(24px, 6vw, 30px); }
     }
 
     /* ===== SCROLLING TICKER ===== */
