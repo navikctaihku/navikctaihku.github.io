@@ -94,9 +94,12 @@
     }
     .hero-media {
       position: absolute; inset: 0; z-index: 0;
+      overflow: hidden;
     }
     .hero-bg,
     .hero-bg-video {
+      position: absolute;
+      inset: 0;
       width: 100%; height: 100%;
       object-fit: cover;
       object-position: center 72%;
@@ -1270,9 +1273,9 @@
       <video
         class="hero-bg hero-bg-video"
         id="heroBgVideo"
-        src="videos/hero-blockchain-bg.mp4?v=202607091600"
-        poster="hero-blockchain-bg.png"
-        autoplay muted loop playsinline preload="auto"
+        src="videos/hero-blockchain-bg.mp4?v=202607091610"
+        autoplay muted loop playsinline webkit-playsinline preload="auto"
+        disablepictureinpicture
         aria-hidden="true"
       ></video>
       <div class="hero-overlay"></div>
@@ -2393,19 +2396,30 @@
       }
     }
 
-    // Hero background video — autoplay loop
+    // Hero background video — force autoplay loop
     const heroBgVideo = document.getElementById('heroBgVideo');
     if (heroBgVideo) {
       heroBgVideo.muted = true;
+      heroBgVideo.defaultMuted = true;
+      heroBgVideo.playsInline = true;
+      heroBgVideo.setAttribute('muted', '');
+      heroBgVideo.setAttribute('playsinline', '');
+
+      const playHeroBg = () => {
+        heroBgVideo.muted = true;
+        return heroBgVideo.play().catch(() => {});
+      };
+
+      playHeroBg();
+      heroBgVideo.addEventListener('loadeddata', playHeroBg);
+      heroBgVideo.addEventListener('canplay', playHeroBg);
+      window.addEventListener('load', playHeroBg);
+      document.addEventListener('visibilitychange', () => {
+        if (!document.hidden) playHeroBg();
+      });
+
       if (reducedMotion) {
-        heroBgVideo.pause();
-        heroBgVideo.removeAttribute('autoplay');
-      } else {
-        const playHeroBg = () => heroBgVideo.play().catch(() => {});
-        playHeroBg();
-        document.addEventListener('visibilitychange', () => {
-          if (!document.hidden) playHeroBg();
-        });
+        heroBgVideo.playbackRate = 0.85;
       }
     }
 
