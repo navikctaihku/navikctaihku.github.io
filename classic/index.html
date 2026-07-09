@@ -2423,7 +2423,7 @@
       }
     }
 
-    // Hero background — dual-video crossfade for seamless looping (no end stutter)
+    // Hero background — dual-video crossfade; skip frozen intro frames
     (function initHeroBgLoop() {
       const a = document.getElementById('heroBgVideoA');
       const b = document.getElementById('heroBgVideoB');
@@ -2432,7 +2432,8 @@
       const vids = [a, b];
       let active = 0;
       let swapping = false;
-      const CROSSFADE = 0.55; // seconds before end to start the other video
+      const START = 0.55;     // skip frozen/stutter frames at the start of the clip
+      const CROSSFADE = 0.7;  // start next clip before current ends
 
       const prep = (v) => {
         v.muted = true;
@@ -2443,9 +2444,29 @@
       };
       vids.forEach(prep);
 
-      const play = (v) => {
+      const playFromStart = (v) => {
         v.muted = true;
-        return v.play().catch(() => {});
+        const seekAndPlay = () => {
+          try {
+            if (isFinite(v.duration) && v.duration > START + 0.5) {
+              if (v.currentTime < START) v.currentTime = START;
+            }
+          } catch (_) {}
+          return v.play().catch(() => {});
+        };
+        if (v.readyState >= 1) return seekAndPlay();
+        return new Promise((resolve) => {
+          v.addEventListener('loadedmetadata', () => resolve(seekAndPlay()), { once: true });
+        });
+      };
+
+      const warmNext = () => {
+        const next = vids[1 - active];
+        if (next.paused || next.currentTime < START) {
+          try { next.currentTime = START; } catch (_) {}
+          next.muted = true;
+          next.play().catch(() => {});
+        }
       };
 
       const swap = () => {
@@ -2453,17 +2474,16 @@
         swapping = true;
         const cur = vids[active];
         const next = vids[1 - active];
-        next.currentTime = 0.001;
-        play(next).then(() => {
+        try { if (next.currentTime < START) next.currentTime = START; } catch (_) {}
+        playFromStart(next).then(() => {
           next.classList.add('is-active');
           cur.classList.remove('is-active');
           active = 1 - active;
-          // Pause the outgoing video after fade completes
           setTimeout(() => {
             cur.pause();
-            cur.currentTime = 0.001;
+            try { cur.currentTime = START; } catch (_) {}
             swapping = false;
-          }, 480);
+          }, 520);
         }).catch(() => { swapping = false; });
       };
 
@@ -2472,6 +2492,8 @@
           if (v !== vids[active] || swapping) return;
           const d = v.duration;
           if (!d || !isFinite(d)) return;
+          // Pre-warm the standby video mid-clip so swap has no cold start
+          if (v.currentTime >= d * 0.45) warmNext();
           if (v.currentTime >= d - CROSSFADE) swap();
         });
         v.addEventListener('ended', () => {
@@ -2479,11 +2501,11 @@
         });
       });
 
-      play(a);
-      a.addEventListener('loadeddata', () => play(a));
-      window.addEventListener('load', () => play(vids[active]));
+      playFromStart(a);
+      a.addEventListener('loadedmetadata', () => playFromStart(a), { once: true });
+      window.addEventListener('load', () => playFromStart(vids[active]));
       document.addEventListener('visibilitychange', () => {
-        if (!document.hidden) play(vids[active]);
+        if (!document.hidden) playFromStart(vids[active]);
       });
     })();
 
