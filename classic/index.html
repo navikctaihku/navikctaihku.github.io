@@ -102,14 +102,27 @@
       inset: 0;
       width: 100%; height: 100%;
       object-fit: cover;
-      object-position: center 72%;
+      object-position: center center;
       display: block;
+      will-change: transform;
+      transform: translateZ(0);
+    }
+    .hero-blue-filter {
+      position: absolute; inset: 0; z-index: 1;
+      background: linear-gradient(
+        180deg,
+        rgba(186, 230, 253, 0.42) 0%,
+        rgba(125, 211, 252, 0.28) 45%,
+        rgba(186, 230, 253, 0.38) 100%
+      );
+      mix-blend-mode: multiply;
+      pointer-events: none;
     }
     .hero-overlay {
-      position: absolute; inset: 0;
+      position: absolute; inset: 0; z-index: 2;
       background:
-        radial-gradient(ellipse 85% 70% at 50% 42%, rgba(255, 255, 255, 0.82) 0%, rgba(255, 255, 255, 0.45) 55%, rgba(255, 255, 255, 0.2) 100%),
-        linear-gradient(180deg, rgba(255, 255, 255, 0.35) 0%, rgba(255, 255, 255, 0.08) 50%, rgba(255, 255, 255, 0.3) 100%);
+        radial-gradient(ellipse 85% 70% at 50% 42%, rgba(255, 255, 255, 0.78) 0%, rgba(255, 255, 255, 0.38) 55%, rgba(240, 249, 255, 0.15) 100%),
+        linear-gradient(180deg, rgba(255, 255, 255, 0.28) 0%, rgba(224, 242, 254, 0.1) 50%, rgba(255, 255, 255, 0.22) 100%);
       pointer-events: none;
     }
     .hero-gradients { display: none; }
@@ -1273,13 +1286,13 @@
       <video
         class="hero-bg hero-bg-video"
         id="heroBgVideo"
-        autoplay muted loop playsinline webkit-playsinline preload="auto"
+        autoplay muted playsinline webkit-playsinline preload="auto"
         disablepictureinpicture
         aria-hidden="true"
       >
-        <source src="hero-blockchain-bg.mp4?v=202607091620" type="video/mp4" />
-        <source src="https://cdn.jsdelivr.net/gh/navikctaihku/navikctaihku.github.io@35d0856/classic/hero-blockchain-bg.mp4" type="video/mp4" />
+        <source src="hero-blockchain-bg.mp4?v=202607091637" type="video/mp4" />
       </video>
+      <div class="hero-blue-filter"></div>
       <div class="hero-overlay"></div>
     </div>
     <div class="hero-gradients" aria-hidden="true">
@@ -2398,7 +2411,7 @@
       }
     }
 
-    // Hero background video — force autoplay loop
+    // Hero background video — seamless loop + autoplay
     const heroBgVideo = document.getElementById('heroBgVideo');
     if (heroBgVideo) {
       heroBgVideo.muted = true;
@@ -2412,6 +2425,24 @@
         return heroBgVideo.play().catch(() => {});
       };
 
+      // Seamless loop: seek to start just before the end to avoid browser loop stutter
+      const LOOP_LEAD = 0.12;
+      let looping = false;
+      heroBgVideo.addEventListener('timeupdate', () => {
+        const d = heroBgVideo.duration;
+        if (!d || !isFinite(d)) return;
+        if (heroBgVideo.currentTime >= d - LOOP_LEAD) {
+          if (looping) return;
+          looping = true;
+          heroBgVideo.currentTime = 0.001;
+          playHeroBg().finally(() => { looping = false; });
+        }
+      });
+      heroBgVideo.addEventListener('ended', () => {
+        heroBgVideo.currentTime = 0.001;
+        playHeroBg();
+      });
+
       playHeroBg();
       heroBgVideo.addEventListener('loadeddata', playHeroBg);
       heroBgVideo.addEventListener('canplay', playHeroBg);
@@ -2419,10 +2450,6 @@
       document.addEventListener('visibilitychange', () => {
         if (!document.hidden) playHeroBg();
       });
-
-      if (reducedMotion) {
-        heroBgVideo.playbackRate = 0.85;
-      }
     }
 
     // Reclaim section — force autoplay when in view
