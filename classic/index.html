@@ -95,6 +95,16 @@
     .hero-media {
       position: absolute; inset: 0; z-index: 0;
       overflow: hidden;
+      background: #e8f4fb;
+    }
+    .hero-bg-fallback {
+      position: absolute;
+      inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
+      object-position: center center;
+      display: block;
+      z-index: 0;
     }
     .hero-bg,
     .hero-bg-video {
@@ -104,12 +114,21 @@
       object-fit: cover;
       object-position: center center;
       display: block;
-      will-change: opacity, transform;
+      will-change: opacity;
       transform: translateZ(0);
       opacity: 0;
-      transition: opacity 0.45s linear;
+      z-index: 1;
+      transition: opacity 0.35s ease;
+      background: #e8f4fb;
     }
-    .hero-bg-video.is-active { opacity: 1; }
+    .hero-bg-video.is-active {
+      opacity: 1;
+      z-index: 2;
+    }
+    .hero-bg-video.is-incoming {
+      opacity: 1;
+      z-index: 3;
+    }
     .hero-blue-filter {
       position: absolute; inset: 0; z-index: 1;
       background: linear-gradient(
@@ -1286,6 +1305,12 @@
   <!-- HERO -->
   <section class="hero">
     <div class="hero-media" aria-hidden="true">
+      <img
+        class="hero-bg-fallback"
+        src="hero-blockchain-bg.png"
+        alt=""
+        aria-hidden="true"
+      />
       <video
         class="hero-bg hero-bg-video is-active"
         id="heroBgVideoA"
@@ -2423,7 +2448,7 @@
       }
     }
 
-    // Hero background — dual-video crossfade; skip frozen intro frames
+    // Hero background — dual-video cover-fade (never expose white behind)
     (function initHeroBgLoop() {
       const a = document.getElementById('heroBgVideoA');
       const b = document.getElementById('heroBgVideoB');
@@ -2432,8 +2457,8 @@
       const vids = [a, b];
       let active = 0;
       let swapping = false;
-      const START = 0.55;     // skip frozen/stutter frames at the start of the clip
-      const CROSSFADE = 0.7;  // start next clip before current ends
+      const START = 0.55;
+      const CROSSFADE = 0.85;
 
       const prep = (v) => {
         v.muted = true;
@@ -2444,29 +2469,34 @@
       };
       vids.forEach(prep);
 
+      const seekStart = (v) => {
+        try {
+          if (isFinite(v.duration) && v.duration > START + 0.5) {
+            v.currentTime = START;
+          }
+        } catch (_) {}
+      };
+
       const playFromStart = (v) => {
         v.muted = true;
-        const seekAndPlay = () => {
-          try {
-            if (isFinite(v.duration) && v.duration > START + 0.5) {
-              if (v.currentTime < START) v.currentTime = START;
-            }
-          } catch (_) {}
+        const go = () => {
+          seekStart(v);
           return v.play().catch(() => {});
         };
-        if (v.readyState >= 1) return seekAndPlay();
+        if (v.readyState >= 1) return go();
         return new Promise((resolve) => {
-          v.addEventListener('loadedmetadata', () => resolve(seekAndPlay()), { once: true });
+          v.addEventListener('loadedmetadata', () => resolve(go()), { once: true });
         });
       };
 
+      // Preload next at START but keep it invisible (no opacity change)
       const warmNext = () => {
         const next = vids[1 - active];
-        if (next.paused || next.currentTime < START) {
-          try { next.currentTime = START; } catch (_) {}
-          next.muted = true;
-          next.play().catch(() => {});
-        }
+        if (next.classList.contains('is-active') || next.classList.contains('is-incoming')) return;
+        seekStart(next);
+        next.muted = true;
+        // Keep paused until swap — only decode/seek so first frame is ready
+        if (next.readyState < 2) next.load();
       };
 
       const swap = () => {
@@ -2474,17 +2504,26 @@
         swapping = true;
         const cur = vids[active];
         const next = vids[1 - active];
-        try { if (next.currentTime < START) next.currentTime = START; } catch (_) {}
+
+        seekStart(next);
+        next.classList.add('is-incoming'); // fade in ON TOP of current (current stays opaque)
         playFromStart(next).then(() => {
-          next.classList.add('is-active');
-          cur.classList.remove('is-active');
-          active = 1 - active;
-          setTimeout(() => {
-            cur.pause();
-            try { cur.currentTime = START; } catch (_) {}
-            swapping = false;
-          }, 520);
-        }).catch(() => { swapping = false; });
+          // After next is fully covering, demote current without fading both to 0
+          requestAnimationFrame(() => {
+            next.classList.add('is-active');
+            next.classList.remove('is-incoming');
+            cur.classList.remove('is-active');
+            active = 1 - active;
+            setTimeout(() => {
+              cur.pause();
+              seekStart(cur);
+              swapping = false;
+            }, 380);
+          });
+        }).catch(() => {
+          next.classList.remove('is-incoming');
+          swapping = false;
+        });
       };
 
       vids.forEach((v) => {
@@ -2492,8 +2531,7 @@
           if (v !== vids[active] || swapping) return;
           const d = v.duration;
           if (!d || !isFinite(d)) return;
-          // Pre-warm the standby video mid-clip so swap has no cold start
-          if (v.currentTime >= d * 0.45) warmNext();
+          if (v.currentTime >= d * 0.5) warmNext();
           if (v.currentTime >= d - CROSSFADE) swap();
         });
         v.addEventListener('ended', () => {
