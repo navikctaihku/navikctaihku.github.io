@@ -84,19 +84,35 @@
       .nav-links { display: none; }
     }
 
-    /* ===== HERO (Vercel 3-column style) ===== */
+    /* ===== HERO ===== */
     .hero {
       padding: 200px 24px 140px;
       position: relative;
       overflow: hidden;
-      /* linear-gradient: blends colours along a line (angle, colour stops) */
-      background: linear-gradient(180deg, #f4f9fc 0%, #ffffff 55%, #ffffff 100%);
+      min-height: 620px;
+      background: #ffffff;
     }
-    /* Animated gradient blobs — radial-gradient + blur + @keyframes = soft moving colour */
-    .hero-gradients {
+    .hero-media {
+      position: absolute; inset: 0; z-index: 0;
+    }
+    .hero-bg {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      object-position: center 58%;
+      display: block;
+    }
+    .hero-overlay {
       position: absolute; inset: 0;
-      overflow: hidden; pointer-events: none; z-index: 0;
+      background: linear-gradient(
+        180deg,
+        rgba(255, 255, 255, 0.92) 0%,
+        rgba(255, 255, 255, 0.72) 38%,
+        rgba(255, 255, 255, 0.68) 62%,
+        rgba(255, 255, 255, 0.88) 100%
+      );
+      pointer-events: none;
     }
+    .hero-gradients { display: none; }
     .hero-blob {
       position: absolute; border-radius: 50%;
       filter: blur(90px); opacity: 0.55;
@@ -129,12 +145,8 @@
       0%, 100% { transform: translate(0, 0); }
       50% { transform: translate(25px, -20px); }
     }
-    /* Interactive node network canvas — sits above blobs, below text */
-    .hero-network {
-      position: absolute; inset: 0;
-      width: 100%; height: 100%;
-      z-index: 0; pointer-events: none;
-    }
+    /* Interactive node network canvas — hidden when photo background is used */
+    .hero-network { display: none; }
     .hero-inner {
       max-width: 1280px; margin: 0 auto;
       display: flex;
@@ -149,6 +161,8 @@
       align-items: center;
       text-align: center;
       gap: 36px;
+      position: relative;
+      z-index: 2;
     }
     .hero-tagline {
       font-family: var(--font-display);
@@ -1255,12 +1269,15 @@
 
   <!-- HERO -->
   <section class="hero">
+    <div class="hero-media" aria-hidden="true">
+      <img src="hero-blockchain-bg.png" alt="" class="hero-bg" />
+      <div class="hero-overlay"></div>
+    </div>
     <div class="hero-gradients" aria-hidden="true">
       <div class="hero-blob hero-blob-1"></div>
       <div class="hero-blob hero-blob-2"></div>
       <div class="hero-blob hero-blob-3"></div>
     </div>
-    <!-- Interactive blockchain node network (drifts + reacts to mouse) -->
     <canvas class="hero-network" id="heroNetwork" aria-hidden="true"></canvas>
     <div class="hero-inner">
       <div class="hero-stack">
