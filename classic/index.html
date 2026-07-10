@@ -86,189 +86,82 @@
 
     /* ===== HERO ===== */
     .hero {
-      padding: 200px 24px 140px;
+      padding: 0;
       position: relative;
       overflow: hidden;
-      min-height: 620px;
-      background: #ffffff;
+      /* Full viewport minus ticker height so ticker sits flush at bottom */
+      min-height: calc(100vh - 62px);
+      background: #000;
     }
     .hero-media {
       position: absolute; inset: 0; z-index: 0;
       overflow: hidden;
-      background: #e8f4fb;
+      background: #000;
     }
-    .hero-bg-fallback {
+    /* Light blue tint overlay */
+    .hero-media::after {
+      content: '';
       position: absolute;
       inset: 0;
-      width: 100%; height: 100%;
-      object-fit: cover;
-      object-position: center center;
-      display: block;
-      z-index: 0;
+      z-index: 3;
+      background: rgba(200, 225, 240, 0.25);
+      pointer-events: none;
     }
     .hero-bg,
     .hero-bg-video {
       position: absolute;
-      inset: 0;
-      width: 100%; height: 100%;
+      top: -8%; left: -8%; right: -8%; bottom: -8%;
+      width: 116%; height: 116%;
       object-fit: cover;
       object-position: center center;
       display: block;
-      will-change: opacity;
-      transform: translateZ(0);
-      opacity: 0;
       z-index: 1;
-      transition: opacity 1.6s ease-in-out;
-      background: #e8f4fb;
+      background: #000;
     }
-    .hero-bg-video.is-active {
-      opacity: 1;
-      z-index: 2;
-    }
-    .hero-bg-video.is-incoming {
-      opacity: 1;
-      z-index: 3;
-    }
-    .hero-blue-filter {
-      position: absolute; inset: 0; z-index: 1;
-      background: linear-gradient(
-        180deg,
-        rgba(186, 230, 253, 0.42) 0%,
-        rgba(125, 211, 252, 0.28) 45%,
-        rgba(186, 230, 253, 0.38) 100%
-      );
-      mix-blend-mode: multiply;
-      pointer-events: none;
-    }
-    .hero-overlay {
-      position: absolute; inset: 0; z-index: 2;
-      background:
-        radial-gradient(ellipse 85% 70% at 50% 42%, rgba(255, 255, 255, 0.78) 0%, rgba(255, 255, 255, 0.38) 55%, rgba(240, 249, 255, 0.15) 100%),
-        linear-gradient(180deg, rgba(255, 255, 255, 0.28) 0%, rgba(224, 242, 254, 0.1) 50%, rgba(255, 255, 255, 0.22) 100%);
-      pointer-events: none;
-    }
-    .hero-gradients { display: none; }
-    .hero-blob {
-      position: absolute; border-radius: 50%;
-      filter: blur(90px); opacity: 0.55;
-      will-change: transform;
-    }
-    .hero-blob-1 {
-      width: 520px; height: 520px; top: -10%; left: -8%;
-      background: radial-gradient(circle, rgba(0,180,216,0.35) 0%, transparent 70%);
-      animation: blob-drift-1 18s ease-in-out infinite;
-    }
-    .hero-blob-2 {
-      width: 480px; height: 480px; top: 20%; right: -5%;
-      background: radial-gradient(circle, rgba(1,98,130,0.22) 0%, transparent 70%);
-      animation: blob-drift-2 22s ease-in-out infinite;
-    }
-    .hero-blob-3 {
-      width: 400px; height: 400px; bottom: 0; left: 35%;
-      background: radial-gradient(circle, rgba(127,119,221,0.15) 0%, transparent 70%);
-      animation: blob-drift-3 20s ease-in-out infinite;
-    }
-    @keyframes blob-drift-1 {
-      0%, 100% { transform: translate(0, 0) scale(1); }
-      50% { transform: translate(40px, 30px) scale(1.08); }
-    }
-    @keyframes blob-drift-2 {
-      0%, 100% { transform: translate(0, 0) scale(1); }
-      50% { transform: translate(-35px, 25px) scale(1.05); }
-    }
-    @keyframes blob-drift-3 {
-      0%, 100% { transform: translate(0, 0); }
-      50% { transform: translate(25px, -20px); }
-    }
-    /* Interactive node network canvas — hidden when photo background is used */
-    .hero-network { display: none; }
-    .hero-inner {
-      max-width: 1280px; margin: 0 auto;
+    .hero-spacer {
+      position: relative;
+      z-index: 4;
+      min-height: calc(100vh - 62px);
       display: flex;
       align-items: center;
       justify-content: center;
-      min-height: 480px;
-      position: relative; z-index: 1;
     }
-    .hero-stack {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
+    .hero-overlay {
       text-align: center;
-      gap: 36px;
-      position: relative;
-      z-index: 2;
+      padding: 40px 24px;
     }
-    .hero-tagline {
-      font-family: var(--font-display);
-      font-size: clamp(30px, 4vw, 48px);
-      font-weight: 600;
-      letter-spacing: -0.025em;
+    .hero-overlay .hero-tagline {
+      font-family: 'Inter', -apple-system, sans-serif;
+      font-size: clamp(30px, 4.5vw, 54px);
+      font-weight: 900;
+      color: #1a1a1a;
+      letter-spacing: -0.03em;
       line-height: 1.15;
-      color: var(--oc-dark);
-      margin: 0;
-      max-width: 780px;
-      text-wrap: balance;
+      margin-bottom: 28px;
     }
-    .hero-tagline .accent-gradient {
-      background: linear-gradient(120deg, var(--oc-primary) 0%, var(--oc-primary-brand) 60%, #59d3ec 100%);
-      -webkit-background-clip: text;
-      background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-size: 200% 200%;
-      animation: hero-gradient-shift 7s ease infinite;
+    .hero-overlay .hero-tagline .accent {
+      color: var(--oc-accent, #2bb5c6);
+      font-style: italic;
     }
-    @keyframes hero-gradient-shift {
-      0%, 100% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
+    .hero-overlay .hero-logo-img {
+      max-width: 380px;
+      width: 60vw;
+      height: auto;
+      margin: 0 auto 28px;
+      display: block;
     }
-    .hero-tagline-top {
-      white-space: nowrap;
-      max-width: none;
-    }
-    .hero-tagline-bottom {
-      font-size: clamp(26px, 3.4vw, 40px);
-      font-weight: 500;
+    .hero-overlay .hero-subtitle {
+      font-size: clamp(22px, 3.2vw, 40px);
+      font-weight: 600;
       letter-spacing: 0.04em;
-    }
-
-    /* Center column — logo shape */
-    .hero-center {
-      display: flex; align-items: center; justify-content: center;
-      position: relative;
-    }
-    .hero-logo-shape {
-      width: 320px; height: auto;
-      filter: drop-shadow(0 24px 60px rgba(1,98,130,0.18));
-      transition: transform 0.6s cubic-bezier(0.16,1,0.3,1);
-      animation: float-gentle 6s ease-in-out infinite;
-    }
-    .hero-logo-shape:hover { transform: scale(1.03); animation-play-state: paused; }
-    @keyframes float-gentle {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-12px); }
-    }
-    /* subtle glow behind logo */
-    .hero-center::before {
-      content: '';
-      position: absolute;
-      width: 400px; height: 400px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(0,180,216,0.08) 0%, transparent 70%);
-      pointer-events: none;
+      color: var(--oc-accent, #2bb5c6);
     }
 
     @media (max-width: 1024px) {
-      .hero-stack { gap: 28px; }
-      .hero-logo-shape { width: 240px; }
     }
     @media (max-width: 640px) {
-      .hero { padding: 140px 24px 80px; }
-      .hero-logo-shape { width: 180px; }
-      .hero-stack { gap: 24px; }
-      .hero-tagline { font-size: clamp(24px, 6.5vw, 32px); }
-      .hero-tagline-top { white-space: normal; }
-      .hero-tagline-bottom { font-size: clamp(22px, 5.5vw, 28px); }
+      .hero, .hero-spacer { min-height: calc(100vh - 54px); }
+      .hero-overlay .hero-logo-img { max-width: 260px; }
     }
 
     /* ===== SCROLLING TICKER ===== */
@@ -1305,52 +1198,24 @@
   <!-- HERO -->
   <section class="hero">
     <div class="hero-media" aria-hidden="true">
-      <img
-        class="hero-bg-fallback"
-        src="hero-blockchain-bg.png"
-        alt=""
-        aria-hidden="true"
-      />
-      <video
-        class="hero-bg hero-bg-video is-active"
-        id="heroBgVideoA"
-        muted playsinline webkit-playsinline preload="auto"
-        disablepictureinpicture
-        aria-hidden="true"
-      >
-        <source src="hero-blockchain-bg.mp4?v=202607091637" type="video/mp4" />
-      </video>
+      <!-- Canvas holds the last frame so the loop-seek never flashes black -->
+      <canvas class="hero-bg" id="heroCanvas" style="z-index:1;"></canvas>
       <video
         class="hero-bg hero-bg-video"
-        id="heroBgVideoB"
-        muted playsinline webkit-playsinline preload="auto"
+        id="heroBgVideoA"
+        autoplay muted loop playsinline webkit-playsinline preload="auto"
         disablepictureinpicture
         aria-hidden="true"
+        style="z-index:2;"
       >
-        <source src="hero-blockchain-bg.mp4?v=202607091637" type="video/mp4" />
+        <source src="videos/Holographic_blockchain_cubes_lin…_202607091719.mp4" type="video/mp4" />
       </video>
-      <div class="hero-blue-filter"></div>
-      <div class="hero-overlay"></div>
     </div>
-    <div class="hero-gradients" aria-hidden="true">
-      <div class="hero-blob hero-blob-1"></div>
-      <div class="hero-blob hero-blob-2"></div>
-      <div class="hero-blob hero-blob-3"></div>
-    </div>
-    <canvas class="hero-network" id="heroNetwork" aria-hidden="true"></canvas>
-    <div class="hero-inner">
-      <div class="hero-stack">
-        <p class="hero-tagline hero-tagline-top hero-anim" data-delay="0">
-          Connect Enterprise Data with <span class="accent-gradient">Trusted</span>
-        </p>
-
-        <div class="hero-center">
-          <img src="onchain-logo.png" alt="OneChain" class="hero-logo-shape" />
-        </div>
-
-        <p class="hero-tagline hero-tagline-bottom hero-anim" data-delay="1">
-          <span class="accent-gradient">Verification &amp; Intelligence</span>
-        </p>
+    <div class="hero-spacer">
+      <div class="hero-overlay hero-anim">
+        <p class="hero-tagline">Connect Enterprise Data with <span class="accent">Trusted</span></p>
+        <img src="onchain-logo.png" alt="OneChain" class="hero-logo-img" />
+        <p class="hero-subtitle">Verification &amp; Intelligence</p>
       </div>
     </div>
   </section>
@@ -2448,106 +2313,43 @@
       }
     }
 
-    // Hero background — dual-video cover-fade (never expose white behind)
-    (function initHeroBgLoop() {
-      const a = document.getElementById('heroBgVideoA');
-      const b = document.getElementById('heroBgVideoB');
-      if (!a || !b) return;
+    (function initHeroVideo() {
+      const vid = document.getElementById('heroBgVideoA');
+      const canvas = document.getElementById('heroCanvas');
+      if (!vid || !canvas) return;
 
-      const vids = [a, b];
-      let active = 0;
-      let swapping = false;
-      const START = 0.55;
-      const CROSSFADE = 2.2;   // start dissolve well before the end
-      const FADE_MS = 1700;    // must exceed the CSS 1.6s opacity transition
+      vid.muted = true;
+      vid.defaultMuted = true;
+      vid.playsInline = true;
+      vid.setAttribute('muted', '');
+      vid.setAttribute('playsinline', '');
 
-      const prep = (v) => {
-        v.muted = true;
-        v.defaultMuted = true;
-        v.playsInline = true;
-        v.setAttribute('muted', '');
-        v.setAttribute('playsinline', '');
-      };
-      vids.forEach(prep);
+      const ctx = canvas.getContext('2d');
+      let raf;
 
-      const seekStart = (v) => {
-        try {
-          if (isFinite(v.duration) && v.duration > START + 0.5) {
-            v.currentTime = START;
+      // Continuously paint the current video frame onto the canvas.
+      // When the browser's native loop briefly blanks the video during
+      // seek-back, the canvas underneath still shows the last good frame.
+      function mirror() {
+        if (vid.videoWidth && vid.readyState >= 2) {
+          if (canvas.width !== vid.videoWidth) {
+            canvas.width = vid.videoWidth;
+            canvas.height = vid.videoHeight;
           }
-        } catch (_) {}
+          ctx.drawImage(vid, 0, 0);
+        }
+        raf = requestAnimationFrame(mirror);
+      }
+
+      const playHero = () => {
+        vid.play().catch(() => {});
+        if (!raf) mirror();
       };
 
-      const playFromStart = (v) => {
-        v.muted = true;
-        const go = () => {
-          seekStart(v);
-          return v.play().catch(() => {});
-        };
-        if (v.readyState >= 1) return go();
-        return new Promise((resolve) => {
-          v.addEventListener('loadedmetadata', () => resolve(go()), { once: true });
-        });
-      };
-
-      // Preload next at START but keep it invisible (no opacity change)
-      const warmNext = () => {
-        const next = vids[1 - active];
-        if (next.classList.contains('is-active') || next.classList.contains('is-incoming')) return;
-        seekStart(next);
-        next.muted = true;
-        // Keep paused until swap — only decode/seek so first frame is ready
-        if (next.readyState < 2) next.load();
-      };
-
-      const swap = () => {
-        if (swapping) return;
-        swapping = true;
-        const cur = vids[active];
-        const next = vids[1 - active];
-
-        seekStart(next);
-        playFromStart(next).then(() => {
-          // Slow cinematic dissolve: next fades in ON TOP while current
-          // keeps playing fully opaque underneath — no flash, no jump cut.
-          requestAnimationFrame(() => {
-            next.classList.add('is-incoming');
-            setTimeout(() => {
-              next.classList.add('is-active');
-              next.classList.remove('is-incoming');
-              cur.classList.remove('is-active');
-              active = 1 - active;
-              setTimeout(() => {
-                cur.pause();
-                seekStart(cur);
-                swapping = false;
-              }, 200);
-            }, FADE_MS);
-          });
-        }).catch(() => {
-          next.classList.remove('is-incoming');
-          swapping = false;
-        });
-      };
-
-      vids.forEach((v) => {
-        v.addEventListener('timeupdate', () => {
-          if (v !== vids[active] || swapping) return;
-          const d = v.duration;
-          if (!d || !isFinite(d)) return;
-          if (v.currentTime >= d * 0.5) warmNext();
-          if (v.currentTime >= d - CROSSFADE) swap();
-        });
-        v.addEventListener('ended', () => {
-          if (v === vids[active]) swap();
-        });
-      });
-
-      playFromStart(a);
-      a.addEventListener('loadedmetadata', () => playFromStart(a), { once: true });
-      window.addEventListener('load', () => playFromStart(vids[active]));
+      vid.addEventListener('loadedmetadata', playHero, { once: true });
+      window.addEventListener('load', playHero);
       document.addEventListener('visibilitychange', () => {
-        if (!document.hidden) playFromStart(vids[active]);
+        if (!document.hidden) playHero();
       });
     })();
 
