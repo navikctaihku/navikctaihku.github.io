@@ -186,6 +186,50 @@
       color: var(--oc-accent, #14a4bc);
     }
 
+    /* ===== HERO INTRO SPLASH (logo only, first 1.5s) ===== */
+    .hero-intro {
+      position: fixed;
+      inset: 0;
+      z-index: 1500;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #ffffff;
+      transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1),
+                  visibility 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .hero-intro-logo {
+      max-width: min(440px, 78vw);
+      width: 100%;
+      height: auto;
+      animation: hero-intro-logo-in 0.65s cubic-bezier(0.16, 1, 0.3, 1) both;
+    }
+    @keyframes hero-intro-logo-in {
+      from { opacity: 0; transform: scale(0.97); }
+      to { opacity: 1; transform: scale(1); }
+    }
+    .hero:not(.hero--revealed) .hero-media,
+    .hero:not(.hero--revealed) .hero-overlay {
+      opacity: 0;
+    }
+    .hero:not(.hero--revealed) .hero-media {
+      visibility: hidden;
+    }
+    .hero--revealed .hero-intro {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+    .hero--revealed .hero-media {
+      visibility: visible;
+      opacity: 1;
+      transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .hero--revealed .hero-overlay {
+      opacity: 1;
+      transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
     @media (max-width: 1024px) {
     }
     @media (max-width: 640px) {
@@ -937,6 +981,8 @@
       .cta-banner { background-size: auto; }
       .scroll-progress { display: none; }
       .hero-anim, .fade-up { opacity: 1 !important; transform: none !important; transition: none !important; }
+      .hero-intro { display: none !important; }
+      .hero .hero-media, .hero .hero-overlay { opacity: 1 !important; visibility: visible !important; }
     }
 
     /* ============================================================
@@ -1373,14 +1419,17 @@
   <div id="site-nav"></div>
 
   <!-- HERO -->
-  <section class="hero">
+  <section class="hero" id="hero">
+    <div class="hero-intro" id="heroIntro" aria-hidden="true">
+      <img src="onchain-logo.png" alt="OneChain" class="hero-intro-logo" width="440" height="120" />
+    </div>
     <div class="hero-media" aria-hidden="true">
       <!-- Canvas holds the last frame so the loop-seek never flashes black -->
       <canvas class="hero-bg" id="heroCanvas" style="z-index:1;"></canvas>
       <video
         class="hero-bg hero-bg-video"
         id="heroBgVideoA"
-        autoplay muted loop playsinline webkit-playsinline preload="auto"
+        muted loop playsinline webkit-playsinline preload="auto"
         disablepictureinpicture
         aria-hidden="true"
         style="z-index:2;"
@@ -1396,6 +1445,12 @@
       </div>
     </div>
   </section>
+  <noscript>
+    <style>
+      .hero-intro { display: none !important; }
+      .hero .hero-media, .hero .hero-overlay { opacity: 1 !important; visibility: visible !important; }
+    </style>
+  </noscript>
 
   <!-- TICKER -->
   <div class="ticker">
@@ -2350,18 +2405,33 @@
     // ===== ADDED DYNAMIC EFFECTS =====
     // ============================================================
     const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const HERO_INTRO_MS = 1500;
 
-    // --- 1. Hero entrance on load -------------------------------
-    // Gate with .anim-ready so the hero stays visible if JS never runs.
-    if (!reducedMotion) {
-      document.body.classList.add('anim-ready');
-      window.addEventListener('load', () => {
-        requestAnimationFrame(() => document.body.classList.add('loaded'));
-      });
-      // Safety net in case 'load' already fired
-      if (document.readyState === 'complete') {
-        requestAnimationFrame(() => document.body.classList.add('loaded'));
+    // --- 0. Hero intro splash: logo only, then reveal video + copy ---
+    (function initHeroIntro() {
+      const hero = document.getElementById('hero');
+      if (!hero) return;
+
+      const revealHero = () => {
+        hero.classList.add('hero--revealed');
+        window.dispatchEvent(new CustomEvent('hero-revealed'));
+        document.body.classList.add('loaded');
+      };
+
+      if (reducedMotion) {
+        revealHero();
+        return;
       }
+
+      document.body.classList.add('anim-ready');
+      setTimeout(revealHero, HERO_INTRO_MS);
+    })();
+
+    // --- 1. Hero entrance on load (text fades in after intro reveal) ---
+    if (!reducedMotion) {
+      // .anim-ready + .loaded are set by initHeroIntro after 1.5s
+    } else {
+      document.body.classList.add('anim-ready', 'loaded');
     }
 
     // --- 2. Scroll reading-progress bar -------------------------
@@ -2536,6 +2606,7 @@
     (function initHeroVideo() {
       const vid = document.getElementById('heroBgVideoA');
       const canvas = document.getElementById('heroCanvas');
+      const hero = document.getElementById('hero');
       if (!vid || !canvas) return;
 
       vid.muted = true;
@@ -2547,9 +2618,6 @@
       const ctx = canvas.getContext('2d');
       let raf;
 
-      // Continuously paint the current video frame onto the canvas.
-      // When the browser's native loop briefly blanks the video during
-      // seek-back, the canvas underneath still shows the last good frame.
       function mirror() {
         if (vid.videoWidth && vid.readyState >= 2) {
           if (canvas.width !== vid.videoWidth) {
@@ -2562,15 +2630,17 @@
       }
 
       const playHero = () => {
+        if (!hero?.classList.contains('hero--revealed')) return;
         vid.play().catch(() => {});
         if (!raf) mirror();
       };
 
-      vid.addEventListener('loadedmetadata', playHero, { once: true });
-      window.addEventListener('load', playHero);
+      window.addEventListener('hero-revealed', playHero);
+      vid.addEventListener('loadeddata', playHero, { once: true });
       document.addEventListener('visibilitychange', () => {
         if (!document.hidden) playHero();
       });
+      if (hero?.classList.contains('hero--revealed')) playHero();
     })();
 
     // Reclaim section — force autoplay when in view
