@@ -51,7 +51,7 @@
     .features-header h2, .products-header h2, .solutions-copy h2,
     .shipped-section h2, .ecosystem-title, .insights-title,
     .quotes-head h2, .video-header h2, .reclaim h2, .cta-banner h2,
-    .hero-overlay .hero-tagline, .glass-header h2,
+    .hero-overlay .hero-slogan, .hero-rotate, .glass-header h2,
     .feature-card h3, .product-card h3, .insight-card-title, .insight-thumb-title {
       font-family: var(--font-display);
       letter-spacing: -0.02em;
@@ -127,7 +127,7 @@
       overflow: hidden;
       background: #000;
     }
-    /* Light blue tint overlay */
+    /* Light blue tint + readability scrim when hero is revealed */
     .hero-media::after {
       content: '';
       position: absolute;
@@ -135,6 +135,17 @@
       z-index: 3;
       background: rgba(200, 225, 240, 0.25);
       pointer-events: none;
+      transition: background 0.85s ease;
+    }
+    .hero--revealed .hero-media::after {
+      background:
+        linear-gradient(
+          180deg,
+          rgba(10, 22, 40, 0.52) 0%,
+          rgba(10, 22, 40, 0.38) 42%,
+          rgba(10, 22, 40, 0.58) 100%
+        ),
+        rgba(20, 164, 188, 0.12);
     }
     .hero-bg,
     .hero-bg-video {
@@ -154,36 +165,187 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      flex-direction: column;
     }
     .hero-overlay {
       text-align: center;
-      padding: 40px 24px;
+      padding: 40px 24px 72px;
+      max-width: 920px;
+      width: 100%;
+      margin: 0 auto;
     }
-    .hero-overlay .hero-tagline {
-      font-family: 'Inter', -apple-system, sans-serif;
-      font-size: clamp(30px, 4.5vw, 54px);
-      font-weight: 900;
-      color: #1a1a1a;
-      letter-spacing: -0.03em;
-      line-height: 1.15;
-      margin-bottom: 28px;
-    }
-    .hero-overlay .hero-tagline .accent {
-      color: var(--oc-accent, #14a4bc);
-      font-style: italic;
+    /* Liftable-style hero stack */
+    .hero-kicker {
+      font-family: var(--font-body);
+      font-size: clamp(16px, 2vw, 22px);
+      font-weight: 400;
+      letter-spacing: 0.01em;
+      color: rgba(255, 255, 255, 0.9);
+      margin-bottom: 12px;
     }
     .hero-overlay .hero-logo-img {
-      max-width: 380px;
-      width: 60vw;
+      max-width: min(400px, 72vw);
+      width: 100%;
       height: auto;
-      margin: 0 auto 28px;
+      margin: 0 auto;
       display: block;
+      filter: drop-shadow(0 4px 24px rgba(0, 0, 0, 0.35));
     }
-    .hero-overlay .hero-subtitle {
-      font-size: clamp(22px, 3.2vw, 40px);
+    .hero-logo-wrap {
+      display: inline-block;
+      margin: 0 auto 16px;
+      padding: 14px 28px;
+      border-radius: 14px;
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+    }
+    /* Representative slogan — directly below logo (like "built for founders.") */
+    .hero-slogan {
+      font-family: var(--font-display);
+      font-size: clamp(26px, 3.8vw, 42px);
+      font-weight: 700;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      color: #ffffff;
+      margin-bottom: 18px;
+      text-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+    }
+    .hero-powered {
+      font-family: var(--font-body);
+      font-size: clamp(14px, 1.6vw, 18px);
+      font-weight: 400;
+      color: rgba(255, 255, 255, 0.75);
+      margin-bottom: 32px;
+    }
+    .hero-powered strong {
+      font-weight: 700;
+      color: #8ee8f5;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+      font-size: 1.05em;
+    }
+    .hero-rotate {
+      font-family: var(--font-display);
+      font-size: clamp(24px, 3.5vw, 40px);
       font-weight: 600;
-      letter-spacing: 0.04em;
-      color: var(--oc-accent, #14a4bc);
+      line-height: 1.4;
+      color: rgba(255, 255, 255, 0.95);
+      margin-bottom: 18px;
+      min-height: 1.45em;
+    }
+    .hero-rotate-accent {
+      color: #8ee8f5;
+      border-bottom: 2px solid rgba(142, 232, 245, 0.7);
+      padding-bottom: 3px;
+      display: inline;
+    }
+    .hero-cursor {
+      display: inline-block;
+      color: #8ee8f5;
+      font-weight: 300;
+      margin-left: 1px;
+      animation: hero-cursor-blink 0.85s step-end infinite;
+    }
+    @keyframes hero-cursor-blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
+    }
+    .hero-footnote {
+      font-family: var(--font-body);
+      font-size: clamp(13px, 1.5vw, 16px);
+      font-weight: 400;
+      color: rgba(255, 255, 255, 0.62);
+      margin-bottom: 32px;
+      letter-spacing: 0.01em;
+    }
+    .hero-ctas {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      justify-content: center;
+      align-items: center;
+    }
+    .hero-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 14px 28px;
+      border-radius: 999px;
+      font-family: var(--font-body);
+      font-size: 15px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+    }
+    .hero-btn--primary {
+      background: linear-gradient(120deg, #14a4bc, #0d7d91);
+      color: #fff;
+      border: none;
+      box-shadow: 0 8px 28px rgba(20, 164, 188, 0.35);
+    }
+    .hero-btn--primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 36px rgba(20, 164, 188, 0.45);
+    }
+    .hero-btn--ghost {
+      background: transparent;
+      color: #fff;
+      border: 1.5px solid rgba(255, 255, 255, 0.55);
+    }
+    .hero-btn--ghost:hover {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: rgba(255, 255, 255, 0.85);
+    }
+    .hero-scroll-hint {
+      position: absolute;
+      bottom: 28px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 5;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      color: rgba(255, 255, 255, 0.5);
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.8s ease 0.4s;
+    }
+    .hero--revealed .hero-scroll-hint { opacity: 1; }
+    .hero-scroll-mouse {
+      width: 22px;
+      height: 34px;
+      border: 2px solid rgba(255, 255, 255, 0.45);
+      border-radius: 11px;
+      position: relative;
+    }
+    .hero-scroll-mouse::after {
+      content: '';
+      position: absolute;
+      top: 7px;
+      left: 50%;
+      width: 3px;
+      height: 7px;
+      margin-left: -1.5px;
+      border-radius: 2px;
+      background: rgba(255, 255, 255, 0.7);
+      animation: hero-scroll-wheel 1.8s ease-in-out infinite;
+    }
+    @keyframes hero-scroll-wheel {
+      0%, 100% { transform: translateY(0); opacity: 0.9; }
+      50% { transform: translateY(8px); opacity: 0.2; }
+    }
+    @media (max-width: 640px) {
+      .hero-overlay { padding-bottom: 88px; }
+      .hero-ctas { flex-direction: column; width: 100%; max-width: 280px; margin: 0 auto; }
+      .hero-btn { width: 100%; }
     }
 
     /* ===== HERO INTRO SPLASH (logo only, first 1.5s) ===== */
@@ -886,10 +1048,18 @@
       opacity: 0; transform: translateY(24px);
       transition: opacity 0.8s cubic-bezier(0.16,1,0.3,1), transform 0.8s cubic-bezier(0.16,1,0.3,1);
     }
+    .anim-ready .hero-anim-item {
+      opacity: 0; transform: translateY(20px);
+      transition: opacity 0.7s cubic-bezier(0.16,1,0.3,1), transform 0.7s cubic-bezier(0.16,1,0.3,1);
+    }
     .anim-ready.loaded .hero-anim { opacity: 1; transform: none; }
-    .anim-ready.loaded .hero-anim[data-delay="1"] { transition-delay: 0.12s; }
-    .anim-ready.loaded .hero-anim[data-delay="2"] { transition-delay: 0.24s; }
-    .anim-ready.loaded .hero-anim[data-delay="3"] { transition-delay: 0.36s; }
+    .anim-ready.loaded .hero-anim-item { opacity: 1; transform: none; }
+    .anim-ready.loaded .hero-anim-item[data-delay="1"] { transition-delay: 0.1s; }
+    .anim-ready.loaded .hero-anim-item[data-delay="2"] { transition-delay: 0.2s; }
+    .anim-ready.loaded .hero-anim-item[data-delay="3"] { transition-delay: 0.3s; }
+    .anim-ready.loaded .hero-anim-item[data-delay="4"] { transition-delay: 0.42s; }
+    .anim-ready.loaded .hero-anim-item[data-delay="5"] { transition-delay: 0.54s; }
+    .anim-ready.loaded .hero-anim-item[data-delay="6"] { transition-delay: 0.66s; }
 
     /* 4. Staggered fade-up (applied to feature cards via JS) */
     .fade-up {
@@ -1470,9 +1640,25 @@
     </div>
     <div class="hero-spacer">
       <div class="hero-overlay hero-anim">
-        <p class="hero-tagline">Connect Enterprise Data with <span class="accent">Trusted</span></p>
-        <img src="onchain-logo.png" alt="OneChain" class="hero-logo-img" />
-        <p class="hero-subtitle">Verification &amp; Intelligence</p>
+        <p class="hero-kicker hero-anim-item" data-delay="0">We are</p>
+        <div class="hero-logo-wrap hero-anim-item" data-delay="1">
+          <img src="onchain-logo.png" alt="OneChain" class="hero-logo-img" />
+        </div>
+        <p class="hero-slogan hero-anim-item" data-delay="2">trust, made infrastructure.</p>
+        <p class="hero-powered hero-anim-item" data-delay="3">powered by <strong>OneChain®</strong></p>
+        <p class="hero-rotate hero-anim-item" data-delay="4">
+          Where enterprise data
+          <span class="hero-rotate-accent" id="heroRotateWord" aria-live="polite"></span><span class="hero-cursor" aria-hidden="true">|</span>
+        </p>
+        <p class="hero-footnote hero-anim-item" data-delay="5">Powered by AI, anchored on blockchain, built for enterprise</p>
+        <div class="hero-ctas hero-anim-item" data-delay="6">
+          <a href="mailto:enquiries@onechain.hk" class="hero-btn hero-btn--primary">Get a Demo</a>
+          <a href="#products" class="hero-btn hero-btn--ghost">Explore Platform</a>
+        </div>
+      </div>
+      <div class="hero-scroll-hint" aria-hidden="true">
+        <span>Scroll</span>
+        <div class="hero-scroll-mouse"></div>
       </div>
     </div>
   </section>
@@ -2448,6 +2634,7 @@
         hero.classList.add('hero--revealed');
         window.dispatchEvent(new CustomEvent('hero-revealed'));
         document.body.classList.add('loaded');
+        initHeroTypewriter();
       };
 
       if (reducedMotion) {
@@ -2458,6 +2645,68 @@
       document.body.classList.add('anim-ready');
       setTimeout(revealHero, HERO_INTRO_MS);
     })();
+
+    // --- Hero typewriter (Liftable-style: char-by-char) ---
+    let heroTypewriterStarted = false;
+    function initHeroTypewriter() {
+      if (heroTypewriterStarted) return;
+      heroTypewriterStarted = true;
+
+      const el = document.getElementById('heroRotateWord');
+      const phrases = [
+        'earns verified proof',
+        'proves ESG claims',
+        'certifies credentials',
+        'scales with trust',
+      ];
+
+      if (!el) return;
+      if (reducedMotion) {
+        el.textContent = phrases[0];
+        return;
+      }
+
+      let phraseIdx = 0;
+      let charIdx = 0;
+      let deleting = false;
+
+      const TYPE_MS = 58;
+      const DELETE_MS = 32;
+      const PAUSE_TYPED_MS = 2400;
+      const PAUSE_DELETED_MS = 500;
+
+      const schedule = (ms) => {
+        setTimeout(tick, ms);
+      };
+
+      const tick = () => {
+        const phrase = phrases[phraseIdx];
+
+        if (!deleting) {
+          charIdx += 1;
+          el.textContent = phrase.slice(0, charIdx);
+          if (charIdx >= phrase.length) {
+            schedule(PAUSE_TYPED_MS);
+            deleting = true;
+            return;
+          }
+          schedule(TYPE_MS);
+          return;
+        }
+
+        charIdx -= 1;
+        el.textContent = phrase.slice(0, charIdx);
+        if (charIdx <= 0) {
+          deleting = false;
+          phraseIdx = (phraseIdx + 1) % phrases.length;
+          schedule(PAUSE_DELETED_MS);
+          return;
+        }
+        schedule(DELETE_MS);
+      };
+
+      schedule(900);
+    }
 
     // --- 1. Hero entrance on load (text fades in after intro reveal) ---
     if (!reducedMotion) {
