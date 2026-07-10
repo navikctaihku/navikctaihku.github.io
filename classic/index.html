@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>OneChain — Enterprise Blockchain Infrastructure</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Nunito:wght@600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
   <script src="site-chrome.js" defer></script>
   <style>
     /* ===== RESET & TOKENS ===== */
@@ -176,30 +176,21 @@
     }
     /* Liftable-style hero stack */
     .hero-kicker {
-      font-family: var(--font-body);
-      font-size: clamp(16px, 2vw, 22px);
+      font-family: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
+      font-size: clamp(22px, 2.8vw, 34px);
       font-weight: 400;
-      letter-spacing: 0.01em;
-      color: rgba(255, 255, 255, 0.9);
-      margin-bottom: 12px;
+      font-style: italic;
+      letter-spacing: 0.06em;
+      color: rgba(255, 255, 255, 0.92);
+      margin-bottom: 14px;
     }
     .hero-overlay .hero-logo-img {
       max-width: min(400px, 72vw);
       width: 100%;
       height: auto;
-      margin: 0 auto;
+      margin: 0 auto 18px;
       display: block;
-      filter: drop-shadow(0 4px 24px rgba(0, 0, 0, 0.35));
-    }
-    .hero-logo-wrap {
-      display: inline-block;
-      margin: 0 auto 16px;
-      padding: 14px 28px;
-      border-radius: 14px;
-      background: rgba(255, 255, 255, 0.1);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      border: 1px solid rgba(255, 255, 255, 0.14);
+      filter: drop-shadow(0 4px 20px rgba(0, 0, 0, 0.4));
     }
     /* Representative slogan — directly below logo (like "built for founders.") */
     .hero-slogan {
@@ -1641,9 +1632,7 @@
     <div class="hero-spacer">
       <div class="hero-overlay hero-anim">
         <p class="hero-kicker hero-anim-item" data-delay="0">We are</p>
-        <div class="hero-logo-wrap hero-anim-item" data-delay="1">
-          <img src="onchain-logo.png" alt="OneChain" class="hero-logo-img" />
-        </div>
+        <img src="onchain-logo.png" alt="OneChain" class="hero-logo-img hero-anim-item" data-delay="1" />
         <p class="hero-slogan hero-anim-item" data-delay="2">trust, made infrastructure.</p>
         <p class="hero-powered hero-anim-item" data-delay="3">powered by <strong>OneChain®</strong></p>
         <p class="hero-rotate hero-anim-item" data-delay="4">
