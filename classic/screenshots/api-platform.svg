@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" fill="none">
+  <rect width="800" height="500" rx="12" fill="#0f1b2d"/>
+  <rect x="0" y="0" width="800" height="44" fill="#162236"/>
+  <text x="400" y="28" text-anchor="middle" font-family="monospace" font-size="12" fill="#8b9cb3">api.one-chain.io/dashboard</text>
+  <rect x="240" y="60" width="536" height="200" rx="8" fill="#162236"/>
+  <polyline points="260,220 340,160 420,140 500,100 580,120 660,70 740,90" stroke="#4db8ff" stroke-width="2.5" fill="none"/>
+  <rect x="240" y="276" width="536" height="200" rx="8" fill="#162236"/>
+  <text x="260" y="304" font-family="Inter,sans-serif" font-size="12" font-weight="700" fill="#e8f0f6">API Endpoints</text>
+</svg>
