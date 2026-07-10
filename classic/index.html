@@ -65,6 +65,32 @@
         var(--oc-supp) !important;
     }
 
+    /* Smooth white ↔ light-blue transitions at section joins */
+    .band-white + .band-tint,
+    .band-white + .glass-section.band-tint {
+      background:
+        linear-gradient(
+          to bottom,
+          #ffffff 0%,
+          #f4fbfd 6%,
+          #eaf7fa 12%,
+          var(--oc-supp) 20%,
+          var(--oc-supp) 100%
+        ),
+        radial-gradient(ellipse 70% 60% at 85% 0%, rgba(255,255,255,0.75), transparent 60%),
+        var(--oc-supp) !important;
+    }
+    .band-tint + .band-white {
+      background: linear-gradient(
+        to bottom,
+        var(--oc-supp) 0%,
+        #f0f9fb 6%,
+        #f8fdfd 12%,
+        #ffffff 20%,
+        #ffffff 100%
+      ) !important;
+    }
+
     /* ===== NAV ===== */
     .nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 100;
@@ -1185,7 +1211,10 @@
       padding: 100px 24px 120px;
       background: #ffffff;
       border-top: 1px solid var(--oc-border);
-      border-bottom: 1px solid var(--oc-border);
+    }
+    .reclaim.band-white:has(+ .band-tint) {
+      border-bottom: none;
+      padding-bottom: clamp(100px, 12vw, 140px);
     }
     .reclaim-split {
       max-width: 1280px; margin: 0 auto;
