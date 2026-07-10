@@ -9,11 +9,11 @@
     --sc-muted-2: #94A3B8;
     --sc-border: rgba(10,22,40,0.08);
     --sc-border-2: rgba(10,22,40,0.12);
-    --sc-primary: #016282;
+    --sc-primary: #14a4bc;
     --sc-green: #2ECC71;
     --sc-gold: #F0B429;
     --sc-purple: #7F77DD;
-    --sc-cyan: #00B4D8;
+    --sc-cyan: #14a4bc;
   }
   .sc-nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; height: 64px;
     background: rgba(255,255,255,0.85); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
@@ -102,7 +102,7 @@
   /* FX: scroll progress bar */
   .sc-progress { position: fixed; top: 0; left: 0; height: 2.5px; width: 100%; z-index: 2000;
     transform-origin: 0 50%; transform: scaleX(0); pointer-events: none;
-    background: linear-gradient(90deg, #016282, #00B4D8, #7F77DD); }
+    background: linear-gradient(90deg, #0d7d91, #14a4bc, #7F77DD); }
   @media (prefers-reduced-motion: reduce) {
     .sc-spot::after { display: none; }
     .sc-progress { display: none; }
@@ -223,8 +223,19 @@
   }
 
   function init() {
+    // Site-wide typography: make sure the display font is available everywhere
+    if (!document.querySelector('link[href*="Space+Grotesk"]')) {
+      var fl = document.createElement('link');
+      fl.rel = 'stylesheet';
+      fl.href = 'https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700;800;900&display=swap';
+      document.head.appendChild(fl);
+    }
     var style = document.createElement('style');
-    style.textContent = CSS;
+    style.textContent = CSS + `
+  /* Site-wide type system: Space Grotesk for headings, Inter for body */
+  h1, h2, h3 { font-family: 'Space Grotesk', 'Inter', -apple-system, sans-serif; letter-spacing: -0.02em; }
+  body { font-family: 'Inter', -apple-system, sans-serif; }
+`;
     document.head.appendChild(style);
 
     var navMount = document.getElementById('site-nav');

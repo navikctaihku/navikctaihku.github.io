@@ -11,13 +11,17 @@
     /* ===== RESET & TOKENS ===== */
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
     :root {
-      --oc-primary: #016282;
-      --oc-primary-light: #0189B5;
-      --oc-primary-brand: #00B4D8;
+      /* Colour guide: primary #14a4bc, supplementary #e2f6f9 */
+      --oc-primary: #14a4bc;
+      --oc-primary-deep: #0d7d91;
+      --oc-primary-light: #3cbdd2;
+      --oc-primary-brand: #14a4bc;
+      --oc-supp: #e2f6f9;
+      --oc-supp-soft: #eef9fb;
       --oc-dark: #0A1628;
       --oc-dark-surface: #111827;
       --oc-bg: #FFFFFF;
-      --oc-bg-alt: #FAFAFA;
+      --oc-bg-alt: #e2f6f9;
       --oc-border: rgba(10,22,40,0.08);
       --oc-border-strong: rgba(10,22,40,0.12);
       --oc-text: #0A1628;
@@ -25,7 +29,7 @@
       --oc-muted: #64748B;
       --oc-muted-light: #94A3B8;
       --oc-esg-green: #24a07e;
-      --oc-cert-gold: #286c84;
+      --oc-cert-gold: #0d7d91;
       --oc-ai-purple: #7F77DD;
       --font-sans: 'Inter', -apple-system, sans-serif;
       --font-display: 'Space Grotesk', 'Inter', -apple-system, sans-serif;
@@ -35,6 +39,33 @@
     body { font-family: var(--font-sans); color: var(--oc-text); background: var(--oc-bg); line-height: 1.6; }
     a { text-decoration: none; color: inherit; }
     img { max-width: 100%; display: block; }
+
+    /* ===== TYPOGRAPHY SYSTEM =====
+       Display font for all major headings, Inter for body copy. */
+    h1, h2, h3,
+    .features-header h2, .products-header h2, .solutions-copy h2,
+    .shipped-section h2, .ecosystem-title, .insights-title,
+    .quotes-head h2, .video-header h2, .reclaim h2, .cta-banner h2,
+    .hero-overlay .hero-tagline, .glass-header h2 {
+      font-family: var(--font-display);
+      letter-spacing: -0.025em;
+    }
+    /* Space Grotesk ships up to 700 — cap display weights so nothing renders
+       as faux-bold */
+    .features-header h2, .products-header h2, .solutions-copy h2,
+    .shipped-section h2, .ecosystem-title, .insights-title,
+    .quotes-head h2, .video-header h2, .reclaim h2, .cta-banner h2,
+    .hero-overlay .hero-tagline, .glass-header h2 {
+      font-weight: 700 !important;
+    }
+
+    /* ===== ALTERNATING SECTION BANDS (梅花間竹) ===== */
+    .band-white { background: #fff !important; }
+    .band-tint {
+      background:
+        radial-gradient(ellipse 70% 60% at 85% 0%, rgba(255,255,255,0.75), transparent 60%),
+        var(--oc-supp) !important;
+    }
 
     /* ===== NAV ===== */
     .nav {
@@ -140,7 +171,7 @@
       margin-bottom: 28px;
     }
     .hero-overlay .hero-tagline .accent {
-      color: var(--oc-accent, #2bb5c6);
+      color: var(--oc-accent, #14a4bc);
       font-style: italic;
     }
     .hero-overlay .hero-logo-img {
@@ -154,7 +185,7 @@
       font-size: clamp(22px, 3.2vw, 40px);
       font-weight: 600;
       letter-spacing: 0.04em;
-      color: var(--oc-accent, #2bb5c6);
+      color: var(--oc-accent, #14a4bc);
     }
 
     @media (max-width: 1024px) {
@@ -304,7 +335,7 @@
     .fan-section::before {
       content: '';
       position: absolute; inset: 0;
-      background: radial-gradient(ellipse at 50% 80%, rgba(1,98,130,0.06), transparent 70%);
+      background: radial-gradient(ellipse at 50% 80%, rgba(13,125,145,0.06), transparent 70%);
       pointer-events: none;
     }
     .fan-cards {
@@ -327,7 +358,7 @@
     }
     /* Active card (JS-driven) */
     .fan-cards.fanned .fan-card.active {
-      box-shadow: 0 20px 60px rgba(1,98,130,0.22), inset 0 1px 0 rgba(255,255,255,0.8);
+      box-shadow: 0 20px 60px rgba(13,125,145,0.22), inset 0 1px 0 rgba(255,255,255,0.8);
       filter: brightness(1.05);
     }
     /* Dim siblings when one is active */
@@ -376,7 +407,7 @@
     .fan-cards.fanned .fan-card[data-index="3"].active { transform: rotate(24deg) translateY(-45px) scale(1.06); z-index: 10; }
     /* Card tints — light mode versions */
     .fan-card[data-index="0"] { transition-delay: 0s; background: linear-gradient(135deg, rgba(40,108,132,0.12), rgba(255,255,255,0.6), rgba(220,235,245,0.4)); }
-    .fan-card[data-index="1"] { transition-delay: 0.06s; background: linear-gradient(135deg, rgba(1,98,130,0.12), rgba(255,255,255,0.6), rgba(220,235,245,0.4)); }
+    .fan-card[data-index="1"] { transition-delay: 0.06s; background: linear-gradient(135deg, rgba(13,125,145,0.12), rgba(255,255,255,0.6), rgba(220,235,245,0.4)); }
     .fan-card[data-index="2"] { transition-delay: 0.12s; background: linear-gradient(135deg, rgba(127,119,221,0.12), rgba(255,255,255,0.6), rgba(220,235,245,0.4)); }
     .fan-card[data-index="3"] { transition-delay: 0.18s; background: linear-gradient(135deg, rgba(46,204,113,0.12), rgba(255,255,255,0.6), rgba(220,235,245,0.4)); }
 
@@ -452,7 +483,7 @@
     }
     .solution-back {
       transform: rotateY(180deg);
-      background: linear-gradient(180deg, #1a7d98 0%, #146f89 100%);
+      background: linear-gradient(180deg, #14a4bc 0%, #0d7d91 100%);
       color: #fff; padding: 18px 16px;
       display: flex; flex-direction: column; justify-content: space-between;
     }
@@ -469,7 +500,7 @@
       font-size: 56px; font-weight: 800; letter-spacing: -0.03em; line-height: 1.05;
       max-width: 520px; margin-bottom: 24px; color: var(--oc-dark);
     }
-    .solutions-copy .accent { color: #146f89; }
+    .solutions-copy .accent { color: #0d7d91; }
     .solutions-copy p {
       font-size: 18px; line-height: 1.75; color: var(--oc-muted);
       max-width: 520px;
@@ -548,7 +579,7 @@
     }
     @keyframes block-glow {
       0%, 100% { filter: drop-shadow(0 0 0 transparent); }
-      50% { filter: drop-shadow(0 0 6px rgba(1,98,130,0.15)); }
+      50% { filter: drop-shadow(0 0 6px rgba(13,125,145,0.15)); }
     }
     .chain-block { animation: block-glow 4s ease-in-out infinite; }
     .chain-block:nth-child(2) { animation-delay: 0.5s; }
@@ -624,7 +655,7 @@
     }
     .sandbox-terminal-body .prompt { color: rgba(46,204,113,0.7); }
     .sandbox-terminal-body .cmd { color: rgba(255,255,255,0.85); }
-    .sandbox-terminal-body .flag { color: rgba(0,180,216,0.7); }
+    .sandbox-terminal-body .flag { color: rgba(20,164,188,0.7); }
     .sandbox-terminal-body .output { color: rgba(255,255,255,0.4); }
     .sandbox-terminal-body .success { color: rgba(46,204,113,0.8); }
     .sandbox-terminal-body .hash { color: rgba(240,180,41,0.7); }
@@ -673,8 +704,8 @@
     }
     .cta-banner::before {
       content: ''; position: absolute; inset: 0;
-      background: radial-gradient(ellipse at 20% 80%, rgba(0,180,216,0.18), transparent 55%),
-                  radial-gradient(ellipse at 80% 20%, rgba(1,98,130,0.1), transparent 50%);
+      background: radial-gradient(ellipse at 20% 80%, rgba(20,164,188,0.18), transparent 55%),
+                  radial-gradient(ellipse at 80% 20%, rgba(13,125,145,0.1), transparent 50%);
       pointer-events: none;
     }
     .cta-inner {
@@ -708,7 +739,7 @@
     .cta-input:focus {
       outline: none;
       border-color: var(--oc-primary);
-      box-shadow: 0 0 0 3px rgba(1,98,130,0.12);
+      box-shadow: 0 0 0 3px rgba(13,125,145,0.12);
     }
     .cta-input::placeholder { color: var(--oc-muted-light); }
     .btn-white {
@@ -767,7 +798,7 @@
     .scroll-progress {
       position: fixed; top: 0; left: 0; height: 3px; width: 0;
       background: linear-gradient(90deg, var(--oc-primary), var(--oc-primary-brand), var(--oc-ai-purple));
-      z-index: 200; box-shadow: 0 0 10px rgba(0,180,216,0.5);
+      z-index: 200; box-shadow: 0 0 10px rgba(20,164,188,0.5);
       transform-origin: left center; will-change: width;
     }
 
@@ -807,7 +838,7 @@
     .video-section {
       padding: 120px 24px;
       background:
-        radial-gradient(ellipse 60% 50% at 50% 42%, rgba(0,180,216,0.07), transparent 70%),
+        radial-gradient(ellipse 60% 50% at 50% 42%, rgba(20,164,188,0.07), transparent 70%),
         var(--oc-bg-alt);
       border-top: 1px solid var(--oc-border);
       border-bottom: 1px solid var(--oc-border);
@@ -834,14 +865,14 @@
       border: 1px solid var(--oc-border-strong);
       box-shadow:
         0 1px 2px rgba(10,22,40,0.05),
-        0 24px 70px rgba(1,98,130,0.16);
+        0 24px 70px rgba(13,125,145,0.16);
       transition: transform 0.5s cubic-bezier(0.16,1,0.3,1), box-shadow 0.5s ease;
     }
     .video-frame:hover {
       transform: translateY(-4px);
       box-shadow:
         0 1px 2px rgba(10,22,40,0.05),
-        0 32px 90px rgba(1,98,130,0.22);
+        0 32px 90px rgba(13,125,145,0.22);
     }
     .video-frame video { width: 100%; height: 100%; display: block; object-fit: cover; }
     /* caption chip pinned inside the frame, bottom-left */
@@ -889,7 +920,7 @@
       width: 84px; height: 84px; border-radius: 50%;
       display: flex; align-items: center; justify-content: center;
       background: rgba(255,255,255,0.94); -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px);
-      box-shadow: 0 10px 40px rgba(1,98,130,0.28);
+      box-shadow: 0 10px 40px rgba(13,125,145,0.28);
       transition: transform 0.3s cubic-bezier(0.16,1,0.3,1);
     }
     .video-overlay:hover .play-btn { transform: scale(1.08); }
@@ -955,15 +986,15 @@
       font-size: 15px; font-weight: 600; color: #fff;
       padding: 14px 26px; border-radius: 10px; cursor: pointer; border: none;
       background: linear-gradient(120deg, var(--oc-primary) 0%, var(--oc-primary-brand) 100%);
-      box-shadow: 0 8px 24px rgba(0,180,216,0.25);
+      box-shadow: 0 8px 24px rgba(20,164,188,0.25);
       transition: transform 180ms ease, box-shadow 180ms ease;
     }
-    .reclaim-cta:hover { transform: translateY(-2px); box-shadow: 0 12px 32px rgba(0,180,216,0.35); }
+    .reclaim-cta:hover { transform: translateY(-2px); box-shadow: 0 12px 32px rgba(20,164,188,0.35); }
     .reclaim-cta-outline {
       display: inline-flex; align-items: center; gap: 8px;
       font-size: 15px; font-weight: 600; color: var(--oc-primary);
       padding: 14px 26px; border-radius: 10px; cursor: pointer;
-      background: #fff; border: 1.5px solid rgba(1,98,130,0.25);
+      background: #fff; border: 1.5px solid rgba(13,125,145,0.25);
       transition: all 180ms ease;
     }
     .reclaim-cta-outline:hover {
@@ -977,7 +1008,7 @@
     }
     .reclaim-media-glow {
       position: absolute; inset: -15% -10%;
-      background: radial-gradient(ellipse at 50% 50%, rgba(0,180,216,0.06) 0%, transparent 70%);
+      background: radial-gradient(ellipse at 50% 50%, rgba(20,164,188,0.06) 0%, transparent 70%);
       pointer-events: none;
     }
     .reclaim-video-wrap {
@@ -1095,7 +1126,7 @@
     }
     .insights-view-all {
       display: inline-flex; align-items: center; gap: 8px;
-      font-size: 15px; font-weight: 700; color: #146f89; white-space: nowrap;
+      font-size: 15px; font-weight: 700; color: #0d7d91; white-space: nowrap;
       transition: gap 180ms ease;
     }
     .insights-view-all:hover { gap: 12px; }
@@ -1122,7 +1153,7 @@
       background: linear-gradient(145deg, #4aa7c8 0%, #1d5f8f 100%);
     }
     .insight-thumb--partner {
-      background: linear-gradient(145deg, #24a07e 0%, #146f89 100%);
+      background: linear-gradient(145deg, #24a07e 0%, #0d7d91 100%);
     }
     .insight-thumb--cert {
       background: linear-gradient(145deg, #1a3f78 0%, #c8920e 100%);
@@ -1168,6 +1199,154 @@
     }
     @media (prefers-reduced-motion: reduce) {
       .partner-marquee-track { animation: none; }
+    }
+
+    /* ===== LIQUID GLASS CREDENTIALS (scroll-driven fan) ===== */
+    .glass-section {
+      position: relative; overflow: hidden;
+      padding: 130px 24px 150px;
+      border-top: 1px solid var(--oc-border);
+      border-bottom: 1px solid var(--oc-border);
+    }
+    .glass-blobs { position: absolute; inset: 0; pointer-events: none; }
+    .glass-blob {
+      position: absolute; border-radius: 50%;
+      filter: blur(70px); opacity: 0.55; will-change: transform;
+    }
+    .glass-blob.gb1 {
+      width: 480px; height: 480px; left: -8%; top: -10%;
+      background: radial-gradient(circle, rgba(20,164,188,0.35), transparent 70%);
+      animation: blob-float-a 18s ease-in-out infinite;
+    }
+    .glass-blob.gb2 {
+      width: 420px; height: 420px; right: -6%; top: 30%;
+      background: radial-gradient(circle, rgba(60,189,210,0.3), transparent 70%);
+      animation: blob-float-b 22s ease-in-out infinite;
+    }
+    .glass-blob.gb3 {
+      width: 360px; height: 360px; left: 38%; bottom: -18%;
+      background: radial-gradient(circle, rgba(127,119,221,0.22), transparent 70%);
+      animation: blob-float-a 26s ease-in-out infinite reverse;
+    }
+    @keyframes blob-float-a {
+      0%, 100% { transform: translate(0, 0) scale(1); }
+      50% { transform: translate(60px, 40px) scale(1.12); }
+    }
+    @keyframes blob-float-b {
+      0%, 100% { transform: translate(0, 0) scale(1); }
+      50% { transform: translate(-50px, -60px) scale(0.94); }
+    }
+    .glass-header {
+      text-align: center; max-width: 640px; margin: 0 auto 72px;
+      position: relative; z-index: 2;
+    }
+    .glass-header .eyebrow {
+      font-family: var(--font-mono); font-size: 13px; color: var(--oc-primary-deep);
+      text-transform: uppercase; letter-spacing: 2px; margin-bottom: 16px;
+    }
+    .glass-header h2 {
+      font-size: clamp(34px, 4.5vw, 52px); font-weight: 700;
+      line-height: 1.08; margin-bottom: 16px; color: var(--oc-dark);
+    }
+    .glass-header p { font-size: 18px; color: var(--oc-muted); line-height: 1.65; }
+    .glass-stage {
+      position: relative; z-index: 2;
+      height: 460px;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .glass-card {
+      position: absolute; left: 50%; top: 50%;
+      width: min(240px, 44vw); height: min(350px, 64vw);
+      margin: calc(min(350px, 64vw) / -2) 0 0 calc(min(240px, 44vw) / -2);
+      border-radius: 24px;
+      padding: 24px;
+      display: flex; flex-direction: column;
+      background: linear-gradient(150deg, rgba(255,255,255,0.72), rgba(255,255,255,0.34) 45%, rgba(226,246,249,0.55));
+      -webkit-backdrop-filter: blur(22px) saturate(1.4);
+      backdrop-filter: blur(22px) saturate(1.4);
+      border: 1px solid rgba(255,255,255,0.75);
+      box-shadow:
+        0 24px 60px rgba(13,125,145,0.16),
+        inset 0 1px 0 rgba(255,255,255,0.9),
+        inset 0 -1px 0 rgba(255,255,255,0.25);
+      transform-origin: 50% 120%;
+      will-change: transform;
+      transition: box-shadow 0.35s ease;
+    }
+    .glass-card::before {
+      content: ''; position: absolute; inset: 0; border-radius: inherit;
+      background:
+        radial-gradient(120% 60% at 20% 0%, rgba(255,255,255,0.55), transparent 55%),
+        radial-gradient(80% 50% at 90% 110%, rgba(20,164,188,0.14), transparent 60%);
+      pointer-events: none;
+    }
+    /* moving light streak across the glass */
+    .glass-card::after {
+      content: ''; position: absolute; top: -60%; bottom: -60%; left: -30%;
+      width: 45%; transform: rotate(18deg) translateX(-140%);
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.5), transparent);
+      animation: glass-sheen 6s ease-in-out infinite;
+      animation-delay: calc(var(--sheen-delay, 0) * 1s);
+      pointer-events: none;
+    }
+    @keyframes glass-sheen {
+      0%, 55% { transform: rotate(18deg) translateX(-160%); }
+      75% { transform: rotate(18deg) translateX(420%); }
+      100% { transform: rotate(18deg) translateX(420%); }
+    }
+    .glass-card:hover {
+      box-shadow:
+        0 34px 80px rgba(13,125,145,0.26),
+        inset 0 1px 0 rgba(255,255,255,1),
+        inset 0 -1px 0 rgba(255,255,255,0.3);
+    }
+    .glass-verified {
+      display: inline-flex; align-items: center; gap: 6px; width: fit-content;
+      background: rgba(255,255,255,0.85);
+      border-radius: 999px; padding: 6px 14px;
+      font-size: 12px; font-weight: 600; color: #1a7f37;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    }
+    .glass-title {
+      margin: auto 0; text-align: center;
+      font-family: var(--font-display);
+      font-size: clamp(18px, 2vw, 24px); font-weight: 700; color: var(--oc-dark);
+      letter-spacing: -0.01em;
+    }
+    .glass-issued {
+      font-family: var(--font-mono); font-size: 11px; letter-spacing: 1.5px;
+      color: var(--oc-muted); text-align: right;
+    }
+    @media (max-width: 640px) {
+      .glass-section { padding: 90px 16px 110px; }
+      .glass-stage { height: 380px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .glass-blob { animation: none; }
+      .glass-card::after { animation: none; }
+    }
+
+    /* ===== GRADIENT TEXT SHIMMER on accent words ===== */
+    @keyframes h-sweep {
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+    }
+    .reclaim h2 .accent,
+    .solutions-copy .accent {
+      background: linear-gradient(120deg, var(--oc-primary-deep) 0%, var(--oc-primary) 35%, #2dd4bf 60%, var(--oc-primary-deep) 100%);
+      background-size: 220% auto;
+      -webkit-background-clip: text; background-clip: text;
+      -webkit-text-fill-color: transparent; color: transparent;
+      animation: h-sweep 7s ease-in-out infinite;
+    }
+
+    /* ===== TICKER: pause + highlight on hover ===== */
+    .ticker:hover .ticker-track { animation-play-state: paused; }
+    .ticker-item { transition: color 0.25s ease; }
+    .ticker-item:hover { color: var(--oc-primary); }
+
+    @media (prefers-reduced-motion: reduce) {
+      .reclaim h2 .accent, .solutions-copy .accent { animation: none; }
     }
 
     /* ===== TESTIMONIALS ===== */
@@ -1243,7 +1422,7 @@
   </div>
 
   <!-- URBAN INFRASTRUCTURE — split layout + holographic city video -->
-  <section class="reclaim reveal" id="reclamation">
+  <section class="reclaim reveal band-white" id="reclamation">
     <div class="reclaim-split">
       <div class="reclaim-copy">
         <span class="reclaim-eyebrow">Enterprise Blockchain</span>
@@ -1274,7 +1453,7 @@
   </section>
 
   <!-- FEATURES (Linear style) -->
-  <section class="section" id="features">
+  <section class="section band-tint" id="features">
     <div class="container">
       <div class="features-header reveal">
         <h2>Your product, delivered. <span style="color: var(--oc-muted-light);">Security, intelligence, and blockchain trust included.</span></h2>
@@ -1333,35 +1512,8 @@
     </div>
   </section>
 
-  <!-- EXHIBITION VIDEO (framed showcase) -->
-  <section class="video-section reveal" id="exhibition">
-    <div class="video-header">
-      <div class="eyebrow">Cyberport Exhibition</div>
-      <h2>OneChain, on stage.</h2>
-      <p>See the platform in action — blockchain-verified recycling coverage across Hong Kong, live from our Cyberport showcase.</p>
-    </div>
-    <div class="video-frame">
-      <video id="exhibitionVideo" poster="onechain-exhibition-poster.jpg"
-             autoplay muted playsinline preload="auto"
-             controls>
-        <source src="onechain-exhibition.mp4" type="video/mp4">
-        Your browser doesn't support embedded video.
-      </video>
-      <div class="video-overlay" id="videoOverlay" aria-hidden="true">
-        <div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
-      </div>
-      <div class="video-caption" id="videoText">
-        <span class="dot"></span> Live Demo — Hong Kong Coverage Map
-      </div>
-      <button class="unmute-hint" id="unmuteHint" type="button" aria-label="Unmute video">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3a4.5 4.5 0 00-2.5-4v8a4.5 4.5 0 002.5-4z"/></svg>
-        Tap for sound
-      </button>
-    </div>
-  </section>
-
   <!-- PRODUCTS -->
-  <section class="section section-alt" id="products">
+  <section class="section band-white" id="products">
     <div class="container">
       <div class="products-header-wrap reveal">
         <canvas class="products-header-network" id="productsNetwork" aria-hidden="true"></canvas>
@@ -1391,7 +1543,7 @@
           <!-- ESGLedger dynamic image -->
           <div class="esg-image-section reveal" style="margin-top: 32px;">
             <img src="esgledger-hero.jpg" alt="ESGLedger — Smart recycling with blockchain-verified Hong Kong coverage map"
-                 onerror="this.parentElement.style.background='linear-gradient(135deg, rgba(46,204,113,0.08), rgba(1,98,130,0.06))'; this.parentElement.style.minHeight='200px'; this.style.display='none';" />
+                 onerror="this.parentElement.style.background='linear-gradient(135deg, rgba(46,204,113,0.08), rgba(13,125,145,0.06))'; this.parentElement.style.minHeight='200px'; this.style.display='none';" />
             <div class="esg-image-overlay">
               <p>Blockchain-verified plastic credit tracking across Hong Kong</p>
             </div>
@@ -1444,8 +1596,51 @@
     </div>
   </section>
 
+  <!-- LIQUID GLASS CREDENTIALS (scroll-driven fan) -->
+  <section class="glass-section band-tint" id="credentials">
+    <div class="glass-blobs" aria-hidden="true">
+      <span class="glass-blob gb1"></span>
+      <span class="glass-blob gb2"></span>
+      <span class="glass-blob gb3"></span>
+    </div>
+    <div class="container">
+      <div class="glass-header reveal">
+        <div class="eyebrow">On-Chain Credentials</div>
+        <h2>Every proof, sealed in glass.</h2>
+        <p>Keep scrolling — each credential issued on OneChain fans out below: tamper-proof, blockchain-anchored, and verifiable in seconds.</p>
+      </div>
+      <div class="glass-stage" id="glassStage">
+        <div class="glass-card" data-i="0">
+          <span class="glass-verified"><span class="verified-icon">&#10003;</span> Verified</span>
+          <div class="glass-title">ESG Credit</div>
+          <div class="glass-issued">ISSUED 2026</div>
+        </div>
+        <div class="glass-card" data-i="1">
+          <span class="glass-verified"><span class="verified-icon">&#10003;</span> Verified</span>
+          <div class="glass-title">API Access</div>
+          <div class="glass-issued">ISSUED 2026</div>
+        </div>
+        <div class="glass-card" data-i="2">
+          <span class="glass-verified"><span class="verified-icon">&#10003;</span> Verified</span>
+          <div class="glass-title">Certified Credential</div>
+          <div class="glass-issued">ISSUED 2026</div>
+        </div>
+        <div class="glass-card" data-i="3">
+          <span class="glass-verified"><span class="verified-icon">&#10003;</span> Verified</span>
+          <div class="glass-title">Green Tech</div>
+          <div class="glass-issued">ISSUED 2026</div>
+        </div>
+        <div class="glass-card" data-i="4">
+          <span class="glass-verified"><span class="verified-icon">&#10003;</span> Verified</span>
+          <div class="glass-title">Infrastructure</div>
+          <div class="glass-issued">ISSUED 2026</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- SOLUTIONS -->
-  <section class="section" id="infrastructure">
+  <section class="section band-white" id="infrastructure">
     <div class="container">
       <div class="solutions-split">
         <div class="solutions-grid reveal" aria-label="Industry solution cards">
@@ -1567,7 +1762,7 @@
   </section>
 
   <!-- RECENTLY SHIPPED -->
-  <section class="shipped-section">
+  <section class="shipped-section band-tint">
     <div class="container">
       <h2 class="reveal">Explore the platform</h2>
       <div class="shipped-grid">
@@ -1588,27 +1783,27 @@
 
                     <!-- Chain connections (links between blocks) -->
                     <!-- Row 1 to Row 2 -->
-                    <line x1="150" y1="135" x2="110" y2="235" stroke="rgba(1,98,130,0.12)" stroke-width="2" stroke-dasharray="6 4" class="chain-link-pulse"/>
-                    <line x1="300" y1="135" x2="300" y2="235" stroke="rgba(1,98,130,0.15)" stroke-width="2" class="chain-link-pulse"/>
-                    <line x1="450" y1="135" x2="490" y2="235" stroke="rgba(1,98,130,0.12)" stroke-width="2" stroke-dasharray="6 4" class="chain-link-pulse"/>
+                    <line x1="150" y1="135" x2="110" y2="235" stroke="rgba(13,125,145,0.12)" stroke-width="2" stroke-dasharray="6 4" class="chain-link-pulse"/>
+                    <line x1="300" y1="135" x2="300" y2="235" stroke="rgba(13,125,145,0.15)" stroke-width="2" class="chain-link-pulse"/>
+                    <line x1="450" y1="135" x2="490" y2="235" stroke="rgba(13,125,145,0.12)" stroke-width="2" stroke-dasharray="6 4" class="chain-link-pulse"/>
                     <!-- Row 2 to Row 3 -->
-                    <line x1="110" y1="315" x2="200" y2="415" stroke="rgba(1,98,130,0.12)" stroke-width="2" stroke-dasharray="6 4" class="chain-link-pulse"/>
-                    <line x1="300" y1="315" x2="370" y2="415" stroke="rgba(1,98,130,0.15)" stroke-width="2" class="chain-link-pulse"/>
-                    <line x1="490" y1="315" x2="530" y2="415" stroke="rgba(1,98,130,0.12)" stroke-width="2" stroke-dasharray="6 4" class="chain-link-pulse"/>
+                    <line x1="110" y1="315" x2="200" y2="415" stroke="rgba(13,125,145,0.12)" stroke-width="2" stroke-dasharray="6 4" class="chain-link-pulse"/>
+                    <line x1="300" y1="315" x2="370" y2="415" stroke="rgba(13,125,145,0.15)" stroke-width="2" class="chain-link-pulse"/>
+                    <line x1="490" y1="315" x2="530" y2="415" stroke="rgba(13,125,145,0.12)" stroke-width="2" stroke-dasharray="6 4" class="chain-link-pulse"/>
                     <!-- Cross connections (network feel) -->
-                    <line x1="150" y1="100" x2="300" y2="100" stroke="rgba(1,98,130,0.06)" stroke-width="1"/>
-                    <line x1="300" y1="100" x2="450" y2="100" stroke="rgba(1,98,130,0.06)" stroke-width="1"/>
-                    <line x1="110" y1="275" x2="300" y2="275" stroke="rgba(1,98,130,0.06)" stroke-width="1"/>
-                    <line x1="300" y1="275" x2="490" y2="275" stroke="rgba(1,98,130,0.06)" stroke-width="1"/>
+                    <line x1="150" y1="100" x2="300" y2="100" stroke="rgba(13,125,145,0.06)" stroke-width="1"/>
+                    <line x1="300" y1="100" x2="450" y2="100" stroke="rgba(13,125,145,0.06)" stroke-width="1"/>
+                    <line x1="110" y1="275" x2="300" y2="275" stroke="rgba(13,125,145,0.06)" stroke-width="1"/>
+                    <line x1="300" y1="275" x2="490" y2="275" stroke="rgba(13,125,145,0.06)" stroke-width="1"/>
                     <!-- Small link chain icons on connections -->
-                    <circle cx="225" cy="185" r="4" fill="rgba(1,98,130,0.1)" stroke="rgba(1,98,130,0.2)" stroke-width="1"/>
-                    <circle cx="395" cy="185" r="4" fill="rgba(1,98,130,0.1)" stroke="rgba(1,98,130,0.2)" stroke-width="1"/>
-                    <circle cx="200" cy="365" r="4" fill="rgba(1,98,130,0.1)" stroke="rgba(1,98,130,0.2)" stroke-width="1"/>
+                    <circle cx="225" cy="185" r="4" fill="rgba(13,125,145,0.1)" stroke="rgba(13,125,145,0.2)" stroke-width="1"/>
+                    <circle cx="395" cy="185" r="4" fill="rgba(13,125,145,0.1)" stroke="rgba(13,125,145,0.2)" stroke-width="1"/>
+                    <circle cx="200" cy="365" r="4" fill="rgba(13,125,145,0.1)" stroke="rgba(13,125,145,0.2)" stroke-width="1"/>
 
                     <!-- BLOCK 1 (top-left) -->
                     <g class="chain-block">
                       <rect x="80" y="55" width="140" height="80" rx="12" fill="white" stroke="rgba(10,22,40,0.1)" stroke-width="1.5"/>
-                      <rect x="92" y="67" width="50" height="6" rx="3" fill="rgba(1,98,130,0.15)"/>
+                      <rect x="92" y="67" width="50" height="6" rx="3" fill="rgba(13,125,145,0.15)"/>
                       <text x="92" y="90" font-family="'JetBrains Mono', monospace" font-size="9" fill="rgba(100,116,139,0.7)">0x8f3a...c2d1</text>
                       <rect x="92" y="100" width="116" height="4" rx="2" fill="rgba(10,22,40,0.04)"/>
                       <rect x="92" y="108" width="80" height="4" rx="2" fill="rgba(10,22,40,0.04)"/>
@@ -1619,14 +1814,14 @@
 
                     <!-- BLOCK 2 (top-center — highlighted/active) -->
                     <g class="chain-block">
-                      <rect x="230" y="55" width="140" height="80" rx="12" fill="white" stroke="rgba(1,98,130,0.25)" stroke-width="2"/>
-                      <rect x="242" y="67" width="60" height="6" rx="3" fill="rgba(1,98,130,0.25)"/>
-                      <text x="242" y="90" font-family="'JetBrains Mono', monospace" font-size="9" fill="rgba(1,98,130,0.6)">#4,209,831</text>
-                      <rect x="242" y="100" width="116" height="4" rx="2" fill="rgba(1,98,130,0.06)"/>
-                      <rect x="242" y="108" width="90" height="4" rx="2" fill="rgba(1,98,130,0.06)"/>
-                      <rect x="242" y="116" width="55" height="4" rx="2" fill="rgba(1,98,130,0.12)"/>
-                      <circle cx="350" cy="70" r="8" fill="rgba(1,98,130,0.08)" stroke="rgba(1,98,130,0.3)" stroke-width="1"/>
-                      <path d="M347 70l2 2 4-4" stroke="rgba(1,98,130,0.6)" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+                      <rect x="230" y="55" width="140" height="80" rx="12" fill="white" stroke="rgba(13,125,145,0.25)" stroke-width="2"/>
+                      <rect x="242" y="67" width="60" height="6" rx="3" fill="rgba(13,125,145,0.25)"/>
+                      <text x="242" y="90" font-family="'JetBrains Mono', monospace" font-size="9" fill="rgba(13,125,145,0.6)">#4,209,831</text>
+                      <rect x="242" y="100" width="116" height="4" rx="2" fill="rgba(13,125,145,0.06)"/>
+                      <rect x="242" y="108" width="90" height="4" rx="2" fill="rgba(13,125,145,0.06)"/>
+                      <rect x="242" y="116" width="55" height="4" rx="2" fill="rgba(13,125,145,0.12)"/>
+                      <circle cx="350" cy="70" r="8" fill="rgba(13,125,145,0.08)" stroke="rgba(13,125,145,0.3)" stroke-width="1"/>
+                      <path d="M347 70l2 2 4-4" stroke="rgba(13,125,145,0.6)" stroke-width="1.5" fill="none" stroke-linecap="round"/>
                     </g>
 
                     <!-- BLOCK 3 (top-right) -->
@@ -1695,10 +1890,10 @@
                     </g>
 
                     <!-- Decorative data flow dots -->
-                    <circle cx="225" cy="100" r="2" fill="rgba(1,98,130,0.2)"/>
-                    <circle cx="375" cy="100" r="2" fill="rgba(1,98,130,0.2)"/>
-                    <circle cx="200" cy="275" r="2" fill="rgba(1,98,130,0.15)"/>
-                    <circle cx="400" cy="275" r="2" fill="rgba(1,98,130,0.15)"/>
+                    <circle cx="225" cy="100" r="2" fill="rgba(13,125,145,0.2)"/>
+                    <circle cx="375" cy="100" r="2" fill="rgba(13,125,145,0.2)"/>
+                    <circle cx="200" cy="275" r="2" fill="rgba(13,125,145,0.15)"/>
+                    <circle cx="400" cy="275" r="2" fill="rgba(13,125,145,0.15)"/>
 
                     <!-- Subtle bottom fade -->
                     <rect x="0" y="520" width="600" height="180" fill="url(#bottomFade)"/>
@@ -1790,8 +1985,35 @@
     </div>
   </section>
 
+  <!-- EXHIBITION VIDEO (framed showcase) -->
+  <section class="video-section reveal band-white" id="exhibition">
+    <div class="video-header">
+      <div class="eyebrow">Cyberport Exhibition</div>
+      <h2>OneChain, on stage.</h2>
+      <p>See the platform in action — blockchain-verified recycling coverage across Hong Kong, live from our Cyberport showcase.</p>
+    </div>
+    <div class="video-frame">
+      <video id="exhibitionVideo" poster="onechain-exhibition-poster.jpg"
+             autoplay muted playsinline preload="auto"
+             controls>
+        <source src="onechain-exhibition.mp4" type="video/mp4">
+        Your browser doesn't support embedded video.
+      </video>
+      <div class="video-overlay" id="videoOverlay" aria-hidden="true">
+        <div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+      </div>
+      <div class="video-caption" id="videoText">
+        <span class="dot"></span> Live Demo — Hong Kong Coverage Map
+      </div>
+      <button class="unmute-hint" id="unmuteHint" type="button" aria-label="Unmute video">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3a4.5 4.5 0 00-2.5-4v8a4.5 4.5 0 002.5-4z"/></svg>
+        Tap for sound
+      </button>
+    </div>
+  </section>
+
   <!-- ECOSYSTEM — continuously moving partner brands -->
-  <section class="ecosystem reveal" id="ecosystem">
+  <section class="ecosystem reveal band-tint" id="ecosystem">
     <div class="ecosystem-inner">
       <div class="ecosystem-tag">Ecosystem</div>
       <h2 class="ecosystem-title">Trusted by partners building on OneChain</h2>
@@ -1810,8 +2032,36 @@
     </div>
   </section>
 
+  <!-- TESTIMONIALS — replace with real client quotes when available -->
+  <section class="quotes reveal band-white">
+    <div class="quotes-inner">
+      <div class="quotes-head">
+        <div class="eyebrow">What Partners Say</div>
+        <h2>Trust, in their words.</h2>
+      </div>
+      <div class="quotes-grid">
+        <div class="quote-card">
+          <div class="q-mark">“</div>
+          <blockquote>Before ESGLedger, our recycling data lived in spreadsheets nobody could audit. Now every kilogram is verifiable on-chain — our sustainability report went from a liability to a selling point.</blockquote>
+          <div class="q-who">
+            <div class="q-avatar" style="background: var(--oc-esg-green);">S</div>
+            <div><div class="q-name">Sustainability Lead</div><div class="q-role">Beverage &amp; retail partner, Hong Kong</div></div>
+          </div>
+        </div>
+        <div class="quote-card">
+          <div class="q-mark">“</div>
+          <blockquote>We used to spend weeks verifying certificates by phone and email. With CertLedger, a QR scan does it in seconds — and forged credentials simply stopped being a problem.</blockquote>
+          <div class="q-who">
+            <div class="q-avatar" style="background: var(--oc-cert-gold); color: var(--oc-dark);">R</div>
+            <div><div class="q-name">Registrar</div><div class="q-role">Professional training institution</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- INSIGHTS / BLOG -->
-  <section class="insights reveal" id="insights">
+  <section class="insights reveal band-tint" id="insights">
     <div class="insights-inner">
       <div class="insights-header">
         <div>
@@ -1882,34 +2132,6 @@
             </div>
           </div>
         </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- TESTIMONIALS — replace with real client quotes when available -->
-  <section class="quotes reveal">
-    <div class="quotes-inner">
-      <div class="quotes-head">
-        <div class="eyebrow">What Partners Say</div>
-        <h2>Trust, in their words.</h2>
-      </div>
-      <div class="quotes-grid">
-        <div class="quote-card">
-          <div class="q-mark">“</div>
-          <blockquote>Before ESGLedger, our recycling data lived in spreadsheets nobody could audit. Now every kilogram is verifiable on-chain — our sustainability report went from a liability to a selling point.</blockquote>
-          <div class="q-who">
-            <div class="q-avatar" style="background: var(--oc-esg-green);">S</div>
-            <div><div class="q-name">Sustainability Lead</div><div class="q-role">Beverage &amp; retail partner, Hong Kong</div></div>
-          </div>
-        </div>
-        <div class="quote-card">
-          <div class="q-mark">“</div>
-          <blockquote>We used to spend weeks verifying certificates by phone and email. With CertLedger, a QR scan does it in seconds — and forged credentials simply stopped being a problem.</blockquote>
-          <div class="q-who">
-            <div class="q-avatar" style="background: var(--oc-cert-gold); color: var(--oc-dark);">R</div>
-            <div><div class="q-name">Registrar</div><div class="q-role">Professional training institution</div></div>
-          </div>
-        </div>
       </div>
     </div>
   </section>
@@ -1991,8 +2213,8 @@
       const LINK_DIST = opts.linkDist || 120;
       const MOUSE_DIST = opts.mouseDist || 160;
       const PULL = opts.pull ?? 0.35;        // mouse responsiveness
-      const leftColor = opts.leftColor || '0,180,216';
-      const rightColor = opts.rightColor || '0,180,216';
+      const leftColor = opts.leftColor || '20,164,188';
+      const rightColor = opts.rightColor || '20,164,188';
       const leftBand = opts.leftBand ?? 0.28;
       const rightBand = opts.rightBand ?? 0.72;
       let dpr = Math.min(window.devicePixelRatio || 1, 2);
@@ -2116,7 +2338,7 @@
     initNodeNetwork(
       document.querySelector('.hero'),
       document.getElementById('heroNetwork'),
-      { leftColor: '0,180,216', rightColor: '0,180,216', linkDist: 130, mouseDist: 260, pull: 0.65 }
+      { leftColor: '20,164,188', rightColor: '20,164,188', linkDist: 130, mouseDist: 260, pull: 0.65 }
     );
 
     // Products header — green left (ESGLedger), gold right (CertLedger)
@@ -2370,6 +2592,74 @@
         });
       }, { threshold: 0.2 }).observe(reclaimSection);
     }
+
+    // --- Liquid glass credentials: scroll-driven fan expansion ---
+    (function initGlassFan() {
+      const stage = document.getElementById('glassStage');
+      if (!stage) return;
+      const cards = [...stage.querySelectorAll('.glass-card')];
+      const n = cards.length;
+      const mid = (n - 1) / 2;
+
+      // random-ish sheen timing per card
+      cards.forEach((c, i) => c.style.setProperty('--sheen-delay', (i * 1.15).toFixed(2)));
+
+      if (reducedMotion) {
+        // static fanned layout
+        cards.forEach((c, i) => {
+          const k = i - mid;
+          c.style.transform = `translateX(${k * 130}%) rotate(${k * 8}deg)`;
+        });
+        return;
+      }
+
+      const easeOutCubic = t => 1 - Math.pow(1 - t, 3);
+
+      function layout() {
+        const r = stage.getBoundingClientRect();
+        const vh = window.innerHeight;
+        // progress: 0 when stage enters viewport bottom, 1 when its center reaches ~40% of viewport
+        const raw = (vh - r.top) / (vh * 0.85);
+        const t = easeOutCubic(Math.max(0, Math.min(1, raw)));
+        const spreadX = Math.min(r.width * 0.36, 300);  // px per step, responsive
+        cards.forEach((c, i) => {
+          const k = i - mid;
+          const x = k * spreadX * t;
+          const rot = k * 9 * t;
+          const y = Math.abs(k) * 26 * t - t * 10;
+          const z = 10 - Math.abs(k);
+          c.style.transform = `translate(${x}px, ${y}px) rotate(${rot}deg)`;
+          c.style.zIndex = z;
+        });
+      }
+
+      let ticking = false;
+      const onScroll = () => {
+        if (!ticking) {
+          requestAnimationFrame(() => { layout(); ticking = false; });
+          ticking = true;
+        }
+      };
+      window.addEventListener('scroll', onScroll, { passive: true });
+      window.addEventListener('resize', onScroll, { passive: true });
+      layout();
+
+      // lift + glow on hover (uses the standalone scale property so the
+      // scroll-driven transform is never disturbed)
+      if (window.matchMedia('(hover: hover)').matches) {
+        cards.forEach(card => {
+          card.style.transition = 'box-shadow 0.35s ease, scale 0.3s ease, filter 0.3s ease';
+          card.addEventListener('mouseenter', () => {
+            card.style.scale = '1.06';
+            card.style.filter = 'brightness(1.05)';
+          });
+          card.addEventListener('mouseleave', () => {
+            card.style.removeProperty('scale');
+            card.style.removeProperty('filter');
+          });
+        });
+      }
+    })();
 
     // --- 8. Seamless partner marquee (no gaps on wide screens) ---
     (function initPartnerMarquee() {
