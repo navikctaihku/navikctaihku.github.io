@@ -223,18 +223,18 @@
   }
 
   function init() {
-    // Site-wide typography: make sure the display font is available everywhere
-    if (!document.querySelector('link[href*="Space+Grotesk"]')) {
+    // Site-wide typography per brand guide: Nunito display, Inter body, Noto Sans TC CJK
+    if (!document.querySelector('link[href*="Nunito"]')) {
       var fl = document.createElement('link');
       fl.rel = 'stylesheet';
-      fl.href = 'https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700;800;900&display=swap';
+      fl.href = 'https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800&family=Inter:wght@400;500;600;700&family=Noto+Sans+TC:wght@400;500;700&display=swap';
       document.head.appendChild(fl);
     }
     var style = document.createElement('style');
     style.textContent = CSS + `
-  /* Site-wide type system: Space Grotesk for headings, Inter for body */
-  h1, h2, h3 { font-family: 'Space Grotesk', 'Inter', -apple-system, sans-serif; letter-spacing: -0.02em; }
-  body { font-family: 'Inter', -apple-system, sans-serif; }
+  /* Brand typography — Nunito headings, Inter body, Noto Sans TC fallback */
+  h1, h2, h3, h4 { font-family: 'Nunito', 'Inter', -apple-system, sans-serif; letter-spacing: -0.02em; }
+  body { font-family: 'Inter', 'Noto Sans TC', -apple-system, sans-serif; }
 `;
     document.head.appendChild(style);
 

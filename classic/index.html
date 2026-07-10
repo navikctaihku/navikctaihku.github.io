@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>OneChain — Enterprise Blockchain Infrastructure</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
   <script src="site-chrome.js" defer></script>
   <style>
     /* ===== RESET & TOKENS ===== */
@@ -32,31 +32,29 @@
       --oc-cert-gold: #0d7d91;
       --oc-ai-purple: #7F77DD;
       --font-sans: 'Inter', -apple-system, sans-serif;
-      --font-display: 'Space Grotesk', 'Inter', -apple-system, sans-serif;
+      --font-body: 'Inter', -apple-system, sans-serif;
+      --font-display: 'Nunito', 'Inter', -apple-system, sans-serif;
       --font-mono: 'JetBrains Mono', monospace;
+      --font-cjk: 'Noto Sans TC', sans-serif;
     }
     html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
-    body { font-family: var(--font-sans); color: var(--oc-text); background: var(--oc-bg); line-height: 1.6; }
+    body {
+      font-family: var(--font-body), var(--font-cjk), -apple-system, sans-serif;
+      color: var(--oc-text); background: var(--oc-bg); line-height: 1.6;
+    }
     a { text-decoration: none; color: inherit; }
     img { max-width: 100%; display: block; }
 
-    /* ===== TYPOGRAPHY SYSTEM =====
-       Display font for all major headings, Inter for body copy. */
-    h1, h2, h3,
+    /* ===== TYPOGRAPHY (brand PDF / design-system)
+       Nunito for display headings, Inter for UI/body, Noto Sans TC for CJK. */
+    h1, h2, h3, h4,
     .features-header h2, .products-header h2, .solutions-copy h2,
     .shipped-section h2, .ecosystem-title, .insights-title,
     .quotes-head h2, .video-header h2, .reclaim h2, .cta-banner h2,
-    .hero-overlay .hero-tagline, .glass-header h2 {
+    .hero-overlay .hero-tagline, .glass-header h2,
+    .feature-card h3, .product-card h3, .insight-card-title, .insight-thumb-title {
       font-family: var(--font-display);
-      letter-spacing: -0.025em;
-    }
-    /* Space Grotesk ships up to 700 — cap display weights so nothing renders
-       as faux-bold */
-    .features-header h2, .products-header h2, .solutions-copy h2,
-    .shipped-section h2, .ecosystem-title, .insights-title,
-    .quotes-head h2, .video-header h2, .reclaim h2, .cta-banner h2,
-    .hero-overlay .hero-tagline, .glass-header h2 {
-      font-weight: 700 !important;
+      letter-spacing: -0.02em;
     }
 
     /* ===== ALTERNATING SECTION BANDS (梅花間竹) ===== */

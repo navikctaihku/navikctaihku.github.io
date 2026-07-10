@@ -6,7 +6,7 @@
   <title>Company — Infrastructure, Applications & Green Tech | OneChain</title>
   <meta name="description" content="What OneChain builds: enterprise blockchain infrastructure, production applications, and green technology for the circular economy.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
   <script src="site-chrome.js" defer></script>
   <style>
     :root {
@@ -16,11 +16,13 @@
       --green: #2ECC71; --gold: #F0B429; --purple: #7F77DD;
       --bg-alt: #FAFAFA;
       --font: 'Inter', -apple-system, sans-serif;
+      --font-display: 'Nunito', 'Inter', -apple-system, sans-serif;
+      --font-cjk: 'Noto Sans TC', sans-serif;
       --mono: 'JetBrains Mono', monospace;
     }
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
     html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
-    body { font-family: var(--font); color: var(--ink); background: #fff; line-height: 1.6; }
+    body { font-family: var(--font), var(--font-cjk), sans-serif; color: var(--ink); background: #fff; line-height: 1.6; }
     a { text-decoration: none; color: inherit; }
     .container { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
 
@@ -47,7 +49,7 @@
     @keyframes aur-3 { 0%,100% { transform: translate(0,0) scale(1); } 50% { transform: translate(30px,-25px) scale(1.12); } }
     @media (prefers-reduced-motion: reduce) { .hero-aurora span { animation: none; } }
     .hero .container { position: relative; }
-    .hero h1 { font-size: clamp(44px, 7vw, 76px); font-weight: 800; letter-spacing: -0.03em; line-height: 1.05; }
+    .hero h1 { font-family: var(--font-display); font-size: clamp(44px, 7vw, 76px); font-weight: 800; letter-spacing: -0.03em; line-height: 1.05; }
     .hero h1 .dim { color: var(--muted-2); }
     .hero p { font-size: 19px; color: var(--muted); max-width: 620px; margin: 24px auto 36px; }
     .hero-ctas { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
@@ -71,7 +73,7 @@
     .section { padding: 104px 0; }
     .section-alt { background: var(--bg-alt); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
     .eyebrow { font: 600 12px/1 var(--font); letter-spacing: 2px; text-transform: uppercase; color: var(--primary); margin-bottom: 14px; }
-    .section h2 { font-size: clamp(30px, 4vw, 44px); font-weight: 800; letter-spacing: -0.02em; line-height: 1.15; max-width: 640px; }
+    .section h2 { font-family: var(--font-display); font-size: clamp(30px, 4vw, 44px); font-weight: 800; letter-spacing: -0.02em; line-height: 1.15; max-width: 640px; }
     .section .lede { font-size: 17px; color: var(--muted); max-width: 600px; margin-top: 16px; }
 
     /* infrastructure: 3-layer diagram cards */
@@ -133,7 +135,7 @@
 
     /* CTA */
     .cta { padding: 112px 0; text-align: center; }
-    .cta h2 { font-size: clamp(30px, 4vw, 44px); font-weight: 800; letter-spacing: -0.02em; }
+    .cta h2 { font-family: var(--font-display); font-size: clamp(30px, 4vw, 44px); font-weight: 800; letter-spacing: -0.02em; }
     .cta p { font-size: 17px; color: var(--muted); margin: 14px auto 32px; max-width: 480px; }
 
     .reveal { opacity: 0; transform: translateY(28px); transition: opacity .7s ease, transform .7s cubic-bezier(.16,1,.3,1); }
