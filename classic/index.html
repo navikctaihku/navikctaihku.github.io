@@ -629,7 +629,7 @@
     .product-showcase-visual .fan-cards { width: 200px; height: 280px; }
     .product-showcase-visual .fan-card { width: 180px; height: 260px; }
 
-    .support-mock {
+    .custom-mock {
       position: relative; z-index: 1;
       width: min(100%, 400px);
       background: #fff;
@@ -638,29 +638,43 @@
       box-shadow: 0 16px 40px rgba(10, 22, 40, 0.1);
       overflow: hidden;
     }
-    .support-mock-header {
-      display: flex; align-items: center; gap: 8px;
+    .custom-mock-header {
       padding: 14px 18px;
       background: linear-gradient(120deg, #5b6eae, #7a8fd4);
       color: #fff; font-size: 13px; font-weight: 600;
     }
-    .support-mock-dot {
-      width: 8px; height: 8px; border-radius: 50%; background: #7ddea0;
+    .custom-mock-body { padding: 18px; display: flex; flex-direction: column; gap: 12px; }
+    .custom-mock-label {
+      font-size: 11px; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.08em; color: var(--oc-muted-light);
     }
-    .support-mock-body { padding: 18px; display: flex; flex-direction: column; gap: 12px; }
-    .support-bubble {
-      max-width: 88%; padding: 10px 14px; border-radius: 14px;
-      font-size: 13px; line-height: 1.45; color: var(--oc-text-secondary);
+    .custom-module {
+      display: flex; align-items: center; gap: 10px;
+      padding: 10px 12px; border-radius: 10px;
+      background: #f8fafc; border: 1px solid rgba(10, 22, 40, 0.06);
+      font-size: 13px; color: var(--oc-text-secondary);
     }
-    .support-bubble--them {
-      align-self: flex-start;
-      background: #f1f5f9; border-bottom-left-radius: 4px;
+    .custom-module.is-on {
+      background: rgba(91, 110, 174, 0.08);
+      border-color: rgba(91, 110, 174, 0.2);
+      color: #3d4f7a; font-weight: 600;
     }
-    .support-bubble--us {
-      align-self: flex-end;
-      background: rgba(91, 110, 174, 0.12); color: #3d4f7a;
-      border-bottom-right-radius: 4px;
+    .custom-module-check {
+      width: 18px; height: 18px; border-radius: 5px; flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 11px; font-weight: 700;
+      background: #e2e8f0; color: transparent;
     }
+    .custom-module.is-on .custom-module-check {
+      background: #5b6eae; color: #fff;
+    }
+    .custom-mock-footer {
+      margin-top: 4px; padding-top: 14px;
+      border-top: 1px dashed rgba(10, 22, 40, 0.1);
+      font-size: 12px; color: var(--oc-muted);
+      line-height: 1.5;
+    }
+    .custom-mock-footer strong { color: var(--oc-dark); font-weight: 700; }
 
     .product-showcase-copy {
       display: flex; flex-direction: column; justify-content: center; align-items: center;
@@ -2095,33 +2109,35 @@
               </div>
             </article>
 
-            <!-- Customer Service -->
+            <!-- Customer Service — bespoke solutions -->
             <article class="product-showcase-slide" data-index="3" data-product="support" role="tabpanel">
               <div class="product-showcase-visual product-showcase-visual--support">
-                <div class="support-mock" aria-hidden="true">
-                  <div class="support-mock-header">
-                    <span class="support-mock-dot"></span>
-                    OneChain Enterprise Support
-                  </div>
-                  <div class="support-mock-body">
-                    <div class="support-bubble support-bubble--them">Hi — how can we help with your deployment today?</div>
-                    <div class="support-bubble support-bubble--us">We need help integrating CertLedger with our LMS.</div>
-                    <div class="support-bubble support-bubble--them">Our solutions team can schedule an onboarding workshop this week.</div>
+                <div class="custom-mock" aria-hidden="true">
+                  <div class="custom-mock-header">Your tailored OneChain solution</div>
+                  <div class="custom-mock-body">
+                    <div class="custom-mock-label">Select what your business needs</div>
+                    <div class="custom-module is-on"><span class="custom-module-check">&#10003;</span> ESG credit traceability</div>
+                    <div class="custom-module is-on"><span class="custom-module-check">&#10003;</span> Credential issuance workflow</div>
+                    <div class="custom-module"><span class="custom-module-check">&#10003;</span> API &amp; system integration</div>
+                    <div class="custom-module is-on"><span class="custom-module-check">&#10003;</span> Custom compliance reporting</div>
+                    <div class="custom-mock-footer">
+                      Built for <strong>your industry, your rules</strong> — we configure the platform around the services you actually need.
+                    </div>
                   </div>
                 </div>
               </div>
               <div class="product-showcase-copy">
                 <span class="product-showcase-badge">Customer Service</span>
-                <h3>Enterprise Support, Built In</h3>
-                <p>Dedicated onboarding, training, and technical assistance for partners deploying OneChain at scale — from first integration to production.</p>
+                <h3>Services Tailored to You</h3>
+                <p>Every client is different. We work with you to customise the OneChain capabilities you need — mixing ESGLedger, CertLedger, APIs, and workflows into a solution built for your business.</p>
                 <ul class="product-showcase-features">
-                  <li><span class="pf-check">&#10003;</span> Dedicated account manager for enterprise clients</li>
-                  <li><span class="pf-check">&#10003;</span> Onboarding workshops and integration guidance</li>
-                  <li><span class="pf-check">&#10003;</span> SLA-backed technical support</li>
-                  <li><span class="pf-check">&#10003;</span> 24/7 incident response for production deployments</li>
+                  <li><span class="pf-check">&#10003;</span> Consultative discovery to map your trust requirements</li>
+                  <li><span class="pf-check">&#10003;</span> Modular mix of products — pick only what you need</li>
+                  <li><span class="pf-check">&#10003;</span> Custom workflows, branding, and compliance reporting</li>
+                  <li><span class="pf-check">&#10003;</span> End-to-end deployment with your dedicated solutions team</li>
                 </ul>
                 <a href="mailto:enquiries@onechain.hk" class="product-showcase-cta">
-                  Contact Support
+                  Discuss Your Needs
                   <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M6 3l5 5-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
                 </a>
               </div>
