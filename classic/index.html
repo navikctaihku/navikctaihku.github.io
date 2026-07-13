@@ -1484,7 +1484,7 @@
     .reclaim-video-wrap {
       position: relative; z-index: 1;
       width: 100%; max-width: 820px;
-      aspect-ratio: 2 / 1;
+      aspect-ratio: 800 / 375;
       overflow: hidden;
       background: #ffffff;
     }
@@ -1596,6 +1596,45 @@
       font-family: var(--font-mono); font-size: 11px; letter-spacing: 1px;
       text-transform: uppercase; color: var(--oc-primary);
     }
+
+    .ai-stats {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: 18px; margin-bottom: 88px;
+      padding: 36px 28px;
+      background: rgba(255,255,255,0.75);
+      border: 1px solid rgba(127,119,221,0.14);
+      border-radius: 20px;
+      backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+    }
+    .ai-stat {
+      text-align: center; padding: 8px 12px;
+      border-radius: 12px;
+      transition: background 0.25s ease, transform 0.25s ease;
+      cursor: default;
+    }
+    .ai-stat:hover {
+      background: rgba(127,119,221,0.06);
+      transform: translateY(-3px);
+    }
+    .ai-stat-num {
+      display: block;
+      font-family: var(--font-display);
+      font-size: clamp(30px, 3.4vw, 44px); font-weight: 800;
+      letter-spacing: -0.02em; line-height: 1.1;
+      background: linear-gradient(120deg, var(--oc-ai-purple), var(--oc-primary));
+      -webkit-background-clip: text; background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 6px;
+    }
+    .ai-stat-label {
+      font-size: 13px; color: var(--oc-muted);
+      letter-spacing: 0.01em;
+    }
+    @media (max-width: 920px) { .ai-stats { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 480px) { .ai-stats { grid-template-columns: 1fr; } }
+
+    .ai-cta { will-change: transform; }
+    .ai-card h3 { min-height: 1.3em; }
 
     .ai-journey { text-align: center; }
     .ai-journey h3 {
@@ -2334,6 +2373,25 @@
         </div>
       </div>
 
+      <div class="ai-stats reveal" id="aiStats">
+        <div class="ai-stat">
+          <span class="ai-stat-num"><span id="aiStatTps">0</span>+</span>
+          <span class="ai-stat-label">TPS analysed in real time</span>
+        </div>
+        <div class="ai-stat">
+          <span class="ai-stat-num"><span id="aiStatAudit">0</span>%</span>
+          <span class="ai-stat-label">On-chain auditable data trail</span>
+        </div>
+        <div class="ai-stat">
+          <span class="ai-stat-num">&lt;<span id="aiStatVerify">0</span>s</span>
+          <span class="ai-stat-label">Credential verification</span>
+        </div>
+        <div class="ai-stat">
+          <span class="ai-stat-num"><span id="aiStatMonitor">0</span>/7</span>
+          <span class="ai-stat-label">AI monitoring &amp; alerts</span>
+        </div>
+      </div>
+
       <div class="ai-journey reveal">
         <h3>Bring AI to your business</h3>
         <p>Not sure where to start with AI? We take you from first assessment to production &mdash; on data you can prove.</p>
@@ -2929,9 +2987,10 @@
   <!-- FOOTER (shared, injected by site-chrome.js) -->
   <div id="site-footer"></div>
 
-  <!-- Interactive effect libraries (CDN): tsParticles network + vanilla-tilt 3D cards -->
+  <!-- Interactive effect libraries (CDN): tsParticles network + vanilla-tilt 3D cards + countUp stats -->
   <script src="https://cdn.jsdelivr.net/npm/tsparticles@3/tsparticles.bundle.min.js" defer></script>
   <script src="https://cdn.jsdelivr.net/npm/vanilla-tilt@1.8.1/dist/vanilla-tilt.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/countup.js@2.8.0/dist/countUp.umd.js" defer></script>
 
   <!-- SCRIPTS -->
   <script>
@@ -3254,7 +3313,70 @@
         }
       }
 
-      // 5. Typewriter on the headline use-case phrase
+      // 5. Count-up stats when scrolled into view (countUp.js)
+      whenReady(() => {
+        const statsEl = document.getElementById('aiStats');
+        if (!statsEl) return;
+        const defs = [
+          ['aiStatTps', 3000], ['aiStatAudit', 100],
+          ['aiStatVerify', 3], ['aiStatMonitor', 24]
+        ];
+        if (aiReduced || typeof countUp === 'undefined') {
+          defs.forEach(([id, v]) => {
+            const el = document.getElementById(id);
+            if (el) el.textContent = v.toLocaleString();
+          });
+          return;
+        }
+        defs.forEach(([id, v]) => {
+          new countUp.CountUp(id, v, { duration: 2.2, autoAnimate: true, autoAnimateOnce: true });
+        });
+      });
+
+      // 6. Magnetic CTA — button pulls toward the cursor as it approaches
+      const cta = section.querySelector('.ai-cta');
+      if (cta && !aiReduced) {
+        const RADIUS = 140, STRENGTH = 0.35;
+        window.addEventListener('mousemove', (e) => {
+          const r = cta.getBoundingClientRect();
+          const cx = r.left + r.width / 2, cy = r.top + r.height / 2;
+          const dx = e.clientX - cx, dy = e.clientY - cy;
+          const d = Math.hypot(dx, dy);
+          if (d < RADIUS) {
+            const f = (1 - d / RADIUS) * STRENGTH;
+            cta.style.transform = `translate(${dx * f}px, ${dy * f}px)`;
+          } else if (cta.style.transform) {
+            cta.style.transform = '';
+          }
+        }, { passive: true });
+      }
+
+      // 7. Scramble-decode card titles on hover (matrix-style)
+      if (!aiReduced) {
+        const SCRAMBLE_CHARS = '01<>#$%&@ABCDEF';
+        section.querySelectorAll('.ai-card h3').forEach((titleEl) => {
+          const original = titleEl.textContent;
+          let raf = null;
+          titleEl.closest('.ai-card').addEventListener('mouseenter', () => {
+            if (raf) cancelAnimationFrame(raf);
+            let frame = 0;
+            const total = Math.max(14, original.length * 2);
+            const step = () => {
+              frame += 1;
+              const solved = Math.floor((frame / total) * original.length);
+              titleEl.textContent = original.split('').map((ch, i) => {
+                if (ch === ' ' || i < solved) return ch;
+                return SCRAMBLE_CHARS[Math.floor(Math.random() * SCRAMBLE_CHARS.length)];
+              }).join('');
+              if (frame < total) raf = requestAnimationFrame(step);
+              else { titleEl.textContent = original; raf = null; }
+            };
+            raf = requestAnimationFrame(step);
+          });
+        });
+      }
+
+      // 8. Typewriter on the headline use-case phrase
       const typeEl = document.getElementById('aiTypeWord');
       if (typeEl) {
         const phrases = [
