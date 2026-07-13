@@ -1470,34 +1470,23 @@
     .reclaim-video-wrap {
       position: relative; z-index: 1;
       width: 100%; max-width: 600px;
-      overflow: visible;
+      aspect-ratio: 1280 / 500;
+      overflow: hidden;
       background: transparent;
     }
     .reclaim-video {
       display: block;
       width: 100%;
-      height: auto;
-      object-fit: contain;
+      height: 100%;
+      object-fit: cover;
       object-position: center center;
       background: transparent;
       /* video bg is ~rgb(200,205,205); brightness pushes it to white,
          multiply makes remaining white melt into the page */
       filter: brightness(1.28) contrast(1.02) saturate(1.15);
       mix-blend-mode: multiply;
-      -webkit-mask-image: radial-gradient(ellipse 96% 92% at 50% 48%, #000 60%, transparent 100%);
-              mask-image: radial-gradient(ellipse 96% 92% at 50% 48%, #000 60%, transparent 100%);
-    }
-    /* feathered white cover: hides the watermark in the bottom-right corner
-       without the hard rectangular edge a solid patch would show */
-    .reclaim-video-cover {
-      position: absolute;
-      right: -4%;
-      bottom: -6%;
-      width: 46%;
-      height: 42%;
-      background: radial-gradient(ellipse at 100% 100%, #fff 0%, #fff 48%, rgba(255,255,255,0) 78%);
-      pointer-events: none;
-      z-index: 2;
+      -webkit-mask-image: radial-gradient(ellipse 92% 88% at 50% 50%, #000 65%, transparent 100%);
+              mask-image: radial-gradient(ellipse 92% 88% at 50% 50%, #000 65%, transparent 100%);
     }
 
     @media (max-width: 920px) {
@@ -1901,7 +1890,7 @@
     </div>
   </div>
 
-  <!-- URBAN INFRASTRUCTURE — split layout + holographic city video -->
+  <!-- URBAN INFRASTRUCTURE — split layout + blockchain data chain video -->
   <section class="reclaim reveal band-white" id="reclamation">
     <div class="reclaim-split">
       <div class="reclaim-copy">
@@ -1922,11 +1911,10 @@
           <video
             class="reclaim-video"
             id="reclaimVideo"
-            src="videos/holographic-city.mp4?v=202607021210"
+            src="videos/blockchain-data-chain.mp4?v=202607131311"
             autoplay muted loop playsinline preload="auto"
-            aria-label="Futuristic holographic wireframe city animation"
+            aria-label="Blockchain data chain animation with global network visualization"
           ></video>
-          <div class="reclaim-video-cover" aria-hidden="true"></div>
         </div>
       </div>
     </div>
