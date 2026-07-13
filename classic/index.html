@@ -1475,7 +1475,7 @@
     .reclaim-media {
       position: relative;
       display: flex; align-items: center; justify-content: center;
-      min-height: 440px;
+      min-height: 480px;
       background: #ffffff;
     }
     .reclaim-media-glow {
@@ -1484,7 +1484,7 @@
     .reclaim-video-wrap {
       position: relative; z-index: 1;
       width: 100%; max-width: 820px;
-      aspect-ratio: 800 / 375;
+      aspect-ratio: 800 / 590;
       overflow: hidden;
       background: #ffffff;
     }
@@ -2091,7 +2091,7 @@
           <video
             class="reclaim-video"
             id="reclaimVideo"
-            src="videos/isometric-globe-blockchain-v2.mp4?v=202607131619"
+            src="videos/isometric-globe-blockchain-v2.mp4?v=202607131628"
             autoplay muted loop playsinline preload="auto"
             aria-label="Isometric globe with blockchain chain and global network animation"
           ></video>
@@ -3312,7 +3312,7 @@
         }
       }
 
-      // 5. Count-up stats when scrolled into view (countUp.js)
+      // 5. Count-up stats when scrolled into view (countUp.js + IntersectionObserver)
       whenReady(() => {
         const statsEl = document.getElementById('aiStats');
         if (!statsEl) return;
@@ -3320,16 +3320,39 @@
           ['aiStatTps', 3000], ['aiStatAudit', 100],
           ['aiStatVerify', 3], ['aiStatMonitor', 24]
         ];
-        if (aiReduced || typeof countUp === 'undefined') {
-          defs.forEach(([id, v]) => {
-            const el = document.getElementById(id);
-            if (el) el.textContent = v.toLocaleString();
-          });
+        const showFinal = () => defs.forEach(([id, v]) => {
+          const el = document.getElementById(id);
+          if (el) el.textContent = v.toLocaleString();
+        });
+        if (aiReduced || typeof countUp === 'undefined' || !countUp.CountUp) {
+          showFinal();
           return;
         }
-        defs.forEach(([id, v]) => {
-          new countUp.CountUp(id, v, { duration: 2.2, autoAnimate: true, autoAnimateOnce: true });
-        });
+        let started = false;
+        const startAll = () => {
+          if (started) return;
+          started = true;
+          defs.forEach(([id, v]) => {
+            const c = new countUp.CountUp(id, v, { duration: 2.2 });
+            if (c.error) {
+              const el = document.getElementById(id);
+              if (el) el.textContent = v.toLocaleString();
+            } else {
+              c.start();
+            }
+          });
+        };
+        const obs = new IntersectionObserver((entries) => {
+          entries.forEach((e) => {
+            if (e.isIntersecting) { startAll(); obs.disconnect(); }
+          });
+        }, { threshold: 0.3 });
+        obs.observe(statsEl);
+        // fallback: if already in view or observer missed, start after a beat
+        setTimeout(() => {
+          const r = statsEl.getBoundingClientRect();
+          if (r.top < window.innerHeight && r.bottom > 0) startAll();
+        }, 800);
       });
 
       // 6. Magnetic CTA — button pulls toward the cursor as it approaches
