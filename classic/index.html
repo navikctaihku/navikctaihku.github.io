@@ -1634,7 +1634,6 @@
     @media (max-width: 480px) { .ai-stats { grid-template-columns: 1fr; } }
 
     .ai-cta { will-change: transform; }
-    .ai-card h3 { min-height: 1.3em; }
 
     .ai-journey { text-align: center; }
     .ai-journey h3 {
@@ -3351,32 +3350,7 @@
         }, { passive: true });
       }
 
-      // 7. Scramble-decode card titles on hover (matrix-style)
-      if (!aiReduced) {
-        const SCRAMBLE_CHARS = '01<>#$%&@ABCDEF';
-        section.querySelectorAll('.ai-card h3').forEach((titleEl) => {
-          const original = titleEl.textContent;
-          let raf = null;
-          titleEl.closest('.ai-card').addEventListener('mouseenter', () => {
-            if (raf) cancelAnimationFrame(raf);
-            let frame = 0;
-            const total = Math.max(14, original.length * 2);
-            const step = () => {
-              frame += 1;
-              const solved = Math.floor((frame / total) * original.length);
-              titleEl.textContent = original.split('').map((ch, i) => {
-                if (ch === ' ' || i < solved) return ch;
-                return SCRAMBLE_CHARS[Math.floor(Math.random() * SCRAMBLE_CHARS.length)];
-              }).join('');
-              if (frame < total) raf = requestAnimationFrame(step);
-              else { titleEl.textContent = original; raf = null; }
-            };
-            raf = requestAnimationFrame(step);
-          });
-        });
-      }
-
-      // 8. Typewriter on the headline use-case phrase
+      // 7. Typewriter on the headline use-case phrase
       const typeEl = document.getElementById('aiTypeWord');
       if (typeEl) {
         const phrases = [
