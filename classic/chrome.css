@@ -1,6 +1,6 @@
 /* Shared OneChain navigation and footer styles. */
   :root {
-    --sc-ink: #0A1628;
+    --sc-ink: #545454;
     --sc-muted: #64748B;
     --sc-muted-2: #94A3B8;
     --sc-border: rgba(10,22,40,0.08);
@@ -62,7 +62,7 @@
   .sc-btn-ghost { font: 500 14px/1 'Inter', sans-serif; color: var(--sc-muted); text-decoration: none;
     padding: 9px 14px; border-radius: 8px; transition: color .15s, background .15s; }
   .sc-btn-ghost:hover { color: var(--sc-ink); background: rgba(10,22,40,0.04); }
-  .sc-btn-primary { font: 600 14px/1 'Inter', sans-serif; color: #fff; background: var(--sc-ink);
+  .sc-btn-primary { font: 600 14px/1 'Inter', sans-serif; color: #fff; background: #0A1628;
     text-decoration: none; padding: 10px 18px; border-radius: 8px; transition: background .2s, transform .2s; }
   .sc-btn-primary:hover { background: #1a2a40; transform: translateY(-1px); }
   .sc-burger { display: none; border: none; background: none; cursor: pointer; font-size: 22px;
