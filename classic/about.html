@@ -13,13 +13,13 @@
     :root {
       --ink: #0A1628; --muted: #64748B; --muted-2: #94A3B8;
       --border: rgba(10,22,40,0.08); --border-2: rgba(10,22,40,0.12);
-      --primary: #016282; --primary-light: #0189B5; --cyan: #00B4D8;
-      --green: #2ECC71; --gold: #F0B429; --purple: #7F77DD;
+      --primary: #14a4bc; --primary-light: #3cbdd2; --cyan: #14a4bc;
+      --green: #007771; --gold: #016282; --purple: #14a4bc;
       --bg-alt: #FAFAFA;
       --font: 'Inter', -apple-system, sans-serif;
       --font-display: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
       --font-cjk: 'Noto Sans TC', sans-serif;
-      --mono: 'JetBrains Mono', monospace;
+      --mono: 'Inter', -apple-system, sans-serif;
     }
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
     html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
@@ -37,13 +37,13 @@
     .hero-aurora { position: absolute; inset: 0; overflow: hidden; pointer-events: none; }
     .hero-aurora span { position: absolute; border-radius: 50%; filter: blur(80px); opacity: .5; will-change: transform; }
     .hero-aurora span:nth-child(1) { width: 480px; height: 480px; top: -12%; left: 8%;
-      background: radial-gradient(circle, rgba(1,137,181,0.35), transparent 70%);
+      background: radial-gradient(circle, rgba(20,164,188,0.35), transparent 70%);
       animation: aur-1 16s ease-in-out infinite; }
     .hero-aurora span:nth-child(2) { width: 420px; height: 420px; top: 4%; right: 6%;
-      background: radial-gradient(circle, rgba(127,119,221,0.22), transparent 70%);
+      background: radial-gradient(circle, rgba(20,164,188,0.22), transparent 70%);
       animation: aur-2 20s ease-in-out infinite; }
     .hero-aurora span:nth-child(3) { width: 360px; height: 360px; top: 30%; left: 40%;
-      background: radial-gradient(circle, rgba(0,180,216,0.18), transparent 70%);
+      background: radial-gradient(circle, rgba(20,164,188,0.18), transparent 70%);
       animation: aur-3 24s ease-in-out infinite; }
     @keyframes aur-1 { 0%,100% { transform: translate(0,0) scale(1); } 50% { transform: translate(50px,30px) scale(1.1); } }
     @keyframes aur-2 { 0%,100% { transform: translate(0,0) scale(1); } 50% { transform: translate(-40px,25px) scale(1.06); } }
@@ -85,7 +85,7 @@
     .doing-card { border: 1px solid var(--border); border-radius: 14px; padding: 28px; background: #fff; transition: all .2s; }
     .doing-card:hover { border-color: var(--primary-light); box-shadow: 0 8px 28px rgba(10,22,40,0.07); transform: translateY(-2px); }
     .doing-card .d-icon { width: 40px; height: 40px; border-radius: 10px; display: flex; align-items: center;
-      justify-content: center; font-size: 18px; background: rgba(1,137,181,0.10); }
+      justify-content: center; font-size: 18px; background: rgba(20,164,188,0.10); }
     .doing-card h4 { font-size: 16.5px; font-weight: 700; margin: 16px 0 8px; }
     .doing-card p { font-size: 13.5px; color: var(--muted); }
     @media (max-width: 860px) { .doing-grid { grid-template-columns: 1fr; } }
@@ -160,7 +160,7 @@
     }
   </style>
   <link rel="stylesheet" href="tokens.css">
-  <link rel="stylesheet" href="global.css?v=202607141720">
+  <link rel="stylesheet" href="global.css?v=202607141745">
 </head>
 <body>
   <div id="site-nav"></div>
@@ -342,7 +342,7 @@
       let W = 0, H = 0, dpr = 1;
       let renderP = 0;
       let blocks = [], trails = [];
-      const CY = '0,180,216', PR = '1,98,130', PU = '127,119,221';
+      const CY = '20,164,188', PR = '13,125,145', PU = '1,98,130';
 
       function resize() {
         dpr = Math.min(window.devicePixelRatio || 1, 2);
@@ -451,7 +451,7 @@
           drawBlock(cx, cy, s, s * 1.15, b.hue, glow);
         });
 
-        ctx.fillStyle = 'rgba(0,180,216,0.03)';
+        ctx.fillStyle = 'rgba(20,164,188,0.03)';
         ctx.fillRect(0, H * 0.7, W, 2);
       }
 
