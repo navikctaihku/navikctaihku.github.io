@@ -19,7 +19,7 @@
     return '<span class="sc-item-icon" style="background:' + bg + '" aria-hidden="true"><svg viewBox="0 0 24 24">' + svg + '</svg></span>';
   };
   var item = function (href, ic, name, desc) {
-    return '<a class="sc-item" href="' + href + '">' + ic +
+    return '<a class="sc-item" href="' + href + '">' +
       '<span><span class="sc-item-name">' + name + '</span>' +
       '<span class="sc-item-desc" style="display:block">' + desc + '</span></span></a>';
   };
