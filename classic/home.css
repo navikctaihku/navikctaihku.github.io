@@ -1163,8 +1163,9 @@
       margin-top: 14px; font-size: 13px; font-weight: 700; color: #fff;
     }
     .solutions-copy h2 {
-      font-size: 56px; font-weight: 700; letter-spacing: -0.03em; line-height: 1.05;
-      max-width: 520px; margin-bottom: 24px; color: var(--oc-text);
+      font-size: clamp(28px, 2.6vw, 42px); font-weight: 700; letter-spacing: -0.03em; line-height: 1.15;
+      max-width: none; margin-bottom: 24px; color: var(--oc-text);
+      white-space: nowrap;
     }
     .solutions-copy .accent { color: #0d7d91; }
     .solutions-copy p {
@@ -1174,12 +1175,12 @@
 
     @media (max-width: 1024px) {
       .solutions-split { grid-template-columns: 1fr; gap: 40px; }
-      .solutions-copy h2 { max-width: none; }
+      .solutions-copy h2 { max-width: none; white-space: normal; }
       .solutions-copy p { max-width: none; }
     }
     @media (max-width: 768px) {
       .solutions-grid { grid-template-columns: repeat(2, 1fr); }
-      .solutions-copy h2 { font-size: 40px; }
+      .solutions-copy h2 { font-size: clamp(28px, 7vw, 40px); }
       .solution-card { min-height: 0; perspective: none; }
       .solution-card-inner { min-height: 0; transform: none !important; }
       .solution-front { display: none; }
