@@ -541,7 +541,13 @@
       max-width: 920px; margin: 0 auto 80px; text-align: center;
     }
     .features-header h2 { margin-bottom: 20px; }
-    .features-header p { color: var(--oc-muted); line-height: 1.6; max-width: 640px; }
+    .features-header p {
+      color: var(--oc-muted); line-height: 1.6;
+      max-width: none; white-space: nowrap;
+    }
+    @media (max-width: 900px) {
+      .features-header p { white-space: normal; max-width: 640px; }
+    }
     .features-grid {
       display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px;
       background: var(--oc-border);
@@ -628,6 +634,7 @@
     .blockchain-services-summary p {
       margin-bottom: 24px;
       font-size: 17px; line-height: 1.7; color: var(--oc-text-secondary);
+      max-width: 640px;
     }
     .blockchain-services-cta,
     .blockchain-service-link {
