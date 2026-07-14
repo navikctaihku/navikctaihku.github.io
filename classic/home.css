@@ -612,7 +612,7 @@
       margin-bottom: 72px;
     }
     .blockchain-services-summary {
-      max-width: 560px;
+      max-width: 780px;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -634,7 +634,7 @@
     .blockchain-services-summary p {
       margin-bottom: 24px;
       font-size: 17px; line-height: 1.7; color: var(--oc-text-secondary);
-      max-width: 640px;
+      max-width: 780px;
     }
     .blockchain-services-cta,
     .blockchain-service-link {
@@ -789,7 +789,7 @@
       .blockchain-services-header {
         margin-bottom: 56px;
       }
-      .blockchain-services-summary { max-width: 650px; }
+      .blockchain-services-summary { max-width: 780px; }
       .blockchain-services-journey { grid-template-columns: 1fr; gap: 18px; padding-left: 24px; }
       .blockchain-services-line {
         top: 38px; bottom: 38px; left: 6px; right: auto;
@@ -1265,12 +1265,19 @@
     .solution-link {
       margin-top: 14px; font-size: 13px; font-weight: 700; color: #fff;
     }
-    .solutions-copy { text-align: center; }
-    .solutions-copy h2 { margin-bottom: 24px; }
+    .solutions-copy { text-align: left; }
+    .solutions-copy h2 {
+      margin-bottom: 24px;
+      text-align: left !important;
+      white-space: normal !important;
+    }
     .solutions-copy .accent { color: var(--oc-primary-deep); }
     .solutions-copy p {
       line-height: 1.75; color: var(--oc-muted);
       max-width: 520px;
+      text-align: left !important;
+      margin-left: 0 !important;
+      margin-right: 0 !important;
     }
 
     @media (max-width: 1024px) {
