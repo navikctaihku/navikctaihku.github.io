@@ -1,0 +1,28 @@
+:root {
+  /* OneChain shared design tokens */
+  --oc-primary: #14a4bc;
+  --oc-primary-deep: #0d7d91;
+  --oc-primary-light: #3cbdd2;
+  --oc-primary-brand: #14a4bc;
+  --oc-primary-glow: rgba(20, 164, 188, 0.1);
+  --oc-supp: #e2f6f9;
+  --oc-supp-soft: #eef9fb;
+  --oc-dark: #0a1628;
+  --oc-dark-surface: #111827;
+  --oc-bg: #ffffff;
+  --oc-bg-alt: #e2f6f9;
+  --oc-border: rgba(10, 22, 40, 0.08);
+  --oc-border-strong: rgba(10, 22, 40, 0.12);
+  --oc-text: #0a1628;
+  --oc-text-secondary: #475569;
+  --oc-muted: #64748b;
+  --oc-muted-light: #94a3b8;
+  --oc-esg-green: #24a07e;
+  --oc-cert-teal: #0d7d91;
+  --oc-ai-purple: #7f77dd;
+  --font-sans: 'Inter', -apple-system, sans-serif;
+  --font-body: 'Inter', -apple-system, sans-serif;
+  --font-display: 'Nunito', 'Inter', -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+  --font-cjk: 'Noto Sans TC', sans-serif;
+}

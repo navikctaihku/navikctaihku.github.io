@@ -2,115 +2,21 @@
    Usage: add <div id="site-nav"></div> after <body>, <div id="site-footer"></div>
    before </body>, and <script src="site-chrome.js" defer></script> in <head>. */
 (function () {
-  var CSS = `
-  :root {
-    --sc-ink: #0A1628;
-    --sc-muted: #64748B;
-    --sc-muted-2: #94A3B8;
-    --sc-border: rgba(10,22,40,0.08);
-    --sc-border-2: rgba(10,22,40,0.12);
-    --sc-primary: #14a4bc;
-    --sc-green: #2ECC71;
-    --sc-gold: #F0B429;
-    --sc-purple: #7F77DD;
-    --sc-cyan: #14a4bc;
-  }
-  .sc-nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; height: 64px;
-    background: rgba(255,255,255,0.85); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
-    border-bottom: 1px solid var(--sc-border);
-    font-family: 'Inter', -apple-system, sans-serif; }
-  .sc-nav-inner { max-width: 1280px; height: 100%; margin: 0 auto; padding: 0 24px;
-    display: flex; align-items: center; justify-content: space-between; gap: 24px; }
-  .sc-logo img { height: 36px; width: auto; display: block; }
-  .sc-menu { display: flex; align-items: center; gap: 4px; list-style: none; margin: 0; padding: 0; }
-  .sc-menu > li { position: relative; }
-  .sc-menu-btn { display: inline-flex; align-items: center; gap: 6px; border: none; background: none;
-    cursor: pointer; font: 500 14px/1 'Inter', sans-serif; color: var(--sc-muted);
-    padding: 10px 14px; border-radius: 8px; transition: color .15s, background .15s; }
-  .sc-menu-btn:hover, .sc-menu > li.sc-open > .sc-menu-btn { color: var(--sc-ink); background: rgba(10,22,40,0.04); }
-  .sc-menu-btn .sc-caret { transition: transform .2s; }
-  .sc-menu > li.sc-open .sc-caret { transform: rotate(180deg); }
-  .sc-panel { position: absolute; top: calc(100% + 10px); left: 50%; transform: translateX(-50%) translateY(6px);
-    background: #fff; border: 1px solid var(--sc-border-2); border-radius: 14px;
-    box-shadow: 0 24px 64px rgba(10,22,40,0.14), 0 4px 16px rgba(10,22,40,0.06);
-    padding: 20px; display: flex; gap: 28px;
-    opacity: 0; visibility: hidden; pointer-events: none; transition: opacity .18s ease, transform .18s ease; }
-  .sc-menu > li.sc-open > .sc-panel { opacity: 1; visibility: visible; pointer-events: auto;
-    transform: translateX(-50%) translateY(0); }
-  .sc-col { min-width: 230px; }
-  .sc-col-title { font: 600 11px/1 'Inter', sans-serif; letter-spacing: 1.6px; text-transform: uppercase;
-    color: var(--sc-cyan); margin: 4px 8px 12px; white-space: nowrap; }
-  .sc-item { display: flex; gap: 12px; align-items: flex-start; padding: 10px 8px; border-radius: 10px;
-    text-decoration: none; color: inherit; transition: background .15s; }
-  .sc-item:hover { background: rgba(10,22,40,0.045); }
-  .sc-item-icon { width: 34px; height: 34px; flex: none; border-radius: 8px; display: flex;
-    align-items: center; justify-content: center; font-size: 16px; }
-  .sc-item-name { font: 600 14px/1.3 'Inter', sans-serif; color: var(--sc-ink); }
-  .sc-item-desc { font: 400 12.5px/1.45 'Inter', sans-serif; color: var(--sc-muted); margin-top: 2px; }
-  .sc-actions { display: flex; align-items: center; gap: 10px; }
-  .sc-btn-ghost { font: 500 14px/1 'Inter', sans-serif; color: var(--sc-muted); text-decoration: none;
-    padding: 9px 14px; border-radius: 8px; transition: color .15s, background .15s; }
-  .sc-btn-ghost:hover { color: var(--sc-ink); background: rgba(10,22,40,0.04); }
-  .sc-btn-primary { font: 600 14px/1 'Inter', sans-serif; color: #fff; background: var(--sc-ink);
-    text-decoration: none; padding: 10px 18px; border-radius: 8px; transition: background .2s, transform .2s; }
-  .sc-btn-primary:hover { background: #1a2a40; transform: translateY(-1px); }
-  .sc-burger { display: none; border: none; background: none; cursor: pointer; font-size: 22px;
-    color: var(--sc-ink); padding: 8px; }
-  /* mobile */
-  @media (max-width: 1023px) {
-    .sc-menu, .sc-actions .sc-btn-ghost { display: none; }
-    .sc-burger { display: block; }
-    .sc-mobile { position: fixed; top: 64px; left: 0; right: 0; bottom: 0; z-index: 999; overflow-y: auto;
-      background: #fff; padding: 16px 24px 48px; display: none; font-family: 'Inter', sans-serif; }
-    .sc-mobile.sc-open { display: block; }
-    .sc-mgroup { border-bottom: 1px solid var(--sc-border); padding: 14px 0; }
-    .sc-mgroup > div:first-child { font: 600 15px/1 'Inter', sans-serif; color: var(--sc-ink); }
-    .sc-mgroup a { display: block; padding: 10px 0 0 12px; font: 400 14px/1.4 'Inter', sans-serif;
-      color: var(--sc-muted); text-decoration: none; }
-  }
-  @media (min-width: 1024px) { .sc-mobile { display: none !important; } }
-  body > nav:not(.sc-nav) { display: none !important; }
-  /* footer */
-  .sc-footer { background: #FAFAFA; border-top: 1px solid var(--sc-border);
-    font-family: 'Inter', -apple-system, sans-serif; }
-  .sc-footer-inner { max-width: 1280px; margin: 0 auto; padding: 64px 24px 32px; }
-  .sc-footer-grid { display: grid; grid-template-columns: 1.6fr repeat(5, 1fr); gap: 40px; margin-bottom: 56px; }
-  .sc-footer-brand img { height: 32px; width: auto; }
-  .sc-footer-brand p { font-size: 13.5px; color: var(--sc-muted); margin: 14px 0 0; line-height: 1.6; max-width: 240px; }
-  .sc-fcol h5 { font: 600 11px/1 'Inter', sans-serif; letter-spacing: 1.6px; text-transform: uppercase;
-    color: var(--sc-muted-2); margin: 0 0 18px; }
-  .sc-fcol ul { list-style: none; margin: 0; padding: 0; }
-  .sc-fcol li { margin-bottom: 12px; }
-  .sc-fcol a { font-size: 14px; color: var(--sc-muted); text-decoration: none; transition: color .15s; }
-  .sc-fcol a:hover { color: var(--sc-ink); }
-  .sc-footer-bottom { border-top: 1px solid var(--sc-border); padding-top: 24px; display: flex;
-    justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
-  .sc-footer-bottom p { font-size: 13px; color: var(--sc-muted); margin: 0; }
-  .sc-footer-tagline { font: 500 14px/1 'Inter', sans-serif; color: var(--sc-primary); }
-  @media (max-width: 1023px) { .sc-footer-grid { grid-template-columns: 1fr 1fr; } }
-  body > footer:not(.sc-footer) { display: none !important; }
-  /* ===== FX: spotlight hover on cards ===== */
-  .sc-spot { position: relative; }
-  .sc-spot::after { content: ''; position: absolute; inset: 0; border-radius: inherit; opacity: 0;
-    transition: opacity .35s ease; pointer-events: none; z-index: 1;
-    background: radial-gradient(260px circle at var(--sc-mx, 50%) var(--sc-my, 50%),
-      var(--sc-spot-color, rgba(1,137,181,0.13)), transparent 62%); }
-  .sc-spot:hover::after { opacity: 1; }
-  .sc-spot-dark { --sc-spot-color: rgba(0,180,216,0.16); }
-  /* FX: gradient shimmer sweep on primary headings when revealed */
-  @keyframes sc-underline { from { transform: scaleX(0); } to { transform: scaleX(1); } }
-  /* FX: scroll progress bar */
-  .sc-progress { position: fixed; top: 0; left: 0; height: 2.5px; width: 100%; z-index: 2000;
-    transform-origin: 0 50%; transform: scaleX(0); pointer-events: none;
-    background: linear-gradient(90deg, #0d7d91, #14a4bc, #7F77DD); }
-  @media (prefers-reduced-motion: reduce) {
-    .sc-spot::after { display: none; }
-    .sc-progress { display: none; }
-  }
-  `;
+
 
   var icon = function (bg, glyph) {
-    return '<span class="sc-item-icon" style="background:' + bg + '">' + glyph + '</span>';
+    var paths = {
+      '🌱': '<path d="M12 21V10"/><path d="M12 13c-4.5 0-7-2.5-7-7 4.5 0 7 2.5 7 7Z"/><path d="M12 17c3.8 0 6-2.1 6-6-3.8 0-6 2.1-6 6Z"/>',
+      '♻️': '<path d="m7 7 2-3 2 3M9 4a8 8 0 0 1 7 4M17 17l-2 3-2-3M15 20a8 8 0 0 1-7-4M3 13l2-3 2 3"/>',
+      '🎓': '<path d="m3 9 9-5 9 5-9 5-9-5Z"/><path d="M7 12v4.5c2.8 1.7 7.2 1.7 10 0V12M21 9v6"/>',
+      '🪪': '<rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="8" cy="11" r="2"/><path d="M13 10h5M13 14h4"/>',
+      '⚡': '<path d="m13 2-8 12h7l-1 8 8-12h-7l1-8Z"/>',
+      '📘': '<path d="M4 5.5A3.5 3.5 0 0 1 7.5 2H20v17H7.5A3.5 3.5 0 0 0 4 22V5.5Z"/><path d="M4 19a3.5 3.5 0 0 1 3.5-3.5H20"/>',
+      '🔎': '<circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 4 4"/>',
+      '⛓️': '<path d="m9.5 14.5 5-5"/><path d="M7.2 16.8 5.8 18.2a3.5 3.5 0 0 1-5-5l3.4-3.4a3.5 3.5 0 0 1 5 0"/><path d="m14.8 7.2 1.4-1.4a3.5 3.5 0 0 1 5 5l-3.4 3.4a3.5 3.5 0 0 1-5 0"/>'
+    };
+    var svg = paths[glyph] || '<path d="m3 7 9-4 9 4-9 4-9-4Z"/><path d="M3 7v10l9 4 9-4V7M12 11v10"/>';
+    return '<span class="sc-item-icon" style="background:' + bg + '" aria-hidden="true"><svg viewBox="0 0 24 24">' + svg + '</svg></span>';
   };
   var item = function (href, ic, name, desc) {
     return '<a class="sc-item" href="' + href + '">' + ic +
@@ -143,6 +49,7 @@
     ]},
     { label: 'Company', cols: [
       { title: 'What We Build', items: [
+        item('index.html#blockchain-services', icon('rgba(20,164,188,0.12)', '⛓️'), 'Blockchain Services', 'Build a chain, bring data on-chain, and launch real applications'),
         item('company.html#infrastructure', icon('rgba(1,98,130,0.10)', '🗄️'), 'Infrastructure', 'Three-layer enterprise blockchain stack'),
         item('company.html#applications', icon('rgba(127,119,221,0.12)', '📦'), 'Applications', 'Products in production on OneChain'),
         item('company.html#greentech', icon('rgba(46,204,113,0.12)', '🌿'), 'Green Tech', 'Circular economy and climate technology'),
@@ -173,7 +80,7 @@
       var cols = m.cols.map(function (c) {
         return '<div class="sc-col"><div class="sc-col-title">' + c.title + '</div>' + c.items.join('') + '</div>';
       }).join('');
-      return '<li><button class="sc-menu-btn" type="button">' + m.label + caret + '</button>' +
+      return '<li><button class="sc-menu-btn" type="button" aria-expanded="false">' + m.label + caret + '</button>' +
         '<div class="sc-panel">' + cols + '</div></li>';
     }).join('');
     return '<nav class="sc-nav"><div class="sc-nav-inner">' +
@@ -213,12 +120,12 @@
       '<p>Full-stack blockchain company building the trust layer for Asia. Cyberport, Hong Kong.</p></div>' +
       col('Products', [['ESGLedger', 'esgledger.html'], ['CertLedger', 'certledger.html'], ['API Platform', 'index.html#explore']]) +
       col('Solutions', [['ESG & Sustainability', 'esgledger.html'], ['Credentials & Identity', 'certledger.html'], ['Education', 'certledger.html'], ['Government', 'certledger.html'], ['Green Finance', 'esgledger.html']]) +
-      col('Company', [['Infrastructure', 'company.html#infrastructure'], ['Applications', 'company.html#applications'], ['Green Tech', 'company.html#greentech']]) +
+      col('Company', [['Blockchain Services', 'index.html#blockchain-services'], ['Infrastructure', 'company.html#infrastructure'], ['Applications', 'company.html#applications'], ['Green Tech', 'company.html#greentech']]) +
       col('About', [['About Us', 'about.html'], ['Vision & Mission', 'about.html#vision'], ['What We Solve', 'about.html#solving'], ['Join Us', 'about.html#careers'], ['Contact', 'mailto:enquiries@onechain.hk']]) +
-      col('Resources', [['API Docs', 'index.html#explore'], ['Explorer', 'index.html#explore'], ['FAQ', 'about.html#careers'], ['Status', '#']]) +
+      col('Resources', [['API Docs', 'index.html#explore'], ['Explorer', 'index.html#explore'], ['FAQ', 'about.html#careers'], ['Service status', 'mailto:enquiries@onechain.hk?subject=Service%20status%20request']]) +
       '</div><div class="sc-footer-bottom">' +
       '<span class="sc-footer-tagline">Trust, made infrastructure.</span>' +
-      '<p>© 2026 OneChain Ltd. · Cyberport 3, Pok Fu Lam, Hong Kong · <a href="#" style="color:inherit">Privacy</a> · <a href="#" style="color:inherit">Terms</a></p>' +
+      '<p>© 2026 OneChain Ltd. · Cyberport 3, Pok Fu Lam, Hong Kong · <a href="mailto:enquiries@onechain.hk?subject=Privacy%20request" style="color:inherit">Privacy</a> · <a href="mailto:enquiries@onechain.hk?subject=Terms%20request" style="color:inherit">Terms</a></p>' +
       '</div></div></footer>';
   }
 
@@ -230,13 +137,12 @@
       fl.href = 'https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800&family=Inter:wght@400;500;600;700&family=Noto+Sans+TC:wght@400;500;700&display=swap';
       document.head.appendChild(fl);
     }
-    var style = document.createElement('style');
-    style.textContent = CSS + `
-  /* Brand typography — Nunito headings, Inter body, Noto Sans TC fallback */
-  h1, h2, h3, h4 { font-family: 'Nunito', 'Inter', -apple-system, sans-serif; letter-spacing: -0.02em; }
-  body { font-family: 'Inter', 'Noto Sans TC', -apple-system, sans-serif; }
-`;
-    document.head.appendChild(style);
+    if (!document.querySelector('link[href="chrome.css"]')) {
+      var chromeStyles = document.createElement('link');
+      chromeStyles.rel = 'stylesheet';
+      chromeStyles.href = 'chrome.css';
+      document.head.appendChild(chromeStyles);
+    }
 
     var navMount = document.getElementById('site-nav');
     if (!navMount) { navMount = document.createElement('div'); document.body.insertBefore(navMount, document.body.firstChild); }
@@ -248,7 +154,13 @@
 
     // dropdown behaviour (click + hover with close delay)
     var items = document.querySelectorAll('.sc-menu > li');
-    var closeAll = function () { items.forEach(function (li) { li.classList.remove('sc-open'); }); };
+    var closeAll = function () {
+      items.forEach(function (li) {
+        li.classList.remove('sc-open');
+        var menuButton = li.querySelector('.sc-menu-btn');
+        if (menuButton) menuButton.setAttribute('aria-expanded', 'false');
+      });
+    };
     items.forEach(function (li) {
       var btn = li.querySelector('.sc-menu-btn');
       var timer;
@@ -256,10 +168,23 @@
         e.stopPropagation();
         var was = li.classList.contains('sc-open');
         closeAll();
-        if (!was) li.classList.add('sc-open');
+        if (!was) {
+          li.classList.add('sc-open');
+          btn.setAttribute('aria-expanded', 'true');
+        }
       });
-      li.addEventListener('mouseenter', function () { clearTimeout(timer); closeAll(); li.classList.add('sc-open'); });
-      li.addEventListener('mouseleave', function () { timer = setTimeout(function () { li.classList.remove('sc-open'); }, 150); });
+      li.addEventListener('mouseenter', function () {
+        clearTimeout(timer);
+        closeAll();
+        li.classList.add('sc-open');
+        btn.setAttribute('aria-expanded', 'true');
+      });
+      li.addEventListener('mouseleave', function () {
+        timer = setTimeout(function () {
+          li.classList.remove('sc-open');
+          btn.setAttribute('aria-expanded', 'false');
+        }, 150);
+      });
     });
     document.addEventListener('click', closeAll);
 
