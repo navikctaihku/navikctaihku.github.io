@@ -344,7 +344,7 @@
       transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1),
                   visibility 0.75s cubic-bezier(0.16, 1, 0.3, 1);
     }
-    /* soft inner glow — very subtle, stays white */
+    /* soft light-blue halo — visible, still gentle */
     .hero-intro::before {
       content: '';
       position: absolute;
@@ -352,16 +352,39 @@
       pointer-events: none;
       background:
         radial-gradient(
-          circle at 50% 44%,
-          rgba(20, 164, 188, 0.06) 0%,
-          rgba(20, 164, 188, 0.02) 32%,
-          transparent 60%
+          circle at 50% 48%,
+          rgba(20, 164, 188, 0.28) 0%,
+          rgba(20, 164, 188, 0.14) 18%,
+          rgba(60, 189, 210, 0.08) 34%,
+          rgba(226, 246, 249, 0.45) 48%,
+          transparent 68%
         );
       animation: hero-intro-glow 5s ease-in-out infinite;
     }
+    .hero-intro::after {
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: 48%;
+      width: min(720px, 88vw);
+      height: min(720px, 88vw);
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+      border-radius: 50%;
+      background:
+        radial-gradient(circle, transparent 28%, rgba(20, 164, 188, 0.14) 28.8%, transparent 30.2%),
+        radial-gradient(circle, transparent 42%, rgba(20, 164, 188, 0.11) 42.8%, transparent 44.2%),
+        radial-gradient(circle, transparent 56%, rgba(60, 189, 210, 0.09) 56.8%, transparent 58.2%),
+        radial-gradient(circle, transparent 70%, rgba(20, 164, 188, 0.07) 70.8%, transparent 72.2%);
+      animation: hero-intro-rings 6.5s ease-in-out infinite;
+    }
     @keyframes hero-intro-glow {
-      0%, 100% { opacity: 0.85; transform: scale(1); }
-      50% { opacity: 1; transform: scale(1.04); }
+      0%, 100% { opacity: 0.9; transform: scale(1); }
+      50% { opacity: 1; transform: scale(1.05); }
+    }
+    @keyframes hero-intro-rings {
+      0%, 100% { opacity: 0.75; transform: translate(-50%, -50%) scale(1); }
+      50% { opacity: 1; transform: translate(-50%, -50%) scale(1.04); }
     }
     .hero-intro-logo {
       position: relative;
@@ -369,6 +392,8 @@
       max-width: min(440px, 78vw);
       width: 100%;
       height: auto;
+      filter: drop-shadow(0 0 28px rgba(20, 164, 188, 0.28))
+              drop-shadow(0 0 60px rgba(20, 164, 188, 0.16));
       animation: hero-intro-logo-in 0.65s cubic-bezier(0.16, 1, 0.3, 1) both;
     }
     @keyframes hero-intro-logo-in {
@@ -1603,7 +1628,8 @@
       .scroll-progress { display: none; }
       .hero-anim, .fade-up { opacity: 1 !important; transform: none !important; transition: none !important; }
       .hero-intro { display: none !important; }
-      .hero-intro::before { animation: none !important; }
+      .hero-intro::before,
+      .hero-intro::after { animation: none !important; }
       .hero .hero-media, .hero .hero-overlay { opacity: 1 !important; visibility: visible !important; }
     }
 
