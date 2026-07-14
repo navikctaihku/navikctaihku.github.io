@@ -230,11 +230,11 @@
       });
     }
 
-    // Products header — green left (ESGLedger), gold right (CertLedger)
+    // Products header — ESGLedger (left) + CertLedger (right) brand primaries
     initNodeNetwork(
       document.querySelector('.products-header-wrap'),
       document.getElementById('productsNetwork'),
-      { leftColor: '46,204,113', rightColor: '240,180,41', linkDist: 110, mouseDist: 150 }
+      { leftColor: '0,119,113', rightColor: '1,98,130', linkDist: 110, mouseDist: 150 }
     );
 
     // ===== AI AT ONECHAIN — interactive effects =====
