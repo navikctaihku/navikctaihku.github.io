@@ -446,13 +446,17 @@
 
     /* ===== FEATURES (Linear style with FIG labels) ===== */
     .features-header {
-      max-width: 640px; margin-bottom: 80px;
+      max-width: none; margin-bottom: 80px;
     }
     .features-header h2 {
-      font-size: 40px; font-weight: 700; letter-spacing: -0.02em;
-      line-height: 1.1; margin-bottom: 20px;
+      font-size: clamp(28px, 2.8vw, 40px); font-weight: 700; letter-spacing: -0.02em;
+      line-height: 1.2; margin-bottom: 20px;
+      white-space: nowrap;
     }
-    .features-header p { font-size: 18px; color: var(--oc-muted); line-height: 1.6; }
+    .features-header p { font-size: 18px; color: var(--oc-muted); line-height: 1.6; max-width: 640px; }
+    @media (max-width: 1100px) {
+      .features-header h2 { white-space: normal; font-size: clamp(28px, 3.6vw, 36px); }
+    }
     .features-grid {
       display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px;
       background: var(--oc-border);
@@ -726,7 +730,7 @@
       pointer-events: none; z-index: 0;
     }
     .products-header {
-      text-align: center; max-width: 700px; margin: 0 auto;
+      text-align: center; max-width: min(960px, 100%); margin: 0 auto;
       position: relative; z-index: 1;
     }
     .products-header .eyebrow {
@@ -737,7 +741,13 @@
       font-size: 40px; font-weight: 700; letter-spacing: -0.02em; line-height: 1.1;
       margin-bottom: 16px;
     }
-    .products-header p { font-size: 18px; color: var(--oc-muted); }
+    .products-header p {
+      font-size: clamp(15px, 1.35vw, 18px); color: var(--oc-muted);
+      white-space: nowrap;
+    }
+    @media (max-width: 900px) {
+      .products-header p { white-space: normal; }
+    }
 
     /* ===== PRODUCT SHOWCASE (horizontal tab carousel) ===== */
     .product-showcase { margin-top: 8px; }
@@ -1635,11 +1645,11 @@
     .reclaim-split {
       max-width: 1280px; margin: 0 auto;
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 48px 64px;
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
+      gap: 48px 48px;
       align-items: center;
     }
-    .reclaim-copy { max-width: 520px; }
+    .reclaim-copy { max-width: none; }
     .reclaim-eyebrow {
       font-family: var(--font-sub); font-size: 13px; font-weight: 500;
       letter-spacing: 2px; text-transform: uppercase; color: var(--oc-primary);
@@ -1649,9 +1659,10 @@
       content: ''; width: 28px; height: 1px; background: var(--oc-primary-brand);
     }
     .reclaim h2 {
-      font-size: clamp(36px, 4.5vw, 56px); font-weight: 700; line-height: 1.08;
+      font-size: clamp(28px, 3.2vw, 48px); font-weight: 700; line-height: 1.15;
       letter-spacing: -0.03em; color: var(--oc-text);
       margin-bottom: 20px;
+      white-space: nowrap;
     }
     .reclaim h2 .accent {
       background: linear-gradient(120deg, var(--oc-primary) 0%, var(--oc-primary-brand) 60%, #2dd4bf 100%);
@@ -1713,6 +1724,7 @@
         gap: 40px;
       }
       .reclaim-copy { max-width: none; text-align: center; margin: 0 auto; }
+      .reclaim h2 { white-space: normal; font-size: clamp(32px, 7vw, 44px); }
       .reclaim-actions { justify-content: center; }
       .reclaim-media { min-height: 300px; order: -1; }
       .reclaim-video-wrap { max-width: 520px; margin: 0 auto; }
