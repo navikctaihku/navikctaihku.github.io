@@ -117,7 +117,7 @@
       overflow: hidden;
       background: #000;
     }
-    /* Light tint — fades from white at top into hero */
+    /* Soft dark veil only — keep video colors visible (no white wash) */
     .hero-media::after {
       content: '';
       position: absolute;
@@ -125,28 +125,20 @@
       z-index: 3;
       background: linear-gradient(
         180deg,
-        #ffffff 0%,
-        #ffffff 5%,
-        rgba(255, 255, 255, 0.7) 10%,
-        rgba(200, 225, 240, 0.2) 22%,
-        rgba(200, 225, 240, 0.25) 100%
+        rgba(10, 22, 40, 0.12) 0%,
+        rgba(10, 22, 40, 0.22) 40%,
+        rgba(10, 22, 40, 0.42) 100%
       );
       pointer-events: none;
       transition: background 0.85s ease;
     }
     .hero--revealed .hero-media::after {
-      background:
-        linear-gradient(
-          180deg,
-          #ffffff 0%,
-          #ffffff 4%,
-          rgba(255, 255, 255, 0.92) 7%,
-          rgba(255, 255, 255, 0.55) 11%,
-          rgba(10, 22, 40, 0.22) 18%,
-          rgba(10, 22, 40, 0.38) 42%,
-          rgba(10, 22, 40, 0.58) 100%
-        ),
-        rgba(20, 164, 188, 0.12);
+      background: linear-gradient(
+        180deg,
+        rgba(10, 22, 40, 0.14) 0%,
+        rgba(10, 22, 40, 0.28) 45%,
+        rgba(10, 22, 40, 0.5) 100%
+      );
     }
     .hero-bg,
     .hero-bg-video {
