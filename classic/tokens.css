@@ -53,14 +53,15 @@
   --oc-esg-secondary: var(--esg-secondary);
   --oc-esg-dark: var(--esg-dark);
 
-  --oc-ai-purple: #7f77dd;
+  --oc-ai-purple: var(--oc-primary);
 
-  /* Typefaces — Inter Bold (brand) / Inter (body) / Inter tracked uppercase (sub) */
+  /* Typefaces — Inter Bold (brand) / Inter (body) / Inter Medium tracked (supporting) */
   --font-brand: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   --font-display: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-  --font-sub: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-supporting: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-sub: var(--font-supporting);
   --font-mono: 'JetBrains Mono', ui-monospace, monospace;
   --font-cjk: 'Noto Sans TC', 'Inter', sans-serif;
 
@@ -69,6 +70,7 @@
   --weight-bold: 700;
   --tracking-tight: -0.02em;
   --tracking-sub: 0.08em;
+  --tracking-supporting: 0.08em;
 
   --radius-xs: 6px;
   --radius-sm: 8px;

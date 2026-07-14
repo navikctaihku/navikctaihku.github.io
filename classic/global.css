@@ -22,6 +22,7 @@
  * Typefaces
  *   Brand / Headline / Sub-headline / Buttons / Tags → Inter Bold
  *   Body text                                       → Inter
+ *   Supporting text (eyebrows / labels / tags)      → Inter Medium, uppercase, tracked
  *   Supplementary / Sub (ticker style)              → Inter, uppercase, tracked, muted
  *   CJK fallback                                    → Noto Sans TC
  */
@@ -82,14 +83,16 @@
   --oc-esg-secondary: var(--esg-secondary);
   --oc-esg-dark: var(--esg-dark);
 
-  --oc-ai-purple: #7f77dd;
+  --oc-ai-purple: var(--oc-primary); /* remapped — purple not in brand PDF */
 
   /* ===== Typefaces (Brand Guideline §05) ===== */
   --font-brand: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   --font-display: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-  --font-sub: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  /* Supporting text — Inter Medium, uppercase, tracked (e.g. ENTERPRISE BLOCKCHAIN) */
+  --font-supporting: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-sub: var(--font-supporting);
   --font-mono: 'JetBrains Mono', ui-monospace, monospace;
   --font-cjk: 'Noto Sans TC', 'Inter', sans-serif;
 
@@ -99,6 +102,7 @@
 
   --tracking-tight: -0.02em;
   --tracking-sub: 0.08em;
+  --tracking-supporting: 0.08em;
 
   /* Corners — sharper controls (not pills). Match CTA style ~8–10px */
   --radius-xs: 6px;
@@ -159,7 +163,16 @@ p, li, label, input, textarea, .oc-type-body {
   font-weight: var(--weight-body);
 }
 
-/* Supplementary / sub typeface — ticker style (image 1)
+/* Supporting text typeface — Inter Medium, uppercase, tracked
+   Use for eyebrows, labels, tags (e.g. "ENTERPRISE BLOCKCHAIN") */
+.oc-type-supporting {
+  font-family: var(--font-supporting), var(--font-cjk), sans-serif;
+  font-weight: var(--weight-medium);
+  letter-spacing: var(--tracking-supporting);
+  text-transform: uppercase;
+}
+
+/* Supplementary / sub typeface — ticker style
    Inter, uppercase, tracked, muted bluish-gray */
 .oc-type-sub,
 .ticker-item {
@@ -170,7 +183,7 @@ p, li, label, input, textarea, .oc-type-body {
   color: var(--oc-muted-light);
 }
 
-/* Section eyebrows / tags — same sub metrics, primary accent */
+/* Section eyebrows / tags — supporting text, primary accent */
 .eyebrow,
 .blockchain-services-eyebrow,
 .reclaim-eyebrow,
@@ -183,9 +196,9 @@ p, li, label, input, textarea, .oc-type-body {
 .sc-col-title,
 .sc-fcol h5,
 .fig-label {
-  font-family: var(--font-sub), var(--font-cjk), sans-serif;
+  font-family: var(--font-supporting), var(--font-cjk), sans-serif;
   font-weight: var(--weight-medium);
-  letter-spacing: var(--tracking-sub);
+  letter-spacing: var(--tracking-supporting);
   text-transform: uppercase;
 }
 
