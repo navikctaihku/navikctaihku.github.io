@@ -117,7 +117,7 @@
       overflow: hidden;
       background: #000;
     }
-    /* Soft dark veil only — keep video colors visible (no white wash) */
+    /* No top white wash — video keeps its own color; darken only lower for text */
     .hero-media::after {
       content: '';
       position: absolute;
@@ -125,31 +125,34 @@
       z-index: 3;
       background: linear-gradient(
         180deg,
-        rgba(10, 22, 40, 0.12) 0%,
-        rgba(10, 22, 40, 0.22) 40%,
-        rgba(10, 22, 40, 0.42) 100%
+        transparent 0%,
+        transparent 28%,
+        rgba(10, 22, 40, 0.18) 52%,
+        rgba(10, 22, 40, 0.42) 78%,
+        rgba(10, 22, 40, 0.55) 100%
       );
       pointer-events: none;
-      transition: background 0.85s ease;
     }
     .hero--revealed .hero-media::after {
       background: linear-gradient(
         180deg,
-        rgba(10, 22, 40, 0.14) 0%,
-        rgba(10, 22, 40, 0.28) 45%,
-        rgba(10, 22, 40, 0.5) 100%
+        transparent 0%,
+        transparent 22%,
+        rgba(10, 22, 40, 0.2) 48%,
+        rgba(10, 22, 40, 0.45) 75%,
+        rgba(10, 22, 40, 0.58) 100%
       );
     }
     .hero-bg,
     .hero-bg-video {
       position: absolute;
-      top: -8%; left: -8%; right: -8%; bottom: -8%;
-      width: 116%; height: 116%;
+      top: -14%; left: -8%; right: -8%; bottom: -4%;
+      width: 116%; height: 126%;
       object-fit: cover;
-      object-position: center center;
+      object-position: center 58%;
       display: block;
       z-index: 1;
-      background: #000;
+      background: #0a1628;
     }
     .hero-spacer {
       position: relative;
