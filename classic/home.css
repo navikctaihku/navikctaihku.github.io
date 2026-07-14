@@ -297,7 +297,7 @@
       align-items: center;
       gap: 10px;
       color: rgba(255, 255, 255, 0.5);
-      font-family: var(--font-mono);
+      font-family: var(--font-sub);
       font-size: 10px;
       letter-spacing: 0.22em;
       text-transform: uppercase;
@@ -461,8 +461,8 @@
     }
     .feature-card:hover { background: var(--oc-bg-alt); }
     .fig-label {
-      font-family: var(--font-mono); font-size: 12px; color: var(--oc-muted-light);
-      letter-spacing: 1px; margin-bottom: 40px; text-transform: uppercase;
+      font-family: var(--font-sub); font-size: 12px; color: var(--oc-muted-light);
+      letter-spacing: var(--tracking-sub); margin-bottom: 40px; text-transform: uppercase;
     }
     .feature-icon {
       width: 64px; height: 64px; margin-bottom: 32px;
@@ -511,8 +511,8 @@
     .blockchain-services-eyebrow {
       display: inline-flex; align-items: center; gap: 10px;
       margin-bottom: 20px;
-      font-family: var(--font-mono); font-size: 12px; font-weight: 500;
-      letter-spacing: 2px; text-transform: uppercase; color: var(--oc-primary-deep);
+      font-family: var(--font-sub); font-size: 12px; font-weight: 500;
+      letter-spacing: var(--tracking-sub); text-transform: uppercase; color: var(--oc-primary-deep);
     }
     .blockchain-services-eyebrow::before {
       content: ''; width: 30px; height: 1px; background: currentColor;
@@ -593,12 +593,12 @@
       width: 38px; height: 38px;
       border: 1px solid rgba(20,164,188,0.25); border-radius: 50%;
       background: #fff;
-      font-family: var(--font-mono); font-size: 11px; font-weight: 600;
+      font-family: var(--font-sub); font-size: 11px; font-weight: 600;
       color: var(--oc-primary-deep);
       box-shadow: 0 0 0 7px rgba(238,249,251,0.94);
     }
     .blockchain-service-status {
-      font-family: var(--font-mono); font-size: 10px; font-weight: 500;
+      font-family: var(--font-sub); font-size: 10px; font-weight: 500;
       letter-spacing: 1.2px; text-transform: uppercase; color: var(--oc-muted);
     }
     .blockchain-service-icon {
@@ -659,7 +659,7 @@
     }
     .blockchain-product-chip:hover { transform: translateY(-2px); }
     .blockchain-product-chip span {
-      font-family: var(--font-mono); font-size: 9px; letter-spacing: 1.2px;
+      font-family: var(--font-sub); font-size: 9px; letter-spacing: var(--tracking-sub);
     }
     .blockchain-product-chip strong { font-size: 13px; color: var(--oc-dark); }
     .blockchain-product-chip--esg { color: var(--oc-esg-green); }
@@ -726,7 +726,7 @@
       position: relative; z-index: 1;
     }
     .products-header .eyebrow {
-      font-family: var(--font-mono); font-size: 13px; color: var(--oc-primary);
+      font-family: var(--font-sub); font-size: 13px; color: var(--oc-primary);
       text-transform: uppercase; letter-spacing: 2px; margin-bottom: 16px;
     }
     .products-header h2 {
@@ -1517,7 +1517,7 @@
       text-align: center; max-width: 640px; margin: 0 auto 56px;
     }
     .video-header .eyebrow {
-      font-family: var(--font-mono); font-size: 13px; color: var(--oc-primary);
+      font-family: var(--font-sub); font-size: 13px; color: var(--oc-primary);
       text-transform: uppercase; letter-spacing: 2px; margin-bottom: 16px;
     }
     .video-header h2 {
@@ -1552,7 +1552,7 @@
       padding: 9px 16px; border-radius: 999px;
       background: rgba(255,255,255,0.92);
       -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
-      font-family: var(--font-mono); font-size: 12px; letter-spacing: 1px;
+      font-family: var(--font-sub); font-size: 12px; letter-spacing: var(--tracking-sub);
       text-transform: uppercase; color: var(--oc-primary);
       box-shadow: 0 4px 16px rgba(10,22,40,0.12);
       pointer-events: none; transition: opacity 0.4s ease;
@@ -1636,7 +1636,7 @@
     }
     .reclaim-copy { max-width: 520px; }
     .reclaim-eyebrow {
-      font-family: var(--font-mono); font-size: 13px; font-weight: 500;
+      font-family: var(--font-sub); font-size: 13px; font-weight: 500;
       letter-spacing: 2px; text-transform: uppercase; color: var(--oc-primary);
       display: inline-flex; align-items: center; gap: 10px; margin-bottom: 20px;
     }
@@ -1736,7 +1736,7 @@
       position: absolute; inset: 0; z-index: 0; pointer-events: none;
       background:
         linear-gradient(to bottom, #ffffff 0%, rgba(255,255,255,0.6) 12%, transparent 28%),
-        radial-gradient(ellipse 70% 55% at 50% 55%, rgba(127,119,221,0.05), transparent 68%),
+        radial-gradient(ellipse 70% 55% at 50% 55%, rgba(20,164,188,0.06), transparent 68%),
         radial-gradient(ellipse 55% 45% at 88% 22%, rgba(20,164,188,0.05), transparent 62%);
     }
     .ai-particles { position: absolute; inset: 0; z-index: 0; pointer-events: none; }
@@ -1744,23 +1744,23 @@
     .ai-container { position: relative; z-index: 2; }
     .ai-header { text-align: center; max-width: 760px; margin: 0 auto 56px; }
     .ai-eyebrow {
-      font-family: var(--font-mono); font-size: 13px; color: var(--oc-ai-purple);
-      text-transform: uppercase; letter-spacing: 2px; margin-bottom: 16px;
+      font-family: var(--font-sub); font-size: 13px; color: var(--oc-primary);
+      text-transform: uppercase; letter-spacing: var(--tracking-sub); margin-bottom: 16px;
     }
     .ai-header h2 {
       font-size: clamp(32px, 4vw, 44px); font-weight: 700;
       letter-spacing: -0.02em; line-height: 1.12; margin-bottom: 14px;
     }
     .ai-gradient {
-      background: linear-gradient(120deg, var(--oc-ai-purple) 0%, var(--oc-primary) 40%, #2dd4bf 70%, var(--oc-ai-purple) 100%);
+      background: linear-gradient(120deg, var(--oc-primary-deep) 0%, var(--oc-primary) 45%, var(--cert-secondary, #8ad7e8) 100%);
       -webkit-background-clip: text; background-clip: text;
       -webkit-text-fill-color: transparent;
     }
     .ai-type-line {
-      font-family: var(--font-mono); font-size: 15px; color: var(--oc-text-secondary);
+      font-family: var(--font-body); font-size: 15px; color: var(--oc-text-secondary);
       margin-bottom: 18px; min-height: 1.7em;
     }
-    .ai-type { color: var(--oc-ai-purple); font-weight: 600; }
+    .ai-type { font-family: var(--font-sub); color: var(--oc-primary); font-weight: 600; letter-spacing: var(--tracking-sub); text-transform: uppercase; font-size: 13px; }
     .ai-sub { font-size: 17px; color: var(--oc-muted); line-height: 1.65; }
 
     .ai-cards {
@@ -1770,36 +1770,36 @@
     .ai-card {
       position: relative;
       background: rgba(255,255,255,0.88);
-      border: 1px solid rgba(127,119,221,0.16);
+      border: 1px solid rgba(20,164,188,0.16);
       border-radius: 16px; padding: 28px 24px;
       box-shadow: 0 8px 28px rgba(10,22,40,0.05);
       transform-style: preserve-3d;
       transition: border-color 0.25s ease, box-shadow 0.25s ease;
     }
     .ai-card:hover {
-      border-color: rgba(127,119,221,0.42);
-      box-shadow: 0 16px 44px rgba(127,119,221,0.16);
+      border-color: rgba(20,164,188,0.42);
+      box-shadow: 0 16px 44px rgba(20,164,188,0.16);
     }
     /* cursor-following glow */
     .ai-card::before {
       content: ''; position: absolute; inset: 0; border-radius: inherit;
-      background: radial-gradient(220px circle at var(--mx, 50%) var(--my, 50%), rgba(127,119,221,0.14), transparent 65%);
+      background: radial-gradient(220px circle at var(--mx, 50%) var(--my, 50%), rgba(20,164,188,0.14), transparent 65%);
       opacity: 0; transition: opacity 0.25s ease; pointer-events: none;
     }
     .ai-card:hover::before { opacity: 1; }
     .ai-card-icon {
       width: 48px; height: 48px; margin-bottom: 18px; border-radius: 12px;
       display: flex; align-items: center; justify-content: center;
-      background: rgba(127,119,221,0.1);
+      background: rgba(20,164,188,0.1);
     }
     .ai-card-icon svg {
-      width: 26px; height: 26px; stroke: var(--oc-ai-purple);
+      width: 26px; height: 26px; stroke: var(--oc-primary);
       fill: none; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round;
     }
     .ai-card h3 { font-size: 17px; font-weight: 700; margin-bottom: 8px; letter-spacing: -0.01em; }
     .ai-card p { font-size: 14px; color: var(--oc-muted); line-height: 1.6; margin-bottom: 14px; }
     .ai-card-tag {
-      font-family: var(--font-mono); font-size: 11px; letter-spacing: 1px;
+      font-family: var(--font-sub); font-size: 11px; letter-spacing: var(--tracking-sub);
       text-transform: uppercase; color: var(--oc-primary);
     }
 
@@ -1808,7 +1808,7 @@
       gap: 18px; margin-bottom: 88px;
       padding: 36px 28px;
       background: rgba(255,255,255,0.75);
-      border: 1px solid rgba(127,119,221,0.14);
+      border: 1px solid rgba(20,164,188,0.14);
       border-radius: 20px;
       backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
     }
@@ -1865,14 +1865,14 @@
     .ai-step-num {
       width: 48px; height: 48px; border-radius: 50%;
       display: flex; align-items: center; justify-content: center;
-      background: #fff; border: 2px solid rgba(127,119,221,0.25);
-      color: var(--oc-ai-purple);
-      font-family: var(--font-mono); font-size: 14px; font-weight: 600;
+      background: #fff; border: 2px solid rgba(20,164,188,0.25);
+      color: var(--oc-primary);
+      font-family: var(--font-brand); font-size: 14px; font-weight: 700;
       margin-bottom: 16px;
       transition: background 0.3s, color 0.3s, border-color 0.3s, box-shadow 0.3s;
     }
     .ai-step.is-active .ai-step-num {
-      background: var(--oc-ai-purple); color: #fff; border-color: var(--oc-ai-purple);
+      background: var(--oc-ai-purple); color: #fff; border-color: var(--oc-primary);
       box-shadow: 0 8px 20px rgba(127,119,221,0.35);
     }
     .ai-step h4 { font-size: 16px; font-weight: 700; margin-bottom: 6px; }
@@ -2054,7 +2054,7 @@
       position: relative; z-index: 2;
     }
     .glass-header .eyebrow {
-      font-family: var(--font-mono); font-size: 13px; color: var(--oc-primary-deep);
+      font-family: var(--font-sub); font-size: 13px; color: var(--oc-primary-deep);
       text-transform: uppercase; letter-spacing: 2px; margin-bottom: 16px;
     }
     .glass-header h2 {
@@ -2119,7 +2119,7 @@
       letter-spacing: -0.01em;
     }
     .glass-issued {
-      font-family: var(--font-mono); font-size: 11px; letter-spacing: 1.5px;
+      font-family: var(--font-sub); font-size: 11px; letter-spacing: var(--tracking-sub);
       color: var(--oc-muted); text-align: right;
     }
     @media (max-width: 640px) {

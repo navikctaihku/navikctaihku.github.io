@@ -259,10 +259,10 @@
             background: { color: 'transparent' },
             particles: {
               number: { value: 55, density: { enable: true, width: 1400, height: 900 } },
-              color: { value: ['#7F77DD', '#14a4bc'] },
+              color: { value: ['#14a4bc', '#016282'] },
               opacity: { value: 0.5 },
               size: { value: { min: 1.5, max: 3.5 } },
-              links: { enable: true, distance: 140, color: '#7F77DD', opacity: 0.3, width: 1 },
+              links: { enable: true, distance: 140, color: '#14a4bc', opacity: 0.3, width: 1 },
               move: { enable: true, speed: 0.9, outModes: { default: 'bounce' } }
             },
             interactivity: {
