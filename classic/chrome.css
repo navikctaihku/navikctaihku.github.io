@@ -119,6 +119,10 @@
     .sc-progress { display: none; }
   }
 
-/* Shared brand typography */
-h1, h2, h3, h4 { font-family: 'Nunito', 'Inter', -apple-system, sans-serif; letter-spacing: -0.02em; }
-body { font-family: 'Inter', 'Noto Sans TC', -apple-system, sans-serif; }
+/* Shared brand typography — Brand Guideline: Inter Bold headlines, Inter body */
+h1, h2, h3, h4 {
+  font-family: var(--font-brand, 'Inter', sans-serif);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+body { font-family: var(--font-body, 'Inter', 'Noto Sans TC', sans-serif); }

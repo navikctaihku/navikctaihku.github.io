@@ -129,14 +129,20 @@
   }
 
   function init() {
-    // Site-wide typography per brand guide: Nunito display, Inter body, Noto Sans TC CJK
-    if (!document.querySelector('link[href*="Nunito"]')) {
+    // Brand Guideline: Inter Bold (brand) / Inter (body) / Noto Sans TC (CJK)
+    if (!document.querySelector('link[href*="family=Inter"]')) {
       var fl = document.createElement('link');
       fl.rel = 'stylesheet';
-      fl.href = 'https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800&family=Inter:wght@400;500;600;700&family=Noto+Sans+TC:wght@400;500;700&display=swap';
+      fl.href = 'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+TC:wght@400;500;700&display=swap';
       document.head.appendChild(fl);
     }
-    if (!document.querySelector('link[href="chrome.css"]')) {
+    if (!document.querySelector('link[href*="global.css"]')) {
+      var globalStyles = document.createElement('link');
+      globalStyles.rel = 'stylesheet';
+      globalStyles.href = 'global.css';
+      document.head.appendChild(globalStyles);
+    }
+    if (!document.querySelector('link[href*="chrome.css"]')) {
       var chromeStyles = document.createElement('link');
       chromeStyles.rel = 'stylesheet';
       chromeStyles.href = 'chrome.css';

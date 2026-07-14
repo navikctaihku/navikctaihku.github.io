@@ -1,0 +1,167 @@
+/**
+ * OneChain Global Design System
+ * Source: OneChain Brand Guideline (1).pdf
+ *
+ * Colors — Brand
+ *   Primary:       #14a4bc
+ *   Secondary:     #545454, #eb6363
+ *   Supplementary: #97eed7, #e2f6f9, #f5b8b6 (alert)
+ *
+ * Colors — CertLedger
+ *   Primary:       #016282
+ *   Secondary:     #8ad7e8, #eb6363
+ *   Supplementary: #97eed7, #f5b8b6, #545454
+ *
+ * Colors — ESGLedger
+ *   Primary:       #007771
+ *   Secondary:     #aededb, #eb6363
+ *   Supplementary: #97eed7, #f5b8b6, #545454
+ *
+ * Typefaces
+ *   Brand / Headline / Sub-headline / Buttons / Tags → Inter Bold
+ *   Body text                                       → Inter
+ *   Supplementary / Sub (ticker style)              → Inter, uppercase, tracked, muted
+ *   CJK fallback                                    → Noto Sans TC
+ */
+
+:root {
+  /* ===== OneChain brand colors ===== */
+  --oc-primary: #14a4bc;
+  --oc-primary-deep: #0d7d91;
+  --oc-primary-light: #3cbdd2;
+  --oc-primary-brand: #14a4bc;
+  --oc-primary-glow: rgba(20, 164, 188, 0.1);
+
+  --oc-secondary: #545454;
+  --oc-secondary-alert: #eb6363;
+
+  --oc-supp: #e2f6f9;
+  --oc-supp-mint: #97eed7;
+  --oc-supp-soft: #eef9fb;
+  --oc-supp-alert: #f5b8b6;
+
+  /* Neutrals / surfaces */
+  --oc-dark: #0a1628;
+  --oc-dark-surface: #111827;
+  --oc-bg: #ffffff;
+  --oc-bg-alt: #e2f6f9;
+  --oc-border: rgba(10, 22, 40, 0.08);
+  --oc-border-strong: rgba(10, 22, 40, 0.12);
+  --oc-text: #0a1628;
+  --oc-text-secondary: #475569;
+  --oc-muted: #64748b;
+  --oc-muted-light: #94a3b8;
+
+  /* Product accent (from product palettes) */
+  --oc-esg-green: #007771;
+  --oc-esg-secondary: #aededb;
+  --oc-cert-teal: #016282;
+  --oc-cert-secondary: #8ad7e8;
+  --oc-ai-purple: #7f77dd;
+
+  /* ===== Typefaces (Brand Guideline §05) ===== */
+  --font-brand: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-display: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-sub: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+  --font-cjk: 'Noto Sans TC', 'Inter', sans-serif;
+
+  --weight-body: 400;
+  --weight-medium: 500;
+  --weight-bold: 700;
+
+  --tracking-tight: -0.02em;
+  --tracking-sub: 0.08em;
+}
+
+/* ===== Base ===== */
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-body), var(--font-cjk), sans-serif;
+  font-weight: var(--weight-body);
+  color: var(--oc-text);
+  background: var(--oc-bg);
+  line-height: 1.6;
+}
+
+/* Brand typeface — Inter Bold for headlines */
+h1, h2, h3, h4,
+.oc-type-brand,
+.oc-type-headline {
+  font-family: var(--font-brand), var(--font-cjk), sans-serif;
+  font-weight: var(--weight-bold);
+  letter-spacing: var(--tracking-tight);
+  color: var(--oc-text);
+}
+
+/* Sub-headline / buttons / tags — Inter Bold */
+.oc-type-subhead,
+.oc-type-button,
+button,
+.btn-primary,
+.btn-outline,
+.btn-dark,
+.sc-btn-primary,
+.sc-btn-ghost,
+.hero-btn,
+.reclaim-cta,
+.reclaim-cta-outline,
+.product-showcase-cta,
+.blockchain-services-cta,
+.ai-cta {
+  font-family: var(--font-brand), var(--font-cjk), sans-serif;
+  font-weight: var(--weight-bold);
+}
+
+/* Body text — Inter */
+p, li, label, input, textarea, .oc-type-body {
+  font-family: var(--font-body), var(--font-cjk), sans-serif;
+  font-weight: var(--weight-body);
+}
+
+/* Supplementary / sub typeface — ticker style (image 1)
+   Inter, uppercase, tracked, muted bluish-gray */
+.oc-type-sub,
+.ticker-item {
+  font-family: var(--font-sub), var(--font-cjk), sans-serif;
+  font-weight: var(--weight-medium);
+  letter-spacing: var(--tracking-sub);
+  text-transform: uppercase;
+  color: var(--oc-muted-light);
+}
+
+/* Section eyebrows / tags — same sub metrics, primary accent */
+.eyebrow,
+.blockchain-services-eyebrow,
+.reclaim-eyebrow,
+.ai-eyebrow,
+.glass-header .eyebrow,
+.quotes-head .eyebrow,
+.video-header .eyebrow,
+.section-eyebrow,
+.ecosystem-tag,
+.sc-col-title,
+.sc-fcol h5,
+.fig-label {
+  font-family: var(--font-sub), var(--font-cjk), sans-serif;
+  font-weight: var(--weight-medium);
+  letter-spacing: var(--tracking-sub);
+  text-transform: uppercase;
+}
+
+/* Product palette helpers */
+[data-brand="certledger"] {
+  --oc-primary: var(--oc-cert-teal);
+  --oc-primary-light: var(--oc-cert-secondary);
+}
+
+[data-brand="esgledger"] {
+  --oc-primary: var(--oc-esg-green);
+  --oc-primary-light: var(--oc-esg-secondary);
+}
