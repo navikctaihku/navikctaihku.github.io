@@ -88,7 +88,6 @@
       '<ul class="sc-menu">' + lis + '</ul>' +
       '<div class="sc-actions">' +
       '<a class="sc-btn-ghost" href="mailto:enquiries@onechain.hk">Contact</a>' +
-      '<a class="sc-btn-primary" href="mailto:enquiries@onechain.hk">Get a Demo</a>' +
       '<button class="sc-burger" aria-label="Menu" type="button">☰</button>' +
       '</div></div></nav>' + buildMobile();
   }
