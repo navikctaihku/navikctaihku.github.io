@@ -99,6 +99,15 @@
 
   --tracking-tight: -0.02em;
   --tracking-sub: 0.08em;
+
+  /* Corners — sharper controls (not pills). Match CTA style ~8–10px */
+  --radius-xs: 6px;
+  --radius-sm: 8px;
+  --radius-md: 10px;
+  --radius-lg: 12px;
+  --radius-panel: 12px;
+  --radius-btn: 10px;
+  --radius-full: 999px; /* circles only — avatars, dots, icon buttons */
 }
 
 /* ===== Base ===== */

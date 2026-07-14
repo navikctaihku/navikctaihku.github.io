@@ -69,4 +69,12 @@
   --weight-bold: 700;
   --tracking-tight: -0.02em;
   --tracking-sub: 0.08em;
+
+  --radius-xs: 6px;
+  --radius-sm: 8px;
+  --radius-md: 10px;
+  --radius-lg: 12px;
+  --radius-panel: 12px;
+  --radius-btn: 10px;
+  --radius-full: 999px;
 }
