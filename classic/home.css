@@ -1755,6 +1755,7 @@
     .reclaim h2 {
       letter-spacing: -0.03em;
       margin-bottom: 20px;
+      white-space: nowrap !important;
     }
     .reclaim h2 .accent {
       background: linear-gradient(120deg, var(--oc-primary) 0%, var(--oc-primary-brand) 60%, #2dd4bf 100%);
@@ -1763,6 +1764,8 @@
     .reclaim-sub {
       font-size: 18px; line-height: 1.65; color: var(--oc-text-secondary);
       margin-bottom: 32px;
+      white-space: nowrap;
+      max-width: none;
     }
     .reclaim-actions { display: flex; flex-wrap: wrap; gap: 12px; }
     .reclaim-cta {
@@ -1816,7 +1819,8 @@
         gap: 40px;
       }
       .reclaim-copy { max-width: none; text-align: center; margin: 0 auto; }
-      .reclaim h2 { white-space: normal; font-size: clamp(32px, 7vw, 44px); }
+      .reclaim h2 { white-space: normal !important; font-size: clamp(32px, 7vw, 44px); }
+      .reclaim-sub { white-space: normal; }
       .reclaim-actions { justify-content: center; }
       .reclaim-media { min-height: 300px; order: -1; }
       .reclaim-video-wrap { max-width: 520px; margin: 0 auto; }
