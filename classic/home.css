@@ -1779,7 +1779,7 @@
     .reclaim h2 {
       letter-spacing: -0.03em;
       margin-bottom: 20px;
-      white-space: nowrap !important;
+      white-space: normal !important;
     }
     .reclaim h2 .accent {
       background: linear-gradient(120deg, var(--oc-primary) 0%, var(--oc-primary-brand) 60%, #2dd4bf 100%);
@@ -1788,7 +1788,7 @@
     .reclaim-sub {
       font-size: 18px; line-height: 1.65; color: var(--oc-text-secondary);
       margin-bottom: 32px;
-      white-space: nowrap;
+      white-space: normal;
       max-width: none;
     }
     .reclaim-actions { display: flex; flex-wrap: wrap; gap: 12px; }
