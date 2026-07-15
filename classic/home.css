@@ -545,20 +545,25 @@
 
     /* ===== FEATURES (Linear style with FIG labels) ===== */
     .features-header {
-      max-width: 1100px; margin: 0 auto 80px; text-align: center;
+      max-width: 1180px; margin: 0 auto 80px; text-align: center;
     }
     .features-header h2 {
       margin-bottom: 20px;
-      font-size: clamp(26px, 2.6vw, 36px) !important;
-      line-height: 1.2 !important;
+      font-size: clamp(24px, 2.4vw, 34px) !important;
+      line-height: 1.25 !important;
     }
-    .features-header h2 .accent { color: var(--oc-primary); }
+    .features-header h2 .accent {
+      color: var(--oc-primary);
+      white-space: nowrap;
+      display: inline-block;
+    }
     .features-header p {
       color: var(--oc-muted); line-height: 1.6;
       max-width: none; white-space: nowrap;
     }
     @media (max-width: 900px) {
-      .features-header h2 { font-size: clamp(24px, 5.5vw, 32px) !important; }
+      .features-header h2 { font-size: clamp(22px, 5vw, 30px) !important; }
+      .features-header h2 .accent { white-space: normal; }
       .features-header p { white-space: normal; max-width: 640px; }
     }
     .features-grid {
