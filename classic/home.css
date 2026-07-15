@@ -1748,11 +1748,12 @@
     /* ============================================================
        URBAN INFRASTRUCTURE — split hero (reference layout + video)
        ============================================================ */
-    .reclaim {
+    .reclaim,
+    .reclaim.band-white {
       position: relative; overflow: hidden;
       padding: 100px 24px 120px;
-      /* Exact match to remapped globe video plate (yuv-encoded #ecf7fa) */
-      background: #ecf7fa !important;
+      /* Kill .band-white radial — flat plate matching globe video (#fdfdfd after yuv encode) */
+      background: #fdfdfd !important;
       border-top: 1px solid var(--oc-border);
     }
     .reclaim.band-white:has(+ .band-tint) {
@@ -1823,7 +1824,7 @@
       position: relative;
       display: flex; align-items: center; justify-content: center;
       min-height: 360px;
-      background: #ecf7fa;
+      background: #fdfdfd;
     }
     .reclaim-media-glow {
       display: none;
@@ -1833,7 +1834,7 @@
       width: 100%; max-width: 560px;
       aspect-ratio: 800 / 552;
       overflow: hidden;
-      background: #ecf7fa;
+      background: #fdfdfd;
     }
     .reclaim-video {
       display: block;
@@ -1841,7 +1842,7 @@
       height: 100%;
       object-fit: contain;
       object-position: center center;
-      background: #ecf7fa;
+      background: #fdfdfd;
     }
 
     @media (max-width: 1100px) {
