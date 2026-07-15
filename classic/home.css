@@ -1751,7 +1751,7 @@
     .reclaim {
       position: relative; overflow: hidden;
       padding: 100px 24px 120px;
-      background: #ffffff;
+      /* Keep .band-white soft tint — don't flat-fill white */
       border-top: 1px solid var(--oc-border);
     }
     .reclaim.band-white:has(+ .band-tint) {
@@ -1759,13 +1759,17 @@
       padding-bottom: clamp(100px, 12vw, 140px);
     }
     .reclaim-split {
-      max-width: 1280px; margin: 0 auto;
+      max-width: 1360px; margin: 0 auto;
       display: grid;
-      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-      gap: 48px;
+      /* Wider copy column so uppercase title + lead fit one line */
+      grid-template-columns: minmax(0, 1.45fr) minmax(0, 0.85fr);
+      gap: 28px;
       align-items: center;
     }
-    .reclaim-copy { max-width: none; text-align: center; }
+    .reclaim-copy {
+      max-width: none; text-align: center;
+      min-width: 0;
+    }
     .reclaim-eyebrow { justify-content: center; }
     .reclaim-actions { justify-content: center; }
     .reclaim-eyebrow {
@@ -1777,19 +1781,22 @@
       content: ''; width: 28px; height: 1px; background: var(--oc-primary-brand);
     }
     .reclaim h2 {
-      letter-spacing: -0.03em;
-      margin-bottom: 20px;
-      white-space: normal !important;
+      letter-spacing: -0.04em;
+      margin-bottom: 16px;
+      font-size: clamp(22px, 2.05vw, 32px) !important;
+      white-space: nowrap !important;
+      max-width: none !important;
     }
     .reclaim h2 .accent {
       background: linear-gradient(120deg, var(--oc-primary) 0%, var(--oc-primary-brand) 60%, #2dd4bf 100%);
       -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
     }
     .reclaim-sub {
-      font-size: 18px; line-height: 1.65; color: var(--oc-text-secondary);
-      margin-bottom: 32px;
-      white-space: normal;
-      max-width: none;
+      font-size: clamp(14px, 1.15vw, 16px) !important;
+      line-height: 1.55; color: var(--oc-text-secondary);
+      margin-bottom: 28px;
+      white-space: nowrap !important;
+      max-width: none !important;
     }
     .reclaim-actions { display: flex; flex-wrap: wrap; gap: 12px; }
     .reclaim-cta {
@@ -1805,7 +1812,7 @@
       display: inline-flex; align-items: center; gap: 8px;
       font-size: 15px; font-weight: 600; color: var(--oc-primary);
       padding: 14px 26px; border-radius: var(--radius-btn); cursor: pointer;
-      background: #fff; border: 1.5px solid rgba(13,125,145,0.25);
+      background: transparent; border: 1.5px solid rgba(13,125,145,0.25);
       transition: all 180ms ease;
     }
     .reclaim-cta-outline:hover {
@@ -1814,18 +1821,18 @@
     .reclaim-media {
       position: relative;
       display: flex; align-items: center; justify-content: center;
-      min-height: 480px;
-      background: #ffffff;
+      min-height: 360px;
+      background: transparent;
     }
     .reclaim-media-glow {
       display: none;
     }
     .reclaim-video-wrap {
       position: relative; z-index: 1;
-      width: 100%; max-width: 820px;
+      width: 100%; max-width: 560px;
       aspect-ratio: 800 / 552;
       overflow: hidden;
-      background: #ffffff;
+      background: transparent;
     }
     .reclaim-video {
       display: block;
@@ -1833,7 +1840,15 @@
       height: 100%;
       object-fit: contain;
       object-position: center center;
-      background: #ffffff;
+      background: transparent;
+      /* Drop baked-in near-white video plate into the soft band-white wash */
+      mix-blend-mode: darken;
+    }
+
+    @media (max-width: 1100px) {
+      .reclaim h2 { font-size: clamp(20px, 2vw, 28px) !important; }
+      .reclaim-sub { font-size: 13.5px !important; }
+      .reclaim-video-wrap { max-width: 480px; }
     }
 
     @media (max-width: 920px) {
@@ -1843,18 +1858,21 @@
         gap: 40px;
       }
       .reclaim-copy { max-width: none; text-align: center; margin: 0 auto; }
-      .reclaim h2 { white-space: normal !important; font-size: clamp(32px, 7vw, 44px); }
-      .reclaim-sub { white-space: normal; }
+      .reclaim h2 {
+        white-space: normal !important;
+        font-size: clamp(28px, 6.5vw, 40px) !important;
+      }
+      .reclaim-sub { white-space: normal !important; font-size: 16px !important; }
       .reclaim-actions { justify-content: center; }
-      .reclaim-media { min-height: 300px; order: -1; }
-      .reclaim-video-wrap { max-width: 520px; margin: 0 auto; }
+      .reclaim-media { min-height: 260px; order: -1; }
+      .reclaim-video-wrap { max-width: 420px; margin: 0 auto; }
     }
     @media (prefers-reduced-motion: reduce) {
       .reclaim-video { display: none; }
       .reclaim-video-wrap::after {
         content: '';
         display: block; aspect-ratio: 16/10;
-        background: linear-gradient(135deg, #eef6fa, #fff);
+        background: transparent;
       }
     }
 
