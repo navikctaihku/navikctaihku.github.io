@@ -1926,11 +1926,7 @@
         font-size: clamp(26px, 6vw, 36px) !important;
       }
     }
-    .ai-gradient {
-      background: linear-gradient(115deg, #016282 0%, #0d7d91 32%, #14a4bc 68%, #1bb5cb 100%);
-      -webkit-background-clip: text; background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
+    /* .ai-gradient now uses the shared accent gradient (see GRADIENT TEXT SHIMMER) */
     .ai-type-line {
       font-family: var(--font-body); font-size: 15px; color: var(--oc-text-secondary);
       margin-bottom: 18px; min-height: 1.7em;
@@ -2324,7 +2320,10 @@
       50% { background-position: 100% 50%; }
     }
     .reclaim h2 .accent,
-    .solutions-copy .accent {
+    .solutions-copy .accent,
+    .features-header h2 .accent,
+    .blockchain-services-header h2 span,
+    .ai-gradient {
       background: linear-gradient(120deg, var(--oc-primary-deep) 0%, var(--oc-primary) 35%, #2dd4bf 60%, var(--oc-primary-deep) 100%);
       -webkit-background-clip: text; background-clip: text;
       -webkit-text-fill-color: transparent; color: transparent;
