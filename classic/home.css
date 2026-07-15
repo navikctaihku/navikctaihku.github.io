@@ -53,6 +53,7 @@
       text-align: center;
       white-space: normal !important;
       max-width: none !important;
+      text-transform: uppercase;
     }
     .cta-banner h2 {
       font-size: var(--title-section) !important;
@@ -525,7 +526,7 @@
     }
     .ticker-item {
       font-family: var(--font-sub, 'Inter', sans-serif);
-      font-size: 13px; font-weight: 500; color: var(--oc-muted-light);
+      font-size: 13px; font-weight: 500; color: var(--oc-primary);
       white-space: nowrap; text-transform: uppercase; letter-spacing: 0.08em;
     }
     @keyframes ticker-scroll {
@@ -547,6 +548,7 @@
       max-width: 920px; margin: 0 auto 80px; text-align: center;
     }
     .features-header h2 { margin-bottom: 20px; }
+    .features-header h2 .accent { color: var(--oc-primary); }
     .features-header p {
       color: var(--oc-muted); line-height: 1.6;
       max-width: none; white-space: nowrap;
@@ -2074,15 +2076,17 @@
     }
     .insights-inner { max-width: 1180px; margin: 0 auto; }
     .insights-header {
-      display: flex; align-items: flex-end; justify-content: space-between;
-      gap: 24px; margin-bottom: 40px;
+      display: block; text-align: center;
+      margin-bottom: 40px;
     }
+    .insights-header .insights-view-all { margin-top: 16px; }
     .insights-title {
       font-size: clamp(32px, 4vw, 44px); font-weight: 700; letter-spacing: -0.02em;
       color: var(--oc-text); margin-bottom: 12px;
     }
     .insights-desc {
       font-size: 16px; color: var(--oc-muted); max-width: 560px; line-height: 1.6;
+      margin-left: auto; margin-right: auto;
     }
     .insights-view-all {
       display: inline-flex; align-items: center; gap: 8px;
@@ -2154,7 +2158,6 @@
       width: 22px; height: 22px; object-fit: contain; border-radius: 4px;
     }
     @media (max-width: 960px) {
-      .insights-header { flex-direction: column; align-items: flex-start; }
       .insights-grid { grid-template-columns: 1fr; }
     }
     @media (prefers-reduced-motion: reduce) {
@@ -2290,7 +2293,7 @@
     /* ===== TICKER: pause + highlight on hover ===== */
     .ticker:hover .ticker-track { animation-play-state: paused; }
     .ticker-item { transition: color 0.25s ease; }
-    .ticker-item:hover { color: var(--oc-primary); }
+    .ticker-item:hover { color: var(--oc-primary-deep); }
 
     @media (prefers-reduced-motion: reduce) {
       .reclaim h2 .accent, .solutions-copy .accent { animation: none; }

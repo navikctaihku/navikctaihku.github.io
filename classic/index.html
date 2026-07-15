@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="global.css?v=202607142145">
   <link rel="stylesheet" href="chrome.css?v=202607142145">
   <script src="site-chrome.js" defer></script>
-  <link rel="stylesheet" href="home.css?v=202607142145">
+  <link rel="stylesheet" href="home.css?v=202607151245">
 </head>
 <body>
 
@@ -123,7 +123,7 @@
   <section class="section band-tint" id="features">
     <div class="container">
       <div class="features-header reveal">
-        <h2>Your product, delivered. <span style="color: var(--oc-muted-light);">Security, intelligence, and blockchain trust included.</span></h2>
+        <h2>Your product, delivered. <span class="accent">Security, intelligence, and blockchain trust included.</span></h2>
         <p>Three layers working together so you can focus on what matters — building products that earn trust.</p>
       </div>
       <div class="features-grid reveal">
@@ -712,230 +712,6 @@
     </div>
   </section>
 
-  <!-- RECENTLY SHIPPED -->
-  <section class="shipped-section band-tint" id="explore">
-    <div class="container">
-      <h2 class="reveal">Explore the platform</h2>
-      <div class="shipped-grid">
-        <!-- Large card: Platform v2 — blockchain chain visual -->
-        <div class="shipped-card shipped-card-large reveal">
-          <div class="shipped-card-body">
-            <div class="shipped-card-visual" style="flex:1; padding: 0;">
-              <div class="shipped-card-visual-bg">
-                <div class="chain-visual">
-                  <svg viewBox="0 0 600 700" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
-                    <!-- Grid lines background -->
-                    <defs>
-                      <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
-                        <path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(10,22,40,0.03)" stroke-width="0.5"/>
-                      </pattern>
-                    </defs>
-                    <rect width="600" height="700" fill="url(#grid)"/>
-
-                    <!-- Chain connections (links between blocks) -->
-                    <!-- Row 1 to Row 2 -->
-                    <line x1="150" y1="135" x2="110" y2="235" stroke="rgba(13,125,145,0.12)" stroke-width="2" stroke-dasharray="6 4" class="chain-link-pulse"/>
-                    <line x1="300" y1="135" x2="300" y2="235" stroke="rgba(13,125,145,0.15)" stroke-width="2" class="chain-link-pulse"/>
-                    <line x1="450" y1="135" x2="490" y2="235" stroke="rgba(13,125,145,0.12)" stroke-width="2" stroke-dasharray="6 4" class="chain-link-pulse"/>
-                    <!-- Row 2 to Row 3 -->
-                    <line x1="110" y1="315" x2="200" y2="415" stroke="rgba(13,125,145,0.12)" stroke-width="2" stroke-dasharray="6 4" class="chain-link-pulse"/>
-                    <line x1="300" y1="315" x2="370" y2="415" stroke="rgba(13,125,145,0.15)" stroke-width="2" class="chain-link-pulse"/>
-                    <line x1="490" y1="315" x2="530" y2="415" stroke="rgba(13,125,145,0.12)" stroke-width="2" stroke-dasharray="6 4" class="chain-link-pulse"/>
-                    <!-- Cross connections (network feel) -->
-                    <line x1="150" y1="100" x2="300" y2="100" stroke="rgba(13,125,145,0.06)" stroke-width="1"/>
-                    <line x1="300" y1="100" x2="450" y2="100" stroke="rgba(13,125,145,0.06)" stroke-width="1"/>
-                    <line x1="110" y1="275" x2="300" y2="275" stroke="rgba(13,125,145,0.06)" stroke-width="1"/>
-                    <line x1="300" y1="275" x2="490" y2="275" stroke="rgba(13,125,145,0.06)" stroke-width="1"/>
-                    <!-- Small link chain icons on connections -->
-                    <circle cx="225" cy="185" r="4" fill="rgba(13,125,145,0.1)" stroke="rgba(13,125,145,0.2)" stroke-width="1"/>
-                    <circle cx="395" cy="185" r="4" fill="rgba(13,125,145,0.1)" stroke="rgba(13,125,145,0.2)" stroke-width="1"/>
-                    <circle cx="200" cy="365" r="4" fill="rgba(13,125,145,0.1)" stroke="rgba(13,125,145,0.2)" stroke-width="1"/>
-
-                    <!-- BLOCK 1 (top-left) -->
-                    <g class="chain-block">
-                      <rect x="80" y="55" width="140" height="80" rx="12" fill="white" stroke="rgba(10,22,40,0.1)" stroke-width="1.5"/>
-                      <rect x="92" y="67" width="50" height="6" rx="3" fill="rgba(13,125,145,0.15)"/>
-                      <text x="92" y="90" font-family="'JetBrains Mono', monospace" font-size="9" fill="rgba(100,116,139,0.7)">0x8f3a...c2d1</text>
-                      <rect x="92" y="100" width="116" height="4" rx="2" fill="rgba(10,22,40,0.04)"/>
-                      <rect x="92" y="108" width="80" height="4" rx="2" fill="rgba(10,22,40,0.04)"/>
-                      <rect x="92" y="116" width="45" height="4" rx="2" fill="rgba(0,119,113,0.2)"/>
-                      <circle cx="200" cy="70" r="8" fill="rgba(0,119,113,0.1)" stroke="rgba(0,119,113,0.3)" stroke-width="1"/>
-                      <path d="M197 70l2 2 4-4" stroke="rgba(0,119,113,0.6)" stroke-width="1.5" fill="none" stroke-linecap="round"/>
-                    </g>
-
-                    <!-- BLOCK 2 (top-center — highlighted/active) -->
-                    <g class="chain-block">
-                      <rect x="230" y="55" width="140" height="80" rx="12" fill="white" stroke="rgba(13,125,145,0.25)" stroke-width="2"/>
-                      <rect x="242" y="67" width="60" height="6" rx="3" fill="rgba(13,125,145,0.25)"/>
-                      <text x="242" y="90" font-family="'JetBrains Mono', monospace" font-size="9" fill="rgba(13,125,145,0.6)">#4,209,831</text>
-                      <rect x="242" y="100" width="116" height="4" rx="2" fill="rgba(13,125,145,0.06)"/>
-                      <rect x="242" y="108" width="90" height="4" rx="2" fill="rgba(13,125,145,0.06)"/>
-                      <rect x="242" y="116" width="55" height="4" rx="2" fill="rgba(13,125,145,0.12)"/>
-                      <circle cx="350" cy="70" r="8" fill="rgba(13,125,145,0.08)" stroke="rgba(13,125,145,0.3)" stroke-width="1"/>
-                      <path d="M347 70l2 2 4-4" stroke="rgba(13,125,145,0.6)" stroke-width="1.5" fill="none" stroke-linecap="round"/>
-                    </g>
-
-                    <!-- BLOCK 3 (top-right) -->
-                    <g class="chain-block">
-                      <rect x="380" y="55" width="140" height="80" rx="12" fill="white" stroke="rgba(10,22,40,0.1)" stroke-width="1.5"/>
-                      <rect x="392" y="67" width="40" height="6" rx="3" fill="rgba(10,22,40,0.08)"/>
-                      <text x="392" y="90" font-family="'JetBrains Mono', monospace" font-size="9" fill="rgba(100,116,139,0.7)">0xb7e2...91af</text>
-                      <rect x="392" y="100" width="116" height="4" rx="2" fill="rgba(10,22,40,0.04)"/>
-                      <rect x="392" y="108" width="70" height="4" rx="2" fill="rgba(10,22,40,0.04)"/>
-                      <rect x="392" y="116" width="95" height="4" rx="2" fill="rgba(240,180,41,0.2)"/>
-                      <circle cx="500" cy="70" r="8" fill="rgba(240,180,41,0.1)" stroke="rgba(240,180,41,0.3)" stroke-width="1"/>
-                      <path d="M497 70l2 2 4-4" stroke="rgba(240,180,41,0.6)" stroke-width="1.5" fill="none" stroke-linecap="round"/>
-                    </g>
-
-                    <!-- BLOCK 4 (middle-left) -->
-                    <g class="chain-block">
-                      <rect x="40" y="235" width="140" height="80" rx="12" fill="white" stroke="rgba(10,22,40,0.08)" stroke-width="1"/>
-                      <rect x="52" y="247" width="45" height="6" rx="3" fill="rgba(10,22,40,0.06)"/>
-                      <text x="52" y="270" font-family="'JetBrains Mono', monospace" font-size="9" fill="rgba(100,116,139,0.5)">0x2c91...e4b8</text>
-                      <rect x="52" y="280" width="116" height="4" rx="2" fill="rgba(10,22,40,0.03)"/>
-                      <rect x="52" y="288" width="60" height="4" rx="2" fill="rgba(10,22,40,0.03)"/>
-                      <rect x="52" y="296" width="80" height="4" rx="2" fill="rgba(20,164,188,0.15)"/>
-                    </g>
-
-                    <!-- BLOCK 5 (middle-center) -->
-                    <g class="chain-block">
-                      <rect x="230" y="235" width="140" height="80" rx="12" fill="white" stroke="rgba(10,22,40,0.1)" stroke-width="1.5"/>
-                      <rect x="242" y="247" width="55" height="6" rx="3" fill="rgba(10,22,40,0.08)"/>
-                      <text x="242" y="270" font-family="'JetBrains Mono', monospace" font-size="9" fill="rgba(100,116,139,0.6)">0xd4f6...37ca</text>
-                      <rect x="242" y="280" width="116" height="4" rx="2" fill="rgba(10,22,40,0.04)"/>
-                      <rect x="242" y="288" width="85" height="4" rx="2" fill="rgba(10,22,40,0.04)"/>
-                      <rect x="242" y="296" width="50" height="4" rx="2" fill="rgba(0,119,113,0.15)"/>
-                    </g>
-
-                    <!-- BLOCK 6 (middle-right) -->
-                    <g class="chain-block">
-                      <rect x="420" y="235" width="140" height="80" rx="12" fill="white" stroke="rgba(10,22,40,0.08)" stroke-width="1"/>
-                      <rect x="432" y="247" width="35" height="6" rx="3" fill="rgba(10,22,40,0.06)"/>
-                      <text x="432" y="270" font-family="'JetBrains Mono', monospace" font-size="9" fill="rgba(100,116,139,0.5)">0x19ab...f502</text>
-                      <rect x="432" y="280" width="116" height="4" rx="2" fill="rgba(10,22,40,0.03)"/>
-                      <rect x="432" y="288" width="75" height="4" rx="2" fill="rgba(10,22,40,0.03)"/>
-                    </g>
-
-                    <!-- BLOCK 7 (bottom-left) — partial/incoming -->
-                    <g class="chain-block" opacity="0.5">
-                      <rect x="130" y="415" width="140" height="80" rx="12" fill="white" stroke="rgba(10,22,40,0.06)" stroke-width="1"/>
-                      <rect x="142" y="427" width="40" height="6" rx="3" fill="rgba(10,22,40,0.05)"/>
-                      <text x="142" y="450" font-family="'JetBrains Mono', monospace" font-size="9" fill="rgba(100,116,139,0.4)">0xe7c3...a1d9</text>
-                      <rect x="142" y="460" width="116" height="4" rx="2" fill="rgba(10,22,40,0.02)"/>
-                      <rect x="142" y="468" width="60" height="4" rx="2" fill="rgba(10,22,40,0.02)"/>
-                    </g>
-
-                    <!-- BLOCK 8 (bottom-center) — partial -->
-                    <g class="chain-block" opacity="0.5">
-                      <rect x="300" y="415" width="140" height="80" rx="12" fill="white" stroke="rgba(10,22,40,0.06)" stroke-width="1"/>
-                      <rect x="312" y="427" width="50" height="6" rx="3" fill="rgba(10,22,40,0.05)"/>
-                      <text x="312" y="450" font-family="'JetBrains Mono', monospace" font-size="9" fill="rgba(100,116,139,0.4)">pending...</text>
-                      <rect x="312" y="460" width="116" height="4" rx="2" fill="rgba(10,22,40,0.02)"/>
-                    </g>
-
-                    <!-- BLOCK 9 (bottom-right) — partial -->
-                    <g class="chain-block" opacity="0.35">
-                      <rect x="470" y="415" width="120" height="70" rx="12" fill="white" stroke="rgba(10,22,40,0.05)" stroke-width="1"/>
-                      <rect x="482" y="427" width="35" height="6" rx="3" fill="rgba(10,22,40,0.04)"/>
-                      <text x="482" y="450" font-family="'JetBrains Mono', monospace" font-size="9" fill="rgba(100,116,139,0.3)">queued</text>
-                    </g>
-
-                    <!-- Decorative data flow dots -->
-                    <circle cx="225" cy="100" r="2" fill="rgba(13,125,145,0.2)"/>
-                    <circle cx="375" cy="100" r="2" fill="rgba(13,125,145,0.2)"/>
-                    <circle cx="200" cy="275" r="2" fill="rgba(13,125,145,0.15)"/>
-                    <circle cx="400" cy="275" r="2" fill="rgba(13,125,145,0.15)"/>
-
-                    <!-- Subtle bottom fade -->
-                    <rect x="0" y="520" width="600" height="180" fill="url(#bottomFade)"/>
-                    <defs>
-                      <linearGradient id="bottomFade" x1="0" y1="0" x2="0" y2="1">
-                        <stop offset="0%" stop-color="white" stop-opacity="0"/>
-                        <stop offset="100%" stop-color="white" stop-opacity="0.9"/>
-                      </linearGradient>
-                    </defs>
-                  </svg>
-                </div>
-              </div>
-              <div class="shipped-card-info" style="padding: 40px;">
-                <h3>OneChain Platform <span class="version-badge">v2</span></h3>
-                <p>See what's next in enterprise blockchain infrastructure.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Top right: Smart Contracts -->
-        <div class="shipped-card reveal">
-          <div class="shipped-card-body">
-            <div class="shipped-card-content">
-              <div class="workflow-bars">
-                <div class="wf-bar"><span class="wf-bar-name">deploy()</span><span class="wf-bar-time">420ms</span></div>
-                <div class="wf-bar"><span class="wf-bar-name">verify()</span><span class="wf-bar-time">252ms</span></div>
-                <div class="wf-bar"><span class="wf-bar-name">mint()</span><span class="wf-bar-time">168ms</span></div>
-                <div class="wf-bar"><span class="wf-bar-name">audit()</span><span class="wf-bar-time">168ms</span></div>
-              </div>
-            </div>
-            <div class="shipped-card-footer">
-              <div class="shipped-card-info">
-                <h3>Smart Contracts</h3>
-                <p>Deploy, verify, and audit in milliseconds — not minutes.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Bottom right: API Sandbox -->
-        <div class="shipped-card reveal">
-          <div class="shipped-card-body">
-            <div class="shipped-card-content">
-              <div class="sandbox-visual">
-                <div class="sandbox-canvas">
-                  <div class="sandbox-terminal">
-                    <div class="sandbox-terminal-bar">
-                      <div class="sandbox-dot red"></div>
-                      <div class="sandbox-dot yellow"></div>
-                      <div class="sandbox-dot green"></div>
-                      <span class="sandbox-terminal-title">onechain-sandbox</span>
-                    </div>
-                    <div class="sandbox-terminal-body">
-                      <div><span class="prompt">$</span> <span class="cmd">onechain deploy</span> <span class="flag">--network testnet</span></div>
-                      <div><span class="output">Compiling contract...</span></div>
-                      <div><span class="success">&#10003; Contract deployed</span></div>
-                      <div><span class="output">tx: </span><span class="hash">0x8f3a...c2d1</span></div>
-                      <div style="margin-top:6px;"><span class="prompt">$</span> <span class="cmd">onechain verify</span> <span class="hash">0x8f3a</span></div>
-                      <div><span class="success">&#10003; Verified on-chain</span> <span class="output">(168ms)</span></div>
-                    </div>
-                  </div>
-                  <div class="sandbox-response">
-                    <div class="sandbox-res-row">
-                      <span class="sandbox-res-label">Status</span>
-                      <span class="sandbox-res-value ok">&#10003; Live</span>
-                    </div>
-                    <div class="sandbox-res-row">
-                      <span class="sandbox-res-label">Network</span>
-                      <span class="sandbox-res-value">Testnet v2</span>
-                    </div>
-                    <div class="sandbox-res-row">
-                      <span class="sandbox-res-label">Gas</span>
-                      <span class="sandbox-res-value">0.0024 OC</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="shipped-card-footer">
-              <div class="shipped-card-info">
-                <h3>API Sandbox</h3>
-                <p>The safest way to test enterprise blockchain integrations.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <!-- EXHIBITION VIDEO (framed showcase) -->
   <section class="video-section reveal band-white" id="exhibition">
     <div class="video-header">
@@ -1083,20 +859,6 @@
             </div>
           </div>
         </a>
-      </div>
-    </div>
-  </section>
-
-  <section class="cta-banner reveal">
-    <div class="cta-inner">
-      <h2>Be the first to know</h2>
-      <p>Get product updates and enterprise blockchain insights directly from the OneChain team.</p>
-      <div class="cta-actions" style="margin-top: 24px;">
-        <a href="mailto:enquiries@onechain.hk?subject=OneChain%20product%20updates" class="btn-primary">
-          Request Updates
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M6 3l5 5-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </a>
-        <a href="mailto:enquiries@onechain.hk?subject=OneChain%20demo%20request" class="btn-outline">Contact Sales</a>
       </div>
     </div>
   </section>
