@@ -545,15 +545,20 @@
 
     /* ===== FEATURES (Linear style with FIG labels) ===== */
     .features-header {
-      max-width: 920px; margin: 0 auto 80px; text-align: center;
+      max-width: 1100px; margin: 0 auto 80px; text-align: center;
     }
-    .features-header h2 { margin-bottom: 20px; }
+    .features-header h2 {
+      margin-bottom: 20px;
+      font-size: clamp(26px, 2.6vw, 36px) !important;
+      line-height: 1.2 !important;
+    }
     .features-header h2 .accent { color: var(--oc-primary); }
     .features-header p {
       color: var(--oc-muted); line-height: 1.6;
       max-width: none; white-space: nowrap;
     }
     @media (max-width: 900px) {
+      .features-header h2 { font-size: clamp(24px, 5.5vw, 32px) !important; }
       .features-header p { white-space: normal; max-width: 640px; }
     }
     .features-grid {
@@ -1900,12 +1905,22 @@
     .ai-particles { position: absolute; inset: 0; z-index: 0; pointer-events: none; }
     .ai-particles canvas { display: block; }
     .ai-container { position: relative; z-index: 2; }
-    .ai-header { text-align: center; max-width: 760px; margin: 0 auto 56px; }
+    .ai-header { text-align: center; max-width: 1100px; margin: 0 auto 56px; }
     .ai-eyebrow {
       font-family: var(--font-sub); font-size: 13px; color: var(--oc-primary);
       text-transform: uppercase; letter-spacing: var(--tracking-sub); margin-bottom: 16px;
     }
-    .ai-header h2 { margin-bottom: 14px; }
+    .ai-header h2 {
+      margin-bottom: 14px;
+      white-space: nowrap !important;
+      font-size: clamp(24px, 2.4vw, 36px) !important;
+    }
+    @media (max-width: 920px) {
+      .ai-header h2 {
+        white-space: normal !important;
+        font-size: clamp(26px, 6vw, 36px) !important;
+      }
+    }
     .ai-gradient {
       background: linear-gradient(115deg, #016282 0%, #0d7d91 32%, #14a4bc 68%, #1bb5cb 100%);
       -webkit-background-clip: text; background-clip: text;
