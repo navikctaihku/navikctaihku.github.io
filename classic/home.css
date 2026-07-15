@@ -1752,8 +1752,8 @@
     .reclaim.band-white {
       position: relative; overflow: hidden;
       padding: 100px 24px 120px;
-      /* Kill .band-white radial — flat plate matching globe video (#fdfdfd after yuv encode) */
-      background: #fdfdfd !important;
+      /* Kill .band-white radial — pure white to match globe video */
+      background: #ffffff !important;
       border-top: 1px solid var(--oc-border);
     }
     .reclaim.band-white:has(+ .band-tint) {
@@ -1824,7 +1824,7 @@
       position: relative;
       display: flex; align-items: center; justify-content: center;
       min-height: 360px;
-      background: #fdfdfd;
+      background: #ffffff;
     }
     .reclaim-media-glow {
       display: none;
@@ -1834,7 +1834,7 @@
       width: 100%; max-width: 560px;
       aspect-ratio: 800 / 552;
       overflow: hidden;
-      background: #fdfdfd;
+      background: #ffffff;
     }
     .reclaim-video {
       display: block;
@@ -1842,7 +1842,9 @@
       height: 100%;
       object-fit: contain;
       object-position: center center;
-      background: #fdfdfd;
+      background: #ffffff;
+      /* Video plate encodes to rgb(253) — lift to pure 255 so it fuses with the page */
+      filter: brightness(1.01);
     }
 
     @media (max-width: 1100px) {
