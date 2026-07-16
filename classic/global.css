@@ -215,9 +215,14 @@ p, li, label, input, textarea, .oc-type-body {
 /* Apply §09 ESGLedger palette on product surfaces */
 [data-brand="esgledger"] {
   --oc-primary: var(--esg-primary);
+  --oc-primary-deep: var(--esg-dark);
   --oc-primary-light: var(--esg-secondary);
+  --oc-primary-brand: var(--esg-primary);
   --oc-primary-glow: var(--esg-primary-glow);
   --oc-secondary: var(--esg-supp);
   --oc-secondary-alert: var(--esg-alert);
+  --oc-supp: #e8f5f4;
+  --oc-supp-soft: #f3faf9;
+  --oc-bg-alt: #e8f5f4;
   --oc-supp-alert: var(--esg-alert-soft);
 }
