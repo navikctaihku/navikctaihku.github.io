@@ -209,6 +209,9 @@ p, li, label, input, textarea, .oc-type-body {
   --oc-primary-glow: var(--cert-primary-glow);
   --oc-secondary: var(--cert-supp);
   --oc-secondary-alert: var(--cert-alert);
+  --oc-supp: #e8f4f8;
+  --oc-supp-soft: #f0f9fb;
+  --oc-bg-alt: #e8f4f8;
   --oc-supp-alert: var(--cert-alert-soft);
 }
 
