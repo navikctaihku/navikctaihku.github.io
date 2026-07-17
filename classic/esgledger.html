@@ -244,6 +244,24 @@
     .delay-1 { animation-delay: 0.1s; } .delay-2 { animation-delay: 0.2s; } .delay-3 { animation-delay: 0.3s; }
     .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.16,1,0.3,1); }
     .reveal.visible { opacity: 1; transform: translateY(0); }
+    /* WHAT SETS APART — 2×2 feature grid */
+    .apart-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; max-width: 960px; margin: 0 auto; }
+    .apart-card { background: var(--oc-card-bg); border: 1px solid var(--oc-border); border-radius: var(--radius-lg); padding: 32px; display: flex; gap: 20px; align-items: flex-start; transition: all 250ms; box-shadow: 0 1px 3px rgba(10,22,40,0.04); }
+    .apart-card:hover { border-color: rgba(0,119,113,0.25); box-shadow: 0 8px 32px rgba(0,119,113,0.08); transform: translateY(-2px); }
+    .apart-icon { width: 48px; height: 48px; min-width: 48px; border-radius: var(--radius-md); background: rgba(0,119,113,0.08); color: var(--oc-esg-green); display: flex; align-items: center; justify-content: center; }
+    .apart-card h4 { font-family: var(--font-display); font-size: 17px; font-weight: 700; color: var(--oc-text); margin-bottom: 6px; }
+    .apart-card p { font-size: 14px; color: var(--oc-muted); line-height: 1.6; }
+    @media (max-width: 768px) { .apart-grid { grid-template-columns: 1fr; } }
+
+    /* GOV PORTAL — 4×2 card grid */
+    .gov-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+    .gov-card { background: var(--oc-card-bg); border: 1px solid var(--oc-border); border-radius: var(--radius-lg); padding: 28px 24px; text-align: center; transition: all 250ms; box-shadow: 0 1px 3px rgba(10,22,40,0.04); }
+    .gov-card:hover { border-color: rgba(0,119,113,0.25); box-shadow: 0 8px 32px rgba(0,119,113,0.08); transform: translateY(-2px); }
+    .gov-icon { width: 44px; height: 44px; border-radius: var(--radius-md); background: rgba(0,119,113,0.08); color: var(--oc-esg-green); display: flex; align-items: center; justify-content: center; margin: 0 auto 14px; }
+    .gov-card h4 { font-family: var(--font-display); font-size: 15px; font-weight: 700; color: var(--oc-text); }
+    @media (max-width: 1024px) { .gov-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 768px) { .gov-grid { grid-template-columns: 1fr; } }
+
     @media (prefers-reduced-motion: reduce) {
       .animate-in { animation: none; opacity: 1; transform: none; }
       .reveal { opacity: 1; transform: none; transition: none; }
@@ -332,6 +350,115 @@
         <div class="role-card"><div class="role-icon">♻️</div><h4>Recycler</h4><p>Log new collections, upload proof and evidence, track submitted credits, view earnings.</p></div>
         <div class="role-card"><div class="role-icon">✅</div><h4>Verifier</h4><p>Review pending submissions, approve or reject with notes, access verification history.</p></div>
         <div class="role-card"><div class="role-icon">⚙️</div><h4>Admin</h4><p>User management, platform analytics, credit supply overview, and system settings.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT SETS ESGLEDGER APART -->
+  <section class="section section-alt reveal">
+    <div class="container">
+      <div class="section-header">
+        <h2 style="color: var(--oc-primary);">What Sets ESGLedger Apart</h2>
+        <p>End-to-end transparency that turns ESG commitments into verifiable, tradable impact.</p>
+      </div>
+      <div class="apart-grid">
+        <div class="apart-card">
+          <div class="apart-icon">
+            <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/><path d="M10 6.5h4M6.5 10v4M17.5 10v4M10 17.5h4"/></svg>
+          </div>
+          <div>
+            <h4>Immutable Audit Trail</h4>
+            <p>Every credit — from collection to retirement — is recorded on-chain. No double-counting, no retroactive edits, no greenwashing loopholes.</p>
+          </div>
+        </div>
+        <div class="apart-card">
+          <div class="apart-icon">
+            <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><ellipse cx="12" cy="12" rx="4" ry="10"/></svg>
+          </div>
+          <div>
+            <h4>Multi-Stakeholder Platform</h4>
+            <p>Purpose-built dashboards for buyers, recyclers, verifiers, admins, and government regulators — each with role-specific workflows.</p>
+          </div>
+        </div>
+        <div class="apart-card">
+          <div class="apart-icon">
+            <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22c5.5-3 9-7.5 9-12a9 9 0 0 0-18 0c0 4.5 3.5 9 9 12z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+          <div>
+            <h4>Geospatial Intelligence</h4>
+            <p>Interactive map layers with district boundaries, population projections, RVM coverage rings, and candidate-site scoring for data-driven planning.</p>
+          </div>
+        </div>
+        <div class="apart-card">
+          <div class="apart-icon">
+            <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+          </div>
+          <div>
+            <h4>Regulatory-Grade Reporting</h4>
+            <p>Auto-generated compliance reports aligned with GRI, SASB, and TCFD — exportable as CSV or PDF for audit submissions.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GOVERNMENT & REGULATOR INTELLIGENCE -->
+  <section class="section reveal">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-eyebrow">Government Portal</div>
+        <h2>Regulator Intelligence, Built In</h2>
+        <p>A dedicated portal for government agencies to monitor recycling infrastructure, track coverage KPIs, and plan new site deployments.</p>
+      </div>
+      <div class="gov-grid">
+        <div class="gov-card">
+          <div class="gov-icon">
+            <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22c5.5-3 9-7.5 9-12a9 9 0 0 0-18 0c0 4.5 3.5 9 9 12z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+          <h4>RVM Site Planning</h4>
+        </div>
+        <div class="gov-card">
+          <div class="gov-icon">
+            <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 20V10"/><path d="M12 20V4"/><path d="M6 20v-6"/></svg>
+          </div>
+          <h4>District Deficiency Ranking</h4>
+        </div>
+        <div class="gov-card">
+          <div class="gov-icon">
+            <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+          </div>
+          <h4>Coverage KPI Tracking</h4>
+        </div>
+        <div class="gov-card">
+          <div class="gov-icon">
+            <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>
+          </div>
+          <h4>Candidate Site Assessment</h4>
+        </div>
+        <div class="gov-card">
+          <div class="gov-icon">
+            <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </div>
+          <h4>Population Projections</h4>
+        </div>
+        <div class="gov-card">
+          <div class="gov-icon">
+            <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          </div>
+          <h4>Export &amp; Audit Trails</h4>
+        </div>
+        <div class="gov-card">
+          <div class="gov-icon">
+            <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>
+          </div>
+          <h4>Layer-Based Map Analytics</h4>
+        </div>
+        <div class="gov-card">
+          <div class="gov-icon">
+            <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+          </div>
+          <h4>Real-Time Monitoring</h4>
+        </div>
       </div>
     </div>
   </section>
