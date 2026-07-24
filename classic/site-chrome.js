@@ -38,8 +38,7 @@
     ]},
     { label: 'Solutions', cols: [
       { title: 'Lead Use Cases', items: [
-        item('index.html#use-cases', icon('rgba(46,204,113,0.12)', '♻️'), 'Watsons Recycling', 'Reverse-vending plastic credits on ESGLedger'),
-        item('index.html#use-cases', icon('rgba(1,98,130,0.10)', '⛓️'), 'Timber Provenance', 'HK Timberbank chain-of-custody on-chain'),
+        item('solutions.html#lead', icon('rgba(46,204,113,0.12)', '♻️'), 'Watsons & Timber', 'Recycling credits and timber provenance — one story'),
       ]},
       { title: 'By Industry', items: [
         item('esgledger.html', icon('rgba(46,204,113,0.12)', '🌱'), 'ESG & Sustainability', 'Anti-greenwashing data and plastic credits'),
@@ -118,7 +117,7 @@
       '<div class="sc-footer-brand"><img src="onchain-logo.png" alt="OneChain">' +
       '<p>Full-stack blockchain company building the trust layer for Asia. Cyberport, Hong Kong.</p></div>' +
       col('Products', [['ESGLedger', 'esgledger.html'], ['CertLedger', 'certledger.html'], ['API Platform', 'api-platform.html']]) +
-      col('Solutions', [['Watsons Recycling', 'index.html#use-cases'], ['Timber Provenance', 'index.html#use-cases'], ['ESG & Sustainability', 'esgledger.html'], ['Credentials & Identity', 'certledger.html'], ['Education', 'certledger.html'], ['Government', 'certledger.html']]) +
+      col('Solutions', [['Watsons & Timber', 'solutions.html#lead'], ['ESG & Sustainability', 'esgledger.html'], ['Credentials & Identity', 'certledger.html'], ['Education', 'certledger.html'], ['Government', 'certledger.html']]) +
       col('Company', [['Blockchain Services', 'index.html#blockchain-services'], ['Infrastructure', 'company.html#infrastructure'], ['Applications', 'company.html#applications'], ['Green Tech', 'company.html#greentech']]) +
       col('About', [['About Us', 'about.html'], ['Vision & Mission', 'about.html#vision'], ['What We Solve', 'about.html#solving'], ['Contact', 'mailto:enquiries@onechain.hk']]) +
       col('Resources', [['API Platform', 'api-platform.html'], ['API Docs', 'api-docs.html'], ['Explorer', 'index.html#products'], ['Service status', 'mailto:enquiries@onechain.hk?subject=Service%20status%20request']]) +
