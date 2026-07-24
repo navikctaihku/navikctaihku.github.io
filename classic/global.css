@@ -112,6 +112,14 @@
   --radius-panel: 12px;
   --radius-btn: 10px;
   --radius-full: 999px; /* circles only — avatars, dots, icon buttons */
+
+  /* Footer — gray surface, reverse-white logo/text */
+  --oc-footer-bg: var(--oc-secondary); /* #545454 */
+  --oc-footer-text: rgba(255, 255, 255, 0.72);
+  --oc-footer-text-strong: #ffffff;
+  --oc-footer-muted: rgba(255, 255, 255, 0.48);
+  --oc-footer-border: rgba(255, 255, 255, 0.12);
+  --oc-footer-accent: var(--oc-primary-light);
 }
 
 /* ===== Base ===== */
@@ -228,4 +236,76 @@ p, li, label, input, textarea, .oc-type-body {
   --oc-supp-soft: #f3faf9;
   --oc-bg-alt: #e8f5f4;
   --oc-supp-alert: var(--esg-alert-soft);
+}
+
+/* ===== Site footer (shared) — gray bg, reverse-white logo ===== */
+.sc-footer,
+.site-footer,
+footer.footer {
+  background: var(--oc-footer-bg);
+  color: var(--oc-footer-text);
+  border-top: none;
+}
+
+.sc-footer-brand img,
+.site-footer .logo-img--footer,
+.footer-brand img,
+.footer .logo-img {
+  /* Logo wordmark → white on gray footer */
+  filter: brightness(0) invert(1);
+}
+
+.sc-footer-brand p,
+.site-footer-tagline,
+.footer-brand p {
+  color: var(--oc-footer-text);
+}
+
+.sc-fcol h5,
+.site-footer-col h4,
+.footer-col h4,
+.footer-col h5 {
+  color: var(--oc-footer-muted);
+}
+
+.sc-fcol a,
+.site-footer-col a,
+.footer-col a {
+  color: var(--oc-footer-text);
+}
+
+.sc-fcol a:hover,
+.site-footer-col a:hover,
+.footer-col a:hover {
+  color: var(--oc-footer-text-strong);
+}
+
+.sc-footer-bottom,
+.site-footer-bottom,
+.footer-bottom {
+  border-top-color: var(--oc-footer-border);
+}
+
+.sc-footer-bottom p,
+.site-footer-legal,
+.footer-bottom,
+.footer-bottom p {
+  color: var(--oc-footer-muted);
+}
+
+.sc-footer-tagline,
+.site-footer-motto {
+  color: var(--oc-footer-accent);
+}
+
+.sc-footer-bottom a,
+.site-footer-legal a,
+.footer-bottom a {
+  color: var(--oc-footer-muted);
+}
+
+.sc-footer-bottom a:hover,
+.site-footer-legal a:hover,
+.footer-bottom a:hover {
+  color: var(--oc-footer-text-strong);
 }

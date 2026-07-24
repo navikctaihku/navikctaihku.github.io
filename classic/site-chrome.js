@@ -32,19 +32,20 @@
         item('certledger.html', icon('rgba(240,180,41,0.14)', '🎓'), 'CertLedger', 'Tamper-proof credentials, verified in seconds'),
       ]},
       { title: 'Platform', items: [
-        item('index.html#products', icon('rgba(0,180,216,0.12)', '⚡'), 'API Platform', 'Integrate verification into your own stack'),
+        item('api-platform.html', icon('rgba(0,180,216,0.12)', '⚡'), 'API Platform', 'REST APIs for documents, assets, and products'),
         item('index.html#products', icon('rgba(127,119,221,0.12)', '🧩'), 'All Products', 'See everything built on OneChain'),
       ]},
     ]},
     { label: 'Solutions', cols: [
-      { title: 'By Use Case', items: [
-        item('esgledger.html', icon('rgba(46,204,113,0.12)', '♻️'), 'ESG & Sustainability', 'Anti-greenwashing data and plastic credits'),
-        item('certledger.html', icon('rgba(240,180,41,0.14)', '🪪'), 'Credentials & Identity', 'Issue, hold, and verify digital certificates'),
+      { title: 'Lead Use Cases', items: [
+        item('index.html#use-cases', icon('rgba(46,204,113,0.12)', '♻️'), 'Watsons Recycling', 'Reverse-vending plastic credits on ESGLedger'),
+        item('index.html#use-cases', icon('rgba(1,98,130,0.10)', '⛓️'), 'Timber Provenance', 'HK Timberbank chain-of-custody on-chain'),
       ]},
       { title: 'By Industry', items: [
+        item('esgledger.html', icon('rgba(46,204,113,0.12)', '🌱'), 'ESG & Sustainability', 'Anti-greenwashing data and plastic credits'),
+        item('certledger.html', icon('rgba(240,180,41,0.14)', '🪪'), 'Credentials & Identity', 'Issue, hold, and verify digital certificates'),
         item('certledger.html', icon('rgba(1,98,130,0.10)', '🏫'), 'Education', 'Diplomas and transcripts anyone can verify'),
         item('certledger.html', icon('rgba(1,98,130,0.10)', '🏛️'), 'Government', 'Regulatory-grade audit trails and licences'),
-        item('esgledger.html', icon('rgba(1,98,130,0.10)', '🏦'), 'Green Finance', 'Provable impact for sustainable capital'),
       ]},
     ]},
     { label: 'Company', cols: [
@@ -60,17 +61,16 @@
         item('about.html', icon('rgba(1,98,130,0.10)', '🏢'), 'About Us', 'Our story, from Cyberport to today'),
         item('about.html#vision', icon('rgba(0,180,216,0.12)', '🧭'), 'Vision & Mission', 'What we believe and where we\u2019re going'),
         item('about.html#solving', icon('rgba(240,180,41,0.14)', '🔍'), 'What We Solve', 'The trust problems we exist to fix'),
-        item('about.html#careers', icon('rgba(46,204,113,0.12)', '🚀'), 'Join Us', 'Why builders choose OneChain'),
       ]},
     ]},
     { label: 'Resources', cols: [
       { title: 'Developers', items: [
-        item('index.html#products', icon('rgba(1,98,130,0.10)', '📘'), 'API Docs', 'Reference and integration guides'),
-        item('index.html#products', icon('rgba(0,180,216,0.12)', '🔎'), 'Explorer', 'Inspect the chain in real time'),
+        item('api-platform.html', icon('rgba(1,98,130,0.10)', '📘'), 'API Platform', 'Overview, pricing, and getting started'),
+        item('api-docs.html', icon('rgba(0,180,216,0.12)', '📄'), 'API Docs', 'Base URL, auth, and endpoint map'),
+        item('index.html#products', icon('rgba(127,119,221,0.12)', '🔎'), 'Explorer', 'Inspect the chain in real time'),
       ]},
       { title: 'Support', items: [
-        item('mailto:enquiries@onechain.hk', icon('rgba(127,119,221,0.12)', '💬'), 'Contact', 'Talk to the team'),
-        item('about.html#careers', icon('rgba(240,180,41,0.14)', '❓'), 'FAQ', 'Common questions, answered'),
+        item('mailto:enquiries@onechain.hk', icon('rgba(240,180,41,0.14)', '💬'), 'Contact', 'Talk to the team'),
       ]},
     ]},
   ];
@@ -117,11 +117,11 @@
     return '<footer class="sc-footer"><div class="sc-footer-inner"><div class="sc-footer-grid">' +
       '<div class="sc-footer-brand"><img src="onchain-logo.png" alt="OneChain">' +
       '<p>Full-stack blockchain company building the trust layer for Asia. Cyberport, Hong Kong.</p></div>' +
-      col('Products', [['ESGLedger', 'esgledger.html'], ['CertLedger', 'certledger.html'], ['API Platform', 'index.html#products']]) +
-      col('Solutions', [['ESG & Sustainability', 'esgledger.html'], ['Credentials & Identity', 'certledger.html'], ['Education', 'certledger.html'], ['Government', 'certledger.html'], ['Green Finance', 'esgledger.html']]) +
+      col('Products', [['ESGLedger', 'esgledger.html'], ['CertLedger', 'certledger.html'], ['API Platform', 'api-platform.html']]) +
+      col('Solutions', [['Watsons Recycling', 'index.html#use-cases'], ['Timber Provenance', 'index.html#use-cases'], ['ESG & Sustainability', 'esgledger.html'], ['Credentials & Identity', 'certledger.html'], ['Education', 'certledger.html'], ['Government', 'certledger.html']]) +
       col('Company', [['Blockchain Services', 'index.html#blockchain-services'], ['Infrastructure', 'company.html#infrastructure'], ['Applications', 'company.html#applications'], ['Green Tech', 'company.html#greentech']]) +
-      col('About', [['About Us', 'about.html'], ['Vision & Mission', 'about.html#vision'], ['What We Solve', 'about.html#solving'], ['Join Us', 'about.html#careers'], ['Contact', 'mailto:enquiries@onechain.hk']]) +
-      col('Resources', [['API Docs', 'index.html#products'], ['Explorer', 'index.html#products'], ['FAQ', 'about.html#careers'], ['Service status', 'mailto:enquiries@onechain.hk?subject=Service%20status%20request']]) +
+      col('About', [['About Us', 'about.html'], ['Vision & Mission', 'about.html#vision'], ['What We Solve', 'about.html#solving'], ['Contact', 'mailto:enquiries@onechain.hk']]) +
+      col('Resources', [['API Platform', 'api-platform.html'], ['API Docs', 'api-docs.html'], ['Explorer', 'index.html#products'], ['Service status', 'mailto:enquiries@onechain.hk?subject=Service%20status%20request']]) +
       '</div><div class="sc-footer-bottom">' +
       '<span class="sc-footer-tagline">Trust, made infrastructure.</span>' +
       '<p>© 2026 OneChain Ltd. · Cyberport 3, Pok Fu Lam, Hong Kong · <a href="mailto:enquiries@onechain.hk?subject=Privacy%20request" style="color:inherit">Privacy</a> · <a href="mailto:enquiries@onechain.hk?subject=Terms%20request" style="color:inherit">Terms</a></p>' +
