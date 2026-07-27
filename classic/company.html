@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Company — Infrastructure, Applications & Green Tech | OneChain</title>
-  <meta name="description" content="What OneChain builds: enterprise blockchain infrastructure, production applications, and green technology for the circular economy.">
+  <title>Company — Blockchain Services, Infrastructure, Applications & Green Tech | OneChain</title>
+  <meta name="description" content="What OneChain builds: blockchain services from network design to launched products, enterprise infrastructure, production applications, and green technology for the circular economy.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="chrome.css">
-  <script src="site-chrome.js" defer></script>
+  <script src="site-chrome.js?v=202607271607" defer></script>
   <style>
     :root {
       --ink: #545454; --muted: #64748B; --muted-2: #94A3B8;
@@ -62,7 +62,8 @@
     .btn-line:hover { background: var(--bg-alt); }
 
     /* pillar quick-links (like Vercel's 3 feature chips under hero) */
-    .pillars { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; max-width: 920px; margin: 64px auto 0; }
+    .pillars { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; max-width: 1080px; margin: 64px auto 0; }
+    @media (max-width: 1023px) { .pillars { grid-template-columns: repeat(2, 1fr); } }
     .pillar { border: 1px solid var(--border-2); border-radius: 12px; padding: 22px 24px; text-align: left;
       display: flex; flex-direction: column; gap: 4px; transition: all .2s; background: #fff; }
     .pillar:hover { border-color: var(--primary-light); box-shadow: 0 8px 28px rgba(10,22,40,0.08); transform: translateY(-2px); }
@@ -71,11 +72,30 @@
     @media (max-width: 767px) { .pillars { grid-template-columns: 1fr; } }
 
     /* section scaffolding */
+    section[id] { scroll-margin-top: 88px; }
     .section { padding: 104px 0; }
     .section-alt { background: var(--bg-alt); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
     .eyebrow { font: 600 12px/1 var(--font); letter-spacing: 2px; text-transform: uppercase; color: var(--primary); margin-bottom: 14px; }
     .section h2 { font-family: var(--font-display); font-size: clamp(30px, 4vw, 44px); font-weight: 700; letter-spacing: -0.02em; line-height: 1.15; max-width: 640px; }
     .section .lede { font-size: 17px; color: var(--muted); max-width: 600px; margin-top: 16px; }
+
+    /* blockchain services: 3-step journey + credential explainer */
+    .svc-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 56px; }
+    .svc-card { border: 1px solid var(--border-2); border-radius: 14px; padding: 28px; background: #fff; transition: all .2s; }
+    .svc-card:hover { border-color: var(--primary-light); box-shadow: 0 8px 28px rgba(10,22,40,0.07); transform: translateY(-2px); }
+    .svc-step { font: 600 11px/1 var(--font); letter-spacing: 1.5px; text-transform: uppercase; color: var(--primary); margin-bottom: 14px; }
+    .svc-card h4 { font-size: 18px; font-weight: 700; margin-bottom: 8px; }
+    .svc-card > p { font-size: 14px; color: var(--muted); }
+    .svc-card ul { list-style: none; margin-top: 14px; }
+    .svc-card li { font-size: 13.5px; color: var(--muted); padding: 5px 0 5px 24px; position: relative; }
+    .svc-card li::before { content: '✓'; position: absolute; left: 0; font-weight: 700; color: var(--primary); }
+    @media (max-width: 860px) { .svc-grid { grid-template-columns: 1fr; } }
+    .cred-note {
+      margin-top: 40px; border: 1px solid rgba(20,164,188,0.25); background: rgba(20,164,188,0.05);
+      border-radius: 14px; padding: 28px 32px;
+    }
+    .cred-note h4 { font-size: 16px; font-weight: 700; margin-bottom: 8px; }
+    .cred-note p { font-size: 14.5px; color: var(--muted); max-width: 820px; }
 
     /* infrastructure: 3-layer diagram cards */
     .layers { margin-top: 56px; display: flex; flex-direction: column; gap: 14px; }
@@ -116,22 +136,23 @@
     .app.cert .app-badge { color: #8a6410; background: rgba(240,180,41,0.14); }
     @media (max-width: 860px) { .apps { grid-template-columns: 1fr; } }
 
-    /* green tech: dark band, Vercel-style */
-    .green-band { background: #0A1628; color: #fff; padding: 104px 0; position: relative; overflow: hidden; }
+    /* green tech: light band on global --oc-bg-alt */
+    .green-band { background: var(--oc-bg-alt, #e2f6f9); color: var(--ink); padding: 104px 0; position: relative; overflow: hidden;
+      border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
     .green-band::before { content: ''; position: absolute; inset: 0; pointer-events: none;
-      background: radial-gradient(ellipse 60% 50% at 80% 10%, rgba(0,119,113,0.14), transparent 60%),
-                  radial-gradient(ellipse 50% 45% at 10% 90%, rgba(20,164,188,0.10), transparent 60%); }
+      background: radial-gradient(ellipse 60% 50% at 80% 10%, rgba(0,119,113,0.10), transparent 60%),
+                  radial-gradient(ellipse 50% 45% at 10% 90%, rgba(20,164,188,0.08), transparent 60%); }
     .green-band .container { position: relative; }
     .green-band .eyebrow { color: var(--green); }
-    .green-band h2 { color: #fff; }
-    .green-band .lede { color: rgba(234,242,247,0.65); }
+    .green-band h2 { color: var(--ink); }
+    .green-band .lede { color: var(--muted); }
     .green-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 56px; }
-    .green-card { border: 1px solid rgba(255,255,255,0.10); border-radius: 14px; padding: 28px;
-      background: rgba(255,255,255,0.03); transition: all .2s; }
-    .green-card:hover { border-color: rgba(0,119,113,0.4); background: rgba(255,255,255,0.05); }
+    .green-card { border: 1px solid var(--border-2); border-radius: 14px; padding: 28px;
+      background: #fff; transition: all .2s; }
+    .green-card:hover { border-color: rgba(0,119,113,0.35); box-shadow: 0 8px 28px rgba(0,119,113,0.10); transform: translateY(-2px); }
     .green-card .g-icon { font-size: 22px; }
-    .green-card h4 { font-size: 16.5px; font-weight: 700; margin: 14px 0 8px; }
-    .green-card p { font-size: 13.5px; color: rgba(234,242,247,0.6); }
+    .green-card h4 { font-size: 16.5px; font-weight: 700; margin: 14px 0 8px; color: var(--ink); }
+    .green-card p { font-size: 13.5px; color: var(--muted); }
     @media (max-width: 860px) { .green-grid { grid-template-columns: 1fr; } }
 
     /* CTA */
@@ -160,9 +181,58 @@
         <a class="btn-line" href="infrastructure.html">View Infrastructure</a>
       </div>
       <div class="pillars">
+        <a class="pillar" href="#services"><b>Blockchain Services</b><span>From your first block to a working product</span></a>
         <a class="pillar" href="#infrastructure"><b>Infrastructure</b><span>Three-layer enterprise blockchain platform</span></a>
         <a class="pillar" href="#applications"><b>Applications</b><span>ESGLedger &amp; CertLedger, in production</span></a>
         <a class="pillar" href="#greentech"><b>Green Tech</b><span>Verified impact for the circular economy</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- BLOCKCHAIN SERVICES -->
+  <section class="section reveal" id="services">
+    <div class="container">
+      <div class="eyebrow">Blockchain Services</div>
+      <h2>From your first block to a working product.</h2>
+      <p class="lede">We help enterprises design the right network, anchor trust-critical data on-chain, and turn that foundation into applications people actually use — the same journey behind ESGLedger and CertLedger.</p>
+
+      <div class="svc-grid">
+        <div class="svc-card">
+          <div class="svc-step">01 · Foundation</div>
+          <h4>Build Your Chain</h4>
+          <p>We design and deploy permissioned enterprise networks on Hyperledger Fabric — private channels, governance, and an architecture shaped around your operating model.</p>
+          <ul>
+            <li>Network and governance design</li>
+            <li>Private, enterprise-ready infrastructure</li>
+          </ul>
+        </div>
+        <div class="svc-card">
+          <div class="svc-step">02 · Trusted Data</div>
+          <h4>Bring Trust On-Chain</h4>
+          <p>We anchor credentials, ESG data, and critical business records on-chain, so every claim carries a tamper-proof audit trail that can be verified in seconds.</p>
+          <ul>
+            <li>Data and credential anchoring</li>
+            <li>Smart contracts and verification flows</li>
+          </ul>
+        </div>
+        <div class="svc-card">
+          <div class="svc-step">03 · Applications</div>
+          <h4>Launch Real Products</h4>
+          <p>We turn that on-chain foundation into products people use every day — dashboards, marketplaces, verification portals, and white-label platforms.</p>
+          <ul>
+            <li>Product design and delivery</li>
+            <li>White-label and API integration</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="cred-note">
+        <h4>What is a verifiable credential?</h4>
+        <p>A verifiable credential is a digital certificate — a degree, a licence, a compliance attestation — whose fingerprint is anchored on a blockchain the moment it's issued. Because that record can never be altered, anyone can confirm the certificate is genuine in seconds by scanning a QR code: no phone calls, no emails, no accounts. A forged or edited document simply won't match its on-chain fingerprint. This is the foundation CertLedger is built on, and one of the core things we help organisations put on-chain.</p>
+      </div>
+
+      <div style="margin-top: 36px;">
+        <a class="btn-dark" href="mailto:enquiries@onechain.hk?subject=Blockchain%20service%20consultation">Discuss your blockchain project</a>
       </div>
     </div>
   </section>

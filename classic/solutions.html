@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Solutions — Watsons &amp; Timber Use Cases | OneChain</title>
-  <meta name="description" content="Lead OneChain use cases in one story: Watsons reverse-vending plastic credits and HK Timberbank timber provenance — verified on a permissioned enterprise blockchain.">
+  <title>Solutions — Industries &amp; Use Cases | OneChain</title>
+  <meta name="description" content="OneChain solutions by industry: ESG & sustainability, credentials & identity, education, and government — plus lead use cases with Watsons and HK Timberbank.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="chrome.css">
-  <script src="site-chrome.js" defer></script>
+  <script src="site-chrome.js?v=202607271607" defer></script>
   <style>
     :root {
       --oc-primary: #14a4bc; --oc-primary-deep: #0d7d91; --oc-primary-light: #3cbdd2;
@@ -28,9 +28,9 @@
     .sol-hero {
       position: relative; overflow: hidden; padding: 160px 0 72px; color: #fff;
       background:
-        radial-gradient(ellipse 70% 80% at 15% 20%, rgba(0,119,113,0.55), transparent 55%),
-        radial-gradient(ellipse 60% 70% at 90% 30%, rgba(1,98,130,0.5), transparent 50%),
-        linear-gradient(145deg, #0a1628 0%, #0d3d48 45%, #0a2a36 100%);
+        radial-gradient(ellipse 70% 80% at 15% 20%, rgba(20,164,188,0.30), transparent 55%),
+        radial-gradient(ellipse 60% 70% at 90% 30%, rgba(60,189,210,0.22), transparent 50%),
+        linear-gradient(145deg, var(--oc-dark, #0a1628) 0%, var(--oc-primary-deep, #0d7d91) 75%, var(--oc-primary, #14a4bc) 115%);
     }
     .sol-hero::before {
       content: ''; position: absolute; inset: 0; pointer-events: none; opacity: .35;
@@ -175,6 +175,35 @@
       .story-outcomes { grid-template-columns: 1fr; }
     }
 
+    /* INDUSTRY SOLUTIONS */
+    section[id], .ind-row[id] { scroll-margin-top: 88px; }
+    .industries { padding: 96px 0 110px; border-top: 1px solid rgba(10,22,40,0.06); }
+    .ind-row {
+      display: grid; grid-template-columns: 1fr 340px; gap: 48px; align-items: start;
+      padding: 48px 0; border-bottom: 1px solid rgba(10,22,40,0.06);
+    }
+    .ind-row:last-child { border-bottom: none; padding-bottom: 0; }
+    .ind-chip {
+      display: inline-flex; font-size: 10px; font-weight: 700; letter-spacing: 1.2px; text-transform: uppercase;
+      padding: 4px 11px; border-radius: 999px; margin-bottom: 14px;
+    }
+    .ind-row h3 { font-size: 24px; font-weight: 700; color: var(--oc-dark); letter-spacing: -0.01em; margin-bottom: 10px; }
+    .ind-row > div > p { font-size: 15px; color: var(--oc-muted); max-width: 560px; }
+    .ind-points { list-style: none; margin-top: 18px; }
+    .ind-points li { position: relative; padding: 6px 0 6px 22px; font-size: 13.5px; color: #475569; }
+    .ind-points li::before { content: '✓'; position: absolute; left: 0; font-weight: 700; }
+    .ind-aside {
+      background: #F7FAFB; border: 1px solid rgba(10,22,40,0.08); border-radius: 14px; padding: 24px;
+    }
+    .ind-aside h5 { font-size: 12px; font-weight: 700; letter-spacing: 1.2px; text-transform: uppercase; color: var(--oc-muted); margin-bottom: 8px; }
+    .ind-aside p { font-size: 13.5px; color: var(--oc-muted); margin-bottom: 16px; }
+    .ind-aside .lane-cta { font-size: 14px; }
+    .ind--esg .ind-chip { background: rgba(0,119,113,0.1); color: var(--oc-esg); }
+    .ind--esg .ind-points li::before, .ind--esg .lane-cta { color: var(--oc-esg); }
+    .ind--cert .ind-chip { background: rgba(1,98,130,0.1); color: var(--oc-cert); }
+    .ind--cert .ind-points li::before, .ind--cert .lane-cta { color: var(--oc-cert); }
+    @media (max-width: 900px) { .ind-row { grid-template-columns: 1fr; gap: 24px; } }
+
     .reveal { opacity: 0; transform: translateY(24px); transition: opacity .7s ease, transform .7s cubic-bezier(0.16,1,0.3,1); }
     .reveal.visible { opacity: 1; transform: none; }
   </style>
@@ -290,6 +319,89 @@
           <div class="outcome"><b>Seconds</b><span>To verify a claim</span></div>
           <div class="outcome"><b>2 partners</b><span>Watsons · HK Timberbank</span></div>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BY INDUSTRY -->
+  <section class="industries" id="industries">
+    <div class="container">
+      <div class="lead-intro reveal">
+        <div class="eyebrow">By industry</div>
+        <h2>One trust layer, four industries.</h2>
+        <p>The same pattern — capture the event, seal it on-chain, prove it to anyone — applied to the problems each industry actually has.</p>
+      </div>
+
+      <div class="ind-row ind--esg reveal" id="esg">
+        <div>
+          <span class="ind-chip">ESG &amp; Sustainability</span>
+          <h3>Sustainability claims regulators can audit</h3>
+          <p>ESG reports built on spreadsheets and goodwill don't survive scrutiny. OneChain anchors every collection event, credit, and retirement on a permissioned ledger — so environmental claims come with cryptographic proof instead of promises.</p>
+          <ul class="ind-points">
+            <li>Plastic credit lifecycle: collect → verify → mint → trade → retire</li>
+            <li>AI anomaly detection flags suspicious submissions before review</li>
+            <li>Auto-generated reports aligned with GRI, SASB &amp; TCFD</li>
+          </ul>
+        </div>
+        <aside class="ind-aside">
+          <h5>Powered by</h5>
+          <p>ESGLedger — our blockchain-verified ESG data platform and plastic credit marketplace, in production with Watsons.</p>
+          <a class="lane-cta" href="esgledger.html">Explore ESGLedger →</a>
+        </aside>
+      </div>
+
+      <div class="ind-row ind--cert reveal" id="credentials">
+        <div>
+          <span class="ind-chip">Credentials &amp; Identity</span>
+          <h3>Certificates that verify themselves</h3>
+          <p>Checking a certificate today means phone calls, emails, and waiting. A credential anchored on-chain is tamper-proof by design: anyone can scan a QR code and confirm authenticity in seconds — no accounts, no intermediaries, no forgeries.</p>
+          <ul class="ind-points">
+            <li>Issue → hold → verify, entirely on-chain</li>
+            <li>Instant QR verification for employers and institutions</li>
+            <li>Fraud attempts detected by hash mismatch, automatically</li>
+          </ul>
+        </div>
+        <aside class="ind-aside">
+          <h5>Powered by</h5>
+          <p>CertLedger — tamper-proof credential issuance and identity verification for any document that needs to be trusted.</p>
+          <a class="lane-cta" href="certledger.html">Explore CertLedger →</a>
+        </aside>
+      </div>
+
+      <div class="ind-row ind--cert reveal" id="education">
+        <div>
+          <span class="ind-chip">Education</span>
+          <h3>Diplomas any employer can trust</h3>
+          <p>Degree fraud costs institutions their reputation and employers their confidence. Universities and training providers issue blockchain-anchored diplomas and transcripts in bulk — graduates share them anywhere, and verification takes one scan.</p>
+          <ul class="ind-points">
+            <li>Batch issuance for entire graduating classes via CSV</li>
+            <li>White-label portal with your institution's branding</li>
+            <li>API integration with LMS and student record systems</li>
+          </ul>
+        </div>
+        <aside class="ind-aside">
+          <h5>Powered by</h5>
+          <p>CertLedger for education — used for degrees, transcripts, and course completion certificates.</p>
+          <a class="lane-cta" href="certledger.html">Explore CertLedger →</a>
+        </aside>
+      </div>
+
+      <div class="ind-row ind--esg reveal" id="government">
+        <div>
+          <span class="ind-chip">Government</span>
+          <h3>Regulatory-grade audit trails and licences</h3>
+          <p>Agencies need records that can't be edited after the fact. OneChain gives regulators immutable audit trails for licences and attestations, plus a dedicated intelligence portal for monitoring recycling infrastructure and planning deployments.</p>
+          <ul class="ind-points">
+            <li>Tamper-proof licences, permits, and compliance attestations</li>
+            <li>Regulator portal: coverage KPIs, district ranking, site planning</li>
+            <li>Exportable audit trails for public accountability</li>
+          </ul>
+        </div>
+        <aside class="ind-aside">
+          <h5>Powered by</h5>
+          <p>ESGLedger's Government Portal and CertLedger for official documents — both on the same permissioned chain.</p>
+          <a class="lane-cta" href="esgledger.html">See the Government Portal →</a>
+        </aside>
       </div>
     </div>
   </section>

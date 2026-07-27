@@ -7,7 +7,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="chrome.css">
-  <script src="site-chrome.js" defer></script>
+  <script src="site-chrome.js?v=202607271607" defer></script>
   <style>
     :root {
       --oc-primary: #14a4bc; --oc-primary-light: #3cbdd2; --oc-primary-glow: rgba(20,164,188,0.08);
@@ -244,37 +244,6 @@
       border-radius: var(--radius-sm); color: var(--oc-muted-light); transition: all 200ms;
     }
     .dev-tool:hover { border-color: var(--oc-primary); color: var(--oc-primary); }
-
-    /* CTA */
-    .cta-section {
-      padding: 120px 0; text-align: left; position: relative; overflow: hidden;
-      background: linear-gradient(135deg, #c8dce8 0%, #dce8f0 35%, #e8f2f8 65%, #f2f7fb 100%);
-      background-size: 300% 300%; animation: gradient-shift 12s ease infinite; color: #545454;
-    }
-    @keyframes gradient-shift { 0%, 100% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } }
-    .cta-section::before {
-      content: ''; position: absolute; inset: 0;
-      background: radial-gradient(ellipse at 20% 80%, rgba(20,164,188,0.18), transparent 55%),
-                  radial-gradient(ellipse at 80% 20%, rgba(20,164,188,0.1), transparent 50%);
-      pointer-events: none;
-    }
-    .cta-section .container { position: relative; z-index: 1; }
-    .cta-section h2 { font-family: var(--font-display); font-size: clamp(32px, 5vw, 48px); font-weight: 700; margin-bottom: 16px; color: #545454; max-width: 480px; }
-    .cta-section p { font-size: 18px; color: var(--oc-muted); margin-bottom: 32px; max-width: 460px; }
-    .cta-form { display: flex; gap: 12px; margin-bottom: 24px; max-width: 440px; flex-wrap: wrap; }
-    .cta-input {
-      flex: 1; min-width: 200px; padding: 14px 18px; border-radius: var(--radius-sm);
-      border: 1px solid rgba(10,22,40,0.12); background: rgba(255,255,255,0.7);
-      backdrop-filter: blur(8px); font-size: 15px; font-family: var(--font-body); color: #545454;
-      transition: border-color 200ms, box-shadow 200ms;
-    }
-    .cta-input:focus { outline: none; border-color: var(--oc-primary); box-shadow: 0 0 0 3px rgba(20,164,188,0.12); }
-    .cta-input::placeholder { color: var(--oc-muted); }
-    .btn-primary { background: #016282; color: white; padding: 14px 32px; border-radius: var(--radius-sm); font-size: 16px; font-weight: 600; border: none; cursor: pointer; transition: all 200ms; display: inline-flex; align-items: center; gap: 8px; }
-    .btn-primary:hover { background: var(--oc-primary-light); box-shadow: 0 0 32px rgba(20,164,188,0.3); transform: translateY(-1px); }
-    .btn-outline { background: transparent; color: #545454; padding: 14px 32px; border-radius: var(--radius-sm); font-size: 16px; font-weight: 600; border: 1px solid rgba(10,22,40,0.08); cursor: pointer; transition: all 200ms; }
-    .btn-outline:hover { background: #F7FAFB; }
-    .cta-btns { display: flex; gap: 16px; flex-wrap: wrap; position: relative; }
 
     /* FOOTER */
     footer { background: #F7FAFB; border-top: 1px solid rgba(10,22,40,0.08); padding: 64px 0 32px; }
@@ -627,22 +596,6 @@
         <div class="dev-tool">SaaS Available</div>
         <div class="dev-tool">Private Channels</div>
         <div class="dev-tool">API Docs</div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CTA -->
-  <section class="cta-section reveal">
-    <div class="container">
-      <h2>Be the first to know</h2>
-      <p>Subscribe for infrastructure updates, API releases, and developer guides.</p>
-      <form class="cta-form" onsubmit="event.preventDefault()">
-        <input class="cta-input" type="email" placeholder="you@company.com" aria-label="Email address" />
-        <button type="submit" class="btn-primary">Subscribe</button>
-      </form>
-      <div class="cta-btns">
-        <a href="mailto:enquiries@onechain.hk" class="btn-primary">Talk to Us</a>
-        <a href="api-docs.html" class="btn-outline">API Documentation</a>
       </div>
     </div>
   </section>
