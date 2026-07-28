@@ -80,11 +80,6 @@ html:not([data-layout="home"]) .container {
   height: 1.2em;
 }
 
-/* Media never overflows its column. */
-:where(img, video, svg) {
-  max-width: 100%;
-}
-
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
