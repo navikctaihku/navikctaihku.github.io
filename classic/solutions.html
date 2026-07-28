@@ -21,8 +21,6 @@
     html { scroll-behavior: smooth; }
     body { font-family: var(--font), var(--font-cjk), sans-serif; color: #545454; background: #fff; line-height: 1.6; -webkit-font-smoothing: antialiased; }
     a { text-decoration: none; color: inherit; }
-    .container { max-width: 1120px; margin: 0 auto; padding: 0 64px; }
-    @media (max-width: 768px) { .container { padding: 0 24px; } }
 
     /* HERO */
     .sol-hero {
@@ -90,7 +88,7 @@
     .story-head p { font-size: 14px; color: var(--oc-muted); max-width: 420px; }
     .story-badges { display: flex; gap: 8px; flex-wrap: wrap; }
     .story-badge {
-      font-family: var(--mono); font-size: 11px; font-weight: 600; letter-spacing: 0.5px;
+      font-family: var(--mono); font-size: 12px; font-weight: 600; letter-spacing: 0.5px;
       padding: 5px 12px; border-radius: 999px; background: #fff; border: 1px solid rgba(10,22,40,0.1); color: var(--oc-muted);
     }
 
@@ -103,13 +101,13 @@
     }
     .lane-label img { height: 28px; width: auto; }
     .lane-chip {
-      font-size: 10px; font-weight: 700; letter-spacing: 1.2px; text-transform: uppercase;
+      font-size: 12px; font-weight: 700; letter-spacing: 1.2px; text-transform: uppercase;
       padding: 3px 9px; border-radius: 999px;
     }
     .lane--watsons .lane-chip { background: rgba(0,119,113,0.12); color: var(--oc-esg); }
     .lane--timber .lane-chip { background: rgba(1,98,130,0.12); color: var(--oc-cert); }
     .lane h4 { font-size: 20px; font-weight: 700; color: var(--oc-dark); margin-bottom: 10px; letter-spacing: -0.01em; }
-    .lane > p { font-size: 14.5px; color: var(--oc-muted); margin-bottom: 22px; }
+    .lane > p { font-size: 15px; color: var(--oc-muted); margin-bottom: 22px; }
 
     /* Visual flow steps */
     .flow { display: flex; align-items: stretch; gap: 0; margin-bottom: 22px; }
@@ -134,11 +132,11 @@
     .lane--timber .flow-ico { background: rgba(1,98,130,0.1); color: var(--oc-cert); }
     .flow-ico svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
     .flow-step b { display: block; font-size: 12px; font-weight: 700; color: var(--oc-dark); }
-    .flow-step span { display: block; font-size: 11px; color: var(--oc-muted); margin-top: 2px; }
+    .flow-step span { display: block; font-size: 12px; color: var(--oc-muted); margin-top: 2px; }
 
     .lane-points { list-style: none; margin-bottom: 20px; }
     .lane-points li {
-      position: relative; padding: 6px 0 6px 22px; font-size: 13.5px; color: #475569;
+      position: relative; padding: 6px 0 6px 22px; font-size: 14px; color: #475569;
     }
     .lane-points li::before { content: '✓'; position: absolute; left: 0; font-weight: 700; }
     .lane--watsons .lane-points li::before { color: var(--oc-esg); }
@@ -184,19 +182,19 @@
     }
     .ind-row:last-child { border-bottom: none; padding-bottom: 0; }
     .ind-chip {
-      display: inline-flex; font-size: 10px; font-weight: 700; letter-spacing: 1.2px; text-transform: uppercase;
+      display: inline-flex; font-size: 12px; font-weight: 700; letter-spacing: 1.2px; text-transform: uppercase;
       padding: 4px 11px; border-radius: 999px; margin-bottom: 14px;
     }
     .ind-row h3 { font-size: 24px; font-weight: 700; color: var(--oc-dark); letter-spacing: -0.01em; margin-bottom: 10px; }
     .ind-row > div > p { font-size: 15px; color: var(--oc-muted); max-width: 560px; }
     .ind-points { list-style: none; margin-top: 18px; }
-    .ind-points li { position: relative; padding: 6px 0 6px 22px; font-size: 13.5px; color: #475569; }
+    .ind-points li { position: relative; padding: 6px 0 6px 22px; font-size: 14px; color: #475569; }
     .ind-points li::before { content: '✓'; position: absolute; left: 0; font-weight: 700; }
     .ind-aside {
       background: #F7FAFB; border: 1px solid rgba(10,22,40,0.08); border-radius: 14px; padding: 24px;
     }
     .ind-aside h5 { font-size: 12px; font-weight: 700; letter-spacing: 1.2px; text-transform: uppercase; color: var(--oc-muted); margin-bottom: 8px; }
-    .ind-aside p { font-size: 13.5px; color: var(--oc-muted); margin-bottom: 16px; }
+    .ind-aside p { font-size: 14px; color: var(--oc-muted); margin-bottom: 16px; }
     .ind-aside .lane-cta { font-size: 14px; }
     .ind--esg .ind-chip { background: rgba(0,119,113,0.1); color: var(--oc-esg); }
     .ind--esg .ind-points li::before, .ind--esg .lane-cta { color: var(--oc-esg); }
@@ -209,6 +207,9 @@
   </style>
   <link rel="stylesheet" href="tokens.css">
   <link rel="stylesheet" href="global.css">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <meta name="theme-color" content="#14a4bc">
+  <link rel="stylesheet" href="site-base.css?v=202607280950">
 </head>
 <body>
 

@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Infrastructure — Three Layers, One Platform | OneChain</title>
+  <meta name="description" content="OneChain's three-layer platform: a permissioned Hyperledger Fabric chain, blockchain services and APIs, and production applications — with an explorer for auditing every transaction.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="chrome.css">
@@ -22,8 +23,6 @@
     html { scroll-behavior: smooth; }
     body { font-family: var(--font-body), var(--font-cjk), sans-serif; background: #FFFFFF; color: #545454; line-height: 1.6; overflow-x: hidden; -webkit-font-smoothing: antialiased; }
     a { text-decoration: none; color: inherit; }
-    .container { max-width: 1280px; margin: 0 auto; padding: 0 64px; }
-    @media (max-width: 768px) { .container { padding: 0 24px; } }
 
     /* NAV */
     nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(255,255,255,0.85); backdrop-filter: blur(16px); border-bottom: 1px solid rgba(10,22,40,0.08); height: 64px; }
@@ -89,7 +88,7 @@
     .feature-card:nth-child(3n) { border-right: none; }
     .feature-card:nth-child(n+4) { border-bottom: none; }
     .feature-card:hover { background: rgba(20,164,188,0.04); }
-    .fig-label { font-family: var(--font-mono); font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--oc-muted); margin-bottom: 28px; }
+    .fig-label { font-family: var(--font-mono); font-size: 12px; letter-spacing: 2px; text-transform: uppercase; color: var(--oc-muted); margin-bottom: 28px; }
     .feature-icon { display: flex; justify-content: center; margin-bottom: 24px; }
     .feature-icon svg { width: 40px; height: 40px; fill: none; stroke: #545454; stroke-width: 1.5; }
     .feature-card h3 { font-family: var(--font-display); font-size: 16px; font-weight: 700; color: #545454; margin-bottom: 10px; }
@@ -111,7 +110,7 @@
     .ai-cards { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; max-width: 1100px; margin: 0 auto; }
     .ai-card {
       background: #FFFFFF; border: 1px solid rgba(10,22,40,0.08); border-radius: var(--radius-lg);
-      padding: 32px 24px; text-align: center; transition: all 250ms;
+      padding: 32px 24px; text-align: center; transition: transform 250ms, box-shadow 250ms, border-color 250ms, background-color 250ms, color 250ms;
       box-shadow: 0 1px 3px rgba(10,22,40,0.04);
       display: flex; flex-direction: column; align-items: center;
     }
@@ -125,7 +124,7 @@
     .ai-card h3 { font-family: var(--font-display); font-size: 16px; font-weight: 700; color: #545454; margin-bottom: 10px; }
     .ai-card p { font-size: 13px; color: var(--oc-muted); line-height: 1.6; flex: 1; }
     .ai-card-tag {
-      margin-top: 16px; font-family: var(--font-mono); font-size: 11px; font-weight: 600;
+      margin-top: 16px; font-family: var(--font-mono); font-size: 12px; font-weight: 600;
       letter-spacing: 1.5px; text-transform: uppercase; color: var(--oc-primary);
     }
     @media (max-width: 1024px) { .ai-cards { grid-template-columns: repeat(2, 1fr); } }
@@ -137,7 +136,7 @@
       background: #FFFFFF; border: 1px solid rgba(10,22,40,0.08);
       border-radius: var(--radius-lg); padding: 32px 40px; display: grid;
       grid-template-columns: auto 1fr auto; align-items: center; gap: 24px;
-      transition: all 300ms; cursor: default; position: relative; overflow: hidden;
+      transition: transform 300ms, box-shadow 300ms, border-color 300ms, background-color 300ms, color 300ms; cursor: default; position: relative; overflow: hidden;
       box-shadow: 0 1px 3px rgba(10,22,40,0.04);
     }
     .arch-layer:hover { border-color: rgba(20,164,188,0.3); box-shadow: 0 8px 32px rgba(10,22,40,0.08); }
@@ -149,7 +148,7 @@
     .arch-layer .layer-info p { font-size: 14px; color: var(--oc-muted); }
     .arch-layer .layer-tags { display: flex; gap: 8px; flex-wrap: wrap; }
     .layer-tag {
-      font-size: 11px; font-weight: 600; padding: 4px 12px; border-radius: var(--radius-full);
+      font-size: 12px; font-weight: 600; padding: 4px 12px; border-radius: var(--radius-full);
       background: rgba(20,164,188,0.08); color: var(--oc-primary); border: 1px solid rgba(20,164,188,0.15);
       font-family: var(--font-mono);
     }
@@ -168,7 +167,7 @@
     .specs-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
     .spec-card {
       background: #FFFFFF; border: 1px solid rgba(10,22,40,0.08);
-      border-radius: var(--radius-lg); padding: 28px; text-align: center; transition: all 250ms;
+      border-radius: var(--radius-lg); padding: 28px; text-align: center; transition: transform 250ms, box-shadow 250ms, border-color 250ms, background-color 250ms, color 250ms;
       box-shadow: 0 1px 3px rgba(10,22,40,0.04);
     }
     .spec-card:hover { border-color: rgba(20,164,188,0.3); box-shadow: 0 8px 32px rgba(10,22,40,0.08); }
@@ -183,7 +182,7 @@
     .perm-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; max-width: 1100px; margin: 0 auto; }
     .perm-card {
       background: #FFFFFF; border: 1px solid rgba(10,22,40,0.08); border-radius: var(--radius-lg);
-      padding: 28px; transition: all 250ms; box-shadow: 0 1px 3px rgba(10,22,40,0.04);
+      padding: 28px; transition: transform 250ms, box-shadow 250ms, border-color 250ms, background-color 250ms, color 250ms; box-shadow: 0 1px 3px rgba(10,22,40,0.04);
       position: relative; overflow: hidden;
     }
     .perm-card::before {
@@ -200,7 +199,7 @@
     }
     .perm-card .perm-icon svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
     .perm-card h4 { font-family: var(--font-display); font-size: 16px; font-weight: 700; margin-bottom: 8px; color: #545454; }
-    .perm-card p { font-size: 13.5px; color: var(--oc-muted); line-height: 1.6; }
+    .perm-card p { font-size: 14px; color: var(--oc-muted); line-height: 1.6; }
     @media (max-width: 1024px) { .perm-grid { grid-template-columns: repeat(2, 1fr); } }
     @media (max-width: 640px) { .perm-grid { grid-template-columns: 1fr; } }
 
@@ -227,7 +226,7 @@
     .services-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; max-width: 900px; margin: 0 auto; }
     .service-card {
       background: #FFFFFF; border: 1px solid rgba(10,22,40,0.08);
-      border-radius: var(--radius-lg); padding: 28px; transition: all 250ms;
+      border-radius: var(--radius-lg); padding: 28px; transition: transform 250ms, box-shadow 250ms, border-color 250ms, background-color 250ms, color 250ms;
       box-shadow: 0 1px 3px rgba(10,22,40,0.04);
     }
     .service-card:hover { border-color: rgba(20,164,188,0.3); box-shadow: 0 8px 32px rgba(10,22,40,0.08); }
@@ -241,7 +240,7 @@
     .dev-tool {
       font-family: var(--font-mono); font-size: 13px; padding: 8px 20px;
       background: #FFFFFF; border: 1px solid rgba(10,22,40,0.08);
-      border-radius: var(--radius-sm); color: var(--oc-muted-light); transition: all 200ms;
+      border-radius: var(--radius-sm); color: var(--oc-muted); transition: transform 200ms, box-shadow 200ms, border-color 200ms, background-color 200ms, color 200ms;
     }
     .dev-tool:hover { border-color: var(--oc-primary); color: var(--oc-primary); }
 
@@ -271,8 +270,20 @@
   </style>
   <link rel="stylesheet" href="tokens.css">
   <link rel="stylesheet" href="global.css?v=202607141820">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <meta name="theme-color" content="#14a4bc">
+  <link rel="stylesheet" href="site-base.css?v=202607280950">
 </head>
 <body>
+<svg class="oc-sprite" aria-hidden="true" focusable="false">
+  <defs>
+    <symbol id="ic-cloud" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17.5 19.5a4.5 4.5 0 0 0 .4-8.98A6 6 0 0 0 6.1 9.6 4.45 4.45 0 0 0 7 19.5h10.5Z"/></symbol>
+    <symbol id="ic-hex" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.5 20 7v10l-8 4.5L4 17V7l8-4.5Z"/></symbol>
+    <symbol id="ic-palette" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a9 9 0 0 0 0 18c1.1 0 1.8-.9 1.8-1.9 0-.9-.4-1.4-.4-2.1 0-1 .8-1.8 1.8-1.8h1.6A4.2 4.2 0 0 0 21 11C21 6.6 17 3 12 3Z"/><circle cx="8.2" cy="10" r="1.1"/><circle cx="12" cy="7.6" r="1.1"/><circle cx="15.6" cy="10" r="1.1"/></symbol>
+    <symbol id="ic-plug" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 2.5v6"/><path d="M15 2.5v6"/><path d="M6 8.5h12v2.6a6 6 0 0 1-12 0V8.5Z"/><path d="M12 17.2v4.3"/></symbol>
+    <symbol id="ic-search" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M16.2 16.2 21 21"/></symbol>
+  </defs>
+</svg>
 
   <div id="site-nav"></div>
 
@@ -283,7 +294,7 @@
       <div class="hero-blob hero-blob-2"></div>
     </div>
     <div class="container">
-      <div class="hero-badge animate-in">⬡ Infrastructure</div>
+      <div class="hero-badge animate-in"><svg class="oc-ico" aria-hidden="true"><use href="#ic-hex"></use></svg> Infrastructure</div>
       <h1 class="animate-in delay-1">Three layers. <span class="gradient-text">One platform.</span> Zero gas fees.</h1>
       <p class="hero-sub animate-in delay-2">Enterprise-grade <strong>permissioned blockchain</strong> built on Hyperledger Fabric. Every participant is known, every record is private by default, and every transaction is free. From the consensus layer to the application layer — we own every piece.</p>
     </div>
@@ -475,22 +486,22 @@
       </div>
       <div class="services-grid">
         <div class="service-card">
-          <div class="svc-icon">☁️</div>
+          <div class="svc-icon"><svg class="oc-ico" aria-hidden="true"><use href="#ic-cloud"></use></svg></div>
           <h4>Blockchain-as-a-Service</h4>
           <p>Host your own apps and smart contracts on OneChain cloud. Managed infrastructure, no blockchain expertise required.</p>
         </div>
         <div class="service-card">
-          <div class="svc-icon">🔌</div>
+          <div class="svc-icon"><svg class="oc-ico" aria-hidden="true"><use href="#ic-plug"></use></svg></div>
           <h4>DApp Infrastructure</h4>
           <p>Off-chain APIs for business integration, data querying, and indexing. Connect your existing systems to blockchain.</p>
         </div>
         <div class="service-card">
-          <div class="svc-icon">🎨</div>
+          <div class="svc-icon"><svg class="oc-ico" aria-hidden="true"><use href="#ic-palette"></use></svg></div>
           <h4>Smart Contract Minter</h4>
           <p>Gas-free, cross-chain NFT minting. ERC-721 standard with rich content support including images and video.</p>
         </div>
         <div class="service-card">
-          <div class="svc-icon">🔍</div>
+          <div class="svc-icon"><svg class="oc-ico" aria-hidden="true"><use href="#ic-search"></use></svg></div>
           <h4>OneChain Explorer</h4>
           <p>Visualise blockchain metrics, browse transactions, and audit the chain at onechainscan.io.</p>
         </div>

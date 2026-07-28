@@ -95,7 +95,7 @@
     filter: brightness(0) invert(1);
   }
   .sc-footer-brand p {
-    font-size: 13.5px;
+    font-size: 14px;
     color: var(--oc-footer-text, rgba(255,255,255,0.72));
     margin: 14px 0 0; line-height: 1.6; max-width: 240px;
   }

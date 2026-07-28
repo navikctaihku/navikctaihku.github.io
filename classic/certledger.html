@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CertLedger — Certify with Blockchain, Verify with Ease | OneChain</title>
+  <meta name="description" content="CertLedger issues tamper-proof digital credentials on blockchain. Issue in batches, verify by QR code in under a second, and stop credential fraud at source.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="chrome.css">
@@ -47,8 +48,6 @@
     html { scroll-behavior: smooth; }
     body { font-family: var(--font-body), var(--font-cjk), sans-serif; background: #FFFFFF; color: #545454; line-height: 1.6; overflow-x: hidden; -webkit-font-smoothing: antialiased; }
     a { text-decoration: none; color: inherit; }
-    .container { max-width: 1280px; margin: 0 auto; padding: 0 64px; }
-    @media (max-width: 768px) { .container { padding: 0 24px; } }
 
     /* NAV */
     nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(255,255,255,0.85); backdrop-filter: blur(16px); border-bottom: 1px solid rgba(10,22,40,0.08); height: 64px; }
@@ -103,7 +102,7 @@
       background: var(--cert-primary, var(--oc-cert-teal));
       color: #ffffff;
       padding: 14px 32px; border-radius: var(--radius-sm); font-size: 16px; font-weight: 600;
-      border: none; cursor: pointer; transition: all 200ms;
+      border: none; cursor: pointer; transition: transform 200ms, box-shadow 200ms, border-color 200ms, background-color 200ms, color 200ms;
       display: inline-flex; align-items: center; gap: 8px;
     }
     .btn-gold:hover {
@@ -111,7 +110,7 @@
       box-shadow: 0 4px 24px rgba(1, 98, 130, 0.35);
       transform: translateY(-1px);
     }
-    .btn-outline { background: transparent; color: #FFFFFF; padding: 14px 32px; border-radius: var(--radius-sm); font-size: 16px; font-weight: 600; border: 1px solid rgba(255,255,255,0.4); cursor: pointer; transition: all 200ms; backdrop-filter: blur(6px); }
+    .btn-outline { background: transparent; color: #FFFFFF; padding: 14px 32px; border-radius: var(--radius-sm); font-size: 16px; font-weight: 600; border: 1px solid rgba(255,255,255,0.4); cursor: pointer; transition: transform 200ms, box-shadow 200ms, border-color 200ms, background-color 200ms, color 200ms; backdrop-filter: blur(6px); }
     .btn-outline:hover { background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.8); }
     @media (max-width: 768px) { .hero { padding: 140px 0 80px; } .hero h1 { font-size: 32px; } }
 
@@ -128,7 +127,7 @@
     .flow-steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; max-width: 960px; margin: 0 auto; position: relative; }
     .flow-steps::before { content: ''; position: absolute; top: 36px; left: 15%; right: 15%; height: 2px; background: linear-gradient(90deg, var(--oc-cert-teal), rgba(40,108,132,0.2)); z-index: 0; }
     .flow-step { text-align: center; position: relative; z-index: 1; }
-    .flow-step .step-num { width: 72px; height: 72px; border-radius: 50%; margin: 0 auto 20px; display: flex; align-items: center; justify-content: center; font-family: var(--font-display); font-size: 28px; font-weight: 700; background: #FFFFFF; border: 3px solid var(--oc-cert-teal); color: var(--oc-cert-teal-text); transition: all 300ms; }
+    .flow-step .step-num { width: 72px; height: 72px; border-radius: 50%; margin: 0 auto 20px; display: flex; align-items: center; justify-content: center; font-family: var(--font-display); font-size: 28px; font-weight: 700; background: #FFFFFF; border: 3px solid var(--oc-cert-teal); color: var(--oc-cert-teal-text); transition: transform 300ms, box-shadow 300ms, border-color 300ms, background-color 300ms, color 300ms; }
     .flow-step:hover .step-num { background: var(--oc-cert-teal); color: #FFFFFF; box-shadow: 0 0 32px rgba(40,108,132,0.3); }
     .flow-step h3 { font-family: var(--font-display); font-size: 22px; font-weight: 700; margin-bottom: 8px; color: var(--oc-text); }
     .flow-step p { font-size: 15px; color: var(--oc-muted); line-height: 1.6; max-width: 280px; margin: 0 auto; }
@@ -136,7 +135,7 @@
 
     /* USE CASES */
     .usecases-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
-    .usecase-card { background: #FFFFFF; border-radius: var(--radius-lg); padding: 32px; border: 1px solid rgba(10,22,40,0.08); box-shadow: 0 1px 3px rgba(10,22,40,0.04); transition: all 250ms; }
+    .usecase-card { background: #FFFFFF; border-radius: var(--radius-lg); padding: 32px; border: 1px solid rgba(10,22,40,0.08); box-shadow: 0 1px 3px rgba(10,22,40,0.04); transition: transform 250ms, box-shadow 250ms, border-color 250ms, background-color 250ms, color 250ms; }
     .usecase-card:hover { box-shadow: 0 8px 32px rgba(10,22,40,0.08); transform: translateY(-2px); }
     .usecase-card .uc-icon { width: 44px; height: 44px; border-radius: var(--radius-md); background: rgba(40,108,132,0.1); color: var(--oc-cert-teal); display: flex; align-items: center; justify-content: center; font-size: 20px; margin-bottom: 16px; }
     .usecase-card h4 { font-family: var(--font-display); font-size: 18px; font-weight: 700; color: var(--oc-text); margin-bottom: 8px; }
@@ -145,16 +144,16 @@
 
     /* AI FEATURES */
     .ai-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; max-width: 900px; margin: 0 auto; }
-    .ai-card { background: #FFFFFF; border: 1px solid rgba(10,22,40,0.08); border-radius: var(--radius-lg); padding: 28px; box-shadow: 0 1px 3px rgba(10,22,40,0.04); transition: all 250ms; }
+    .ai-card { background: #FFFFFF; border: 1px solid rgba(10,22,40,0.08); border-radius: var(--radius-lg); padding: 28px; box-shadow: 0 1px 3px rgba(10,22,40,0.04); transition: transform 250ms, box-shadow 250ms, border-color 250ms, background-color 250ms, color 250ms; }
     .ai-card:hover { border-color: rgba(1,98,130,0.3); box-shadow: 0 8px 32px rgba(10,22,40,0.08); }
-    .ai-badge { display: inline-flex; align-items: center; gap: 4px; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; background: rgba(1,98,130,0.12); color: var(--oc-ai-purple); padding: 3px 10px; border-radius: var(--radius-full); margin-bottom: 12px; }
+    .ai-badge { display: inline-flex; align-items: center; gap: 4px; font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; background: rgba(1,98,130,0.12); color: var(--oc-ai-purple); padding: 3px 10px; border-radius: var(--radius-full); margin-bottom: 12px; }
     .ai-card h4 { font-family: var(--font-display); font-size: 17px; font-weight: 700; margin-bottom: 6px; color: var(--oc-text); }
     .ai-card p { font-size: 14px; color: var(--oc-muted); line-height: 1.5; }
     @media (max-width: 768px) { .ai-grid { grid-template-columns: 1fr; } }
 
     /* ENTERPRISE */
     .enterprise-features { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; max-width: 900px; margin: 0 auto; }
-    .enterprise-card { background: #FFFFFF; border: 1px solid rgba(10,22,40,0.08); border-radius: var(--radius-lg); padding: 28px; display: flex; gap: 16px; align-items: flex-start; box-shadow: 0 1px 3px rgba(10,22,40,0.04); transition: all 250ms; }
+    .enterprise-card { background: #FFFFFF; border: 1px solid rgba(10,22,40,0.08); border-radius: var(--radius-lg); padding: 28px; display: flex; gap: 16px; align-items: flex-start; box-shadow: 0 1px 3px rgba(10,22,40,0.04); transition: transform 250ms, box-shadow 250ms, border-color 250ms, background-color 250ms, color 250ms; }
     .enterprise-card:hover { border-color: rgba(40,108,132,0.3); box-shadow: 0 8px 32px rgba(10,22,40,0.08); }
     .enterprise-card .ent-icon { width: 40px; height: 40px; min-width: 40px; border-radius: var(--radius-md); background: var(--oc-cert-teal-glow); color: var(--oc-cert-teal); display: flex; align-items: center; justify-content: center; font-size: 18px; }
     .enterprise-card h4 { font-family: var(--font-display); font-size: 16px; font-weight: 700; margin-bottom: 4px; color: var(--oc-text); }
@@ -216,45 +215,45 @@
     .dash { display: grid; grid-template-columns: 1fr 300px; }
     .dash-main { padding: 28px; border-right: 1px solid var(--oc-dark-border); }
     .dash-title { font-size: 13px; font-weight: 700; margin-bottom: 4px; }
-    .dash-sub { font-size: 11.5px; color: #94A3B8; margin-bottom: 20px; }
+    .dash-sub { font-size: 12px; color: var(--oc-muted); margin-bottom: 20px; }
     .cert-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
     .cert-mini { border: 1px solid var(--oc-dark-border); border-radius: 10px; padding: 16px; position: relative; overflow: hidden; }
     .cert-mini::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
       background: linear-gradient(90deg, var(--oc-cert-teal), #61a7bf); }
-    .cert-mini .cm-check { display: inline-flex; align-items: center; gap: 5px; font-size: 10px; font-weight: 700;
+    .cert-mini .cm-check { display: inline-flex; align-items: center; gap: 5px; font-size: 12px; font-weight: 700;
       letter-spacing: 1px; text-transform: uppercase; color: #007771; background: rgba(0,119,113,0.10);
       padding: 3px 9px; border-radius: 999px; margin-bottom: 10px; }
     .cert-mini h5 { font-size: 13px; font-weight: 700; }
-    .cert-mini .cm-meta { font-size: 10.5px; color: #94A3B8; margin-top: 4px; font-family: ui-monospace, monospace; }
+    .cert-mini .cm-meta { font-size: 12px; color: var(--oc-muted); margin-top: 4px; font-family: ui-monospace, monospace; }
     /* live feed */
     .feed { padding: 22px 20px; background: #FBFCFD; }
-    .feed-head { display: flex; align-items: center; gap: 8px; font-size: 11px; font-weight: 700;
+    .feed-head { display: flex; align-items: center; gap: 8px; font-size: 12px; font-weight: 700;
       letter-spacing: 1.4px; text-transform: uppercase; color: var(--oc-muted); margin-bottom: 14px; }
     .feed-live-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--oc-cert-teal); animation: pulse 1.6s infinite; }
     @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.35; } }
     .feed-list { display: flex; flex-direction: column; gap: 8px; }
-    .feed-item { display: flex; gap: 10px; align-items: flex-start; font-size: 11.5px; padding: 9px 10px;
+    .feed-item { display: flex; gap: 10px; align-items: flex-start; font-size: 12px; padding: 9px 10px;
       background: #fff; border: 1px solid var(--oc-dark-border); border-radius: 8px;
       animation: feed-in .45s cubic-bezier(.16,1,.3,1) both; }
     @keyframes feed-in { from { opacity: 0; transform: translateY(-8px); } to { opacity: 1; transform: none; } }
     .feed-item .f-ico { font-size: 13px; }
-    .feed-item .f-hash { font-family: ui-monospace, monospace; color: var(--oc-primary); font-size: 10.5px; }
+    .feed-item .f-hash { font-family: ui-monospace, monospace; color: var(--oc-primary); font-size: 12px; }
     .feed-item .f-what { font-weight: 600; }
-    .feed-item .f-when { margin-left: auto; color: #94A3B8; font-size: 10.5px; white-space: nowrap; }
+    .feed-item .f-when { margin-left: auto; color: var(--oc-muted); font-size: 12px; white-space: nowrap; }
     @media (max-width: 860px) { .dash { grid-template-columns: 1fr; } .dash-main { border-right: none; border-bottom: 1px solid var(--oc-dark-border); } .cert-grid { grid-template-columns: 1fr; } }
     @media (prefers-reduced-motion: reduce) { .feed-item { animation: none; } .feed-live-dot { animation: none; } }
 
     /* WHAT SETS APART — 2×2 feature grid */
     .apart-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 48px 64px; max-width: 1040px; margin: 0 auto; }
     .apart-item { display: flex; gap: 20px; align-items: flex-start; }
-    .apart-icon { width: 56px; height: 56px; min-width: 56px; border-radius: 50%; border: 1.5px solid var(--oc-primary-light); display: flex; align-items: center; justify-content: center; color: var(--oc-primary-light); }
-    .apart-item h4 { font-family: var(--font-display); font-size: 22px; font-weight: 600; color: var(--oc-primary-light); margin-bottom: 8px; }
+    .apart-icon { width: 56px; height: 56px; min-width: 56px; border-radius: 50%; border: 1.5px solid rgba(1,98,130,0.28); background: rgba(1,98,130,0.06); display: flex; align-items: center; justify-content: center; color: var(--cert-primary); }
+    .apart-item h4 { font-family: var(--font-display); font-size: 22px; font-weight: 700; color: var(--oc-dark); margin-bottom: 8px; }
     .apart-item p { font-size: 15px; color: var(--oc-muted); line-height: 1.65; }
     @media (max-width: 768px) { .apart-grid { grid-template-columns: 1fr; gap: 32px; } }
 
     /* INDUSTRIES — 4×2 card grid */
     .industries-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
-    .industry-card { background: #FFFFFF; border-radius: var(--radius-lg); padding: 32px 20px; text-align: center; box-shadow: 0 2px 8px rgba(10,22,40,0.06); transition: all 250ms; border: 1px solid rgba(10,22,40,0.06); }
+    .industry-card { background: #FFFFFF; border-radius: var(--radius-lg); padding: 32px 20px; text-align: center; box-shadow: 0 2px 8px rgba(10,22,40,0.06); transition: transform 250ms, box-shadow 250ms, border-color 250ms, background-color 250ms, color 250ms; border: 1px solid rgba(10,22,40,0.06); }
     .industry-card:hover { box-shadow: 0 8px 32px rgba(10,22,40,0.10); transform: translateY(-2px); }
     .industry-card .ind-icon { width: 52px; height: 52px; border-radius: 50%; background: rgba(1,98,130,0.08); color: var(--oc-primary); display: flex; align-items: center; justify-content: center; font-size: 24px; margin: 0 auto 14px; }
     .industry-card h4 { font-family: var(--font-display); font-size: 15px; font-weight: 700; color: var(--oc-text); line-height: 1.35; }
@@ -273,8 +272,27 @@
       .cta-section { background-size: auto; }
     }
   </style>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <meta name="theme-color" content="#14a4bc">
+  <link rel="stylesheet" href="site-base.css?v=202607280950">
 </head>
 <body>
+<svg class="oc-sprite" aria-hidden="true" focusable="false">
+  <defs>
+    <symbol id="ic-bolt" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 14h7l-1 8 10-12h-7l1-8Z"/></symbol>
+    <symbol id="ic-box" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8 12 3 3 8v8l9 5 9-5V8Z"/><path d="M3 8l9 5 9-5"/><path d="M12 13v8"/></symbol>
+    <symbol id="ic-briefcase" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><path d="M2 13h20"/></symbol>
+    <symbol id="ic-cap" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10 12 5 2 10l10 5 10-5Z"/><path d="M6 12.4V17c0 1.66 2.69 3 6 3s6-1.34 6-3v-4.6"/></symbol>
+    <symbol id="ic-chart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M7 21v-6"/><path d="M12 21V8"/><path d="M17 21v-9"/></symbol>
+    <symbol id="ic-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8.4 12.3l2.6 2.6 4.9-5"/></symbol>
+    <symbol id="ic-idcard" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><circle cx="8.5" cy="12" r="2.2"/><path d="M14 10.5h5"/><path d="M14 14h3.5"/></symbol>
+    <symbol id="ic-landmark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M5 21V10"/><path d="M19 21V10"/><path d="M9.5 21v-5.5h5V21"/><path d="M2.5 10 12 4l9.5 6"/></symbol>
+    <symbol id="ic-link" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 14.5 14.5 9.5"/><path d="M11 6.8 12.6 5.2a4.4 4.4 0 0 1 6.2 6.2L17.2 13"/><path d="M6.8 11 5.2 12.6a4.4 4.4 0 0 0 6.2 6.2L13 17.2"/></symbol>
+    <symbol id="ic-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3v5.5c0 4.8-3.3 8.1-8 9.5-4.7-1.4-8-4.7-8-9.5V6l8-3Z"/><path d="M9 12.2l2.1 2.1L15.2 10"/></symbol>
+    <symbol id="ic-tag" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11.5V5a2 2 0 0 1 2-2h6.5L21 12.5 12.5 21 3 11.5Z"/><circle cx="7.5" cy="7.5" r="1.4"/></symbol>
+    <symbol id="ic-ticket" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v1a2 2 0 0 0 0 6v1a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-1a2 2 0 0 0 0-6V8Z"/><path d="M14 6v2"/><path d="M14 11v2"/><path d="M14 16v2"/></symbol>
+  </defs>
+</svg>
 
   <div id="site-nav"></div>
 
@@ -290,7 +308,7 @@
       <p class="hero-tagline animate-in delay-2">Tamper-proof credentials, instantly verifiable</p>
       <p class="hero-sub animate-in delay-2">Blockchain-powered credential issuance and identity verification. No calls, no emails, no accounts needed — just instant trust.</p>
       <div class="hero-ctas animate-in delay-3">
-        <a href="https://app.certledger.io/" class="btn-outline">Start Issuing</a>
+        <a href="https://app.certledger.io/" class="btn-gold">Start Issuing</a>
         <a href="#how-it-works" class="btn-outline">Verify a Certificate</a>
       </div>
     </div>
@@ -472,22 +490,22 @@
       </div>
       <div class="usecases-grid">
         <div class="usecase-card">
-          <div class="uc-icon">🎓</div>
+          <div class="uc-icon"><svg class="oc-ico" aria-hidden="true"><use href="#ic-cap"></use></svg></div>
           <h4>Education</h4>
           <p>Degrees, diplomas, course completion certificates — verifiable by any employer worldwide.</p>
         </div>
         <div class="usecase-card">
-          <div class="uc-icon">💼</div>
+          <div class="uc-icon"><svg class="oc-ico" aria-hidden="true"><use href="#ic-briefcase"></use></svg></div>
           <h4>Professional</h4>
           <p>Training certifications, professional licenses, continuing education credits.</p>
         </div>
         <div class="usecase-card">
-          <div class="uc-icon">🎪</div>
+          <div class="uc-icon"><svg class="oc-ico" aria-hidden="true"><use href="#ic-ticket"></use></svg></div>
           <h4>Events</h4>
           <p>Attendance certificates, awards, badges, speaker recognition.</p>
         </div>
         <div class="usecase-card">
-          <div class="uc-icon">🏛️</div>
+          <div class="uc-icon"><svg class="oc-ico" aria-hidden="true"><use href="#ic-landmark"></use></svg></div>
           <h4>Government</h4>
           <p>Official documents, regulatory certifications, compliance attestations.</p>
         </div>
@@ -505,22 +523,22 @@
       </div>
       <div class="ai-grid">
         <div class="ai-card">
-          <div class="ai-badge">⚡ AI</div>
+          <div class="ai-badge"><svg class="oc-ico" aria-hidden="true"><use href="#ic-bolt"></use></svg> AI</div>
           <h4>Credential Matching</h4>
           <p>AI-assisted matching across issuers and industries. Find equivalent credentials across borders.</p>
         </div>
         <div class="ai-card">
-          <div class="ai-badge">⚡ AI</div>
+          <div class="ai-badge"><svg class="oc-ico" aria-hidden="true"><use href="#ic-bolt"></use></svg> AI</div>
           <h4>Fraud Detection</h4>
           <p>Flag suspicious issuance patterns before they become problems. Pattern analysis across the network.</p>
         </div>
         <div class="ai-card">
-          <div class="ai-badge">⚡ AI</div>
+          <div class="ai-badge"><svg class="oc-ico" aria-hidden="true"><use href="#ic-bolt"></use></svg> AI</div>
           <h4>Bulk Automation</h4>
           <p>Issue hundreds of credentials at once with smart validation. Graduating class? Training cohort? One click.</p>
         </div>
         <div class="ai-card">
-          <div class="ai-badge">⚡ AI</div>
+          <div class="ai-badge"><svg class="oc-ico" aria-hidden="true"><use href="#ic-bolt"></use></svg> AI</div>
           <h4>Smart Templates</h4>
           <p>AI suggests optimal templates based on institution type, industry, and credential purpose.</p>
         </div>
@@ -537,28 +555,28 @@
       </div>
       <div class="enterprise-features">
         <div class="enterprise-card">
-          <div class="ent-icon">🏷️</div>
+          <div class="ent-icon"><svg class="oc-ico" aria-hidden="true"><use href="#ic-tag"></use></svg></div>
           <div>
             <h4>White-Label Platform</h4>
             <p>Custom branding, your domain, your look. Students and recipients never leave your experience.</p>
           </div>
         </div>
         <div class="enterprise-card">
-          <div class="ent-icon">🔗</div>
+          <div class="ent-icon"><svg class="oc-ico" aria-hidden="true"><use href="#ic-link"></use></svg></div>
           <div>
             <h4>API Integration</h4>
             <p>Connect to your LMS, HR system, or registration platform. RESTful API with full documentation.</p>
           </div>
         </div>
         <div class="enterprise-card">
-          <div class="ent-icon">📊</div>
+          <div class="ent-icon"><svg class="oc-ico" aria-hidden="true"><use href="#ic-chart"></use></svg></div>
           <div>
             <h4>Analytics Dashboard</h4>
             <p>Track issuance volumes, verification rates, and credential engagement in real time.</p>
           </div>
         </div>
         <div class="enterprise-card">
-          <div class="ent-icon">📦</div>
+          <div class="ent-icon"><svg class="oc-ico" aria-hidden="true"><use href="#ic-box"></use></svg></div>
           <div>
             <h4>Batch Issuance</h4>
             <p>Upload a CSV, map the fields, issue to an entire graduating class or training cohort at once.</p>
@@ -582,15 +600,16 @@
       const feed = document.getElementById('certFeed');
       if (!feed) return;
       const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const ico = n => '<svg class="oc-ico" aria-hidden="true"><use href="#ic-' + n + '"></use></svg>';
       const EVENTS = [
-        ['🎓', 'Credential issued', 'BSc · education'],
-        ['✅', 'QR scan verified', 'employer check · 0.4s'],
-        ['🪪', 'Batch issued', '120 certificates · training'],
-        ['✅', 'QR scan verified', 'border authority · 0.3s'],
-        ['🛡️', 'Fraud attempt blocked', 'hash mismatch detected'],
-        ['🎓', 'Credential issued', 'CPD course · professional'],
-        ['✅', 'QR scan verified', 'HR system API · 0.5s'],
-        ['🪪', 'Credential renewed', 'licence · government'],
+        [ico('cap'), 'Credential issued', 'BSc · education'],
+        [ico('check'), 'QR scan verified', 'employer check · 0.4s'],
+        [ico('idcard'), 'Batch issued', '120 certificates · training'],
+        [ico('check'), 'QR scan verified', 'border authority · 0.3s'],
+        [ico('shield'), 'Fraud attempt blocked', 'hash mismatch detected'],
+        [ico('cap'), 'Credential issued', 'CPD course · professional'],
+        [ico('check'), 'QR scan verified', 'HR system API · 0.5s'],
+        [ico('idcard'), 'Credential renewed', 'licence · government'],
       ];
       let n = 0;
       function hash() {
