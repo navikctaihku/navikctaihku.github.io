@@ -247,9 +247,10 @@
         else fn();
       };
 
-      // 1. tsParticles — network that links to your cursor (grab) and scatters on click (push)
+      // 1. tsParticles — only if the particle host still exists in the DOM
       whenReady(() => {
         if (aiReduced || typeof tsParticles === 'undefined') return;
+        if (!document.getElementById('aiParticles')) return;
         tsParticles.load({
           id: 'aiParticles',
           options: {

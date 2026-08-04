@@ -63,9 +63,9 @@
       ]},
     ]},
     { label: 'Resources', cols: [
-      { title: 'Support', items: [
-        item('mailto:enquiries@onechain.hk', icon('rgba(240,180,41,0.14)', '💬'), 'Contact', 'Talk to the team'),
-        item('mailto:enquiries@onechain.hk?subject=Service%20status%20request', icon('rgba(1,98,130,0.10)', '🔎'), 'Service status', 'Check platform availability'),
+      { title: 'Explore', items: [
+        item('blog.html', icon('rgba(0,180,216,0.12)', '📘'), 'Blog', 'Insights, product news, and partner stories'),
+        item('contact.html', icon('rgba(240,180,41,0.14)', '💬'), 'Contact', 'Talk to the team'),
       ]},
     ]},
   ];
@@ -82,7 +82,7 @@
       '<a href="index.html" class="sc-logo"><img src="onchain-logo.png" alt="OneChain"></a>' +
       '<ul class="sc-menu">' + lis + '</ul>' +
       '<div class="sc-actions">' +
-      '<a class="sc-btn-ghost" href="mailto:enquiries@onechain.hk">Contact</a>' +
+      '<a class="sc-btn-ghost" href="contact.html">Contact</a>' +
       '<button class="sc-burger" aria-label="Menu" type="button">☰</button>' +
       '</div></div></nav>' + buildMobile();
   }
@@ -100,7 +100,7 @@
       return '<div class="sc-mgroup"><div>' + m.label + '</div>' + links.join('') + '</div>';
     }).join('');
     return '<div class="sc-mobile">' + html +
-      '<div class="sc-mgroup"><a href="mailto:enquiries@onechain.hk" style="padding-left:0;font-weight:600;color:var(--sc-ink)">Contact Us</a></div></div>';
+      '<div class="sc-mgroup"><a href="contact.html" style="padding-left:0;font-weight:600;color:var(--sc-ink)">Contact Us</a></div></div>';
   }
 
   function buildFooter() {
@@ -109,17 +109,37 @@
         links.map(function (l) { return '<li><a href="' + l[1] + '">' + l[0] + '</a></li>'; }).join('') +
         '</ul></div>';
     };
+    var contactCol =
+      '<div class="sc-fcol sc-fcol--contact"><h5>Get in Touch</h5><ul>' +
+      '<li><a href="tel:+85225714301">(852) 2571 4301</a></li>' +
+      '<li><a href="mailto:info@one-chain.io">info@one-chain.io</a></li>' +
+      '<li><span class="sc-fcontact-address">Level 9, Core C, Cyberport 3,<br>100 Cyberport Rd, Pok Fu Lam,<br>Hong Kong</span></li>' +
+      '</ul></div>';
+    var social =
+      '<div class="sc-footer-social" aria-label="Social media">' +
+      '<a href="https://www.facebook.com/onechainhk" target="_blank" rel="noopener" aria-label="Facebook">' +
+      '<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M22 12.07C22 6.48 17.52 2 11.93 2S1.86 6.48 1.86 12.07c0 5.02 3.66 9.18 8.44 9.93v-7.02H7.9v-2.91h2.4V9.84c0-2.37 1.41-3.68 3.56-3.68 1.03 0 2.11.18 2.11.18v2.32h-1.19c-1.17 0-1.54.73-1.54 1.48v1.78h2.62l-.42 2.91h-2.2V22c4.78-.75 8.44-4.91 8.44-9.93z"/></svg></a>' +
+      '<a href="https://www.instagram.com/one.chain.io" target="_blank" rel="noopener" aria-label="Instagram">' +
+      '<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7zm11.25 1.5a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5zM12 7.5A4.5 4.5 0 1 1 12 16.5 4.5 4.5 0 0 1 12 7.5zm0 2a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5z"/></svg></a>' +
+      '<a href="https://www.linkedin.com/company/one-chain" target="_blank" rel="noopener" aria-label="LinkedIn">' +
+      '<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5C4.98 4.88 3.86 6 2.5 6S.02 4.88.02 3.5 1.14 1 2.5 1s2.48 1.12 2.48 2.5zM.22 8.48h4.56V23H.22V8.48zM8.34 8.48h4.37v1.98h.06c.61-1.16 2.1-2.38 4.32-2.38 4.62 0 5.47 3.04 5.47 7v7.92h-4.56v-7.02c0-1.67-.03-3.82-2.33-3.82-2.33 0-2.69 1.82-2.69 3.7V23H8.34V8.48z"/></svg></a>' +
+      '<a href="https://www.youtube.com/@onechain" target="_blank" rel="noopener" aria-label="YouTube">' +
+      '<svg width="22" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23.5 6.2a3.02 3.02 0 0 0-2.12-2.14C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.38.56A3.02 3.02 0 0 0 .5 6.2 31.6 31.6 0 0 0 0 12a31.6 31.6 0 0 0 .5 5.8 3.02 3.02 0 0 0 2.12 2.14C4.5 20.5 12 20.5 12 20.5s7.5 0 9.38-.56a3.02 3.02 0 0 0 2.12-2.14A31.6 31.6 0 0 0 24 12a31.6 31.6 0 0 0-.5-5.8zM9.75 15.52V8.48L15.82 12l-6.07 3.52z"/></svg></a>' +
+      '</div>';
     return '<footer class="sc-footer"><div class="sc-footer-inner"><div class="sc-footer-grid">' +
       '<div class="sc-footer-brand"><img src="onchain-logo.png" alt="OneChain">' +
       '<p>Full-stack blockchain company building the trust layer for Asia. Cyberport, Hong Kong.</p></div>' +
       col('Products', [['ESGLedger', 'esgledger.html'], ['CertLedger', 'certledger.html'], ['API Platform', 'api-platform.html'], ['API Docs', 'api-docs.html']]) +
       col('Solutions', [['Watsons & Timber', 'solutions.html#lead'], ['ESG & Sustainability', 'solutions.html#esg'], ['Credentials & Identity', 'solutions.html#credentials'], ['Education', 'solutions.html#education'], ['Government', 'solutions.html#government']]) +
       col('Company', [['Blockchain Services', 'company.html#services'], ['Infrastructure', 'infrastructure.html'], ['Applications', 'company.html#applications'], ['Green Tech', 'company.html#greentech']]) +
-      col('About', [['About Us', 'about.html'], ['Vision & Mission', 'about.html#vision'], ['What We Solve', 'about.html#solving'], ['Contact', 'mailto:enquiries@onechain.hk']]) +
-      col('Resources', [['Service status', 'mailto:enquiries@onechain.hk?subject=Service%20status%20request']]) +
+      col('About', [['About Us', 'about.html'], ['Vision & Mission', 'about.html#vision'], ['What We Solve', 'about.html#solving'], ['Blog', 'blog.html']]) +
+      contactCol +
       '</div><div class="sc-footer-bottom">' +
-      '<span class="sc-footer-tagline">Trust, made infrastructure.</span>' +
-      '<p>© 2026 OneChain Ltd. · Cyberport 3, Pok Fu Lam, Hong Kong · <a href="mailto:enquiries@onechain.hk?subject=Privacy%20request" style="color:inherit">Privacy</a> · <a href="mailto:enquiries@onechain.hk?subject=Terms%20request" style="color:inherit">Terms</a></p>' +
+      '<div class="sc-footer-bottom-left">' +
+      social +
+      '<img class="sc-footer-iso" src="iso-27001.svg" alt="ISO 27001 Certified" width="52" height="52">' +
+      '</div>' +
+      '<p>© 2026 OneChain Ltd. · Level 9, Core C, Cyberport 3, Pok Fu Lam, Hong Kong · <a href="mailto:info@one-chain.io?subject=Privacy%20Policy" style="color:inherit">Privacy Policy</a> · <a href="mailto:info@one-chain.io?subject=Terms%20of%20Use" style="color:inherit">Terms of Use</a></p>' +
       '</div></div></footer>';
   }
 
