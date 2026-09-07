@@ -45,41 +45,6 @@
       });
     }
 
-    // Product showcase — accessible tabbed crossfade
-    (function initProductShowcase() {
-      const root = document.getElementById('productShowcase');
-      const track = document.getElementById('productShowcaseTrack');
-      if (!root || !track) return;
-
-      const tabs = Array.from(root.querySelectorAll('.product-tab'));
-      const slides = Array.from(track.querySelectorAll('.product-showcase-slide'));
-      const prevBtn = root.querySelector('.product-showcase-arrow--prev');
-      const nextBtn = root.querySelector('.product-showcase-arrow--next');
-      let current = 0;
-
-      const goTo = (index) => {
-        current = (index + slides.length) % slides.length;
-        tabs.forEach((tab, i) => {
-          const active = i === current;
-          tab.classList.toggle('is-active', active);
-          tab.setAttribute('aria-selected', active ? 'true' : 'false');
-        });
-        slides.forEach((slide, i) => slide.classList.toggle('is-active', i === current));
-
-        const fanCardsEl = document.getElementById('fanCards');
-        if (fanCardsEl && slides[current]?.dataset.product === 'cert') {
-          fanCardsEl.classList.add('fanned');
-        }
-      };
-
-      tabs.forEach((tab) => {
-        tab.addEventListener('click', () => goTo(Number(tab.dataset.index)));
-      });
-      prevBtn?.addEventListener('click', () => goTo(current - 1));
-      nextBtn?.addEventListener('click', () => goTo(current + 1));
-      goTo(0);
-    })();
-
     // ===== Reusable interactive node network =====
     function initNodeNetwork(container, canvas, opts = {}) {
       if (!container || !canvas) return;

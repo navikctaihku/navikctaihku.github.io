@@ -158,7 +158,7 @@ button,
 .hero-btn,
 .reclaim-cta,
 .reclaim-cta-outline,
-.product-showcase-cta,
+.product-row-cta,
 .blockchain-services-cta,
 .ai-cta {
   font-family: var(--font-brand), var(--font-cjk), sans-serif;
@@ -188,7 +188,10 @@ p, li, label, input, textarea, .oc-type-body {
   font-weight: var(--weight-medium);
   letter-spacing: var(--tracking-sub);
   text-transform: uppercase;
-  color: var(--oc-muted-light);
+}
+
+.ticker .ticker-item {
+  color: #fff;
 }
 
 /* Section eyebrows / tags — supporting text, primary accent */
@@ -201,6 +204,7 @@ p, li, label, input, textarea, .oc-type-body {
 .video-header .eyebrow,
 .section-eyebrow,
 .ecosystem-tag,
+.backed-by .eyebrow,
 .sc-col-title,
 .sc-fcol h5,
 .fig-label {

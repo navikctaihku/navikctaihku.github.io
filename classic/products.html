@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flagship Products — ESGLedger, CertLedger & WillsLedger | OneChain</title>
+  <meta name="description" content="Explore OneChain's flagship products: ESGLedger for verified ESG data and plastic credits, CertLedger for tamper-proof credentials, and WillsLedger for blockchain-backed digital wills.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="tokens.css">
+  <link rel="stylesheet" href="global.css?v=202608281707">
+  <link rel="stylesheet" href="chrome.css?v=202609071120">
+  <script src="site-chrome.js?v=202609071506" defer></script>
+  <link rel="stylesheet" href="home.css?v=202608281707">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <meta name="theme-color" content="#14a4bc">
+  <link rel="stylesheet" href="site-base.css?v=202607280950">
+  <style>
+    /* ===================================================================
+       FLAGSHIP PRODUCTS PAGE
+       Two sections per product: an overview row, then an interactive
+       deep-dive band. Brand colours come from tokens.css.
+       =================================================================== */
+    :root { --wills-primary: #5b4fcf; --wills-glow: rgba(91,79,207,0.12); }
+
+    /* ---------- HERO ---------- */
+    .fp-hero {
+      padding: 150px 0 64px; text-align: center; position: relative; overflow: hidden;
+      background: linear-gradient(180deg, #f4f9fc 0%, #ffffff 70%);
+    }
+    .fp-hero-blob { position: absolute; border-radius: 50%; filter: blur(90px); opacity: .5; pointer-events: none; }
+    .fp-hero-blob-1 { width: 460px; height: 460px; top: -12%; left: -6%; background: radial-gradient(circle, rgba(0,119,113,.22), transparent 70%); }
+    .fp-hero-blob-2 { width: 420px; height: 420px; top: 4%; right: -6%; background: radial-gradient(circle, rgba(20,164,188,.22), transparent 70%); }
+    .fp-hero .container { position: relative; z-index: 1; }
+    .fp-hero-badge {
+      display: inline-flex; align-items: center; gap: 8px; background: var(--oc-primary-glow);
+      border: 1px solid rgba(20,164,188,.18); padding: 6px 16px; border-radius: var(--radius-full);
+      font-size: 12px; font-weight: 600; color: var(--oc-primary); text-transform: uppercase;
+      letter-spacing: 1.5px; margin-bottom: 22px;
+    }
+    .fp-hero h1 {
+      font-family: var(--font-display); font-size: clamp(34px, 5.2vw, 52px); font-weight: 700;
+      line-height: 1.14; letter-spacing: -.02em; max-width: 760px; margin: 0 auto 18px; color: var(--oc-text);
+    }
+    .fp-hero > .container > p { font-size: 18px; color: var(--oc-muted); max-width: 580px; margin: 0 auto 32px; }
+
+    /* jump chips */
+    .fp-jump { display: flex; justify-content: center; flex-wrap: wrap; gap: 10px; }
+    .fp-chip {
+      display: inline-flex; align-items: center; gap: 8px; padding: 10px 20px;
+      border-radius: var(--radius-full); font-size: 14px; font-weight: 600;
+      background: #fff; border: 1px solid var(--oc-border-strong); color: var(--oc-text-secondary);
+      transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease, color .2s ease;
+    }
+    .fp-chip:hover { transform: translateY(-2px); }
+    .fp-chip--esg:hover { color: var(--esg-primary); border-color: var(--esg-primary); box-shadow: 0 10px 24px rgba(0,119,113,.18); }
+    .fp-chip--cert:hover { color: var(--cert-primary); border-color: var(--cert-primary); box-shadow: 0 10px 24px rgba(1,98,130,.18); }
+    .fp-chip--wills:hover { color: var(--wills-primary); border-color: var(--wills-primary); box-shadow: 0 10px 24px rgba(91,79,207,.18); }
+    .fp-chip-soon {
+      font-size: 10px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase;
+      padding: 3px 7px; border-radius: 5px; background: var(--wills-glow); color: var(--wills-primary);
+    }
+
+    /* ---------- STICKY PRODUCT NAV ---------- */
+    .fp-nav {
+      position: sticky; top: 64px; z-index: 40;
+      background: rgba(255,255,255,.85); border-bottom: 1px solid var(--oc-border);
+      -webkit-backdrop-filter: saturate(1.6) blur(14px); backdrop-filter: saturate(1.6) blur(14px);
+    }
+    .fp-nav-inner { max-width: 1280px; margin-inline: auto; padding-inline: 64px; display: flex; gap: 4px; overflow-x: auto; scrollbar-width: none; }
+    .fp-nav-inner::-webkit-scrollbar { display: none; }
+    .fp-nav a {
+      position: relative; flex: none; padding: 15px 18px; font-size: 14px; font-weight: 600;
+      color: var(--oc-muted); transition: color .2s ease;
+    }
+    .fp-nav a::after {
+      content: ''; position: absolute; left: 18px; right: 18px; bottom: -1px; height: 2px;
+      background: currentColor; border-radius: 2px; transform: scaleX(0); transition: transform .28s ease;
+    }
+    .fp-nav a:hover { color: var(--oc-text); }
+    .fp-nav a.is-active::after { transform: scaleX(1); }
+    .fp-nav a[data-p="esg"].is-active { color: var(--esg-primary); }
+    .fp-nav a[data-p="cert"].is-active { color: var(--cert-primary); }
+    .fp-nav a[data-p="wills"].is-active { color: var(--wills-primary); }
+
+    /* ---------- PRODUCT BLOCKS ---------- */
+    .fp-product { scroll-margin-top: 130px; }
+    .fp-overview { padding: 72px 0 8px; }
+
+    /* section 2 — deep dive band */
+    .fp-deep { padding: 56px 0 84px; }
+    .fp-deep--esg   { background: linear-gradient(180deg, #f3faf9 0%, #ffffff 100%); }
+    .fp-deep--cert  { background: linear-gradient(180deg, #f0f9fb 0%, #ffffff 100%); }
+    .fp-deep--wills { background: linear-gradient(180deg, #f5f3ff 0%, #ffffff 100%); }
+    .fp-deep-head { text-align: center; max-width: 680px; margin: 0 auto 40px; }
+    .fp-eyebrow {
+      display: block; font-family: var(--font-sub); font-size: 12px; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 2px; margin-bottom: 12px;
+    }
+    .fp-deep--esg   .fp-eyebrow { color: var(--esg-primary); }
+    .fp-deep--cert  .fp-eyebrow { color: var(--cert-primary); }
+    .fp-deep--wills .fp-eyebrow { color: var(--wills-primary); }
+    .fp-deep-head h3 {
+      font-family: var(--font-brand); font-size: clamp(24px, 3vw, 34px); font-weight: 700;
+      letter-spacing: -.02em; line-height: 1.2; color: var(--oc-text); margin-bottom: 12px;
+    }
+    .fp-deep-head > p { font-size: 16px; color: var(--oc-muted); line-height: 1.65; }
+
+    /* ---------- INTERACTIVE STEP FLOW ---------- */
+    .fp-flow { display: grid; grid-template-columns: 290px 1fr; gap: 24px; align-items: start; }
+    .fp-steps { display: flex; flex-direction: column; gap: 6px; }
+    .fp-step {
+      display: flex; align-items: center; gap: 14px; width: 100%; text-align: left;
+      padding: 14px 16px; border-radius: var(--radius-lg); cursor: pointer;
+      font-family: inherit; background: transparent; border: 1px solid transparent;
+      transition: background .22s ease, border-color .22s ease, box-shadow .22s ease;
+    }
+    .fp-step:hover { background: rgba(255,255,255,.75); }
+    .fp-step-num {
+      width: 32px; height: 32px; border-radius: 50%; flex: none; display: grid; place-items: center;
+      font-size: 12px; font-weight: 700; background: #fff; border: 1px solid var(--oc-border-strong);
+      color: var(--oc-muted); transition: background .25s ease, color .25s ease, border-color .25s ease, transform .25s ease;
+    }
+    .fp-step-label { font-size: 15px; font-weight: 600; color: var(--oc-text-secondary); transition: color .2s ease; }
+    .fp-step.is-active { background: #fff; border-color: var(--oc-border); box-shadow: 0 10px 28px rgba(10,22,40,.07); }
+    .fp-step.is-active .fp-step-num { transform: scale(1.06); color: #fff; }
+    .fp-step.is-active .fp-step-label { color: var(--oc-text); }
+    .fp-deep--esg   .fp-step.is-active .fp-step-num { background: var(--esg-primary); border-color: var(--esg-primary); }
+    .fp-deep--cert  .fp-step.is-active .fp-step-num { background: var(--cert-primary); border-color: var(--cert-primary); }
+    .fp-deep--wills .fp-step.is-active .fp-step-num { background: var(--wills-primary); border-color: var(--wills-primary); }
+
+    .fp-panels {
+      position: relative; background: #fff; border: 1px solid var(--oc-border);
+      border-radius: var(--radius-panel); padding: 36px 38px; min-height: 260px;
+      box-shadow: 0 18px 44px rgba(10,22,40,.06);
+    }
+    .fp-panel { display: none; }
+    .fp-panel.is-active { display: block; animation: fpPanelIn .35s cubic-bezier(.16,1,.3,1); }
+    @keyframes fpPanelIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+    .fp-panel-step {
+      display: inline-flex; align-items: center; font-size: 11px; font-weight: 700;
+      letter-spacing: .1em; text-transform: uppercase; padding: 5px 11px;
+      border-radius: 6px; margin-bottom: 14px;
+    }
+    .fp-deep--esg   .fp-panel-step { background: var(--esg-primary-glow); color: var(--esg-primary); }
+    .fp-deep--cert  .fp-panel-step { background: var(--cert-primary-glow); color: var(--cert-primary); }
+    .fp-deep--wills .fp-panel-step { background: var(--wills-glow); color: var(--wills-primary); }
+    .fp-panel h4 {
+      font-family: var(--font-brand); font-size: 24px; font-weight: 700; letter-spacing: -.02em;
+      color: var(--oc-text); margin-bottom: 12px;
+    }
+    .fp-panel > p { font-size: 16px; line-height: 1.7; color: var(--oc-muted); margin-bottom: 22px; max-width: 560px; }
+    .fp-meta { display: flex; flex-wrap: wrap; gap: 10px 32px; padding-top: 20px; border-top: 1px dashed var(--oc-border-strong); }
+    .fp-meta div { min-width: 150px; }
+    .fp-meta dt {
+      font-size: 11px; font-weight: 700; letter-spacing: .09em; text-transform: uppercase;
+      color: var(--oc-muted-light); margin-bottom: 5px;
+    }
+    .fp-meta dd { font-size: 14px; font-weight: 600; color: var(--oc-text-secondary); }
+
+    /* ---------- STATS ---------- */
+    .fp-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 28px; }
+    .fp-stat {
+      background: #fff; border: 1px solid var(--oc-border); border-radius: var(--radius-panel);
+      padding: 24px 22px; text-align: center;
+      transition: transform .25s ease, box-shadow .25s ease;
+    }
+    .fp-stat:hover { transform: translateY(-3px); box-shadow: 0 16px 36px rgba(10,22,40,.08); }
+    .fp-stat b {
+      display: block; font-family: var(--font-brand); font-size: 32px; font-weight: 700;
+      letter-spacing: -.02em; line-height: 1.1; margin-bottom: 6px; font-variant-numeric: tabular-nums;
+    }
+    .fp-deep--esg  .fp-stat b { color: var(--esg-primary); }
+    .fp-deep--cert .fp-stat b { color: var(--cert-primary); }
+    .fp-stat span { font-size: 13px; color: var(--oc-muted); }
+
+    /* ---------- CARD GRID ---------- */
+    .fp-cards { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 28px; }
+    .fp-cards--3 { grid-template-columns: repeat(3, 1fr); }
+    .fp-card {
+      position: relative; background: #fff; border: 1px solid var(--oc-border);
+      border-radius: var(--radius-panel); padding: 26px 24px; overflow: hidden;
+      transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+    }
+    .fp-card::before {
+      content: ''; position: absolute; inset: 0 0 auto 0; height: 3px;
+      transform: scaleX(0); transform-origin: left; transition: transform .3s ease;
+    }
+    .fp-deep--esg   .fp-card::before { background: var(--esg-primary); }
+    .fp-deep--cert  .fp-card::before { background: var(--cert-primary); }
+    .fp-deep--wills .fp-card::before { background: var(--wills-primary); }
+    .fp-card:hover { transform: translateY(-4px); box-shadow: 0 18px 40px rgba(10,22,40,.09); }
+    .fp-card:hover::before { transform: scaleX(1); }
+    .fp-card h4 { font-size: 15px; font-weight: 700; color: var(--oc-text); margin-bottom: 8px; }
+    .fp-card p { font-size: 13.5px; line-height: 1.6; color: var(--oc-muted); }
+
+    /* ---------- TAG ROW ---------- */
+    .fp-tags { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: 30px; }
+    .fp-tag {
+      font-size: 13px; font-weight: 600; padding: 8px 16px; border-radius: var(--radius-full);
+      background: #fff; border: 1px solid var(--oc-border-strong); color: var(--oc-text-secondary);
+      transition: transform .2s ease, border-color .2s ease, color .2s ease;
+    }
+    .fp-tag:hover { transform: translateY(-2px); }
+    .fp-deep--esg  .fp-tag:hover { color: var(--esg-primary); border-color: var(--esg-primary); }
+    .fp-deep--cert .fp-tag:hover { color: var(--cert-primary); border-color: var(--cert-primary); }
+
+    /* ---------- DEVELOPER PLATFORM CTA ---------- */
+    .fp-devcta { padding: 0 0 96px; }
+    .fp-devcta-inner {
+      text-align: center; padding: 56px 32px; border-radius: var(--radius-panel);
+      background: linear-gradient(135deg, #ffffff 0%, var(--oc-supp-soft) 55%, var(--oc-supp) 100%);
+      border: 1px solid rgba(20,164,188,.16);
+    }
+    .fp-devcta-inner h3 {
+      font-family: var(--font-brand); font-size: clamp(22px, 2.6vw, 30px); font-weight: 700;
+      letter-spacing: -.02em; color: var(--oc-text); margin-bottom: 12px;
+    }
+    .fp-devcta-inner > p { color: var(--oc-muted); max-width: 520px; margin: 0 auto 26px; line-height: 1.65; }
+    .fp-btn {
+      display: inline-flex; align-items: center; gap: 8px; font-size: 15px; font-weight: 600; color: #fff;
+      padding: 14px 28px; border-radius: var(--radius-btn); background: var(--oc-primary);
+      box-shadow: 0 8px 24px rgba(20,164,188,.28); transition: transform .2s ease, box-shadow .2s ease, background .2s ease;
+    }
+    .fp-btn:hover { transform: translateY(-2px); background: var(--oc-primary-deep); }
+
+    /* ---------- RESPONSIVE ---------- */
+    @media (max-width: 1024px) {
+      .fp-flow { grid-template-columns: 1fr; }
+      .fp-steps { flex-direction: row; overflow-x: auto; gap: 8px; padding-bottom: 6px; scrollbar-width: none; }
+      .fp-steps::-webkit-scrollbar { display: none; }
+      .fp-step { flex: none; }
+      .fp-stats, .fp-cards { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 768px) {
+      .fp-hero { padding: 130px 0 48px; }
+      .fp-nav-inner { padding-inline: 24px; }
+      .fp-panels { padding: 28px 24px; }
+      .fp-overview { padding: 48px 0 4px; }
+      .fp-deep { padding: 44px 0 64px; }
+    }
+    @media (max-width: 560px) {
+      .fp-stats, .fp-cards, .fp-cards--3 { grid-template-columns: 1fr; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .fp-panel.is-active { animation: none; }
+      .fp-chip:hover, .fp-card:hover, .fp-stat:hover, .fp-tag:hover, .fp-btn:hover { transform: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- SCROLL PROGRESS BAR -->
+  <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+
+  <!-- NAV (shared, injected by site-chrome.js) -->
+  <div id="site-nav"></div>
+
+  <!-- HERO -->
+  <section class="fp-hero">
+    <div class="fp-hero-blob fp-hero-blob-1" aria-hidden="true"></div>
+    <div class="fp-hero-blob fp-hero-blob-2" aria-hidden="true"></div>
+    <div class="container">
+      <span class="fp-hero-badge">Flagship Products</span>
+      <h1>Everything you need to build trust</h1>
+      <p>Three products on one chain — verified ESG data, tamper-proof credentials, and secure digital wills.</p>
+      <div class="fp-jump">
+        <a class="fp-chip fp-chip--esg" href="#product-esg">ESGLedger</a>
+        <a class="fp-chip fp-chip--cert" href="#product-cert">CertLedger</a>
+        <a class="fp-chip fp-chip--wills" href="#product-wills">WillsLedger <span class="fp-chip-soon">Soon</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- STICKY PRODUCT NAV
+       Uses a div, not <nav>: chrome.css hides `body > nav:not(.sc-nav)` so that
+       legacy per-page navs don't double up with the shared injected one. A
+       wrapper div would clip position:sticky, so the role goes on the element. -->
+  <div class="fp-nav" id="fpNav" role="navigation" aria-label="Jump to product">
+    <div class="fp-nav-inner">
+      <a href="#product-esg" data-p="esg" class="is-active">ESGLedger</a>
+      <a href="#product-cert" data-p="cert">CertLedger</a>
+      <a href="#product-wills" data-p="wills">WillsLedger</a>
+    </div>
+  </div>
+
+  <!-- ================= ESGLEDGER ================= -->
+  <div class="fp-product" id="product-esg">
+
+    <!-- Section 1 — overview -->
+    <section class="fp-overview">
+      <div class="container">
+        <article class="product-row reveal" data-product="esg" data-brand="esgledger">
+          <div class="product-row-visual">
+            <img class="product-row-logo" src="logos/esgledger-logo.png?v=2" alt="ESGLedger" width="200" height="48" loading="lazy">
+            <div class="esg-image-section">
+              <video class="product-row-video" autoplay muted loop playsinline preload="metadata"
+                     poster="onechain-exhibition-poster.jpg" src="onechain-exhibition.mp4"
+                     aria-label="ESGLedger exhibition video: plastic credit tracking and Hong Kong recycling coverage"></video>
+              <div class="esg-image-overlay">
+                <p>Blockchain-verified plastic credit tracking across Hong Kong</p>
+              </div>
+            </div>
+          </div>
+          <div class="product-row-copy">
+            <span class="product-row-badge">ESGLedger</span>
+            <h3>Unlocking ESG Trust</h3>
+            <p>Blockchain-verified ESG data platform and plastic credit marketplace. Anti-greenwashing technology for companies that mean what they claim.</p>
+            <ul class="product-row-features">
+              <li><span class="pf-check">&#10003;</span> AI-powered anomaly detection on credit submissions</li>
+              <li><span class="pf-check">&#10003;</span> Full credit lifecycle: Collect &rarr; Verify &rarr; Mint &rarr; Trade &rarr; Retire</li>
+              <li><span class="pf-check">&#10003;</span> Auto-generated compliance reports (GRI, SASB, TCFD)</li>
+              <li><span class="pf-check">&#10003;</span> SDG 12 &amp; 14 aligned</li>
+            </ul>
+            <a href="esgledger.html" class="product-row-cta">
+              Explore ESGLedger
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M6 3l5 5-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Section 2 — how it works -->
+    <section class="fp-deep fp-deep--esg">
+      <div class="container">
+        <div class="fp-deep-head reveal">
+          <span class="fp-eyebrow">How ESGLedger works</span>
+          <h3>From collection to retirement — fully verified.</h3>
+          <p>Every plastic credit carries its own evidence trail. Step through the lifecycle to see what happens at each stage.</p>
+        </div>
+
+        <div class="fp-flow reveal" data-flow>
+          <div class="fp-steps" role="tablist" aria-label="ESGLedger credit lifecycle">
+            <button type="button" class="fp-step is-active" role="tab" aria-selected="true" data-i="0">
+              <span class="fp-step-num">01</span><span class="fp-step-label">Collect</span>
+            </button>
+            <button type="button" class="fp-step" role="tab" aria-selected="false" data-i="1">
+              <span class="fp-step-num">02</span><span class="fp-step-label">Verify</span>
+            </button>
+            <button type="button" class="fp-step" role="tab" aria-selected="false" data-i="2">
+              <span class="fp-step-num">03</span><span class="fp-step-label">Mint</span>
+            </button>
+            <button type="button" class="fp-step" role="tab" aria-selected="false" data-i="3">
+              <span class="fp-step-num">04</span><span class="fp-step-label">Trade</span>
+            </button>
+            <button type="button" class="fp-step" role="tab" aria-selected="false" data-i="4">
+              <span class="fp-step-num">05</span><span class="fp-step-label">Retire</span>
+            </button>
+          </div>
+
+          <div class="fp-panels">
+            <div class="fp-panel is-active" role="tabpanel" data-i="0">
+              <span class="fp-panel-step">Step 01</span>
+              <h4>Collect</h4>
+              <p>Plastic waste gathered by recyclers, logged with photos, GPS, and weight evidence.</p>
+              <dl class="fp-meta">
+                <div><dt>Who acts</dt><dd>Recyclers &amp; collection points</dd></div>
+                <div><dt>Evidence captured</dt><dd>Photo, GPS, weight</dd></div>
+                <div><dt>Result</dt><dd>Submission pending review</dd></div>
+              </dl>
+            </div>
+            <div class="fp-panel" role="tabpanel" data-i="1">
+              <span class="fp-panel-step">Step 02</span>
+              <h4>Verify</h4>
+              <p>Third-party verifiers confirm data and approve or reject each submission. AI anomaly detection flags irregular patterns before a human makes the call.</p>
+              <dl class="fp-meta">
+                <div><dt>Who acts</dt><dd>Independent verifiers</dd></div>
+                <div><dt>Assisted by</dt><dd>AI anomaly detection</dd></div>
+                <div><dt>Result</dt><dd>Approved or rejected</dd></div>
+              </dl>
+            </div>
+            <div class="fp-panel" role="tabpanel" data-i="2">
+              <span class="fp-panel-step">Step 03</span>
+              <h4>Mint</h4>
+              <p>Verified credits tokenised on blockchain as tradable digital assets.</p>
+              <dl class="fp-meta">
+                <div><dt>Who acts</dt><dd>ESGLedger platform</dd></div>
+                <div><dt>Anchored on</dt><dd>Hyperledger Fabric</dd></div>
+                <div><dt>Result</dt><dd>Tradable credit token</dd></div>
+              </dl>
+            </div>
+            <div class="fp-panel" role="tabpanel" data-i="3">
+              <span class="fp-panel-step">Step 04</span>
+              <h4>Trade</h4>
+              <p>Buyers purchase verified credits on the ESGLedger marketplace.</p>
+              <dl class="fp-meta">
+                <div><dt>Who acts</dt><dd>Corporate buyers</dd></div>
+                <div><dt>Where</dt><dd>ESGLedger marketplace</dd></div>
+                <div><dt>Result</dt><dd>Ownership transferred on-chain</dd></div>
+              </dl>
+            </div>
+            <div class="fp-panel" role="tabpanel" data-i="4">
+              <span class="fp-panel-step">Step 05</span>
+              <h4>Retire</h4>
+              <p>Credits permanently retired after use. Immutable proof of impact.</p>
+              <dl class="fp-meta">
+                <div><dt>Who acts</dt><dd>Credit owner</dd></div>
+                <div><dt>Feeds into</dt><dd>GRI, SASB, TCFD reports</dd></div>
+                <div><dt>Result</dt><dd>Permanent proof of impact</dd></div>
+              </dl>
+            </div>
+          </div>
+        </div>
+
+        <div class="fp-stats reveal" data-countup>
+          <div class="fp-stat"><b>50K+</b><span>kg plastic tracked</span></div>
+          <div class="fp-stat"><b>1,200+</b><span>credits minted</span></div>
+          <div class="fp-stat"><b>500+</b><span>trees monitored</span></div>
+          <div class="fp-stat"><b>10+</b><span>partners onboard</span></div>
+        </div>
+
+        <div class="fp-tags reveal">
+          <span class="fp-tag">GRI</span>
+          <span class="fp-tag">SASB</span>
+          <span class="fp-tag">TCFD</span>
+          <span class="fp-tag">SDG 12</span>
+          <span class="fp-tag">SDG 14</span>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- ================= CERTLEDGER ================= -->
+  <div class="fp-product" id="product-cert">
+
+    <!-- Section 1 — overview -->
+    <section class="fp-overview">
+      <div class="container">
+        <article class="product-row product-row--reverse reveal" data-product="cert" data-brand="certledger">
+          <div class="product-row-visual">
+            <img class="product-row-logo" src="logos/certledger-logo.png?v=2" alt="CertLedger" width="160" height="32" loading="lazy">
+            <div class="fan-section">
+              <div class="fan-cards" id="fanCards">
+                <div class="fan-card" data-index="0">
+                  <div class="fan-card-verified"><span class="verified-icon">&#10003;</span> Verified</div>
+                  <div class="fan-card-title">Education</div>
+                </div>
+                <div class="fan-card" data-index="1">
+                  <div class="fan-card-verified"><span class="verified-icon">&#10003;</span> Verified</div>
+                  <div class="fan-card-title">Professional</div>
+                </div>
+                <div class="fan-card" data-index="2">
+                  <div class="fan-card-verified"><span class="verified-icon">&#10003;</span> Verified</div>
+                  <div class="fan-card-title">Events</div>
+                </div>
+                <div class="fan-card" data-index="3">
+                  <div class="fan-card-verified"><span class="verified-icon">&#10003;</span> Verified</div>
+                  <div class="fan-card-title">Government</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="product-row-copy">
+            <span class="product-row-badge">CertLedger</span>
+            <h3>Certify with Blockchain</h3>
+            <p>Blockchain-powered credential issuance and identity verification. Tamper-proof, paperless, instant verification.</p>
+            <ul class="product-row-features">
+              <li><span class="pf-check">&#10003;</span> Issue &rarr; Hold &rarr; Verify in three simple steps</li>
+              <li><span class="pf-check">&#10003;</span> AI fraud pattern detection</li>
+              <li><span class="pf-check">&#10003;</span> White-label for institutions</li>
+              <li><span class="pf-check">&#10003;</span> API integration for LMS and HR systems</li>
+            </ul>
+            <a href="certledger.html" class="product-row-cta">
+              Start Issuing
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M6 3l5 5-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Section 2 — how it works -->
+    <section class="fp-deep fp-deep--cert">
+      <div class="container">
+        <div class="fp-deep-head reveal">
+          <span class="fp-eyebrow">How CertLedger works</span>
+          <h3>Three steps to blockchain-verified credentials.</h3>
+          <p>Issue in bulk, hand recipients a credential they own, and let anyone verify it in seconds — no wallet, no crypto.</p>
+        </div>
+
+        <div class="fp-flow reveal" data-flow>
+          <div class="fp-steps" role="tablist" aria-label="CertLedger credential flow">
+            <button type="button" class="fp-step is-active" role="tab" aria-selected="true" data-i="0">
+              <span class="fp-step-num">01</span><span class="fp-step-label">Issue</span>
+            </button>
+            <button type="button" class="fp-step" role="tab" aria-selected="false" data-i="1">
+              <span class="fp-step-num">02</span><span class="fp-step-label">Hold</span>
+            </button>
+            <button type="button" class="fp-step" role="tab" aria-selected="false" data-i="2">
+              <span class="fp-step-num">03</span><span class="fp-step-label">Verify</span>
+            </button>
+          </div>
+
+          <div class="fp-panels">
+            <div class="fp-panel is-active" role="tabpanel" data-i="0">
+              <span class="fp-panel-step">Step 01</span>
+              <h4>Issue</h4>
+              <p>Organisation creates a blockchain credential via the platform or API. Custom templates, batch issuance, and branding supported.</p>
+              <dl class="fp-meta">
+                <div><dt>Who acts</dt><dd>Issuing institution</dd></div>
+                <div><dt>How</dt><dd>Dashboard or REST API</dd></div>
+                <div><dt>Supports</dt><dd>Templates &amp; bulk batches</dd></div>
+              </dl>
+            </div>
+            <div class="fp-panel" role="tabpanel" data-i="1">
+              <span class="fp-panel-step">Step 02</span>
+              <h4>Hold</h4>
+              <p>Recipient stores their verifiable certificate. Share instantly via QR code or secure link — anytime, anywhere.</p>
+              <dl class="fp-meta">
+                <div><dt>Who acts</dt><dd>Credential holder</dd></div>
+                <div><dt>Shared via</dt><dd>QR code or secure link</dd></div>
+                <div><dt>Wallet needed</dt><dd>None</dd></div>
+              </dl>
+            </div>
+            <div class="fp-panel" role="tabpanel" data-i="2">
+              <span class="fp-panel-step">Step 03</span>
+              <h4>Verify</h4>
+              <p>Anyone can authenticate instantly. Scan the QR or enter the certificate ID — blockchain confirms validity in seconds.</p>
+              <dl class="fp-meta">
+                <div><dt>Who acts</dt><dd>Employers, registrars, partners</dd></div>
+                <div><dt>How</dt><dd>Scan QR or enter ID</dd></div>
+                <div><dt>Result</dt><dd>Validity confirmed on-chain</dd></div>
+              </dl>
+            </div>
+          </div>
+        </div>
+
+        <div class="fp-cards reveal">
+          <div class="fp-card">
+            <h4>Education</h4>
+            <p>Degrees, diplomas, course completion certificates — verifiable by any employer worldwide.</p>
+          </div>
+          <div class="fp-card">
+            <h4>Professional</h4>
+            <p>Training certifications, professional licenses, continuing education credits.</p>
+          </div>
+          <div class="fp-card">
+            <h4>Events</h4>
+            <p>Attendance certificates, awards, badges, speaker recognition.</p>
+          </div>
+          <div class="fp-card">
+            <h4>Government</h4>
+            <p>Official documents, regulatory certifications, compliance attestations.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- ================= WILLSLEDGER ================= -->
+  <div class="fp-product" id="product-wills">
+
+    <!-- Section 1 — overview -->
+    <section class="fp-overview">
+      <div class="container">
+        <article class="product-row reveal" data-product="wills">
+          <div class="product-row-visual">
+            <div class="custom-mock" aria-hidden="true">
+              <div class="custom-mock-header custom-mock-header--wills">WillsLedger · Secure Legacy</div>
+              <div class="custom-mock-body">
+                <div class="custom-mock-label">Digital will lifecycle</div>
+                <div class="custom-module is-on"><span class="custom-module-check">&#10003;</span> Draft &amp; notarize on-chain</div>
+                <div class="custom-module is-on"><span class="custom-module-check">&#10003;</span> Encrypted beneficiary access</div>
+                <div class="custom-module is-on"><span class="custom-module-check">&#10003;</span> Immutable audit trail</div>
+                <div class="custom-module"><span class="custom-module-check">&#10003;</span> Executor verification flow</div>
+                <div class="custom-mock-footer">
+                  Preserve intent with <strong>blockchain-backed wills</strong> — verifiable, private, and ready when needed.
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="product-row-copy">
+            <span class="product-row-tag">Launching Q1 2027</span>
+            <span class="product-row-badge">WillsLedger</span>
+            <h3>Secure Wills on the Blockchain</h3>
+            <p>A self-serve, tamper-proof will-drafting platform.</p>
+            <ul class="product-row-features">
+              <li><span class="pf-check">&#10003;</span> Immutable on-chain proof of will authenticity</li>
+              <li><span class="pf-check">&#10003;</span> Encrypted storage with role-based access for executors</li>
+              <li><span class="pf-check">&#10003;</span> Instant verification for legal and financial partners</li>
+              <li><span class="pf-check">&#10003;</span> AI-assisted anomaly and fraud checks on submissions</li>
+            </ul>
+            <a href="mailto:enquiries@onechain.hk?subject=WillsLedger%20enquiry" class="product-row-cta">
+              Get Notified at Launch
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M6 3l5 5-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Section 2 — planned lifecycle -->
+    <section class="fp-deep fp-deep--wills">
+      <div class="container">
+        <div class="fp-deep-head reveal">
+          <span class="fp-eyebrow">In development</span>
+          <h3>The digital will lifecycle.</h3>
+          <p>WillsLedger is still being built. Here is how the lifecycle is designed to work when it launches.</p>
+        </div>
+
+        <div class="fp-flow reveal" data-flow>
+          <div class="fp-steps" role="tablist" aria-label="WillsLedger will lifecycle">
+            <button type="button" class="fp-step is-active" role="tab" aria-selected="true" data-i="0">
+              <span class="fp-step-num">01</span><span class="fp-step-label">Draft &amp; notarize</span>
+            </button>
+            <button type="button" class="fp-step" role="tab" aria-selected="false" data-i="1">
+              <span class="fp-step-num">02</span><span class="fp-step-label">Encrypt &amp; store</span>
+            </button>
+            <button type="button" class="fp-step" role="tab" aria-selected="false" data-i="2">
+              <span class="fp-step-num">03</span><span class="fp-step-label">Audit trail</span>
+            </button>
+            <button type="button" class="fp-step" role="tab" aria-selected="false" data-i="3">
+              <span class="fp-step-num">04</span><span class="fp-step-label">Executor release</span>
+            </button>
+          </div>
+
+          <div class="fp-panels">
+            <div class="fp-panel is-active" role="tabpanel" data-i="0">
+              <span class="fp-panel-step">Step 01</span>
+              <h4>Draft &amp; notarize on-chain</h4>
+              <p>A will is drafted with a solicitor, then its fingerprint is notarised on-chain — proving the document existed in that exact form, at that exact moment, without publishing its contents.</p>
+              <dl class="fp-meta">
+                <div><dt>Who acts</dt><dd>Testator &amp; solicitor</dd></div>
+                <div><dt>Anchored on</dt><dd>Hyperledger Fabric</dd></div>
+                <div><dt>Result</dt><dd>Proof of authenticity</dd></div>
+              </dl>
+            </div>
+            <div class="fp-panel" role="tabpanel" data-i="1">
+              <span class="fp-panel-step">Step 02</span>
+              <h4>Encrypted beneficiary access</h4>
+              <p>The document itself stays encrypted. Role-based keys decide who can see what, so beneficiaries and executors are registered long before anything needs to be opened.</p>
+              <dl class="fp-meta">
+                <div><dt>Who acts</dt><dd>Testator</dd></div>
+                <div><dt>Access model</dt><dd>Role-based keys</dd></div>
+                <div><dt>Visible now</dt><dd>Nothing — sealed until release</dd></div>
+              </dl>
+            </div>
+            <div class="fp-panel" role="tabpanel" data-i="2">
+              <span class="fp-panel-step">Step 03</span>
+              <h4>Immutable audit trail</h4>
+              <p>Every amendment, re-notarisation, and access request is appended to the chain. Later disputes can be settled against a record nobody can quietly rewrite.</p>
+              <dl class="fp-meta">
+                <div><dt>Recorded</dt><dd>Edits, versions, access</dd></div>
+                <div><dt>Assisted by</dt><dd>AI anomaly checks</dd></div>
+                <div><dt>Result</dt><dd>Tamper-evident history</dd></div>
+              </dl>
+            </div>
+            <div class="fp-panel" role="tabpanel" data-i="3">
+              <span class="fp-panel-step">Step 04</span>
+              <h4>Executor verification flow</h4>
+              <p>When the will must be executed, the executor is verified against the on-chain record and the document is released to the right parties — with banks and registrars able to confirm authenticity instantly.</p>
+              <dl class="fp-meta">
+                <div><dt>Who acts</dt><dd>Executor</dd></div>
+                <div><dt>Verified by</dt><dd>Banks, registrars, courts</dd></div>
+                <div><dt>Result</dt><dd>Controlled disclosure</dd></div>
+              </dl>
+            </div>
+          </div>
+        </div>
+
+        <div class="fp-cards fp-cards--3 reveal">
+          <div class="fp-card">
+            <h4>Families</h4>
+            <p>Certainty that a final wish is recorded exactly as written, and can be found when it matters.</p>
+          </div>
+          <div class="fp-card">
+            <h4>Lawyers</h4>
+            <p>Provable version history for every draft and amendment, without handing over custody of the document.</p>
+          </div>
+          <div class="fp-card">
+            <h4>Institutions</h4>
+            <p>Banks and registrars confirm authenticity against the chain instead of chasing paper originals.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- ================= DEVELOPER PLATFORM ================= -->
+  <section class="fp-devcta">
+    <div class="container">
+      <div class="fp-devcta-inner reveal">
+        <span class="fp-eyebrow" style="color: var(--oc-primary);">Developer Platform</span>
+        <h3>Build on top of OneChain</h3>
+        <p>Managed REST APIs for ESG and credential data, with API keys, rate limits, usage analytics, and a free developer tier.</p>
+        <a href="api-platform.html" class="fp-btn">
+          Explore API Platform
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M6 3l5 5-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER (shared, injected by site-chrome.js) -->
+  <div id="site-footer"></div>
+
+  <!-- Shared interactions: reveal-on-scroll + CertLedger fan cards -->
+  <script src="home.js?v=202607301705" defer></script>
+
+  <!-- Page interactions: step flows, scroll-spy, stat count-up -->
+  <script>
+    (() => {
+      const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      /* ---- Interactive step flows ---- */
+      document.querySelectorAll('[data-flow]').forEach((flow) => {
+        const steps = Array.from(flow.querySelectorAll('.fp-step'));
+        const panels = Array.from(flow.querySelectorAll('.fp-panel'));
+
+        const show = (index) => {
+          steps.forEach((step, i) => {
+            const active = i === index;
+            step.classList.toggle('is-active', active);
+            step.setAttribute('aria-selected', active ? 'true' : 'false');
+          });
+          panels.forEach((panel, i) => panel.classList.toggle('is-active', i === index));
+        };
+
+        steps.forEach((step, i) => {
+          step.addEventListener('click', () => show(i));
+          step.addEventListener('mouseenter', () => show(i));
+          step.addEventListener('keydown', (e) => {
+            if (e.key !== 'ArrowRight' && e.key !== 'ArrowLeft' && e.key !== 'ArrowDown' && e.key !== 'ArrowUp') return;
+            e.preventDefault();
+            const dir = (e.key === 'ArrowRight' || e.key === 'ArrowDown') ? 1 : -1;
+            const next = (i + dir + steps.length) % steps.length;
+            show(next);
+            steps[next].focus();
+          });
+        });
+      });
+
+      /* ---- Sticky nav scroll-spy ---- */
+      const links = Array.from(document.querySelectorAll('.fp-nav a'));
+      const sections = links
+        .map((link) => document.querySelector(link.getAttribute('href')))
+        .filter(Boolean);
+
+      if (sections.length && 'IntersectionObserver' in window) {
+        const spy = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (!entry.isIntersecting) return;
+            links.forEach((link) => {
+              link.classList.toggle('is-active', link.getAttribute('href') === '#' + entry.target.id);
+            });
+          });
+        }, { rootMargin: '-45% 0px -50% 0px' });
+        sections.forEach((section) => spy.observe(section));
+      }
+
+      /* ---- Count-up stats ---- */
+      const countUp = (el) => {
+        const text = el.textContent;
+        const match = text.match(/([0-9][0-9,]*(?:\.[0-9]+)?)/);
+        if (!match) return;
+        const target = parseFloat(match[1].replace(/,/g, ''));
+        const hasComma = match[1].indexOf(',') !== -1;
+        const prefix = text.slice(0, match.index);
+        const suffix = text.slice(match.index + match[1].length);
+        const DURATION = 1400;
+        let start = null;
+
+        const frame = (now) => {
+          if (!start) start = now;
+          const progress = Math.min(1, (now - start) / DURATION);
+          const eased = 1 - Math.pow(1 - progress, 3);
+          let value = Math.round(target * eased);
+          el.textContent = prefix + (hasComma ? value.toLocaleString('en-US') : value) + suffix;
+          if (progress < 1) requestAnimationFrame(frame);
+          else el.textContent = text;
+        };
+        requestAnimationFrame(frame);
+      };
+
+      const stats = document.querySelectorAll('[data-countup] b');
+      if (stats.length && !reduceMotion && 'IntersectionObserver' in window) {
+        const statObs = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (!entry.isIntersecting) return;
+            statObs.unobserve(entry.target);
+            countUp(entry.target);
+          });
+        }, { threshold: 0.6 });
+        stats.forEach((stat) => statObs.observe(stat));
+      }
+    })();
+  </script>
+</body>
+</html>

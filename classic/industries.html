@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Solutions — Industries &amp; Use Cases | OneChain</title>
-  <meta name="description" content="OneChain solutions by industry: ESG & sustainability, credentials & identity, education, and government — plus lead use cases with Watsons and HK Timberbank.">
+  <title>By Industries — ESG, Credentials, Education &amp; FMCG | OneChain</title>
+  <meta name="description" content="OneChain solutions by industry: ESG & sustainability, credentials & identity, education, and FMCG — plus lead use cases with Watsons and HK Timberbank.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="chrome.css">
+  <link rel="stylesheet" href="chrome.css?v=202609071120">
   <script src="site-chrome.js?v=202609071506" defer></script>
   <style>
     :root {
@@ -164,34 +164,131 @@
       .story-outcomes { grid-template-columns: 1fr; }
     }
 
-    /* INDUSTRY SOLUTIONS */
-    section[id], .ind-row[id] { scroll-margin-top: 88px; }
-    .industries { padding: 96px 0 110px; border-top: 1px solid rgba(10,22,40,0.06); }
-    .ind-row {
-      display: grid; grid-template-columns: 1fr 340px; gap: 48px; align-items: start;
-      padding: 48px 0; border-bottom: 1px solid rgba(10,22,40,0.06);
+    /* INDUSTRY SOLUTIONS — visual grid */
+    section[id], .ind-panel[id] { scroll-margin-top: 88px; }
+    .industries {
+      padding: 96px 0 110px;
+      border-top: 1px solid rgba(10,22,40,0.06);
+      background:
+        radial-gradient(ellipse 60% 40% at 10% 20%, rgba(0,119,113,0.06), transparent 55%),
+        radial-gradient(ellipse 50% 35% at 90% 70%, rgba(1,98,130,0.06), transparent 50%),
+        #fff;
     }
-    .ind-row:last-child { border-bottom: none; padding-bottom: 0; }
+    .ind-jump {
+      display: flex; flex-wrap: wrap; justify-content: center; gap: 10px;
+      margin: -8px auto 48px; max-width: 720px;
+    }
+    .ind-jump a {
+      font-size: 13px; font-weight: 600; color: var(--oc-dark);
+      padding: 8px 14px; border-radius: 999px;
+      background: rgba(255,255,255,0.9);
+      border: 1px solid rgba(10,22,40,0.1);
+      transition: border-color .2s, color .2s, transform .2s;
+    }
+    .ind-jump a:hover { border-color: var(--oc-primary); color: var(--oc-primary-deep); transform: translateY(-1px); }
+
+    .ind-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+    .ind-panel {
+      position: relative;
+      overflow: hidden;
+      border-radius: 20px;
+      padding: 28px 28px 26px;
+      min-height: 280px;
+      display: flex; flex-direction: column;
+      border: 1px solid rgba(10,22,40,0.08);
+      background: #fff;
+      box-shadow: 0 12px 36px rgba(10,22,40,0.04);
+      transition: transform .35s cubic-bezier(0.16,1,0.3,1), box-shadow .35s ease;
+    }
+    .ind-panel::before {
+      content: '';
+      position: absolute; inset: 0; pointer-events: none;
+      opacity: 0.9;
+      background:
+        radial-gradient(ellipse 80% 70% at 100% 0%, var(--ind-glow, rgba(20,164,188,0.14)), transparent 55%);
+    }
+    .ind-panel:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 22px 48px rgba(10,22,40,0.1);
+    }
+    .ind-panel > * { position: relative; z-index: 1; }
+
+    .ind-visual {
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 16px; margin-bottom: 18px;
+    }
+    .ind-icon {
+      width: 64px; height: 64px;
+      color: var(--ind-accent, var(--oc-primary-deep));
+      flex-shrink: 0;
+    }
+    .ind-icon svg { width: 100%; height: 100%; display: block; }
+    .ind-flow {
+      display: flex; align-items: center; gap: 6px;
+      font-family: var(--mono); font-size: 11px; font-weight: 600;
+      letter-spacing: 0.02em; color: var(--oc-muted);
+      flex-wrap: wrap; justify-content: flex-end;
+    }
+    .ind-flow span {
+      padding: 4px 8px; border-radius: 6px;
+      background: rgba(10,22,40,0.04);
+      border: 1px solid rgba(10,22,40,0.06);
+    }
+    .ind-flow i {
+      font-style: normal; opacity: 0.45; font-size: 10px;
+    }
+
     .ind-chip {
-      display: inline-flex; font-size: 12px; font-weight: 700; letter-spacing: 1.2px; text-transform: uppercase;
-      padding: 4px 11px; border-radius: 999px; margin-bottom: 14px;
+      display: inline-flex; align-self: flex-start;
+      font-size: 11px; font-weight: 700; letter-spacing: 1.2px; text-transform: uppercase;
+      padding: 4px 10px; border-radius: 999px; margin-bottom: 10px;
+      background: rgba(20,164,188,0.1);
+      color: var(--ind-accent, var(--oc-primary-deep));
     }
-    .ind-row h3 { font-size: 24px; font-weight: 700; color: var(--oc-dark); letter-spacing: -0.01em; margin-bottom: 10px; }
-    .ind-row > div > p { font-size: 15px; color: var(--oc-muted); max-width: 560px; }
-    .ind-points { list-style: none; margin-top: 18px; }
-    .ind-points li { position: relative; padding: 6px 0 6px 22px; font-size: 14px; color: #475569; }
-    .ind-points li::before { content: '✓'; position: absolute; left: 0; font-weight: 700; }
-    .ind-aside {
-      background: #F7FAFB; border: 1px solid rgba(10,22,40,0.08); border-radius: 14px; padding: 24px;
+    .ind--esg .ind-chip { background: rgba(0,119,113,0.1); }
+    .ind--cert .ind-chip { background: rgba(1,98,130,0.1); }
+    .ind--edu .ind-chip { background: rgba(13,125,145,0.1); }
+    .ind--fmcg .ind-chip { background: rgba(10,110,122,0.1); }
+    .ind-panel h3 {
+      font-size: clamp(20px, 2.2vw, 24px); font-weight: 700;
+      color: var(--oc-dark); letter-spacing: -0.02em; margin-bottom: 8px; line-height: 1.25;
     }
-    .ind-aside h5 { font-size: 12px; font-weight: 700; letter-spacing: 1.2px; text-transform: uppercase; color: var(--oc-muted); margin-bottom: 8px; }
-    .ind-aside p { font-size: 14px; color: var(--oc-muted); margin-bottom: 16px; }
-    .ind-aside .lane-cta { font-size: 14px; }
-    .ind--esg .ind-chip { background: rgba(0,119,113,0.1); color: var(--oc-esg); }
-    .ind--esg .ind-points li::before, .ind--esg .lane-cta { color: var(--oc-esg); }
-    .ind--cert .ind-chip { background: rgba(1,98,130,0.1); color: var(--oc-cert); }
-    .ind--cert .ind-points li::before, .ind--cert .lane-cta { color: var(--oc-cert); }
-    @media (max-width: 900px) { .ind-row { grid-template-columns: 1fr; gap: 24px; } }
+    .ind-panel > p {
+      font-size: 15px; color: var(--oc-muted); line-height: 1.55;
+      margin-bottom: 18px; max-width: 38ch;
+    }
+    .ind-tags {
+      display: flex; flex-wrap: wrap; gap: 8px;
+      margin-top: auto; margin-bottom: 18px; list-style: none;
+    }
+    .ind-tags li {
+      font-size: 12px; font-weight: 600; color: #475569;
+      padding: 6px 10px; border-radius: 8px;
+      background: rgba(10,22,40,0.035);
+      border: 1px solid rgba(10,22,40,0.06);
+    }
+    .ind-panel .lane-cta {
+      font-size: 14px; font-weight: 700;
+      color: var(--ind-accent, var(--oc-primary-deep));
+      align-self: flex-start;
+    }
+    .ind-panel .lane-cta:hover { opacity: 0.85; }
+
+    .ind--esg { --ind-accent: #007771; --ind-glow: rgba(0,119,113,0.16); }
+    .ind--cert { --ind-accent: #016282; --ind-glow: rgba(1,98,130,0.16); }
+    .ind--edu { --ind-accent: #0d7d91; --ind-glow: rgba(20,164,188,0.16); }
+    .ind--fmcg { --ind-accent: #0a6e7a; --ind-glow: rgba(60,189,210,0.16); }
+
+    @media (max-width: 900px) {
+      .ind-grid { grid-template-columns: 1fr; }
+      .ind-panel { min-height: 0; }
+      .ind-visual { flex-direction: column; align-items: flex-start; }
+      .ind-flow { justify-content: flex-start; }
+    }
 
     .reveal { opacity: 0; transform: translateY(24px); transition: opacity .7s ease, transform .7s cubic-bezier(0.16,1,0.3,1); }
     .reveal.visible { opacity: 1; transform: none; }
@@ -208,8 +305,8 @@
 
   <header class="sol-hero">
     <div class="container">
-      <div class="sol-eyebrow">Solutions · Lead use cases</div>
-      <h1>One chain. <em>Two clear stories.</em></h1>
+      <div class="sol-eyebrow">By Industries · Lead use cases</div>
+      <h1>One chain. <em>Four industries.</em></h1>
       <p>Watsons recycling credits and timber provenance — the same permissioned trust layer, written for ordinary readers, proven in production.</p>
     </div>
   </header>
@@ -313,81 +410,90 @@
   <section class="industries" id="industries">
     <div class="container">
       <div class="lead-intro reveal">
-        <div class="eyebrow">By industry</div>
+        <div class="eyebrow">By industries</div>
         <h2>One trust layer, four industries.</h2>
-        <p>The same pattern — capture the event, seal it on-chain, prove it to anyone — applied to the problems each industry actually has.</p>
+        <p>Capture → seal on-chain → prove — the same pattern, applied to each industry’s real problem.</p>
       </div>
 
-      <div class="ind-row ind--esg reveal" id="esg">
-        <div>
+      <nav class="ind-jump reveal" aria-label="Jump to industry">
+        <a href="#esg">ESG</a>
+        <a href="#credentials">Credentials</a>
+        <a href="#education">Education</a>
+        <a href="#fmcg">FMCG</a>
+      </nav>
+
+      <div class="ind-grid">
+        <article class="ind-panel ind--esg reveal" id="esg">
+          <div class="ind-visual">
+            <span class="ind-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21V10"/><path d="M12 13c-4.5 0-7-2.5-7-7 4.5 0 7 2.5 7 7Z"/><path d="M12 17c3.8 0 6-2.1 6-6-3.8 0-6 2.1-6 6Z"/></svg>
+            </span>
+            <div class="ind-flow" aria-hidden="true"><span>Collect</span><i>→</i><span>Mint</span><i>→</i><span>Prove</span></div>
+          </div>
           <span class="ind-chip">ESG &amp; Sustainability</span>
-          <h3>Sustainability claims regulators can audit</h3>
-          <p>ESG reports built on spreadsheets and goodwill don't survive scrutiny. OneChain anchors every collection event, credit, and retirement on a permissioned ledger — so environmental claims come with cryptographic proof instead of promises.</p>
-          <ul class="ind-points">
-            <li>Plastic credit lifecycle: collect → verify → mint → trade → retire</li>
-            <li>AI anomaly detection flags suspicious submissions before review</li>
-            <li>Auto-generated reports aligned with GRI, SASB &amp; TCFD</li>
+          <h3>Claims regulators can audit</h3>
+          <p>Every credit and retirement anchored on-chain — proof instead of spreadsheets.</p>
+          <ul class="ind-tags">
+            <li>Plastic credits</li>
+            <li>AI anomaly checks</li>
+            <li>GRI / SASB / TCFD</li>
           </ul>
-        </div>
-        <aside class="ind-aside">
-          <h5>Powered by</h5>
-          <p>ESGLedger — our blockchain-verified ESG data platform and plastic credit marketplace, in production with Watsons.</p>
-          <a class="lane-cta" href="esgledger.html">Explore ESGLedger →</a>
-        </aside>
-      </div>
+          <a class="lane-cta" href="esgledger.html">ESGLedger →</a>
+        </article>
 
-      <div class="ind-row ind--cert reveal" id="credentials">
-        <div>
+        <article class="ind-panel ind--cert reveal" id="credentials">
+          <div class="ind-visual">
+            <span class="ind-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M7 9h6M7 13h10"/><path d="m16 8 2 2-4 4"/></svg>
+            </span>
+            <div class="ind-flow" aria-hidden="true"><span>Issue</span><i>→</i><span>Hold</span><i>→</i><span>Verify</span></div>
+          </div>
           <span class="ind-chip">Credentials &amp; Identity</span>
           <h3>Certificates that verify themselves</h3>
-          <p>Checking a certificate today means phone calls, emails, and waiting. A credential anchored on-chain is tamper-proof by design: anyone can scan a QR code and confirm authenticity in seconds — no accounts, no intermediaries, no forgeries.</p>
-          <ul class="ind-points">
-            <li>Issue → hold → verify, entirely on-chain</li>
-            <li>Instant QR verification for employers and institutions</li>
-            <li>Fraud attempts detected by hash mismatch, automatically</li>
+          <p>QR scan in seconds. Tamper-proof by design — no calls, no forgeries.</p>
+          <ul class="ind-tags">
+            <li>Instant QR verify</li>
+            <li>Hash-mismatch fraud stop</li>
+            <li>No wallet needed</li>
           </ul>
-        </div>
-        <aside class="ind-aside">
-          <h5>Powered by</h5>
-          <p>CertLedger — tamper-proof credential issuance and identity verification for any document that needs to be trusted.</p>
-          <a class="lane-cta" href="certledger.html">Explore CertLedger →</a>
-        </aside>
-      </div>
+          <a class="lane-cta" href="certledger.html">CertLedger →</a>
+        </article>
 
-      <div class="ind-row ind--cert reveal" id="education">
-        <div>
+        <article class="ind-panel ind--edu reveal" id="education">
+          <div class="ind-visual">
+            <span class="ind-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-5 9 5-9 5-9-5Z"/><path d="M7 12v4.5c2.8 1.7 7.2 1.7 10 0V12"/><path d="M21 9v6"/></svg>
+            </span>
+            <div class="ind-flow" aria-hidden="true"><span>Batch</span><i>→</i><span>Issue</span><i>→</i><span>Share</span></div>
+          </div>
           <span class="ind-chip">Education</span>
-          <h3>Diplomas any employer can trust</h3>
-          <p>Degree fraud costs institutions their reputation and employers their confidence. Universities and training providers issue blockchain-anchored diplomas and transcripts in bulk — graduates share them anywhere, and verification takes one scan.</p>
-          <ul class="ind-points">
-            <li>Batch issuance for entire graduating classes via CSV</li>
-            <li>White-label portal with your institution's branding</li>
-            <li>API integration with LMS and student record systems</li>
+          <h3>Diplomas employers can trust</h3>
+          <p>Bulk issue degrees and transcripts. One scan confirms authenticity anywhere.</p>
+          <ul class="ind-tags">
+            <li>CSV batch issue</li>
+            <li>White-label portal</li>
+            <li>LMS / API ready</li>
           </ul>
-        </div>
-        <aside class="ind-aside">
-          <h5>Powered by</h5>
-          <p>CertLedger for education — used for degrees, transcripts, and course completion certificates.</p>
-          <a class="lane-cta" href="certledger.html">Explore CertLedger →</a>
-        </aside>
-      </div>
+          <a class="lane-cta" href="certledger.html">CertLedger →</a>
+        </article>
 
-      <div class="ind-row ind--esg reveal" id="government">
-        <div>
-          <span class="ind-chip">Government</span>
-          <h3>Regulatory-grade audit trails and licences</h3>
-          <p>Agencies need records that can't be edited after the fact. OneChain gives regulators immutable audit trails for licences and attestations, plus a dedicated intelligence portal for monitoring recycling infrastructure and planning deployments.</p>
-          <ul class="ind-points">
-            <li>Tamper-proof licences, permits, and compliance attestations</li>
-            <li>Regulator portal: coverage KPIs, district ranking, site planning</li>
-            <li>Exportable audit trails for public accountability</li>
+        <article class="ind-panel ind--fmcg reveal" id="fmcg">
+          <div class="ind-visual">
+            <span class="ind-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+            </span>
+            <div class="ind-flow" aria-hidden="true"><span>Source</span><i>→</i><span>Shelf</span><i>→</i><span>Scan</span></div>
+          </div>
+          <span class="ind-chip">FMCG</span>
+          <h3>Provenance shoppers can check</h3>
+          <p>Batch trails and recycling events on one ledger — from source to shelf.</p>
+          <ul class="ind-tags">
+            <li>On-chain batches</li>
+            <li>Return / RVM events</li>
+            <li>Anti-counterfeit QR</li>
           </ul>
-        </div>
-        <aside class="ind-aside">
-          <h5>Powered by</h5>
-          <p>ESGLedger's Government Portal and CertLedger for official documents — both on the same permissioned chain.</p>
-          <a class="lane-cta" href="esgledger.html">See the Government Portal →</a>
-        </aside>
+          <a class="lane-cta" href="esgledger.html">ESGLedger →</a>
+        </article>
       </div>
     </div>
   </section>
