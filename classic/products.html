@@ -4,14 +4,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Flagship Products — ESGLedger, CertLedger & WillsLedger | OneChain</title>
-  <meta name="description" content="Explore OneChain's flagship products: ESGLedger for verified ESG data and plastic credits, CertLedger for tamper-proof credentials, and WillsLedger for blockchain-backed digital wills.">
+  <meta name="description" content="Explore OneChain's flagship products: ESGLedger for verified ESG data and plastic credits, CertLedger for tamper-proof credentials, and WillsLedger for Hong Kong Will lifecycle integrity.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="tokens.css">
-  <link rel="stylesheet" href="global.css?v=202608281707">
-  <link rel="stylesheet" href="chrome.css?v=202609071120">
-  <script src="site-chrome.js?v=202609071506" defer></script>
-  <link rel="stylesheet" href="home.css?v=202608281707">
+  <link rel="stylesheet" href="tokens.css?v=202609081610">
+  <link rel="stylesheet" href="global.css?v=202609081622">
+  <link rel="stylesheet" href="chrome.css?v=202609081530">
+  <script src="site-chrome.js?v=202609081725" defer></script>
+  <link rel="stylesheet" href="home.css?v=202609081810">
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <meta name="theme-color" content="#14a4bc">
   <link rel="stylesheet" href="site-base.css?v=202607280950">
@@ -19,9 +19,15 @@
     /* ===================================================================
        FLAGSHIP PRODUCTS PAGE
        Two sections per product: an overview row, then an interactive
-       deep-dive band. Brand colours come from tokens.css.
+       deep-dive band. Brand colours come from tokens.css?v=202609081610.
        =================================================================== */
-    :root { --wills-primary: #5b4fcf; --wills-glow: rgba(91,79,207,0.12); }
+    :root {
+      /* Align with global WillsLedger tokens if page CSS loads before tokens */
+      --wills-primary: #143a53;
+      --wills-secondary: #de9e3b;
+      --wills-glow: rgba(20,58,83,0.12);
+      --wills-secondary-glow: rgba(222,158,59,0.16);
+    }
 
     /* ---------- HERO ---------- */
     .fp-hero {
@@ -34,7 +40,9 @@
     .fp-hero .container { position: relative; z-index: 1; }
     .fp-hero-badge {
       display: inline-flex; align-items: center; gap: 8px; background: var(--oc-primary-glow);
-      border: 1px solid rgba(20,164,188,.18); padding: 6px 16px; border-radius: var(--radius-full);
+      border: 1px solid rgba(20,164,188,.18); padding: 6px 16px;
+      /* Match CertLedger media frame corners — soft rounded rect, not a pill */
+      border-radius: calc(var(--radius-panel) - 2px);
       font-size: 12px; font-weight: 600; color: var(--oc-primary); text-transform: uppercase;
       letter-spacing: 1.5px; margin-bottom: 22px;
     }
@@ -47,51 +55,29 @@
     /* jump chips */
     .fp-jump { display: flex; justify-content: center; flex-wrap: wrap; gap: 10px; }
     .fp-chip {
-      display: inline-flex; align-items: center; gap: 8px; padding: 10px 20px;
-      border-radius: var(--radius-full); font-size: 14px; font-weight: 600;
+      display: inline-flex; align-items: center; gap: 8px; padding: 8px 16px;
+      border-radius: var(--radius-btn); font-size: 14px; font-weight: 600;
       background: #fff; border: 1px solid var(--oc-border-strong); color: var(--oc-text-secondary);
       transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease, color .2s ease;
     }
     .fp-chip:hover { transform: translateY(-2px); }
     .fp-chip--esg:hover { color: var(--esg-primary); border-color: var(--esg-primary); box-shadow: 0 10px 24px rgba(0,119,113,.18); }
     .fp-chip--cert:hover { color: var(--cert-primary); border-color: var(--cert-primary); box-shadow: 0 10px 24px rgba(1,98,130,.18); }
-    .fp-chip--wills:hover { color: var(--wills-primary); border-color: var(--wills-primary); box-shadow: 0 10px 24px rgba(91,79,207,.18); }
+    .fp-chip--wills:hover { color: var(--wills-primary); border-color: var(--wills-primary); box-shadow: 0 10px 24px rgba(20,58,83,.18); }
     .fp-chip-soon {
       font-size: 10px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase;
       padding: 3px 7px; border-radius: 5px; background: var(--wills-glow); color: var(--wills-primary);
     }
 
-    /* ---------- STICKY PRODUCT NAV ---------- */
-    .fp-nav {
-      position: sticky; top: 64px; z-index: 40;
-      background: rgba(255,255,255,.85); border-bottom: 1px solid var(--oc-border);
-      -webkit-backdrop-filter: saturate(1.6) blur(14px); backdrop-filter: saturate(1.6) blur(14px);
-    }
-    .fp-nav-inner { max-width: 1280px; margin-inline: auto; padding-inline: 64px; display: flex; gap: 4px; overflow-x: auto; scrollbar-width: none; }
-    .fp-nav-inner::-webkit-scrollbar { display: none; }
-    .fp-nav a {
-      position: relative; flex: none; padding: 15px 18px; font-size: 14px; font-weight: 600;
-      color: var(--oc-muted); transition: color .2s ease;
-    }
-    .fp-nav a::after {
-      content: ''; position: absolute; left: 18px; right: 18px; bottom: -1px; height: 2px;
-      background: currentColor; border-radius: 2px; transform: scaleX(0); transition: transform .28s ease;
-    }
-    .fp-nav a:hover { color: var(--oc-text); }
-    .fp-nav a.is-active::after { transform: scaleX(1); }
-    .fp-nav a[data-p="esg"].is-active { color: var(--esg-primary); }
-    .fp-nav a[data-p="cert"].is-active { color: var(--cert-primary); }
-    .fp-nav a[data-p="wills"].is-active { color: var(--wills-primary); }
-
     /* ---------- PRODUCT BLOCKS ---------- */
-    .fp-product { scroll-margin-top: 130px; }
+    .fp-product { scroll-margin-top: 80px; }
     .fp-overview { padding: 72px 0 8px; }
 
     /* section 2 — deep dive band */
     .fp-deep { padding: 56px 0 84px; }
     .fp-deep--esg   { background: linear-gradient(180deg, #f3faf9 0%, #ffffff 100%); }
     .fp-deep--cert  { background: linear-gradient(180deg, #f0f9fb 0%, #ffffff 100%); }
-    .fp-deep--wills { background: linear-gradient(180deg, #f5f3ff 0%, #ffffff 100%); }
+    .fp-deep--wills { background: linear-gradient(180deg, #eef4f8 0%, #ffffff 100%); }
     .fp-deep-head { text-align: center; max-width: 680px; margin: 0 auto 40px; }
     .fp-eyebrow {
       display: block; font-family: var(--font-sub); font-size: 12px; font-weight: 700;
@@ -197,13 +183,14 @@
     /* ---------- TAG ROW ---------- */
     .fp-tags { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: 30px; }
     .fp-tag {
-      font-size: 13px; font-weight: 600; padding: 8px 16px; border-radius: var(--radius-full);
+      font-size: 14px; font-weight: 600; padding: 8px 16px; border-radius: var(--radius-btn);
       background: #fff; border: 1px solid var(--oc-border-strong); color: var(--oc-text-secondary);
       transition: transform .2s ease, border-color .2s ease, color .2s ease;
     }
     .fp-tag:hover { transform: translateY(-2px); }
     .fp-deep--esg  .fp-tag:hover { color: var(--esg-primary); border-color: var(--esg-primary); }
     .fp-deep--cert .fp-tag:hover { color: var(--cert-primary); border-color: var(--cert-primary); }
+    .fp-deep--wills .fp-tag:hover { color: var(--wills-primary); border-color: var(--wills-secondary); }
 
     /* ---------- DEVELOPER PLATFORM CTA ---------- */
     .fp-devcta { padding: 0 0 96px; }
@@ -218,11 +205,13 @@
     }
     .fp-devcta-inner > p { color: var(--oc-muted); max-width: 520px; margin: 0 auto 26px; line-height: 1.65; }
     .fp-btn {
-      display: inline-flex; align-items: center; gap: 8px; font-size: 15px; font-weight: 600; color: #fff;
-      padding: 14px 28px; border-radius: var(--radius-btn); background: var(--oc-primary);
+      display: inline-flex; align-items: center; gap: var(--oc-btn-gap, 8px);
+      font-size: var(--oc-btn-font-size, 14px); font-weight: var(--oc-btn-font-weight, 600); color: #fff;
+      padding: var(--oc-btn-pad-y, 8px) var(--oc-btn-pad-x, 16px); min-height: 36px;
+      border-radius: var(--radius-btn); background: var(--oc-primary); border: none;
       box-shadow: 0 8px 24px rgba(20,164,188,.28); transition: transform .2s ease, box-shadow .2s ease, background .2s ease;
     }
-    .fp-btn:hover { transform: translateY(-2px); background: var(--oc-primary-deep); }
+    .fp-btn:hover { transform: translateY(-1px); background: var(--oc-primary-deep); }
 
     /* ---------- RESPONSIVE ---------- */
     @media (max-width: 1024px) {
@@ -234,7 +223,6 @@
     }
     @media (max-width: 768px) {
       .fp-hero { padding: 130px 0 48px; }
-      .fp-nav-inner { padding-inline: 24px; }
       .fp-panels { padding: 28px 24px; }
       .fp-overview { padding: 48px 0 4px; }
       .fp-deep { padding: 44px 0 64px; }
@@ -272,34 +260,29 @@
     </div>
   </section>
 
-  <!-- STICKY PRODUCT NAV
-       Uses a div, not <nav>: chrome.css hides `body > nav:not(.sc-nav)` so that
-       legacy per-page navs don't double up with the shared injected one. A
-       wrapper div would clip position:sticky, so the role goes on the element. -->
-  <div class="fp-nav" id="fpNav" role="navigation" aria-label="Jump to product">
-    <div class="fp-nav-inner">
-      <a href="#product-esg" data-p="esg" class="is-active">ESGLedger</a>
-      <a href="#product-cert" data-p="cert">CertLedger</a>
-      <a href="#product-wills" data-p="wills">WillsLedger</a>
-    </div>
-  </div>
-
   <!-- ================= ESGLEDGER ================= -->
   <div class="fp-product" id="product-esg">
 
     <!-- Section 1 — overview -->
     <section class="fp-overview">
       <div class="container">
-        <article class="product-row reveal" data-product="esg" data-brand="esgledger">
+        <article class="product-row product-row--reverse reveal" data-product="esg" data-brand="esgledger">
           <div class="product-row-visual">
             <img class="product-row-logo" src="logos/esgledger-logo.png?v=2" alt="ESGLedger" width="200" height="48" loading="lazy">
             <div class="esg-image-section">
-              <video class="product-row-video" autoplay muted loop playsinline preload="metadata"
-                     poster="onechain-exhibition-poster.jpg" src="onechain-exhibition.mp4"
-                     aria-label="ESGLedger exhibition video: plastic credit tracking and Hong Kong recycling coverage"></video>
-              <div class="esg-image-overlay">
-                <p>Blockchain-verified plastic credit tracking across Hong Kong</p>
-              </div>
+              <video class="product-row-video" id="esgProductVideo" autoplay muted loop playsinline preload="metadata"
+                     src="videos/flagshipProduct_EsgledgerVideo.mp4"
+                     aria-label="ESGLedger: tamper-proof and verifiable plastic credit tracking"></video>
+              <button class="esg-sound-btn" id="esgSoundBtn" type="button" aria-pressed="false" aria-label="Unmute video">
+                <svg class="esg-sound-icon esg-sound-icon--muted" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z"/>
+                  <path d="M16.5 12l4.5-4.5M21 12l-4.5 4.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/>
+                </svg>
+                <svg class="esg-sound-icon esg-sound-icon--on" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" hidden>
+                  <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/>
+                </svg>
+                <span class="esg-sound-label">Tap for sound</span>
+              </button>
             </div>
           </div>
           <div class="product-row-copy">
@@ -409,14 +392,6 @@
           <div class="fp-stat"><b>500+</b><span>trees monitored</span></div>
           <div class="fp-stat"><b>10+</b><span>partners onboard</span></div>
         </div>
-
-        <div class="fp-tags reveal">
-          <span class="fp-tag">GRI</span>
-          <span class="fp-tag">SASB</span>
-          <span class="fp-tag">TCFD</span>
-          <span class="fp-tag">SDG 12</span>
-          <span class="fp-tag">SDG 14</span>
-        </div>
       </div>
     </section>
   </div>
@@ -429,26 +404,27 @@
       <div class="container">
         <article class="product-row product-row--reverse reveal" data-product="cert" data-brand="certledger">
           <div class="product-row-visual">
-            <img class="product-row-logo" src="logos/certledger-logo.png?v=2" alt="CertLedger" width="160" height="32" loading="lazy">
-            <div class="fan-section">
-              <div class="fan-cards" id="fanCards">
-                <div class="fan-card" data-index="0">
-                  <div class="fan-card-verified"><span class="verified-icon">&#10003;</span> Verified</div>
-                  <div class="fan-card-title">Education</div>
-                </div>
-                <div class="fan-card" data-index="1">
-                  <div class="fan-card-verified"><span class="verified-icon">&#10003;</span> Verified</div>
-                  <div class="fan-card-title">Professional</div>
-                </div>
-                <div class="fan-card" data-index="2">
-                  <div class="fan-card-verified"><span class="verified-icon">&#10003;</span> Verified</div>
-                  <div class="fan-card-title">Events</div>
-                </div>
-                <div class="fan-card" data-index="3">
-                  <div class="fan-card-verified"><span class="verified-icon">&#10003;</span> Verified</div>
-                  <div class="fan-card-title">Government</div>
-                </div>
-              </div>
+            <div class="cert-hero-section">
+              <img class="product-row-logo product-row-logo--cert" src="logos/certledger-logo.png?v=2" alt="CertLedger" width="200" height="48" loading="lazy">
+              <video
+                class="cert-hero-video"
+                id="certHeroVideo"
+                autoplay muted loop playsinline webkit-playsinline
+                preload="metadata"
+                src="videos/flagshipProduct_certledgerVideo.mp4"
+                aria-label="CertLedger product video: blockchain credential issuance and verification"
+              ></video>
+              <button type="button" class="product-video-sound is-muted" data-video-sound="certHeroVideo" aria-pressed="false" aria-label="Unmute video">
+                <svg class="product-video-sound-icon product-video-sound-icon--muted" width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="M11 5 6 9H3v6h3l5 4V5Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+                  <path d="m16 9.5 5 5M21 9.5l-5 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+                </svg>
+                <svg class="product-video-sound-icon product-video-sound-icon--on" width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="M11 5 6 9H3v6h3l5 4V5Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+                  <path d="M15.5 8.5a5 5 0 0 1 0 7M18.5 6a8.5 8.5 0 0 1 0 12" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+                </svg>
+                <span class="product-video-sound-label" data-label-muted="Tap for sound" data-label-on="Sound on">Tap for sound</span>
+              </button>
             </div>
           </div>
           <div class="product-row-copy">
@@ -559,13 +535,13 @@
             <div class="custom-mock" aria-hidden="true">
               <div class="custom-mock-header custom-mock-header--wills">WillsLedger · Secure Legacy</div>
               <div class="custom-mock-body">
-                <div class="custom-mock-label">Digital will lifecycle</div>
-                <div class="custom-module is-on"><span class="custom-module-check">&#10003;</span> Draft &amp; notarize on-chain</div>
-                <div class="custom-module is-on"><span class="custom-module-check">&#10003;</span> Encrypted beneficiary access</div>
-                <div class="custom-module is-on"><span class="custom-module-check">&#10003;</span> Immutable audit trail</div>
-                <div class="custom-module"><span class="custom-module-check">&#10003;</span> Executor verification flow</div>
+                <div class="custom-mock-label">Hong Kong will lifecycle</div>
+                <div class="custom-module is-on"><span class="custom-module-check">&#10003;</span> Guided Will preparation</div>
+                <div class="custom-module is-on"><span class="custom-module-check">&#10003;</span> iAM Smart identity checks</div>
+                <div class="custom-module is-on"><span class="custom-module-check">&#10003;</span> Document hash on-chain</div>
+                <div class="custom-module"><span class="custom-module-check">&#10003;</span> Executor handover access</div>
                 <div class="custom-mock-footer">
-                  Preserve intent with <strong>blockchain-backed wills</strong> — verifiable, private, and ready when needed.
+                  The Will stays a <strong>signed paper document</strong> — WillsLedger records integrity evidence, not a substitute for legal execution.
                 </div>
               </div>
             </div>
@@ -573,13 +549,13 @@
           <div class="product-row-copy">
             <span class="product-row-tag">Launching Q1 2027</span>
             <span class="product-row-badge">WillsLedger</span>
-            <h3>Secure Wills on the Blockchain</h3>
-            <p>A self-serve, tamper-proof will-drafting platform.</p>
+            <h3>A verifiable Will lifecycle for Hong Kong</h3>
+            <p>Help ordinary users prepare, manage, and preserve a verifiable record of their Will — with identity checks, execution evidence, and future executor access.</p>
             <ul class="product-row-features">
-              <li><span class="pf-check">&#10003;</span> Immutable on-chain proof of will authenticity</li>
-              <li><span class="pf-check">&#10003;</span> Encrypted storage with role-based access for executors</li>
-              <li><span class="pf-check">&#10003;</span> Instant verification for legal and financial partners</li>
-              <li><span class="pf-check">&#10003;</span> AI-assisted anomaly and fraud checks on submissions</li>
+              <li><span class="pf-check">&#10003;</span> Structured Will-building with controlled clause logic (AI for guidance, not free-form drafting)</li>
+              <li><span class="pf-check">&#10003;</span> iAM Smart verifies testator, witnesses, and authorised executor at key stages</li>
+              <li><span class="pf-check">&#10003;</span> Cryptographic hash on-chain after signing — Will contents and personal data stay off-chain</li>
+              <li><span class="pf-check">&#10003;</span> Read-only executor handover after death and access conditions are met</li>
             </ul>
             <a href="mailto:enquiries@onechain.hk?subject=WillsLedger%20enquiry" class="product-row-cta">
               Get Notified at Launch
@@ -596,64 +572,64 @@
         <div class="fp-deep-head reveal">
           <span class="fp-eyebrow">In development</span>
           <h3>The digital will lifecycle.</h3>
-          <p>WillsLedger is still being built. Here is how the lifecycle is designed to work when it launches.</p>
+          <p>WillsLedger is still being built. Here is how the Hong Kong–focused lifecycle is designed to work when it launches.</p>
         </div>
 
         <div class="fp-flow reveal" data-flow>
           <div class="fp-steps" role="tablist" aria-label="WillsLedger will lifecycle">
             <button type="button" class="fp-step is-active" role="tab" aria-selected="true" data-i="0">
-              <span class="fp-step-num">01</span><span class="fp-step-label">Draft &amp; notarize</span>
+              <span class="fp-step-num">01</span><span class="fp-step-label">Prepare &amp; guide</span>
             </button>
             <button type="button" class="fp-step" role="tab" aria-selected="false" data-i="1">
-              <span class="fp-step-num">02</span><span class="fp-step-label">Encrypt &amp; store</span>
+              <span class="fp-step-num">02</span><span class="fp-step-label">Sign &amp; identity</span>
             </button>
             <button type="button" class="fp-step" role="tab" aria-selected="false" data-i="2">
-              <span class="fp-step-num">03</span><span class="fp-step-label">Audit trail</span>
+              <span class="fp-step-num">03</span><span class="fp-step-label">Hash &amp; evidence</span>
             </button>
             <button type="button" class="fp-step" role="tab" aria-selected="false" data-i="3">
-              <span class="fp-step-num">04</span><span class="fp-step-label">Executor release</span>
+              <span class="fp-step-num">04</span><span class="fp-step-label">Executor access</span>
             </button>
           </div>
 
           <div class="fp-panels">
             <div class="fp-panel is-active" role="tabpanel" data-i="0">
               <span class="fp-panel-step">Step 01</span>
-              <h4>Draft &amp; notarize on-chain</h4>
-              <p>A will is drafted with a solicitor, then its fingerprint is notarised on-chain — proving the document existed in that exact form, at that exact moment, without publishing its contents.</p>
+              <h4>Guided Will preparation</h4>
+              <p>Walk the testator through appointing executors, naming beneficiaries, the residuary estate, optional gifts or guardianship, and flags that may need professional legal review. AI can assist intake and guidance; the Will wording itself is produced through controlled clause logic — not unrestricted AI drafting.</p>
               <dl class="fp-meta">
-                <div><dt>Who acts</dt><dd>Testator &amp; solicitor</dd></div>
-                <div><dt>Anchored on</dt><dd>Hyperledger Fabric</dd></div>
-                <div><dt>Result</dt><dd>Proof of authenticity</dd></div>
+                <div><dt>Who acts</dt><dd>Testator (guided)</dd></div>
+                <div><dt>AI role</dt><dd>Intake &amp; guidance only</dd></div>
+                <div><dt>Result</dt><dd>Structured Will draft</dd></div>
               </dl>
             </div>
             <div class="fp-panel" role="tabpanel" data-i="1">
               <span class="fp-panel-step">Step 02</span>
-              <h4>Encrypted beneficiary access</h4>
-              <p>The document itself stays encrypted. Role-based keys decide who can see what, so beneficiaries and executors are registered long before anything needs to be opened.</p>
+              <h4>Paper signing &amp; iAM Smart checks</h4>
+              <p>The Will remains a physically signed paper document and must follow Hong Kong execution requirements. iAM Smart is intended to verify the identities of the testator, witnesses, and authorised executor at the relevant stages — digital checks do not replace legal signing and witnessing.</p>
               <dl class="fp-meta">
-                <div><dt>Who acts</dt><dd>Testator</dd></div>
-                <div><dt>Access model</dt><dd>Role-based keys</dd></div>
-                <div><dt>Visible now</dt><dd>Nothing — sealed until release</dd></div>
+                <div><dt>Who acts</dt><dd>Testator &amp; witnesses</dd></div>
+                <div><dt>Identity</dt><dd>iAM Smart</dd></div>
+                <div><dt>Legal form</dt><dd>Signed paper Will</dd></div>
               </dl>
             </div>
             <div class="fp-panel" role="tabpanel" data-i="2">
               <span class="fp-panel-step">Step 03</span>
-              <h4>Immutable audit trail</h4>
-              <p>Every amendment, re-notarisation, and access request is appended to the chain. Later disputes can be settled against a record nobody can quietly rewrite.</p>
+              <h4>Hash, confirmations &amp; audit refs</h4>
+              <p>After signing, WillsLedger can generate a cryptographic hash of the exact Will document and record related witness confirmations, timestamps, version information, and audit references. The Will and personal data stay off-chain; the ledger retains hashes and verification references so integrity can be checked later.</p>
               <dl class="fp-meta">
-                <div><dt>Recorded</dt><dd>Edits, versions, access</dd></div>
-                <div><dt>Assisted by</dt><dd>AI anomaly checks</dd></div>
-                <div><dt>Result</dt><dd>Tamper-evident history</dd></div>
+                <div><dt>On-chain</dt><dd>Hash &amp; evidence refs</dd></div>
+                <div><dt>Off-chain</dt><dd>Will &amp; personal data</dd></div>
+                <div><dt>Result</dt><dd>Integrity checkable</dd></div>
               </dl>
             </div>
             <div class="fp-panel" role="tabpanel" data-i="3">
               <span class="fp-panel-step">Step 04</span>
-              <h4>Executor verification flow</h4>
-              <p>When the will must be executed, the executor is verified against the on-chain record and the document is released to the right parties — with banks and registrars able to confirm authenticity instantly.</p>
+              <h4>Executor handover access</h4>
+              <p>After the testator’s death and satisfaction of the relevant access conditions, an authorised executor can verify their identity and open a limited, read-only record — the Will record, document hash, witness-confirmation trail, and audit information — without claiming the digital record itself creates or validates the Will.</p>
               <dl class="fp-meta">
-                <div><dt>Who acts</dt><dd>Executor</dd></div>
-                <div><dt>Verified by</dt><dd>Banks, registrars, courts</dd></div>
-                <div><dt>Result</dt><dd>Controlled disclosure</dd></div>
+                <div><dt>Who acts</dt><dd>Authorised executor</dd></div>
+                <div><dt>Access</dt><dd>Read-only, conditioned</dd></div>
+                <div><dt>Result</dt><dd>Verified handover trail</dd></div>
               </dl>
             </div>
           </div>
@@ -661,16 +637,16 @@
 
         <div class="fp-cards fp-cards--3 reveal">
           <div class="fp-card">
-            <h4>Families</h4>
-            <p>Certainty that a final wish is recorded exactly as written, and can be found when it matters.</p>
+            <h4>Testators &amp; families</h4>
+            <p>A clearer path to prepare a Will and leave a verifiable integrity record — without putting private Will contents on the blockchain.</p>
           </div>
           <div class="fp-card">
-            <h4>Lawyers</h4>
-            <p>Provable version history for every draft and amendment, without handing over custody of the document.</p>
+            <h4>Legal professionals</h4>
+            <p>Structured intake and clause-controlled drafting support, plus flags when a matter may need solicitor review under Hong Kong practice.</p>
           </div>
           <div class="fp-card">
-            <h4>Institutions</h4>
-            <p>Banks and registrars confirm authenticity against the chain instead of chasing paper originals.</p>
+            <h4>Executors &amp; institutions</h4>
+            <p>Identity-verified, read-only access to hash, witness trail, and audit references when handover conditions are met.</p>
           </div>
         </div>
       </div>
@@ -696,7 +672,7 @@
   <div id="site-footer"></div>
 
   <!-- Shared interactions: reveal-on-scroll + CertLedger fan cards -->
-  <script src="home.js?v=202607301705" defer></script>
+  <script src="home.js?v=202609081656" defer></script>
 
   <!-- Page interactions: step flows, scroll-spy, stat count-up -->
   <script>
@@ -731,23 +707,34 @@
         });
       });
 
-      /* ---- Sticky nav scroll-spy ---- */
-      const links = Array.from(document.querySelectorAll('.fp-nav a'));
-      const sections = links
-        .map((link) => document.querySelector(link.getAttribute('href')))
-        .filter(Boolean);
+      /* ---- Product video sound toggle (muted by default) ---- */
+      document.querySelectorAll('[data-video-sound]').forEach((btn) => {
+        const video = document.getElementById(btn.getAttribute('data-video-sound'));
+        if (!video) return;
+        const label = btn.querySelector('.product-video-sound-label');
+        const mutedText = label ? label.getAttribute('data-label-muted') : 'Tap for sound';
+        const onText = label ? label.getAttribute('data-label-on') : 'Sound on';
 
-      if (sections.length && 'IntersectionObserver' in window) {
-        const spy = new IntersectionObserver((entries) => {
-          entries.forEach((entry) => {
-            if (!entry.isIntersecting) return;
-            links.forEach((link) => {
-              link.classList.toggle('is-active', link.getAttribute('href') === '#' + entry.target.id);
-            });
-          });
-        }, { rootMargin: '-45% 0px -50% 0px' });
-        sections.forEach((section) => spy.observe(section));
-      }
+        const sync = () => {
+          const muted = video.muted;
+          btn.classList.toggle('is-muted', muted);
+          btn.setAttribute('aria-pressed', muted ? 'false' : 'true');
+          btn.setAttribute('aria-label', muted ? 'Unmute video' : 'Mute video');
+          if (label) label.textContent = muted ? mutedText : onText;
+        };
+
+        video.muted = true;
+        sync();
+
+        btn.addEventListener('click', () => {
+          video.muted = !video.muted;
+          if (!video.muted) {
+            const play = video.play();
+            if (play && typeof play.catch === 'function') play.catch(() => {});
+          }
+          sync();
+        });
+      });
 
       /* ---- Count-up stats ---- */
       const countUp = (el) => {

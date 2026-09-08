@@ -19,6 +19,12 @@
  *   Supplementary:  #545454
  *   Alert:          #eb6363, #f5b8b6
  *
+ * WillsLedger Color Palette (willsLedger_Logo_Final.ai)
+ *   Primary (blue):     #143a53
+ *   Secondary (yellow): #de9e3b
+ *   Supplementary:      #545454
+ *   Alert:              #eb6363, #f5b8b6
+ *
  * Typefaces
  *   Brand / Headline / Sub-headline / Buttons / Tags → Inter Bold
  *   Body text                                       → Inter
@@ -83,6 +89,26 @@
   --oc-esg-secondary: var(--esg-secondary);
   --oc-esg-dark: var(--esg-dark);
 
+  /* ===== WillsLedger palette (willsLedger_Logo_Final.ai) =====
+     Blue = main brand colour · Yellow = secondary accent */
+  --wills-primary: #143a53;
+  --wills-primary-deep: #0f2f44;
+  --wills-primary-light: #2a5670;
+  --wills-secondary: #de9e3b;
+  --wills-secondary-soft: #f5e6c8;
+  --wills-supp: #545454;
+  --wills-alert: #eb6363;
+  --wills-alert-soft: #f5b8b6;
+  --wills-primary-glow: rgba(20, 58, 83, 0.12);
+  --wills-secondary-glow: rgba(222, 158, 59, 0.16);
+
+  /* Legacy / convenience aliases */
+  --oc-wills-blue: var(--wills-primary);
+  --oc-wills-navy: var(--wills-primary);
+  --oc-wills-yellow: var(--wills-secondary);
+  --oc-wills-secondary: var(--wills-secondary);
+  --oc-wills-glow: var(--wills-primary-glow);
+
   --oc-ai-purple: var(--oc-primary); /* remapped — purple not in brand PDF */
 
   /* ===== Typefaces (Brand Guideline §05) ===== */
@@ -104,14 +130,28 @@
   --tracking-sub: 0.08em;
   --tracking-supporting: 0.08em;
 
-  /* Corners — sharper controls (not pills). Match CTA style ~8–10px */
+  /* Corners — soft rounded rectangle for controls (not pills).
+     rounded-lg / buttons → 8px (0.5rem). Circles only use --radius-full. */
   --radius-xs: 6px;
   --radius-sm: 8px;
-  --radius-md: 10px;
-  --radius-lg: 12px;
+  --radius-md: 8px;
+  --radius-lg: 8px;
   --radius-panel: 12px;
-  --radius-btn: 10px;
+  --radius-btn: 8px;
   --radius-full: 999px; /* circles only — avatars, dots, icon buttons */
+
+  /* ===== Buttons (global shape + secondary fill) =====
+     Soft rounded rectangle · py-2 px-4 · text-sm semibold · #4995ad */
+  --oc-btn-bg: #4995ad;
+  --oc-btn-bg-hover: #3e849a;
+  --oc-btn-text: #ffffff;
+  --oc-btn-pad-y: 8px;
+  --oc-btn-pad-x: 16px;
+  --oc-btn-font-size: 14px; /* text-sm */
+  --oc-btn-font-weight: 600; /* font-semibold */
+  --oc-btn-gap: 8px;
+  --oc-btn-height: auto; /* content-driven (~36px with text-sm + py-2) */
+  --oc-secondary-btn: var(--oc-btn-bg);
 
   /* Footer — gray surface, reverse-white logo/text */
   --oc-footer-bg: var(--oc-secondary); /* #545454 */
@@ -153,6 +193,9 @@ button,
 .btn-primary,
 .btn-outline,
 .btn-dark,
+.btn-green,
+.btn-gold,
+.btn-ghost,
 .sc-btn-primary,
 .sc-btn-ghost,
 .hero-btn,
@@ -160,9 +203,110 @@ button,
 .reclaim-cta-outline,
 .product-row-cta,
 .blockchain-services-cta,
-.ai-cta {
+.ai-cta,
+.fp-chip,
+.fp-btn,
+.fp-tag,
+.lane-cta {
   font-family: var(--font-brand), var(--font-cjk), sans-serif;
-  font-weight: var(--weight-bold);
+  font-weight: var(--oc-btn-font-weight, 600);
+}
+
+/* ===== Global button / chip shape (image 1 — not pills) ===== */
+.oc-btn,
+.btn,
+.btn-primary,
+.btn-outline,
+.btn-dark,
+.btn-green,
+.btn-gold,
+.btn-ghost,
+.sc-btn-primary,
+.sc-btn-ghost,
+.hero-btn,
+.hero-btn--primary,
+.hero-btn--ghost,
+.reclaim-cta,
+.reclaim-cta-outline,
+.product-row-cta,
+.blockchain-services-cta,
+.ai-cta,
+.fp-btn,
+.fp-chip,
+.fp-tag,
+.btn-line {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--oc-btn-gap, 8px);
+  padding: var(--oc-btn-pad-y, 8px) var(--oc-btn-pad-x, 16px);
+  min-height: 36px;
+  box-sizing: border-box;
+  border-radius: var(--radius-btn, 8px) !important; /* soft rectangle — never pill */
+  font-size: var(--oc-btn-font-size, 14px);
+  font-weight: var(--oc-btn-font-weight, 600);
+  line-height: 1.25;
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
+/* Filled secondary CTA — bg-secondary #4995ad
+   (Product CTAs keep their own brand colours — ESG green / Cert teal / Wills blue) */
+.oc-btn,
+.oc-btn--secondary,
+.btn-primary,
+.btn-dark,
+.hero-btn--primary,
+.reclaim-cta,
+.blockchain-services-cta,
+.ai-cta,
+.sc-btn-primary {
+  background: var(--oc-btn-bg, #4995ad);
+  color: var(--oc-btn-text, #fff);
+  border: none;
+  box-shadow: 0 8px 24px rgba(73, 149, 173, 0.28);
+}
+.oc-btn:hover,
+.oc-btn--secondary:hover,
+.btn-primary:hover,
+.btn-dark:hover,
+.hero-btn--primary:hover,
+.reclaim-cta:hover,
+.blockchain-services-cta:hover,
+.ai-cta:hover,
+.sc-btn-primary:hover {
+  background: var(--oc-btn-bg-hover, #3e849a);
+  color: var(--oc-btn-text, #fff);
+  transform: translateY(-1px);
+  box-shadow: 0 12px 28px rgba(73, 149, 173, 0.34);
+}
+
+/* Outline / ghost — same soft rectangle shape */
+.btn-outline,
+.btn-ghost,
+.btn-line,
+.hero-btn--ghost,
+.reclaim-cta-outline,
+.sc-btn-ghost,
+.fp-chip,
+.fp-tag {
+  background: #fff;
+  color: var(--oc-text-secondary, #545454);
+  border: 1px solid var(--oc-border-strong, rgba(10, 22, 40, 0.12));
+  box-shadow: none;
+}
+.btn-outline:hover,
+.btn-ghost:hover,
+.btn-line:hover,
+.hero-btn--ghost:hover,
+.reclaim-cta-outline:hover,
+.sc-btn-ghost:hover,
+.fp-chip:hover,
+.fp-tag:hover {
+  background: #f7fafb;
+  border-color: var(--oc-btn-bg, #4995ad);
+  color: var(--oc-btn-bg, #4995ad);
 }
 
 /* Body text — Inter */
@@ -242,6 +386,22 @@ p, li, label, input, textarea, .oc-type-body {
   --oc-supp-alert: var(--esg-alert-soft);
 }
 
+/* Apply WillsLedger palette on product surfaces — blue main, yellow secondary */
+[data-brand="willsledger"] {
+  --oc-primary: var(--wills-primary);
+  --oc-primary-deep: var(--wills-primary-deep);
+  --oc-primary-light: var(--wills-primary-light);
+  --oc-primary-brand: var(--wills-primary);
+  --oc-primary-glow: var(--wills-primary-glow);
+  --oc-secondary: var(--wills-supp);
+  --oc-secondary-alert: var(--wills-alert);
+  --oc-supp: var(--wills-secondary-soft);
+  --oc-supp-soft: #faf4e8;
+  --oc-bg-alt: var(--wills-secondary-soft);
+  --oc-supp-alert: var(--wills-alert-soft);
+  --oc-accent: var(--wills-secondary);
+}
+
 /* ===== Site footer (shared) — gray bg, reverse-white logo ===== */
 .sc-footer,
 .site-footer,
@@ -255,8 +415,8 @@ footer.footer {
 .site-footer .logo-img--footer,
 .footer-brand img,
 .footer .logo-img {
-  /* Logo wordmark → white on gray footer */
-  filter: brightness(0) invert(1);
+  /* Footer uses onchain-logo-white.png (teal mark + reverse-white CHAIN) */
+  filter: none;
 }
 
 .sc-footer-brand p,

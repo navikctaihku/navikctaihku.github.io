@@ -7,8 +7,8 @@
   <meta name="description" content="OneChain solutions by industry: ESG & sustainability, credentials & identity, education, and FMCG — plus lead use cases with Watsons and HK Timberbank.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="chrome.css?v=202609071120">
-  <script src="site-chrome.js?v=202609071506" defer></script>
+  <link rel="stylesheet" href="chrome.css?v=202609081530">
+  <script src="site-chrome.js?v=202609081725" defer></script>
   <style>
     :root {
       --oc-primary: #14a4bc; --oc-primary-deep: #0d7d91; --oc-primary-light: #3cbdd2;
@@ -53,11 +53,24 @@
     }
 
     /* ONE COMBINED SECTION */
-    .lead-section { padding: 96px 0 110px; background: linear-gradient(180deg, #f4f9fc 0%, #fff 40%, #fff 100%); }
+    .lead-section { padding: 96px 0 48px; background: linear-gradient(180deg, #f4f9fc 0%, #fff 40%, #fff 100%); }
     .lead-intro { text-align: center; max-width: 680px; margin: 0 auto 56px; }
     .lead-intro .eyebrow { color: var(--oc-primary); font-size: 12px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 12px; }
     .lead-intro h2 { font-size: clamp(28px, 4vw, 40px); font-weight: 700; letter-spacing: -0.02em; color: var(--oc-dark); margin-bottom: 14px; }
     .lead-intro p { font-size: 17px; color: var(--oc-muted); }
+    .lead-section .lead-intro {
+      max-width: 1100px;
+    }
+    .lead-section .lead-intro h2 {
+      white-space: nowrap;
+    }
+    .lead-section .lead-intro p {
+      white-space: nowrap;
+    }
+    @media (max-width: 780px) {
+      .lead-section .lead-intro h2,
+      .lead-section .lead-intro p { white-space: normal; }
+    }
 
     /* Shared story rail */
     .story-rail {
@@ -138,6 +151,7 @@
     .lane--watsons .lane-cta { color: var(--oc-esg); }
     .lane--timber .lane-cta { color: var(--oc-cert); }
     .lane-cta:hover { opacity: .85; }
+    .lane-actions { display: flex; flex-wrap: wrap; gap: 12px 20px; align-items: center; }
 
     /* Shared outcomes strip */
     .story-outcomes {
@@ -164,6 +178,38 @@
       .story-outcomes { grid-template-columns: 1fr; }
     }
 
+    /* HK TIMBERBANK VIDEO */
+    .timber-video {
+      padding: 24px 0 110px;
+      background: linear-gradient(180deg, #ffffff 0%, #f4f9fc 42%, #ffffff 100%);
+    }
+    .timber-video .lead-intro { margin-bottom: 36px; max-width: 920px; }
+    .timber-video .lead-intro .eyebrow { color: var(--oc-cert); }
+    .timber-video .lead-intro h2 {
+      white-space: nowrap;
+    }
+    @media (max-width: 780px) {
+      .timber-video .lead-intro h2 { white-space: normal; }
+    }
+    .timber-video-frame {
+      position: relative;
+      max-width: 1080px;
+      margin: 0 auto;
+      aspect-ratio: 16 / 9;
+      border-radius: 20px;
+      overflow: hidden;
+      background: #0A1628;
+      border: 1px solid rgba(10,22,40,0.08);
+      box-shadow: 0 24px 60px rgba(10,22,40,0.08);
+    }
+    .timber-video-frame video {
+      width: 100%; height: 100%; display: block; object-fit: cover;
+    }
+    @media (max-width: 640px) {
+      .timber-video { padding: 8px 0 80px; }
+      .timber-video-frame { border-radius: 14px; }
+    }
+
     /* INDUSTRY SOLUTIONS — visual grid */
     section[id], .ind-panel[id] { scroll-margin-top: 88px; }
     .industries {
@@ -174,13 +220,25 @@
         radial-gradient(ellipse 50% 35% at 90% 70%, rgba(1,98,130,0.06), transparent 50%),
         #fff;
     }
+    .industries .lead-intro {
+      max-width: 980px;
+    }
+    .industries .lead-intro p {
+      white-space: nowrap;
+    }
+    @media (max-width: 900px) {
+      .industries .lead-intro p { white-space: normal; }
+    }
     .ind-jump {
       display: flex; flex-wrap: wrap; justify-content: center; gap: 10px;
       margin: -8px auto 48px; max-width: 720px;
     }
     .ind-jump a {
-      font-size: 13px; font-weight: 600; color: var(--oc-dark);
-      padding: 8px 14px; border-radius: 999px;
+      font-size: var(--oc-btn-font-size, 14px);
+      font-weight: var(--oc-btn-font-weight, 600);
+      color: var(--oc-dark);
+      padding: var(--oc-btn-pad-y, 8px) var(--oc-btn-pad-x, 16px);
+      border-radius: var(--radius-btn, 8px);
       background: rgba(255,255,255,0.9);
       border: 1px solid rgba(10,22,40,0.1);
       transition: border-color .2s, color .2s, transform .2s;
@@ -293,7 +351,7 @@
     .reveal { opacity: 0; transform: translateY(24px); transition: opacity .7s ease, transform .7s cubic-bezier(0.16,1,0.3,1); }
     .reveal.visible { opacity: 1; transform: none; }
   </style>
-  <link rel="stylesheet" href="tokens.css">
+  <link rel="stylesheet" href="tokens.css?v=202609081610">
   <link rel="stylesheet" href="global.css">
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <meta name="theme-color" content="#14a4bc">
@@ -307,7 +365,7 @@
     <div class="container">
       <div class="sol-eyebrow">By Industries · Lead use cases</div>
       <h1>One chain. <em>Four industries.</em></h1>
-      <p>Watsons recycling credits and timber provenance — the same permissioned trust layer, written for ordinary readers, proven in production.</p>
+      <p>Watsons recycling credits and timber provenance —<br>the same permissioned trust layer, written for ordinary readers, proven in production.</p>
     </div>
   </header>
 
@@ -392,7 +450,10 @@
               <li>Responsible sourcing you can prove</li>
               <li>API-ready for partners across the supply chain</li>
             </ul>
-            <a class="lane-cta" href="api-platform.html">See Products API →</a>
+            <div class="lane-actions">
+              <a class="lane-cta" href="#timberbank">Watch the video →</a>
+              <a class="lane-cta" href="api-platform.html">See Products API →</a>
+            </div>
           </div>
         </div>
 
@@ -402,6 +463,26 @@
           <div class="outcome"><b>Seconds</b><span>To verify a claim</span></div>
           <div class="outcome"><b>2 partners</b><span>Watsons · HK Timberbank</span></div>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="timber-video" id="timberbank" aria-labelledby="timberbank-heading">
+    <div class="container">
+      <div class="lead-intro reveal">
+        <div class="eyebrow">HK Timberbank</div>
+        <h2 id="timberbank-heading">Provenance you can prove — from forest to sale.</h2>
+        <p>Hear how HK Timberbank uses OneChain for timber chain-of-custody and data traceability — each lot registered with records anyone in the chain can verify.</p>
+      </div>
+      <div class="timber-video-frame reveal">
+        <video
+          controls
+          playsinline
+          preload="metadata"
+          poster="videos/HKTimberbankVideo-poster.png"
+          src="videos/HKTimberbankVideo.mp4"
+          aria-label="HK Timberbank partner video: timber chain-of-custody and data traceability on OneChain"
+        ></video>
       </div>
     </div>
   </section>

@@ -33,7 +33,7 @@
         item('products.html', icon('rgba(20,164,188,0.12)', '📦'), 'All Flagship Products', 'Compare ESGLedger, CertLedger & WillsLedger side by side'),
         item('esgledger.html', icon('rgba(46,204,113,0.12)', '🌱'), 'ESGLedger', 'Blockchain-verified ESG data & plastic credit marketplace'),
         item('certledger.html', icon('rgba(240,180,41,0.14)', '🎓'), 'CertLedger', 'Tamper-proof credentials, verified in seconds'),
-        item('products.html#product-wills', icon('rgba(91,79,221,0.12)', '📜'), 'WillsLedger', 'Blockchain-backed digital wills & estate records — coming soon'),
+        item('products.html#product-wills', icon('rgba(20,58,83,0.12)', '📜'), 'WillsLedger', 'HK Will lifecycle: preparation, iAM Smart, hash integrity — coming soon'),
       ]},
       { title: 'Developer Platform', items: [
         item('api-platform.html', icon('rgba(0,180,216,0.12)', '⚡'), 'API Platform', 'REST APIs for documents, assets, and products'),
@@ -127,17 +127,18 @@
       '<svg width="22" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23.5 6.2a3.02 3.02 0 0 0-2.12-2.14C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.38.56A3.02 3.02 0 0 0 .5 6.2 31.6 31.6 0 0 0 0 12a31.6 31.6 0 0 0 .5 5.8 3.02 3.02 0 0 0 2.12 2.14C4.5 20.5 12 20.5 12 20.5s7.5 0 9.38-.56a3.02 3.02 0 0 0 2.12-2.14A31.6 31.6 0 0 0 24 12a31.6 31.6 0 0 0-.5-5.8zM9.75 15.52V8.48L15.82 12l-6.07 3.52z"/></svg></a>' +
       '</div>';
     return '<footer class="sc-footer"><div class="sc-footer-inner"><div class="sc-footer-grid">' +
-      '<div class="sc-footer-brand"><img src="onchain-logo.png" alt="OneChain">' +
-      '<p>OneChain® is a startup leveraging blockchain and AI to deliver end-to-end solutions, making credentials tamper-proof, transparent, and trackable from infrastructure to application.</p></div>' +
+      '<div class="sc-footer-brand"><img src="onchain-logo-white.png?v=202609071808" alt="OneChain">' +
+      '<p>OneChain® is a startup leveraging blockchain and AI to deliver end-to-end solutions, making credentials tamper-proof, transparent, and trackable from infrastructure to application.</p>' +
+      '<img class="sc-footer-iso" src="images/recognition/iso-27001.svg?v=202609081725" alt="ISO 27001 Certified" width="72" height="72">' +
+      '</div>' +
       col('Products', [['Flagship Products', 'products.html'], ['ESGLedger', 'esgledger.html'], ['CertLedger', 'certledger.html'], ['WillsLedger', 'products.html#product-wills'], ['API Platform', 'api-platform.html'], ['Infrastructure', 'infrastructure.html']]) +
-      col('Solutions', [['Watsons & Timber', 'industries.html#lead'], ['ESG & Sustainability', 'industries.html#esg'], ['Credentials & Identity', 'industries.html#credentials'], ['Education', 'industries.html#education'], ['FMCG', 'industries.html#fmcg']]) +
+      col('Solutions', [['Watsons & Timber', 'industries.html#lead'], ['HK Timberbank', 'industries.html#timberbank'], ['ESG & Sustainability', 'industries.html#esg'], ['Credentials & Identity', 'industries.html#credentials'], ['Education', 'industries.html#education'], ['FMCG', 'industries.html#fmcg']]) +
       col('About', [['About Us', 'about.html'], ['Vision & Mission', 'about.html#vision'], ['What We Solve', 'about.html#solving']]) +
       col('Resources', [['News & Articles', 'blog.html'], ['API Documentation', 'api-docs.html'], ['Blockchain Explorer', 'https://onechainscan.io/']]) +
       contactCol +
       '</div><div class="sc-footer-bottom">' +
       '<div class="sc-footer-bottom-left">' +
       social +
-      '<img class="sc-footer-iso" src="iso-27001.svg" alt="ISO 27001 Certified" width="72" height="80">' +
       '</div>' +
       '<p>© 2026 OneChain Ltd. · <a href="mailto:info@one-chain.io?subject=Privacy%20Policy" style="color:inherit">Privacy Policy</a> · <a href="mailto:info@one-chain.io?subject=Terms%20of%20Use" style="color:inherit">Terms of Use</a></p>' +
       '</div></div></footer>';

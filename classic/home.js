@@ -7,7 +7,7 @@
     }, { threshold: 0.15 });
     reveals.forEach(el => revealObs.observe(el));
 
-    // Fan cards — scroll trigger + interactive hover
+    // Fan cards — scroll trigger + interactive hover (no-op if markup removed)
     const fanCards = document.getElementById('fanCards');
     if (fanCards) {
       const cards = fanCards.querySelectorAll('.fan-card');
@@ -44,6 +44,62 @@
         cards.forEach(c => c.classList.remove('active'));
       });
     }
+
+    // CertLedger product visual — ensure muted autoplay (Safari often needs play())
+    (function initCertHeroVideo() {
+      const video = document.getElementById('certHeroVideo');
+      if (!video) return;
+      video.muted = true;
+      video.defaultMuted = true;
+      video.playsInline = true;
+      video.setAttribute('webkit-playsinline', 'true');
+      const tryPlay = () => {
+        const p = video.play();
+        if (p && typeof p.catch === 'function') p.catch(() => {});
+      };
+      tryPlay();
+      video.addEventListener('loadeddata', tryPlay);
+      video.addEventListener('canplay', tryPlay);
+      document.addEventListener('visibilitychange', () => {
+        if (document.visibilityState === 'visible') tryPlay();
+      });
+      window.addEventListener('pointerdown', tryPlay, { once: true });
+    })();
+
+    // ESGLedger product video — muted by default, tap to hear sound
+    (function initEsgProductSound() {
+      const video = document.getElementById('esgProductVideo');
+      const btn = document.getElementById('esgSoundBtn');
+      if (!video || !btn) return;
+
+      video.muted = true;
+      video.defaultMuted = true;
+      video.playsInline = true;
+
+      const label = btn.querySelector('.esg-sound-label');
+      const syncUi = () => {
+        const unmuted = !video.muted;
+        btn.classList.toggle('is-unmuted', unmuted);
+        btn.setAttribute('aria-pressed', unmuted ? 'true' : 'false');
+        btn.setAttribute('aria-label', unmuted ? 'Mute video' : 'Unmute video');
+        if (label) label.textContent = unmuted ? 'Sound on' : 'Tap for sound';
+      };
+
+      const tryPlay = () => {
+        const p = video.play();
+        if (p && typeof p.catch === 'function') p.catch(() => {});
+      };
+
+      btn.addEventListener('click', () => {
+        video.muted = !video.muted;
+        if (!video.muted) tryPlay();
+        syncUi();
+      });
+
+      video.addEventListener('volumechange', syncUi);
+      syncUi();
+      tryPlay();
+    })();
 
     // ===== Reusable interactive node network =====
     function initNodeNetwork(container, canvas, opts = {}) {
@@ -391,7 +447,7 @@
       setTimeout(revealHero, HERO_INTRO_MS);
     })();
 
-    // --- Hero typewriter (Liftable-style: char-by-char) ---
+    // --- Hero typewriter: Trust → Transparency → Sustainability ---
     let heroTypewriterStarted = false;
     function initHeroTypewriter() {
       if (heroTypewriterStarted) return;
@@ -399,15 +455,16 @@
 
       const el = document.getElementById('heroRotateWord');
       const phrases = [
-        'earns verified proof',
-        'proves ESG claims',
-        'certifies credentials',
-        'scales with trust',
+        'Trust',
+        'Transparency',
+        'Sustainability',
       ];
 
       if (!el) return;
       if (reducedMotion) {
-        el.textContent = phrases[0];
+        el.textContent = 'Trust, Transparency & Sustainability';
+        const cursor = el.parentElement && el.parentElement.querySelector('.hero-cursor');
+        if (cursor) cursor.style.display = 'none';
         return;
       }
 
@@ -415,10 +472,10 @@
       let charIdx = 0;
       let deleting = false;
 
-      const TYPE_MS = 58;
-      const DELETE_MS = 32;
-      const PAUSE_TYPED_MS = 2400;
-      const PAUSE_DELETED_MS = 500;
+      const TYPE_MS = 72;
+      const DELETE_MS = 40;
+      const PAUSE_TYPED_MS = 2200;
+      const PAUSE_DELETED_MS = 420;
 
       const schedule = (ms) => {
         setTimeout(tick, ms);
@@ -450,7 +507,7 @@
         schedule(DELETE_MS);
       };
 
-      schedule(900);
+      schedule(400);
     }
 
     // --- 1. Hero entrance on load (text fades in after intro reveal) ---
