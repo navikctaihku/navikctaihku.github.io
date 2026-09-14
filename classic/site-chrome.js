@@ -21,19 +21,21 @@
   };
   var item = function (href, ic, name, desc, external) {
     var attrs = external ? ' target="_blank" rel="noopener"' : '';
+    var descHtml = desc
+      ? '<span class="sc-item-desc" style="display:block">' + desc + '</span>'
+      : '';
     return '<a class="sc-item" href="' + href + '"' + attrs + '>' +
-      '<span><span class="sc-item-name">' + name + '</span>' +
-      '<span class="sc-item-desc" style="display:block">' + desc + '</span></span></a>';
+      (ic || '') +
+      '<span><span class="sc-item-name">' + name + '</span>' + descHtml + '</span></a>';
   };
   var caret = '<svg class="sc-caret" width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 3.5l3 3 3-3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>';
 
   var MENUS = [
     { label: 'Products', cols: [
       { title: 'Flagship Products', items: [
-        item('products.html', icon('rgba(20,164,188,0.12)', '📦'), 'All Flagship Products', 'Compare ESGLedger, CertLedger & WillsLedger side by side'),
-        item('esgledger.html', icon('rgba(46,204,113,0.12)', '🌱'), 'ESGLedger', 'Blockchain-verified ESG data & plastic credit marketplace'),
-        item('certledger.html', icon('rgba(240,180,41,0.14)', '🎓'), 'CertLedger', 'Tamper-proof credentials, verified in seconds'),
-        item('products.html#product-wills', icon('rgba(20,58,83,0.12)', '📜'), 'WillsLedger', 'HK Will lifecycle: preparation, iAM Smart, hash integrity — coming soon'),
+        item('products.html#product-esg', icon('rgba(46,204,113,0.12)', '🌱'), 'ESGLedger', ''),
+        item('products.html#product-cert', icon('rgba(240,180,41,0.14)', '🎓'), 'CertLedger', ''),
+        item('products.html#product-wills', icon('rgba(20,58,83,0.12)', '📜'), 'WillsLedger', ''),
       ]},
       { title: 'Developer Platform', items: [
         item('api-platform.html', icon('rgba(0,180,216,0.12)', '⚡'), 'API Platform', 'REST APIs for documents, assets, and products'),
@@ -131,7 +133,7 @@
       '<p>OneChain® is a startup leveraging blockchain and AI to deliver end-to-end solutions, making credentials tamper-proof, transparent, and trackable from infrastructure to application.</p>' +
       '<img class="sc-footer-iso" src="images/recognition/iso-27001.svg?v=202609081725" alt="ISO 27001 Certified" width="72" height="72">' +
       '</div>' +
-      col('Products', [['Flagship Products', 'products.html'], ['ESGLedger', 'esgledger.html'], ['CertLedger', 'certledger.html'], ['WillsLedger', 'products.html#product-wills'], ['API Platform', 'api-platform.html'], ['Infrastructure', 'infrastructure.html']]) +
+      col('Products', [['Flagship Products', 'products.html'], ['ESGLedger', 'products.html#product-esg'], ['CertLedger', 'products.html#product-cert'], ['WillsLedger', 'products.html#product-wills'], ['API Platform', 'api-platform.html'], ['Infrastructure', 'infrastructure.html']]) +
       col('Solutions', [['Watsons & Timber', 'industries.html#lead'], ['HK Timberbank', 'industries.html#timberbank'], ['ESG & Sustainability', 'industries.html#esg'], ['Credentials & Identity', 'industries.html#credentials'], ['Education', 'industries.html#education'], ['FMCG', 'industries.html#fmcg']]) +
       col('About', [['About Us', 'about.html'], ['Vision & Mission', 'about.html#vision'], ['What We Solve', 'about.html#solving']]) +
       col('Resources', [['News & Articles', 'blog.html'], ['API Documentation', 'api-docs.html'], ['Blockchain Explorer', 'https://onechainscan.io/']]) +
@@ -140,7 +142,7 @@
       '<div class="sc-footer-bottom-left">' +
       social +
       '</div>' +
-      '<p>© 2026 OneChain Ltd. · <a href="mailto:info@one-chain.io?subject=Privacy%20Policy" style="color:inherit">Privacy Policy</a> · <a href="mailto:info@one-chain.io?subject=Terms%20of%20Use" style="color:inherit">Terms of Use</a></p>' +
+      '<p>© 2026 OneChain Ltd. · <a href="privacy.html">Privacy Policy</a> · <a href="terms.html">Terms &amp; Conditions</a></p>' +
       '</div></div></footer>';
   }
 
@@ -155,13 +157,13 @@
     if (!document.querySelector('link[href*="global.css"]')) {
       var globalStyles = document.createElement('link');
       globalStyles.rel = 'stylesheet';
-      globalStyles.href = 'global.css';
+      globalStyles.href = 'global.css?v=202609141432';
       document.head.appendChild(globalStyles);
     }
     if (!document.querySelector('link[href*="chrome.css"]')) {
       var chromeStyles = document.createElement('link');
       chromeStyles.rel = 'stylesheet';
-      chromeStyles.href = 'chrome.css';
+      chromeStyles.href = 'chrome.css?v=202609141432';
       document.head.appendChild(chromeStyles);
     }
 

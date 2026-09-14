@@ -8,10 +8,10 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="tokens.css?v=202609081610">
-  <link rel="stylesheet" href="global.css?v=202609081622">
-  <link rel="stylesheet" href="chrome.css?v=202609081530">
-  <script src="site-chrome.js?v=202609081725" defer></script>
-  <link rel="stylesheet" href="home.css?v=202609081810">
+  <link rel="stylesheet" href="global.css?v=202609141432">
+  <link rel="stylesheet" href="chrome.css?v=202609141432">
+  <script src="site-chrome.js?v=202609141432" defer></script>
+  <link rel="stylesheet" href="home.css?v=202609141722">
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <meta name="theme-color" content="#14a4bc">
   <link rel="stylesheet" href="site-base.css?v=202607280950">
@@ -52,7 +52,7 @@
         </p>
         <p class="hero-footnote hero-anim-item" data-delay="5">Powered by AI, anchored on blockchain, built for enterprises</p>
         <div class="hero-ctas hero-anim-item" data-delay="6">
-          <a href="industries.html" class="hero-btn hero-btn--primary">Discovery Our Solution</a>
+          <a href="#blockchain-services" class="hero-btn hero-btn--primary">Discovery Our Solution</a>
         </div>
       </div>
       <div class="hero-scroll-hint" aria-hidden="true">
@@ -139,7 +139,7 @@
     <div class="container">
       <div class="blockchain-services-header reveal">
         <div class="blockchain-services-intro">
-          <span class="blockchain-services-eyebrow">Blockchain Services</span>
+          <span class="blockchain-services-eyebrow">Blockchain &amp; AI Services</span>
           <h2 id="blockchain-services-title">From your first block to a <span>working product</span></h2>
         </div>
         <div class="blockchain-services-summary">
@@ -156,10 +156,24 @@
             <span class="blockchain-service-status">Foundation</span>
           </div>
           <div class="blockchain-service-icon blockchain-service-icon--build" aria-hidden="true">
-            <svg viewBox="0 0 48 48">
-              <path d="m24 6 15 8-15 8-15-8 15-8Z"/>
-              <path d="m9 24 15 8 15-8M9 34l15 8 15-8"/>
-              <path d="M9 14v20M39 14v20"/>
+            <svg viewBox="0 0 64 64" fill="none">
+              <!-- chain links -->
+              <path d="M22.5 40.5 32 32M32 32l9.5-8.5" opacity=".85"/>
+              <!-- cube 1 — bottom-left -->
+              <path class="ico-fill" d="M18 34.5 27 29.5 18 24.5 9 29.5Z" opacity=".14"/>
+              <path d="M18 34.5 27 29.5 18 24.5 9 29.5Z"/>
+              <path d="M9 29.5v9.5L18 44.5V34.5"/>
+              <path d="M27 29.5v9.5L18 44.5V34.5"/>
+              <!-- cube 2 — middle -->
+              <path class="ico-fill" d="M32 27 41 22 32 17 23 22Z" opacity=".14"/>
+              <path d="M32 27 41 22 32 17 23 22Z"/>
+              <path d="M23 22v9.5L32 36.5V27"/>
+              <path d="M41 22v9.5L32 36.5V27"/>
+              <!-- cube 3 — top-right -->
+              <path class="ico-fill" d="M46 19.5 55 14.5 46 9.5 37 14.5Z" opacity=".14"/>
+              <path d="M46 19.5 55 14.5 46 9.5 37 14.5Z"/>
+              <path d="M37 14.5v9.5L46 29.5V19.5"/>
+              <path d="M55 14.5v9.5L46 29.5V19.5"/>
             </svg>
           </div>
           <h3>Build Your Blockchain and AI Infrastructure</h3>
@@ -177,11 +191,24 @@
             <span class="blockchain-service-status">Trusted Data</span>
           </div>
           <div class="blockchain-service-icon blockchain-service-icon--anchor" aria-hidden="true">
-            <svg viewBox="0 0 48 48">
-              <path d="M24 5v27"/>
-              <circle cx="24" cy="11" r="5"/>
-              <path d="M11 24H6v15h15v-5M37 24h5v15H27v-5"/>
-              <path d="m17 26 7 7 7-7"/>
+            <svg viewBox="0 0 64 64" fill="none">
+              <!-- chain blocks either side -->
+              <rect class="ico-fill" x="4" y="27" width="10" height="10" rx="2.5" opacity=".12"/>
+              <rect x="4" y="27" width="10" height="10" rx="2.5"/>
+              <rect class="ico-fill" x="50" y="27" width="10" height="10" rx="2.5" opacity=".12"/>
+              <rect x="50" y="27" width="10" height="10" rx="2.5"/>
+              <path d="M14 32h6M44 32h6"/>
+              <!-- AI chip = the block that thinks -->
+              <path d="M26 20v-5M32 20v-5M38 20v-5" opacity=".6"/>
+              <path d="M26 44v5M32 44v5M38 44v5" opacity=".6"/>
+              <rect class="ico-fill" x="20" y="20" width="24" height="24" rx="5" opacity=".14"/>
+              <rect x="20" y="20" width="24" height="24" rx="5"/>
+              <!-- AI spark -->
+              <path class="ico-fill" d="M32 24l2 6 6 2-6 2-2 6-2-6-6-2 6-2Z" opacity=".22"/>
+              <path d="M32 24l2 6 6 2-6 2-2 6-2-6-6-2 6-2Z"/>
+              <!-- accent sparks -->
+              <path d="M55 12l1.4 3.6 3.6 1.4-3.6 1.4L55 22l-1.4-3.6-3.6-1.4 3.6-1.4Z" fill="currentColor" stroke="none"/>
+              <circle cx="9" cy="50" r="1.5" fill="currentColor" stroke="none" opacity=".6"/>
             </svg>
           </div>
           <h3>Anchor and Optimize with AI</h3>
@@ -199,11 +226,28 @@
             <span class="blockchain-service-status">Production</span>
           </div>
           <div class="blockchain-service-icon blockchain-service-icon--apps" aria-hidden="true">
-            <svg viewBox="0 0 48 48">
-              <rect x="6" y="7" width="15" height="15" rx="3"/>
-              <rect x="27" y="7" width="15" height="15" rx="3"/>
-              <rect x="6" y="28" width="15" height="13" rx="3"/>
-              <path d="M29 35h11M34.5 29.5v11"/>
+            <svg viewBox="0 0 64 64" fill="none">
+              <!-- live app window -->
+              <rect class="ico-fill" x="13" y="6" width="38" height="30" rx="6" opacity=".14"/>
+              <rect x="13" y="6" width="38" height="30" rx="6"/>
+              <path d="M13 14h38" opacity=".6"/>
+              <circle cx="18.5" cy="10" r="1.3" fill="currentColor" stroke="none"/>
+              <circle cx="23" cy="10" r="1.3" fill="currentColor" stroke="none"/>
+              <!-- AI spark on screen -->
+              <path class="ico-fill" d="M32 17l2.2 6.3 6.3 2.2-6.3 2.2L32 34l-2.2-6.3-6.3-2.2 6.3-2.2Z" opacity=".22"/>
+              <path d="M32 17l2.2 6.3 6.3 2.2-6.3 2.2L32 34l-2.2-6.3-6.3-2.2 6.3-2.2Z"/>
+              <!-- anchored on-chain -->
+              <path d="M32 36v8" opacity=".7"/>
+              <rect class="ico-fill" x="10" y="44" width="13" height="13" rx="3" opacity=".12"/>
+              <rect x="10" y="44" width="13" height="13" rx="3"/>
+              <rect class="ico-fill" x="25.5" y="44" width="13" height="13" rx="3" opacity=".12"/>
+              <rect x="25.5" y="44" width="13" height="13" rx="3"/>
+              <rect class="ico-fill" x="41" y="44" width="13" height="13" rx="3" opacity=".12"/>
+              <rect x="41" y="44" width="13" height="13" rx="3"/>
+              <path d="M23 50.5h2.5M38.5 50.5H41"/>
+              <!-- accent sparks -->
+              <path d="M57 31l1.3 3.4 3.4 1.3-3.4 1.3L57 41l-1.3-3.4-3.4-1.3 3.4-1.3Z" fill="currentColor" stroke="none"/>
+              <circle cx="7.5" cy="12" r="1.5" fill="currentColor" stroke="none" opacity=".6"/>
             </svg>
           </div>
           <h3>Deploy Real Blockchain and AI Applications</h3>
@@ -259,7 +303,7 @@
             <p>Deploy results seamlessly through our <strong>API Platform</strong>, intuitive dashboards, or integration into your existing systems.</p>
           </div>
         </div>
-        <a href="mailto:enquiries@onechain.hk" class="ai-cta">
+        <a href="contact.html" class="ai-cta">
           Talk to our expert team
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M6 3l5 5-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </a>
@@ -277,7 +321,7 @@
     </div>
     <div class="container">
       <div class="glass-header reveal">
-        <h2>ONECHAIN FOR EVERY INDUSTRY</h2>
+        <h2>ONECHAIN FOR <span class="glass-header-hl">EVERY INDUSTRY</span></h2>
         <p>OneChain’s blockchain and AI solutions are designed to adapt, innovate, and deliver <span class="glass-header-line">impact across diverse industries, empowering businesses to achieve trust, transparency, and scalability.</span></p>
       </div>
       <div class="glass-stage" id="glassStage">

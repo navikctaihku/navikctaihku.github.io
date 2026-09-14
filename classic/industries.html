@@ -7,12 +7,13 @@
   <meta name="description" content="OneChain solutions by industry: ESG & sustainability, credentials & identity, education, and FMCG — plus lead use cases with Watsons and HK Timberbank.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="chrome.css?v=202609081530">
-  <script src="site-chrome.js?v=202609081725" defer></script>
+  <link rel="stylesheet" href="chrome.css?v=202609141432">
+  <script src="site-chrome.js?v=202609141432" defer></script>
   <style>
     :root {
       --oc-primary: #14a4bc; --oc-primary-deep: #0d7d91; --oc-primary-light: #3cbdd2;
       --oc-esg: #007771; --oc-cert: #016282; --oc-muted: #64748B; --oc-dark: #0A1628;
+      --oc-text: #545454;
       --font: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
       --font-cjk: 'Noto Sans TC', sans-serif;
       --mono: 'JetBrains Mono', ui-monospace, monospace;
@@ -56,7 +57,7 @@
     .lead-section { padding: 96px 0 48px; background: linear-gradient(180deg, #f4f9fc 0%, #fff 40%, #fff 100%); }
     .lead-intro { text-align: center; max-width: 680px; margin: 0 auto 56px; }
     .lead-intro .eyebrow { color: var(--oc-primary); font-size: 12px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 12px; }
-    .lead-intro h2 { font-size: clamp(28px, 4vw, 40px); font-weight: 700; letter-spacing: -0.02em; color: var(--oc-dark); margin-bottom: 14px; }
+    .lead-intro h2 { font-size: clamp(28px, 4vw, 40px); font-weight: 700; letter-spacing: -0.02em; color: #64748B; margin-bottom: 14px; }
     .lead-intro p { font-size: 17px; color: var(--oc-muted); }
     .lead-section .lead-intro {
       max-width: 1100px;
@@ -88,7 +89,7 @@
       padding: 28px 36px 24px 40px; border-bottom: 1px solid rgba(10,22,40,0.06);
       background: linear-gradient(90deg, rgba(0,119,113,0.06), rgba(20,164,188,0.05), rgba(1,98,130,0.06));
     }
-    .story-head h3 { font-size: 22px; font-weight: 700; color: var(--oc-dark); letter-spacing: -0.01em; }
+    .story-head h3 { font-size: 22px; font-weight: 700; color: #545454; letter-spacing: -0.01em; }
     .story-head p { font-size: 14px; color: var(--oc-muted); max-width: 420px; }
     .story-badges { display: flex; gap: 8px; flex-wrap: wrap; }
     .story-badge {
@@ -105,12 +106,12 @@
     }
     .lane-label img { height: 28px; width: auto; }
     .lane-chip {
-      font-size: 12px; font-weight: 700; letter-spacing: 1.2px; text-transform: uppercase;
+      font-size: 12px; font-weight: 700; letter-spacing: 0.02em;
       padding: 3px 9px; border-radius: 999px;
     }
     .lane--watsons .lane-chip { background: rgba(0,119,113,0.12); color: var(--oc-esg); }
     .lane--timber .lane-chip { background: rgba(1,98,130,0.12); color: var(--oc-cert); }
-    .lane h4 { font-size: 20px; font-weight: 700; color: var(--oc-dark); margin-bottom: 10px; letter-spacing: -0.01em; }
+    .lane h4 { font-size: 20px; font-weight: 700; color: #545454; margin-bottom: 10px; letter-spacing: -0.01em; }
     .lane > p { font-size: 15px; color: var(--oc-muted); margin-bottom: 22px; }
 
     /* Visual flow steps */
@@ -135,7 +136,7 @@
     .lane--watsons .flow-ico { background: rgba(0,119,113,0.1); color: var(--oc-esg); }
     .lane--timber .flow-ico { background: rgba(1,98,130,0.1); color: var(--oc-cert); }
     .flow-ico svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
-    .flow-step b { display: block; font-size: 12px; font-weight: 700; color: var(--oc-dark); }
+    .flow-step b { display: block; font-size: 12px; font-weight: 700; color: #545454; }
     .flow-step span { display: block; font-size: 12px; color: var(--oc-muted); margin-top: 2px; }
 
     .lane-points { list-style: none; margin-bottom: 20px; }
@@ -236,7 +237,7 @@
     .ind-jump a {
       font-size: var(--oc-btn-font-size, 14px);
       font-weight: var(--oc-btn-font-weight, 600);
-      color: var(--oc-dark);
+      color: #64748B;
       padding: var(--oc-btn-pad-y, 8px) var(--oc-btn-pad-x, 16px);
       border-radius: var(--radius-btn, 8px);
       background: rgba(255,255,255,0.9);
@@ -281,7 +282,7 @@
     }
     .ind-icon {
       width: 64px; height: 64px;
-      color: var(--ind-accent, var(--oc-primary-deep));
+      color: #14a4bc;
       flex-shrink: 0;
     }
     .ind-icon svg { width: 100%; height: 100%; display: block; }
@@ -302,18 +303,19 @@
 
     .ind-chip {
       display: inline-flex; align-self: flex-start;
-      font-size: 11px; font-weight: 700; letter-spacing: 1.2px; text-transform: uppercase;
+      font-size: 12px; font-weight: 700; letter-spacing: 0.02em; text-transform: none;
       padding: 4px 10px; border-radius: 999px; margin-bottom: 10px;
       background: rgba(20,164,188,0.1);
-      color: var(--ind-accent, var(--oc-primary-deep));
+      color: #64748B;
     }
-    .ind--esg .ind-chip { background: rgba(0,119,113,0.1); }
-    .ind--cert .ind-chip { background: rgba(1,98,130,0.1); }
-    .ind--edu .ind-chip { background: rgba(13,125,145,0.1); }
-    .ind--fmcg .ind-chip { background: rgba(10,110,122,0.1); }
+    .ind--esg .ind-chip { background: rgba(0,119,113,0.1); color: #64748B; }
+    .ind--cert .ind-chip { background: rgba(1,98,130,0.1); color: #64748B; }
+    .ind--edu .ind-chip { background: rgba(13,125,145,0.1); color: #64748B; }
+    .ind--fmcg .ind-chip { background: rgba(10,110,122,0.1); color: #64748B; }
     .ind-panel h3 {
       font-size: clamp(20px, 2.2vw, 24px); font-weight: 700;
-      color: var(--oc-dark); letter-spacing: -0.02em; margin-bottom: 8px; line-height: 1.25;
+      color: #64748B; letter-spacing: -0.02em; margin-bottom: 8px; line-height: 1.25;
+      text-transform: none;
     }
     .ind-panel > p {
       font-size: 15px; color: var(--oc-muted); line-height: 1.55;
@@ -324,7 +326,7 @@
       margin-top: auto; margin-bottom: 18px; list-style: none;
     }
     .ind-tags li {
-      font-size: 12px; font-weight: 600; color: #475569;
+      font-size: 12px; font-weight: 600; color: #64748B;
       padding: 6px 10px; border-radius: 8px;
       background: rgba(10,22,40,0.035);
       border: 1px solid rgba(10,22,40,0.06);
@@ -356,6 +358,38 @@
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <meta name="theme-color" content="#14a4bc">
   <link rel="stylesheet" href="site-base.css?v=202607280950">
+  <style>
+    /* Titles & labels: clear grey only — never near-black */
+    .lead-intro h2,
+    .story-head h3,
+    .lane h4,
+    .ind-panel h3,
+    .flow-step b,
+    .ind-jump a,
+    .ind-tags li,
+    .ind-chip,
+    .lane-chip {
+      color: #64748B !important;
+      text-transform: none !important;
+    }
+    .ind-panel h3 {
+      color: #64748B !important;
+      font-weight: 700;
+    }
+    .ind-chip,
+    .lane-chip {
+      letter-spacing: 0.02em !important;
+    }
+    .ind--esg .ind-chip,
+    .ind--cert .ind-chip,
+    .ind--edu .ind-chip,
+    .ind--fmcg .ind-chip {
+      color: #64748B !important;
+    }
+    .ind-panel .lane-cta {
+      color: var(--ind-accent, var(--oc-primary-deep)) !important;
+    }
+  </style>
 </head>
 <body>
 
@@ -364,7 +398,7 @@
   <header class="sol-hero">
     <div class="container">
       <div class="sol-eyebrow">By Industries · Lead use cases</div>
-      <h1>One chain. <em>Four industries.</em></h1>
+      <h1>One Chain. <em>Four Industries.</em></h1>
       <p>Watsons recycling credits and timber provenance —<br>the same permissioned trust layer, written for ordinary readers, proven in production.</p>
     </div>
   </header>
@@ -373,14 +407,14 @@
     <div class="container">
       <div class="lead-intro reveal">
         <div class="eyebrow">Lead use cases</div>
-        <h2>Clear problems. Real partners. One section.</h2>
+        <h2>Clear Problems. Real Partners. One Section.</h2>
         <p>Retail bottles and timber lots look different on the surface — underneath, both become verifiable records on OneChain.</p>
       </div>
 
       <div class="story-rail reveal">
         <div class="story-head">
           <div>
-            <h3>From collection &amp; custody → on-chain proof</h3>
+            <h3>From Collection &amp; Custody → On-Chain Proof</h3>
             <p>Two industries, one pattern: capture the event, seal it on a permissioned ledger, prove it to anyone who needs to check.</p>
           </div>
           <div class="story-badges">
@@ -396,7 +430,7 @@
               <img src="partners/watsons.svg" alt="Watsons" width="120" height="28" />
               <span class="lane-chip">ESGLedger</span>
             </div>
-            <h4>Reverse-vending plastic credits</h4>
+            <h4>Reverse-Vending Plastic Credits</h4>
             <p>Every bottle returned at Watsons reverse-vending machines becomes an on-chain plastic credit — with geo-spatial coverage maps regulators can audit in seconds.</p>
 
             <div class="flow" aria-label="Watsons flow">
@@ -427,7 +461,7 @@
               <img src="partners/hk-timberbank.svg" alt="HK Timberbank" width="150" height="28" />
               <span class="lane-chip">Products API</span>
             </div>
-            <h4>Timber chain-of-custody</h4>
+            <h4>Timber Chain-of-Custody</h4>
             <p>HK Timberbank tracks timber from source to sale — each lot registered with provenance, transaction IDs, and custody records anyone in the chain can verify.</p>
 
             <div class="flow" aria-label="Timber flow">
@@ -471,7 +505,7 @@
     <div class="container">
       <div class="lead-intro reveal">
         <div class="eyebrow">HK Timberbank</div>
-        <h2 id="timberbank-heading">Provenance you can prove — from forest to sale.</h2>
+        <h2 id="timberbank-heading">Provenance You Can Prove — From Forest to Sale.</h2>
         <p>Hear how HK Timberbank uses OneChain for timber chain-of-custody and data traceability — each lot registered with records anyone in the chain can verify.</p>
       </div>
       <div class="timber-video-frame reveal">
@@ -492,7 +526,7 @@
     <div class="container">
       <div class="lead-intro reveal">
         <div class="eyebrow">By industries</div>
-        <h2>One trust layer, four industries.</h2>
+        <h2>One Trust Layer, Four Industries.</h2>
         <p>Capture → seal on-chain → prove — the same pattern, applied to each industry’s real problem.</p>
       </div>
 
@@ -512,7 +546,7 @@
             <div class="ind-flow" aria-hidden="true"><span>Collect</span><i>→</i><span>Mint</span><i>→</i><span>Prove</span></div>
           </div>
           <span class="ind-chip">ESG &amp; Sustainability</span>
-          <h3>Claims regulators can audit</h3>
+          <h3>Claims Regulators Can Audit</h3>
           <p>Every credit and retirement anchored on-chain — proof instead of spreadsheets.</p>
           <ul class="ind-tags">
             <li>Plastic credits</li>
@@ -530,7 +564,7 @@
             <div class="ind-flow" aria-hidden="true"><span>Issue</span><i>→</i><span>Hold</span><i>→</i><span>Verify</span></div>
           </div>
           <span class="ind-chip">Credentials &amp; Identity</span>
-          <h3>Certificates that verify themselves</h3>
+          <h3>Certificates That Verify Themselves</h3>
           <p>QR scan in seconds. Tamper-proof by design — no calls, no forgeries.</p>
           <ul class="ind-tags">
             <li>Instant QR verify</li>
@@ -548,7 +582,7 @@
             <div class="ind-flow" aria-hidden="true"><span>Batch</span><i>→</i><span>Issue</span><i>→</i><span>Share</span></div>
           </div>
           <span class="ind-chip">Education</span>
-          <h3>Diplomas employers can trust</h3>
+          <h3>Diplomas Employers Can Trust</h3>
           <p>Bulk issue degrees and transcripts. One scan confirms authenticity anywhere.</p>
           <ul class="ind-tags">
             <li>CSV batch issue</li>
@@ -566,7 +600,7 @@
             <div class="ind-flow" aria-hidden="true"><span>Source</span><i>→</i><span>Shelf</span><i>→</i><span>Scan</span></div>
           </div>
           <span class="ind-chip">FMCG</span>
-          <h3>Provenance shoppers can check</h3>
+          <h3>Provenance Shoppers Can Check</h3>
           <p>Batch trails and recycling events on one ledger — from source to shelf.</p>
           <ul class="ind-tags">
             <li>On-chain batches</li>

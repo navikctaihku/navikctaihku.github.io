@@ -428,8 +428,9 @@ footer.footer {
 .sc-fcol h5,
 .site-footer-col h4,
 .footer-col h4,
-.footer-col h5 {
-  color: var(--oc-footer-muted);
+.footer-col h5,
+.sc-fcol h5 {
+  color: var(--oc-primary, #14a4bc);
 }
 
 .sc-fcol a,

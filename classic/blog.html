@@ -7,8 +7,8 @@
   <meta name="description" content="OneChain blog — product announcements, partner news, and deep dives on enterprise blockchain, verified credentials, and ESG traceability.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="chrome.css?v=202609081530">
-  <script src="site-chrome.js?v=202609081725" defer></script>
+  <link rel="stylesheet" href="chrome.css?v=202609141432">
+  <script src="site-chrome.js?v=202609141432" defer></script>
   <style>
     :root {
       --ink: #2f3a45;
@@ -220,6 +220,40 @@
       height: 22px;
       object-fit: contain;
     }
+
+    .blog-thumb--photo {
+      padding: 0;
+      aspect-ratio: 3 / 2;
+      background: #0a2a32;
+    }
+    .blog-thumb--photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .blog-thumb--photo::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, rgba(10,22,40,0) 55%, rgba(10,22,40,0.22) 100%);
+      pointer-events: none;
+    }
+    .blog-thumb--badge {
+      padding: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .blog-thumb--badge img {
+      width: 110px;
+      height: 110px;
+      object-fit: contain;
+      filter: drop-shadow(0 6px 16px rgba(0,0,0,0.25));
+    }
+    .blog-card--static { cursor: default; }
+    .blog-card--static .blog-card-title { display: block; }
+    .blog-excerpt--full { white-space: pre-line; }
   </style>
 </head>
 <body>
@@ -237,88 +271,128 @@
     <div class="container">
       <div class="blog-filters" role="tablist" aria-label="Filter posts">
         <button type="button" class="is-active" data-filter="all">All</button>
-        <button type="button" data-filter="Product">Product</button>
-        <button type="button" data-filter="Partner News">Partner News</button>
-        <button type="button" data-filter="Education">Education</button>
-        <button type="button" data-filter="Security">Security</button>
+        <button type="button" data-filter="Media & News">Media &amp; News</button>
       </div>
 
       <div class="blog-grid">
-        <a href="api-platform.html" class="blog-card" data-tag="Product">
-          <div class="blog-thumb blog-thumb--api">
-            <span class="blog-thumb-brand">OneChain</span>
-            <p class="blog-thumb-title">API Platform launches with free developer tier</p>
+        <article class="blog-card blog-card--static" data-tag="Media & News">
+          <div class="blog-thumb blog-thumb--photo">
+            <img src="images/media-news/esg-1.jpg" alt="Anne Yeung presenting ESGLedger at a Cyberport CSDI pilot event" loading="lazy">
           </div>
           <div class="blog-body">
-            <span class="blog-tag">Product</span>
-            <h3 class="blog-card-title">
-              API Platform launches with free developer tier
-              <svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M3 11L11 3M11 3H5M11 3V9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
-            </h3>
-            <p class="blog-excerpt">OneChain opens its API Platform to developers — managed endpoints, API keys, and traffic analytics with zero gas fees. Build trusted apps on Hyperledger Fabric from day one.</p>
-            <div class="blog-meta">
-              <img src="onchain-logo.png" alt="" width="22" height="22" loading="lazy">
-              <time datetime="2026-07-01">Jul 01 2026</time>
-            </div>
-          </div>
-        </a>
+            <span class="blog-tag">Media &amp; News</span>
+            <h3 class="blog-card-title">ESGLedger piloted with Cyberport's Spatial Data Office</h3>
+            <p class="blog-excerpt blog-excerpt--full">With the support of Watsons Water, the Hong Kong Development Bureau &amp; Cyberport, OneChain introduced our flagship Greentech product — ESGLedger. This innovative solution enables ESG data traceability, a validated reporting system, and plastic credit tokenization, all aimed at building a greener circular economy.
 
-        <a href="esgledger.html" class="blog-card" data-tag="Partner News">
-          <div class="blog-thumb blog-thumb--partner">
-            <span class="blog-thumb-brand">OneChain × Watsons</span>
-            <p class="blog-thumb-title">Watsons joins reverse-vending plastic credit pilot</p>
-          </div>
-          <div class="blog-body">
-            <span class="blog-tag">Partner News</span>
-            <h3 class="blog-card-title">
-              Watsons joins reverse-vending plastic credit pilot
-              <svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M3 11L11 3M11 3H5M11 3V9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
-            </h3>
-            <p class="blog-excerpt">ESGLedger now traces plastic credits from Watsons reverse-vending machines across Hong Kong — every collection event anchored on-chain with geo-spatial reporting for regulators.</p>
+We also had the opportunity to exchange ideas and explore collaborations with CSDI Lab and the Lands Department. This pilot marks a significant milestone as the first PoC of its kind in Hong Kong, and we're eager to demonstrate its potential to drive sustainability innovation and foster tangible impact.</p>
             <div class="blog-meta">
               <img src="onchain-logo.png" alt="" width="22" height="22" loading="lazy">
-              <time datetime="2026-06-18">Jun 18 2026</time>
+              <time datetime="2026-06-23">Jun 23 2026</time>
             </div>
           </div>
-        </a>
+        </article>
 
-        <a href="certledger.html" class="blog-card" data-tag="Education">
-          <div class="blog-thumb blog-thumb--cert">
-            <span class="blog-thumb-brand">OneChain</span>
-            <p class="blog-thumb-title">PolyU pilots instant QR credential verification</p>
+        <article class="blog-card blog-card--static" data-tag="Media & News">
+          <div class="blog-thumb blog-thumb--photo">
+            <img src="images/media-news/takungpao-preview.jpg" alt="Full-page OneChain feature in Ta Kung Pao newspaper" loading="lazy">
           </div>
           <div class="blog-body">
-            <span class="blog-tag">Education</span>
-            <h3 class="blog-card-title">
-              PolyU pilots instant QR credential verification
-              <svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M3 11L11 3M11 3H5M11 3V9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
-            </h3>
-            <p class="blog-excerpt">CertLedger enables PolyU to issue tamper-proof academic credentials with instant QR verification — no wallet, no crypto, and full auditability for employers and institutions.</p>
-            <div class="blog-meta">
-              <img src="onchain-logo.png" alt="" width="22" height="22" loading="lazy">
-              <time datetime="2026-05-22">May 22 2026</time>
-            </div>
-          </div>
-        </a>
+            <span class="blog-tag">Media &amp; News</span>
+            <h3 class="blog-card-title">Full-page feature in Ta Kung Pao (大公報)</h3>
+            <p class="blog-excerpt blog-excerpt--full">This media interview was perfectly timed — completed on the day Founder &amp; CEO Anne Yeung departed for the States in early November, and released on the day she returned a month later. A sincere thanks to Cyberport for connecting her with Ta Kung Pao. Receiving a full-page feature, especially focusing on blockchain technology itself rather than fintech or AI, is incredibly valuable in today's landscape.
 
-        <a href="about.html" class="blog-card" data-tag="Security">
-          <div class="blog-thumb blog-thumb--security">
-            <span class="blog-thumb-brand">OneChain</span>
-            <p class="blog-thumb-title">OneChain achieves ISO 27001 certification</p>
-          </div>
-          <div class="blog-body">
-            <span class="blog-tag">Security</span>
-            <h3 class="blog-card-title">
-              OneChain achieves ISO 27001 certification
-              <svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M3 11L11 3M11 3H5M11 3V9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
-            </h3>
-            <p class="blog-excerpt">ISO 27001 certification reflects our commitment to the highest standards of information security — protecting enterprise data across ESGLedger, CertLedger, and the OneChain network.</p>
+In the interview, Anne shared how blockchain's value goes far beyond speculation, offering real enterprise solutions for data traceability and credential provenance. Particularly with increasing government regulation and support, our technology is being applied more and more in ESG compliance.</p>
             <div class="blog-meta">
               <img src="onchain-logo.png" alt="" width="22" height="22" loading="lazy">
-              <time datetime="2026-05-23">May 23 2026</time>
+              <time datetime="2025-12-08">Dec 08 2025</time>
             </div>
           </div>
-        </a>
+        </article>
+
+        <article class="blog-card blog-card--static" data-tag="Media & News">
+          <div class="blog-thumb blog-thumb--photo">
+            <img src="images/media-news/utipping-collab.jpeg" alt="Anne Yeung shaking hands with UTipping's partner in Dubai" loading="lazy">
+          </div>
+          <div class="blog-body">
+            <span class="blog-tag">Media &amp; News</span>
+            <h3 class="blog-card-title">MOU signed with UTipping for GCC expansion</h3>
+            <p class="blog-excerpt blog-excerpt--full">A major highlight of our second business trip to Dubai was finalizing the MOU with UTipping and Ahmad Al Mutawa Trading EST from Kuwait for a strategic partnership. As OneChain's exclusive partner in Kuwait, they will lead the expansion of our blockchain credential services in the region, while integrating our scalable blockchain network into their UTipping app as a key client.
+
+This milestone marks OneChain's entry into the GCC region, focusing on practical solutions for product authenticity and credentials traceability — services that are globally reliable, scalable, and impactful beyond regional boundaries.</p>
+            <div class="blog-meta">
+              <img src="onchain-logo.png" alt="" width="22" height="22" loading="lazy">
+              <time datetime="2025-06-02">Jun 02 2025</time>
+            </div>
+          </div>
+        </article>
+
+        <article class="blog-card blog-card--static" data-tag="Media & News">
+          <div class="blog-thumb blog-thumb--photo">
+            <img src="images/media-news/dubai-cybersecurity.jpeg" alt="Anne Yeung meeting Dubai Electronic Security Center officials" loading="lazy">
+          </div>
+          <div class="blog-body">
+            <span class="blog-tag">Media &amp; News</span>
+            <h3 class="blog-card-title">Meeting with Dubai Electronic Security Center</h3>
+            <p class="blog-excerpt blog-excerpt--full">A highlight of OneChain's second business trip to Dubai was visiting the Dubai Electronic Security Center (DESC) at Emirates Towers, where we presented our blockchain and zero-knowledge proof (ZKP) solution to Mr. Abdullah Al Suwaidi and his team.
+
+The meeting covered how ZKP can strengthen encrypted communications, alongside future challenges around quantum computing, with our research team sharing R&amp;D-backed insights on how our technology addresses these threats. We look forward to future collaboration with DESC through a PoC project, strengthening the bridge between Dubai and Hong Kong in cybersecurity.</p>
+            <div class="blog-meta">
+              <img src="onchain-logo.png" alt="" width="22" height="22" loading="lazy">
+              <time datetime="2025-05-26">May 26 2025</time>
+            </div>
+          </div>
+        </article>
+
+        <article class="blog-card blog-card--static" data-tag="Media & News">
+          <div class="blog-thumb blog-thumb--photo">
+            <img src="images/media-news/halal-cert.jpg" alt="GBA Halal Certification Center holding a blockchain-issued Halal certificate" loading="lazy">
+          </div>
+          <div class="blog-body">
+            <span class="blog-tag">Media &amp; News</span>
+            <h3 class="blog-card-title">Powering GBA Halal Certification Center on-chain</h3>
+            <p class="blog-excerpt blog-excerpt--full">The Halal industry in Hong Kong is growing rapidly, and we're excited to share how OneChain is contributing to this important movement. Through CertLedger, we're empowering trusted organizations like the GBA Halal Certification Center (GHCC) to issue blockchain-based certificates — offering immutable proof of authenticity and validity.
+
+GHCC plays a critical role in ensuring all processes adhere to Shariah principles and Halal standards, building trust and credibility in the Hong Kong Halal industry. Proud to be part of an effort driving transparency, innovation, and growth in this dynamic and globally important sector.</p>
+            <div class="blog-meta">
+              <img src="onchain-logo.png" alt="" width="22" height="22" loading="lazy">
+              <time datetime="2025-02-20">Feb 20 2025</time>
+            </div>
+          </div>
+        </article>
+
+        <article class="blog-card blog-card--static" data-tag="Media & News">
+          <div class="blog-thumb blog-thumb--photo">
+            <img src="images/media-news/job-matriz.jpg" alt="OneChain and JobMatriz founders holding laptops with their logos" loading="lazy">
+          </div>
+          <div class="blog-body">
+            <span class="blog-tag">Media &amp; News</span>
+            <h3 class="blog-card-title">Partnering with JobMatriz on resume verification</h3>
+            <p class="blog-excerpt blog-excerpt--full">Starting 2025 with exciting news — on the first working day of the year, we announced a strategic partnership between OneChain and JobMatriz. Together, we're leveraging blockchain technology to revolutionize resume verification in the AI era.
+
+By integrating CertLedger, our blockchain-powered certificate verification system, into the JobMatriz platform, we're tackling resume fraud, enhancing trust between job seekers and employers, and streamlining the hiring process — with tamper-proof qualifications, faster background checks, and blockchain-backed resumes that let job seekers confidently showcase their skills.</p>
+            <div class="blog-meta">
+              <img src="onchain-logo.png" alt="" width="22" height="22" loading="lazy">
+              <time datetime="2025-01-02">Jan 02 2025</time>
+            </div>
+          </div>
+        </article>
+
+        <article class="blog-card blog-card--static" data-tag="Media & News">
+          <div class="blog-thumb blog-thumb--photo">
+            <img src="images/media-news/ict-fintech-award.jpg" alt="Anne Yeung receiving the Hong Kong ICT Awards FinTech Merit Award" loading="lazy">
+          </div>
+          <div class="blog-body">
+            <span class="blog-tag">Media &amp; News</span>
+            <h3 class="blog-card-title">CertLedger wins Merit Award at Hong Kong ICT Awards</h3>
+            <p class="blog-excerpt blog-excerpt--full">We're thrilled to share that CertLedger was recognized at the prestigious Hong Kong ICT Awards. Competing in the FinTech category against over 100 large financial institutions, FinTech firms, AI companies, and startups, it's an incredible honor for our product to be shortlisted as one of the top 10 finalists and to receive the Merit Award.
+
+This recognition highlights the potential of our blockchain-based credential management solution and affirms our commitment to driving innovation and delivering impactful technology solutions.</p>
+            <div class="blog-meta">
+              <img src="onchain-logo.png" alt="" width="22" height="22" loading="lazy">
+              <time datetime="2024-11-27">Nov 27 2024</time>
+            </div>
+          </div>
+        </article>
       </div>
 
     </div>

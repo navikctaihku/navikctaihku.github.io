@@ -775,10 +775,17 @@
       color: var(--oc-primary-deep);
     }
     .blockchain-service-icon svg {
-      width: clamp(88px, 16vw, 128px);
-      height: clamp(88px, 16vw, 128px);
-      fill: none; stroke: currentColor; stroke-width: 1.2;
-      stroke-linecap: round; stroke-linejoin: round;
+      width: clamp(96px, 17vw, 136px);
+      height: clamp(96px, 17vw, 136px);
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 1.65;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+    .blockchain-service-icon .ico-fill {
+      fill: currentColor;
+      stroke: none;
     }
     .blockchain-service-icon--anchor,
     .blockchain-service-icon--apps {
@@ -1025,17 +1032,23 @@
       object-position: center;
       display: block;
       background: #0a2f2d;
+      /* Scale past container to crop encoded black letterbox bars */
+      transform: scale(1.12);
+      transform-origin: center center;
     }
     .product-row-visual .esg-image-section {
       position: absolute; z-index: 1; inset: 0;
       width: 100%; height: 100%; max-width: none; margin-top: 0;
       min-height: 0; border-radius: 0; box-shadow: none;
+      overflow: hidden;
     }
     .product-row-visual .esg-image-section img,
     .product-row-visual .esg-image-section video {
       width: 100%; height: 100%;
       min-height: 0; border-radius: 0;
       object-fit: cover; display: block;
+      transform: scale(1.12);
+      transform-origin: center center;
     }
     /* Logo is dark-on-light and needs a legible plate over the video, not a
        dark scrim (which would hide it — this wordmark has no light variant). */
@@ -1120,7 +1133,9 @@
       object-fit: cover;
       object-position: center;
       display: block;
-      transform: none;
+      /* Scale past container to crop encoded black letterbox bars */
+      transform: scale(1.12);
+      transform-origin: center center;
     }
     .product-row-visual .cert-hero-section {
       position: absolute;
@@ -1139,6 +1154,8 @@
       object-fit: cover;
       object-position: center;
       display: block;
+      transform: scale(1.12);
+      transform-origin: center center;
     }
     .product-row[data-product="cert"] .product-row-logo--cert {
       position: absolute;
@@ -1147,15 +1164,28 @@
       z-index: 2;
       margin: 0;
       width: auto;
-      max-width: 168px;
-      height: 36px;
+      max-width: 180px;
+      height: 40px;
       object-fit: contain;
-      background: rgba(255, 255, 255, 0.96);
+      background: rgba(10, 22, 40, 0.72);
       padding: 10px 14px;
       border-radius: var(--radius-btn);
-      box-shadow: 0 6px 18px rgba(10, 22, 40, 0.16);
+      box-shadow: 0 6px 18px rgba(10, 22, 40, 0.28);
       -webkit-backdrop-filter: blur(6px);
       backdrop-filter: blur(6px);
+    }
+    .product-row[data-product="wills"] .product-row-logo--wills {
+      position: relative;
+      z-index: 2;
+      max-width: 168px;
+      height: 36px;
+      margin: 0 0 12px;
+      padding: 6px 10px;
+      object-fit: contain;
+      background: #fff;
+      border-radius: var(--radius-btn);
+      border: 1px solid rgba(10, 22, 40, 0.08);
+      box-shadow: 0 4px 14px rgba(10, 22, 40, 0.06);
     }
     .product-video-sound {
       position: absolute;
@@ -1269,6 +1299,25 @@
       border-radius: calc(var(--radius-panel) - 2px);
       margin-bottom: 18px;
     }
+    .product-row-badge--logo {
+      padding: 0;
+      letter-spacing: 0;
+      text-transform: none;
+      background: transparent;
+      border: none;
+      box-shadow: none;
+    }
+    .product-row-badge--logo img {
+      display: block;
+      width: auto;
+      height: 28px;
+      max-width: 168px;
+      object-fit: contain;
+    }
+    .product-row[data-product="wills"] .product-row-badge--logo img {
+      height: 32px;
+      max-width: 190px;
+    }
     .product-row-tag {
       display: inline-flex; align-items: center; gap: 6px;
       font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.6px;
@@ -1280,6 +1329,15 @@
     }
     .product-row[data-product="cert"] .product-row-badge { background: var(--cert-primary-glow); color: var(--cert-primary); }
     .product-row[data-product="wills"] .product-row-badge { background: var(--wills-primary-glow); color: var(--wills-primary); }
+    .product-row[data-product="esg"] .product-row-badge--logo,
+    .product-row[data-product="cert"] .product-row-badge--logo,
+    .product-row[data-product="wills"] .product-row-badge--logo {
+      background: transparent;
+      border: none;
+      box-shadow: none;
+      padding: 0;
+      color: inherit;
+    }
     .product-row-copy h3 {
       font-size: clamp(24px, 2.6vw, 32px); font-weight: 700;
       letter-spacing: -0.02em; line-height: 1.15;
@@ -1783,7 +1841,7 @@
     .footer-brand p { font-size: 14px; color: var(--oc-footer-text, rgba(255,255,255,0.72)); margin-top: 16px; max-width: 260px; line-height: 1.6; }
     .footer-col h4 {
       font-size: 12px; font-weight: 600; text-transform: uppercase;
-      letter-spacing: 1.5px; color: var(--oc-footer-muted, rgba(255,255,255,0.48)); margin-bottom: 16px;
+      letter-spacing: 1.5px; color: var(--oc-primary, #14a4bc); margin-bottom: 16px;
     }
     .footer-col a {
       display: block; font-size: 14px; color: var(--oc-footer-text, rgba(255,255,255,0.72));
@@ -2632,6 +2690,9 @@
       text-transform: uppercase; letter-spacing: 2px; margin-bottom: 16px;
     }
     .glass-header h2 { margin-bottom: 16px; letter-spacing: 0.04em; }
+    .glass-header-hl {
+      color: var(--oc-primary);
+    }
     .glass-header p {
       color: var(--oc-muted); line-height: 1.65;
       max-width: 980px;

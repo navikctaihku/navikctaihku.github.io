@@ -91,9 +91,12 @@
     font-family: 'Inter', -apple-system, sans-serif;
   }
   .sc-footer-inner { max-width: 1280px; margin: 0 auto; padding: 64px 24px 32px; }
-  .sc-footer-grid { display: grid; grid-template-columns: 1.6fr repeat(5, 1fr); gap: 40px; margin-bottom: 56px; }
+  .sc-footer-grid { display: grid; grid-template-columns: 1.6fr repeat(5, 1fr); gap: 40px; margin-bottom: 56px; align-items: start; }
   .sc-footer-brand > img:not(.sc-footer-iso) {
+    display: block;
     height: 52px; width: auto;
+    /* Logo PNG has ~25% transparent top pad — pull up so artwork aligns with menu titles */
+    margin-top: -13px;
     /* Teal icon stays; CHAIN is reverse-white via onchain-logo-white.png */
     filter: none;
   }
@@ -142,7 +145,7 @@
   }
   .sc-fcol h5 {
     font: 600 11px/1 'Inter', sans-serif; letter-spacing: 1.6px; text-transform: uppercase;
-    color: var(--oc-footer-muted, rgba(255,255,255,0.48)); margin: 0 0 18px;
+    color: var(--oc-primary, #14a4bc); margin: 0 0 18px;
   }
   .sc-fcol ul { list-style: none; margin: 0; padding: 0; }
   .sc-fcol li { margin-bottom: 12px; }
