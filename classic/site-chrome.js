@@ -133,8 +133,8 @@
       '<p>OneChain® is a startup leveraging blockchain and AI to deliver end-to-end solutions, making credentials tamper-proof, transparent, and trackable from infrastructure to application.</p>' +
       '<img class="sc-footer-iso" src="images/recognition/iso-27001.svg?v=202609081725" alt="ISO 27001 Certified" width="72" height="72">' +
       '</div>' +
-      col('Products', [['Flagship Products', 'products.html'], ['ESGLedger', 'products.html#product-esg'], ['CertLedger', 'products.html#product-cert'], ['WillsLedger', 'products.html#product-wills'], ['API Platform', 'api-platform.html'], ['Infrastructure', 'infrastructure.html']]) +
-      col('Solutions', [['Watsons & Timber', 'industries.html#lead'], ['HK Timberbank', 'industries.html#timberbank'], ['ESG & Sustainability', 'industries.html#esg'], ['Credentials & Identity', 'industries.html#credentials'], ['Education', 'industries.html#education'], ['FMCG', 'industries.html#fmcg']]) +
+      col('Products', [['ESGLedger', 'products.html#product-esg'], ['CertLedger', 'products.html#product-cert'], ['WillsLedger', 'products.html#product-wills'], ['API Platform', 'api-platform.html'], ['API Docs', 'api-docs.html']]) +
+      col('Solutions', [['From Infrastructure to Applications', 'index.html#blockchain-services'], ['ESG & Sustainability', 'industries.html#esg'], ['Credentials & Identity', 'industries.html#credentials'], ['Education', 'industries.html#education'], ['FMCG', 'industries.html#fmcg']]) +
       col('About', [['About Us', 'about.html'], ['Vision & Mission', 'about.html#vision'], ['What We Solve', 'about.html#solving']]) +
       col('Resources', [['News & Articles', 'blog.html'], ['API Documentation', 'api-docs.html'], ['Blockchain Explorer', 'https://onechainscan.io/']]) +
       contactCol +
