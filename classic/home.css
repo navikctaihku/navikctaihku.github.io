@@ -385,12 +385,12 @@
       background: var(--oc-btn-bg);
       color: var(--oc-btn-text);
       border: none;
-      box-shadow: 0 8px 28px rgba(73, 149, 173, 0.35);
+      box-shadow: 0 8px 28px rgba(20, 164, 188, 0.35);
     }
     .hero-btn--primary:hover {
       transform: translateY(-1px);
       background: var(--oc-btn-bg-hover);
-      box-shadow: 0 12px 32px rgba(73, 149, 173, 0.4);
+      box-shadow: 0 12px 32px rgba(20, 164, 188, 0.4);
     }
     .hero-btn--ghost {
       background: transparent;
@@ -686,7 +686,7 @@
       background: var(--oc-btn-bg);
       border: none;
       border-radius: var(--radius-btn);
-      box-shadow: 0 8px 24px rgba(73, 149, 173, 0.28);
+      box-shadow: 0 8px 24px rgba(20, 164, 188, 0.28);
       transition: transform 180ms ease, background 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
       white-space: normal;
       line-height: 1.4;
@@ -701,7 +701,7 @@
       transform: translateY(-1px);
       background: var(--oc-btn-bg-hover);
       border-color: transparent;
-      box-shadow: 0 12px 28px rgba(73, 149, 173, 0.34);
+      box-shadow: 0 12px 28px rgba(20, 164, 188, 0.34);
     }
     .blockchain-services-cta svg,
     .blockchain-service-link svg {
@@ -2101,14 +2101,14 @@
       padding: var(--oc-btn-pad-y, 8px) var(--oc-btn-pad-x, 16px);
       min-height: 36px;
       border-radius: var(--radius-btn); cursor: pointer; border: none;
-      background: var(--oc-btn-bg, #4995ad);
-      box-shadow: 0 8px 24px rgba(73, 149, 173, 0.32);
+      background: var(--oc-btn-bg, #14a4bc);
+      box-shadow: 0 8px 24px rgba(20, 164, 188, 0.32);
       transition: transform 180ms ease, box-shadow 180ms ease, background 180ms ease;
     }
     .reclaim-cta:hover {
       transform: translateY(-1px);
-      box-shadow: 0 12px 32px rgba(73, 149, 173, 0.4);
-      background: var(--oc-btn-bg-hover, #3e849a);
+      box-shadow: 0 12px 32px rgba(20, 164, 188, 0.4);
+      background: var(--oc-btn-bg-hover, #0d7d91);
     }
     .reclaim-cta-outline {
       display: inline-flex; align-items: center; gap: var(--oc-btn-gap, 8px);
@@ -2117,7 +2117,7 @@
       padding: var(--oc-btn-pad-y, 8px) var(--oc-btn-pad-x, 16px);
       min-height: 36px;
       border-radius: var(--radius-btn); cursor: pointer;
-      background: #fff; border: 1px solid rgba(73, 149, 173, 0.35);
+      background: #fff; border: 1px solid rgba(20, 164, 188, 0.35);
       transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease, background-color 180ms ease, color 180ms ease;
     }
     .reclaim-cta-outline:hover {
@@ -2384,14 +2384,14 @@
       padding: var(--oc-btn-pad-y, 8px) var(--oc-btn-pad-x, 16px);
       min-height: 36px;
       border-radius: var(--radius-btn); border: none; cursor: pointer;
-      background: var(--oc-btn-bg, #4995ad);
-      box-shadow: 0 8px 24px rgba(73, 149, 173, 0.3);
+      background: var(--oc-btn-bg, #14a4bc);
+      box-shadow: 0 8px 24px rgba(20, 164, 188, 0.3);
       transition: transform 180ms ease, box-shadow 180ms ease, background 180ms ease;
     }
     .ai-cta:hover {
       transform: translateY(-1px);
-      background: var(--oc-btn-bg-hover, #3e849a);
-      box-shadow: 0 12px 32px rgba(73, 149, 173, 0.4);
+      background: var(--oc-btn-bg-hover, #0d7d91);
+      box-shadow: 0 12px 32px rgba(20, 164, 188, 0.4);
     }
 
     @media (max-width: 1024px) { .ai-cards { grid-template-columns: repeat(2, 1fr); } }

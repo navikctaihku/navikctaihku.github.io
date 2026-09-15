@@ -97,7 +97,7 @@ button,
   transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
 }
 
-/* Filled CTA — #4995ad (Discovery Our Solution reference)
+/* Filled CTA — same as Create free account (#14a4bc)
    (Product CTAs keep their own brand colours — ESG green / Cert teal / Wills blue) */
 .oc-btn,
 .oc-btn--secondary,
@@ -109,10 +109,10 @@ button,
 .reclaim-cta,
 .ai-cta,
 .fp-btn {
-  background: var(--oc-btn-bg, #4995ad);
+  background: var(--oc-btn-bg, #14a4bc);
   color: var(--oc-btn-text, #fff);
   border: none;
-  box-shadow: 0 8px 24px rgba(73, 149, 173, 0.28);
+  box-shadow: 0 8px 24px rgba(20, 164, 188, 0.28);
 }
 .oc-btn:hover,
 .oc-btn--secondary:hover,
@@ -124,10 +124,10 @@ button,
 .reclaim-cta:hover,
 .ai-cta:hover,
 .fp-btn:hover {
-  background: var(--oc-btn-bg-hover, #3e849a);
+  background: var(--oc-btn-bg-hover, #0d7d91);
   color: var(--oc-btn-text, #fff);
   transform: translateY(-1px);
-  box-shadow: 0 12px 28px rgba(73, 149, 173, 0.34);
+  box-shadow: 0 12px 28px rgba(20, 164, 188, 0.34);
 }
 
 /* Outline / ghost — same soft rectangle shape */
