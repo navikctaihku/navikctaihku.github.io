@@ -226,31 +226,17 @@
       overflow: hidden;
       background: var(--oc-surface-media);
     }
-    /* No top white wash — video keeps its own color; darken only lower for text */
+    /* Flat 50% dark overlay — sits on video, under title for contrast */
     .hero-media::after {
       content: '';
       position: absolute;
       inset: 0;
       z-index: 3;
-      background: linear-gradient(
-        180deg,
-        transparent 0%,
-        transparent 28%,
-        rgba(10, 22, 40, 0.18) 52%,
-        rgba(10, 22, 40, 0.42) 78%,
-        rgba(10, 22, 40, 0.55) 100%
-      );
+      background: rgba(10, 22, 40, 0.5);
       pointer-events: none;
     }
     .hero--revealed .hero-media::after {
-      background: linear-gradient(
-        180deg,
-        transparent 0%,
-        transparent 22%,
-        rgba(10, 22, 40, 0.2) 48%,
-        rgba(10, 22, 40, 0.45) 75%,
-        rgba(10, 22, 40, 0.58) 100%
-      );
+      background: rgba(10, 22, 40, 0.5);
     }
     .hero-bg,
     .hero-bg-video {
@@ -275,7 +261,7 @@
     .hero-overlay {
       text-align: center;
       padding: 40px 24px 72px;
-      max-width: 920px;
+      max-width: min(1100px, 96vw);
       width: 100%;
       margin: 0 auto;
     }
@@ -295,18 +281,21 @@
       height: auto;
       margin: 0 auto 18px;
       display: block;
-      filter: drop-shadow(0 4px 20px rgba(0, 0, 0, 0.4));
+      filter:
+        drop-shadow(0 0 10px rgba(255, 255, 255, 0.32))
+        drop-shadow(0 0 22px rgba(255, 255, 255, 0.14));
     }
     /* Representative slogan — light blue key line under logo */
     .hero-slogan {
       font-family: var(--font-display);
-      font-size: clamp(26px, 3.8vw, 42px);
+      font-size: clamp(16px, 2.65vw, 36px);
       font-weight: 700;
-      line-height: 1.15;
+      line-height: 1.2;
       letter-spacing: -0.02em;
       color: var(--oc-blue-light);
       margin-bottom: 18px;
       text-shadow: 0 2px 18px rgba(13, 125, 145, 0.35);
+      white-space: nowrap;
     }
     .hero-overlay .hero-slogan {
       color: var(--oc-blue-light);
@@ -862,6 +851,11 @@
     .blockchain-product-chip--wills:hover {
       border-color: rgba(20, 58, 83, 0.3); background: var(--wills-primary-glow);
     }
+    .blockchain-product-chip--art { color: var(--art-primary); }
+    .blockchain-product-chip--art strong { color: var(--art-primary); }
+    .blockchain-product-chip--art:hover {
+      border-color: rgba(208, 168, 128, 0.35); background: var(--art-primary-glow);
+    }
     .blockchain-services a:focus-visible {
       outline: 3px solid rgba(20,164,188,0.32); outline-offset: 3px;
     }
@@ -958,6 +952,10 @@
       background: linear-gradient(135deg, #ffffff 0%, var(--oc-surface-alt) 45%, var(--wills-secondary-soft) 100%);
       border-color: rgba(20, 58, 83, 0.16);
     }
+    .product-row[data-product="art"] {
+      background: linear-gradient(135deg, #ffffff 0%, var(--oc-surface-alt) 45%, var(--art-secondary-soft) 100%);
+      border-color: rgba(208, 168, 128, 0.16);
+    }
     .product-row-visual {
       position: relative;
       display: flex; flex-direction: column; align-items: flex-start; justify-content: center;
@@ -995,6 +993,11 @@
       background:
         radial-gradient(circle at 70% 30%, rgba(20, 58, 83, 0.16), transparent 50%),
         radial-gradient(circle at 20% 80%, rgba(222, 158, 59, 0.18), transparent 48%);
+    }
+    .product-row[data-product="art"] .product-row-visual::before {
+      background:
+        radial-gradient(circle at 70% 30%, rgba(208, 168, 128, 0.16), transparent 50%),
+        radial-gradient(circle at 20% 80%, rgba(201, 161, 90, 0.2), transparent 48%);
     }
     /* ESG video: full-bleed on the right — cover fills column, no letterbox bars */
     .product-row[data-product="esg"] .product-row-visual {
@@ -1320,19 +1323,35 @@
       padding: 5px 12px; border-radius: 8px; margin-bottom: 10px;
       background: var(--wills-secondary-glow); color: var(--wills-primary);
     }
+    .product-row[data-product="art"] .product-row-tag {
+      background: var(--art-secondary-glow); color: var(--art-primary);
+    }
     .product-row[data-product="esg"] .product-row-badge {
       background: var(--esg-primary-glow); color: var(--esg-primary);
     }
     .product-row[data-product="cert"] .product-row-badge { background: var(--cert-primary-glow); color: var(--cert-primary); }
     .product-row[data-product="wills"] .product-row-badge { background: var(--wills-primary-glow); color: var(--wills-primary); }
+    .product-row[data-product="art"] .product-row-badge:not(.product-row-badge--logo) {
+      background: var(--art-primary-glow); color: var(--art-primary);
+    }
     .product-row[data-product="esg"] .product-row-badge--logo,
     .product-row[data-product="cert"] .product-row-badge--logo,
-    .product-row[data-product="wills"] .product-row-badge--logo {
+    .product-row[data-product="wills"] .product-row-badge--logo,
+    .product-row[data-product="art"] .product-row-badge--logo {
       background: transparent !important;
       border: none !important;
       box-shadow: none !important;
       padding: 0 !important;
       color: inherit;
+      text-transform: none;
+      letter-spacing: 0;
+    }
+    .product-row[data-product="art"] .product-row-badge--logo {
+      margin-bottom: 14px;
+    }
+    .product-row[data-product="art"] .product-row-badge--logo img {
+      height: 36px;
+      max-width: 200px;
     }
     .product-row-copy h3 {
       font-size: clamp(24px, 2.6vw, 32px); font-weight: 700;
@@ -1359,6 +1378,7 @@
     .product-row[data-product="esg"] .pf-check { background: var(--esg-primary); }
     .product-row[data-product="cert"] .pf-check { background: var(--cert-primary); }
     .product-row[data-product="wills"] .pf-check { background: var(--wills-primary); }
+    .product-row[data-product="art"] .pf-check { background: var(--art-primary); }
     .product-row-cta {
       display: inline-flex; align-items: center; gap: var(--oc-btn-gap, 8px);
       font-size: var(--oc-btn-font-size, 14px); font-weight: var(--oc-btn-font-weight, 600);
@@ -1396,8 +1416,20 @@
       box-shadow: 0 12px 28px rgba(20, 58, 83, 0.34);
       transform: translateY(-1px);
     }
+    .product-row[data-product="art"] .product-row-cta {
+      background: var(--art-primary);
+      box-shadow: 0 8px 24px rgba(208, 168, 128, 0.28);
+    }
+    .product-row[data-product="art"] .product-row-cta:hover {
+      background: var(--art-primary-deep);
+      box-shadow: 0 12px 28px rgba(208, 168, 128, 0.34);
+      transform: translateY(-1px);
+    }
     .custom-mock-header--wills {
       background: linear-gradient(120deg, var(--wills-primary) 0%, var(--wills-primary-light) 70%, var(--wills-secondary) 140%);
+    }
+    .custom-mock-header--art {
+      background: linear-gradient(120deg, var(--art-primary) 0%, var(--art-primary-light) 70%, var(--art-secondary) 140%);
     }
 
     @media (max-width: 920px) {
@@ -2832,8 +2864,14 @@
     .quote-card { background: #fff; border: 1px solid var(--oc-border-strong); border-radius: var(--radius-panel); padding: 36px; position: relative; }
     .quote-card .q-mark { font-size: 52px; line-height: 1; font-weight: 700; color: var(--oc-primary-brand); opacity: .35; font-family: var(--font-brand), sans-serif; }
     .quote-card blockquote { font-size: 17px; line-height: 1.65; color: var(--oc-text); margin: 8px 0 24px; }
-    .quote-card .q-who { display: flex; align-items: center; gap: 12px; }
+    .quote-card .q-who { display: flex; align-items: center; gap: 14px; }
     .quote-card .q-avatar { width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 15px; color: #fff; }
-    .quote-card .q-name { font-size: 14px; font-weight: 700; }
+    .quote-card .q-logo {
+      height: 72px; width: auto; max-width: 160px;
+      object-fit: contain; object-position: left center;
+      flex: none; border-radius: 0; background: transparent;
+      border: none; padding: 0;
+    }
+    .quote-card .q-name { font-size: 14px; font-weight: 700; color: var(--oc-heading); }
     .quote-card .q-role { font-size: 13px; color: var(--oc-muted); }
     @media (max-width: 860px) { .quotes-grid { grid-template-columns: 1fr; } }

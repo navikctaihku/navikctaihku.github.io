@@ -81,6 +81,16 @@
   --wills-secondary-soft: #f5e6c8;
   --wills-glow: rgba(20, 58, 83, 0.12);
   --wills-secondary-glow: rgba(222, 158, 59, 0.16);
+  /* ArtLedger — brand tan from official wordmark (#d0a880) */
+  --art-tan: #d0a880;
+  --art-primary: #a67c52;
+  --art-primary-deep: #8a6640;
+  --art-primary-light: #d0a880;
+  --art-secondary: #d0a880;
+  --art-secondary-soft: #f6eee6;
+  --art-ink: #111111;
+  --art-glow: rgba(208, 168, 128, 0.18);
+  --art-secondary-glow: rgba(208, 168, 128, 0.24);
 
   /* ---------- 5 · TYPE ----------------------------------------------- */
   --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Noto Sans TC', sans-serif;
@@ -185,6 +195,8 @@
   --esg-alert-soft: var(--oc-alert-soft);  --esg-primary-glow: var(--esg-glow);
   --wills-supp: var(--oc-text); --wills-alert: var(--oc-alert);
   --wills-alert-soft: var(--oc-alert-soft); --wills-primary-glow: var(--wills-glow);
+  --art-supp: var(--oc-text);   --art-alert: var(--oc-alert);
+  --art-alert-soft: var(--oc-alert-soft);  --art-primary-glow: var(--art-glow);
 
   /* Bare names invented by individual pages */
   --ink:          var(--oc-heading);
