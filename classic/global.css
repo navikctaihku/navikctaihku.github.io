@@ -229,13 +229,12 @@ footer.footer {
   color: var(--oc-footer-text);
 }
 
-/* Footer column headings sit on the grey footer — brand blue only reaches
-   2.6:1 there, so they take the reverse-white treatment instead. */
+/* Footer column headings — brand blue */
 .sc-fcol h5,
 .site-footer-col h4,
 .footer-col h4,
 .footer-col h5 {
-  color: var(--oc-footer-text-strong);
+  color: var(--oc-blue-light, #3cbdd2);
 }
 
 .sc-fcol a,

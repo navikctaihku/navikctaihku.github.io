@@ -135,8 +135,7 @@
   }
   .sc-fcol h5 {
     font: 600 11px/1 'Inter', sans-serif; letter-spacing: 1.6px; text-transform: uppercase;
-    /* Reverse-white on the grey footer — brand blue reaches only 2.6:1 here. */
-    color: var(--oc-footer-text-strong); margin: 0 0 18px;
+    color: var(--oc-blue-light, #3cbdd2); margin: 0 0 18px;
   }
   .sc-fcol ul { list-style: none; margin: 0; padding: 0; }
   .sc-fcol li { margin-bottom: 12px; }
