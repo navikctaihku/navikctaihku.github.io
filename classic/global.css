@@ -206,6 +206,21 @@ p, li, label, input, textarea, .oc-type-body {
   text-transform: uppercase;
 }
 
+/* ===== Problem / Answer pattern (shared) =====
+   Brand Guideline §04: the red/pink pair (--oc-alert / --oc-alert-soft) is a
+   Supplementary Color reserved specifically "for alert content" — a problem
+   statement is exactly that, so its tag uses the brand alert red, not a
+   neutral grey. The paired answer/solution tag uses the brand accent blue.
+   Reusable across any page that ships this two-column contrast pattern. */
+.s-problem .s-tag,
+.oc-problem-tag {
+  color: var(--oc-alert);
+}
+.s-solution .s-tag,
+.oc-answer-tag {
+  color: var(--oc-accent);
+}
+
 /* ===== Site footer (shared) — gray bg, reverse-white logo ===== */
 .sc-footer,
 .site-footer,

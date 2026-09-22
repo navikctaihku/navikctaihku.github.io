@@ -64,12 +64,16 @@
     .sc-menu, .sc-actions .sc-btn-ghost { display: none; }
     .sc-burger { display: block; }
     .sc-mobile { position: fixed; top: 64px; left: 0; right: 0; bottom: 0; z-index: 999; overflow-y: auto;
-      background: var(--oc-surface); padding: 16px 24px 48px; display: none; font-family: 'Inter', sans-serif; }
+      background: rgba(255, 255, 255, 0.86);
+      -webkit-backdrop-filter: saturate(1.5) blur(20px);
+      backdrop-filter: saturate(1.5) blur(20px);
+      padding: 16px 24px 48px; display: none; font-family: 'Inter', sans-serif; }
     .sc-mobile.sc-open { display: block; }
     .sc-mgroup { border-bottom: 1px solid var(--sc-border); padding: 14px 0; }
-    .sc-mgroup > div:first-child { font: 600 15px/1 'Inter', sans-serif; color: var(--sc-ink); }
-    .sc-mgroup a { display: block; padding: 10px 0 0 12px; font: 400 14px/1.4 'Inter', sans-serif;
-      color: var(--sc-muted); text-decoration: none; }
+    .sc-mgroup > div:first-child { font: 700 11px/1 'Inter', sans-serif; letter-spacing: 1.6px;
+      text-transform: uppercase; color: var(--sc-cyan); }
+    .sc-mgroup a { display: block; padding: 12px 0 0 12px; font: 600 14px/1.4 'Inter', sans-serif;
+      color: var(--sc-ink); text-decoration: none; }
   }
   @media (min-width: 1024px) { .sc-mobile { display: none !important; } }
   body > nav:not(.sc-nav) { display: none !important; }

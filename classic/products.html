@@ -215,9 +215,10 @@
     /* ---------- RESPONSIVE ---------- */
     @media (max-width: 1024px) {
       .fp-flow { grid-template-columns: 1fr; }
-      .fp-steps { flex-direction: row; overflow-x: auto; gap: 8px; padding-bottom: 6px; scrollbar-width: none; }
+      .fp-steps { flex-direction: row; overflow-x: auto; gap: 8px; padding-bottom: 6px; scrollbar-width: none;
+        -webkit-overflow-scrolling: touch; scroll-snap-type: x proximity; }
       .fp-steps::-webkit-scrollbar { display: none; }
-      .fp-step { flex: none; }
+      .fp-step { flex: none; width: auto; white-space: nowrap; scroll-snap-align: start; }
       .fp-stats, .fp-cards { grid-template-columns: repeat(2, 1fr); }
     }
     @media (max-width: 768px) {
