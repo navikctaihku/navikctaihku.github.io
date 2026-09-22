@@ -684,9 +684,7 @@
       const hero = document.getElementById('hero');
       if (!vid || !hero) return;
 
-      const playHero = () => {
-        if (hero.classList.contains('hero--revealed')) vid.play().catch(() => {});
-      };
+      const playHero = () => { vid.play().catch(() => {}); };
       const heroObserver = new IntersectionObserver((entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) playHero();
@@ -695,7 +693,7 @@
       }, { threshold: 0.1 });
 
       heroObserver.observe(hero);
-      window.addEventListener('hero-revealed', playHero);
+      playHero();
       document.addEventListener('visibilitychange', () => {
         if (!document.hidden) playHero();
       });
