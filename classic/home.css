@@ -281,9 +281,7 @@
       height: auto;
       margin: 0 auto 18px;
       display: block;
-      filter:
-        drop-shadow(0 0 10px rgba(255, 255, 255, 0.32))
-        drop-shadow(0 0 22px rgba(255, 255, 255, 0.14));
+      filter: none;
     }
     /* Representative slogan — light blue key line under logo */
     .hero-slogan {
@@ -326,7 +324,7 @@
     }
     .hero-rotate-accent {
       color: #ffffff;
-      border-bottom: 2px solid rgba(255, 255, 255, 0.55);
+      border-bottom: 2px solid var(--oc-blue);
       padding-bottom: 3px;
       display: inline;
     }
@@ -477,8 +475,7 @@
       max-width: min(440px, 78vw);
       width: 100%;
       height: auto;
-      filter: drop-shadow(0 0 24px rgba(20, 164, 188, 0.22))
-              drop-shadow(0 0 48px rgba(20, 164, 188, 0.12));
+      filter: none;
       animation: hero-intro-logo-in 0.65s cubic-bezier(0.16, 1, 0.3, 1) both;
     }
     @keyframes hero-intro-logo-in {
