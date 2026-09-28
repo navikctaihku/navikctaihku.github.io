@@ -53,12 +53,12 @@
     border-radius: 8px; transition: color .15s, background .15s, border-color .15s; }
   .sc-btn-ghost:hover { color: var(--sc-ink); background: rgba(10,22,40,0.04); border-color: rgba(10,22,40,0.18); }
   .sc-btn-contact {
-    color: var(--oc-primary, #14a4bc);
+    color: var(--oc-blue, #14a4bc);
     border-color: rgba(20, 164, 188, 0.35);
     background: #fff;
   }
   .sc-btn-contact:hover {
-    color: var(--oc-primary-deep, #0d7d91);
+    color: var(--oc-blue-deep, #0d7d91);
     background: rgba(20, 164, 188, 0.06);
     border-color: rgba(20, 164, 188, 0.5);
   }

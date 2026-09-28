@@ -1,0 +1,1 @@
+import{i as d}from"./site-nav-D4R868I4.js";const t=document.getElementById("announcement"),e=document.getElementById("announcementClose");e==null||e.addEventListener("click",()=>{t==null||t.classList.add("hidden")});d();
